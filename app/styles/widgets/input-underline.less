@@ -22,3 +22,33 @@
 	}
 
 }
+
+.rac-grey-btn{
+	border: solid 2px ;
+	background-color:@color-white  !important;
+}
+
+.input-underline-dark {
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-bottom: 2px solid @color-blue;
+	color: @color-grey;
+	border-radius: 0;
+
+	&::-moz-placeholder {
+	  color: @color-grey;
+	}
+	&::-ms-input-placeholder {
+	 color: @color-grey;
+	}
+	&::-webkit-input-placeholder {
+	 color: @color-grey;
+	}
+
+	&:focus {
+		border-bottom: 2px solid  @color-red;
+		box-shadow: none;
+	}
+
+}

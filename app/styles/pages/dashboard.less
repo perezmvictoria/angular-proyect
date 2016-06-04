@@ -6,8 +6,8 @@
 	right: 0;
 	bottom: 0;
 
-    background: #ecf0f1;
-    color: #666;
+    background: @color-white;
+    color: @color-blue;
 
     /*
      * Base structure
@@ -38,8 +38,8 @@
     /* Hide for mobile, show later */
     .sidebar {
 
-      .user-avatar {
-      	margin: 10px 0 10px 0;
+      .logo-pic-avatar-sm  {
+      	margin: 20px 0 10px 0;
       }
 
       .brand {
@@ -48,12 +48,12 @@
 
       display: none;
 
-      color: #FFF;
+      color: @color-grey;
 
       h2 {
       	font-weight: 300;
       	small {
-      		color: rgba(255, 255, 255, 0.7);
+      		color: @color-grey;
       	}
       }
     }
@@ -68,13 +68,13 @@
         padding: 0 20px 20px 20px;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: lighten(@brand-primary, 0%); //#f5f5f5;
-        border-right: 1px solid #eee;
+        background-color: @color-grey-light; 
+        border-right: 1px solid @color-grey;
       }
     }
 
     .nav > li > a:hover, .nav > li > a:focus {
-    	background: darken(@brand-primary, 5%);
+    	background: @color-red !important;
     }
 
     /* Sidebar navigation */
@@ -93,7 +93,7 @@
     .nav-sidebar > .active > a:hover,
     .nav-sidebar > .active > a:focus {
       color: #fff;
-      background-color: darken(@brand-primary, 5%);
+      background-color: @color-red;
     }
 
 
