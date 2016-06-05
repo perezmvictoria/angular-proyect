@@ -12,7 +12,7 @@ angular.module('yapp')
 
     $scope.submit = function() {
 
-      $location.path('/notificaciones');
+    //  $location.path('/notificaciones');
 
       return false;
     }
