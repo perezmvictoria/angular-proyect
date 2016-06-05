@@ -11,6 +11,4 @@ angular.module('yapp')
   .controller('NotificacionesCtrl', function($scope, $state) {
 
     $scope.$state = $state;
-    $scope.titulo = 'esto es una prueba';
-
   });

@@ -47,16 +47,26 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/reportes.html'
           })
-           .state('usuarios', {
+          .state('usuarios', {
             url: '/usuarios',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/usuarios.html'
+          })
+          .state('usuarios-edit', {
+            url: '/usuarios-edit',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/usuarios-edit.html'
           })
 
           .state('reglas', {
             url: '/reglas',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/reglas.html'
+          })
+           .state('reglas-edit', {
+            url: '/reglas-edit',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/reglas-edit.html'
           })
           .state('medios', {
             url: '/medios',
