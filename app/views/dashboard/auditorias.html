@@ -1,14 +1,110 @@
-<div>
-  <a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
-  <h2>AUDITORIAS</h2>
-  <span class="glyphicon glyphicon-dashboard bg-fade"></span>
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Add Charts here</h1>
-      <p>You can use C3.js or Chart.js</p>
-      <p>
-        <a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
-      </p>
+<div> 
+  <h2>Auditorias</h2>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        Seleccione uno de los filtros para generar su reporte
     </div>
-  </div>
+    <div class="panel-body">
+      <form role="form">        
+          <div class="form-group  col-md-4" >
+            <div class='input-group date' id='fini'>
+              <input type='text' class="form-control" placeholder="Desde"/>
+              <span class="input-group-addon">
+                 <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+          <div class='input-group date' id='ffin'>
+            <input type='text' class="form-control" placeholder="Hasta"/>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>  
+        </div>
+        <div class="form-group col-md-4">
+          <button type="submit" class="btn btn-default btn-md ">Generar</button>
+        </div>
+        <div class="form-group  col-md-4">
+          <input type="text" class="form-control input-sm" id="tec" placeholder="Técnico">
+        </div>
+        <div class="form-group  col-md-4">
+          <input type="text" class="form-control input-sm" id="est" placeholder="Estado">
+        </div>        
+      </form>
+    </div>
+  </div>      
+  <div class="panel panel-default">    
+    <div class="panel-body">
+        <table datatable="" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Técnico</th>
+                <th>Descripción</th>
+                <th>Comentario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>5/11/2016</td>
+                <td>Resuleta</td>               
+                <td>jlopez</td>
+                <td>Hitachi Sorage</td>
+                <td>reiniciar servidor</td>
+            </tr>
+            <tr>
+                <td>5/11/2016</td>
+                <td>En Progreso</td>                
+                <td>cperez</td>
+                <td>VMWare</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5/11/2016</td>
+                <td>Creada</td>               
+                <td></td>
+                <td>Alarm Host Connection State</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5/11/2016</td>
+                <td>Cerrada</td>                
+                <td>jlopez</td>
+                <td>Storage Connectivity Alarm</td>
+                <td>no requiere acción</td>
+            </tr>
+            <tr>
+                <td>5/11/2016</td>
+                <td>En Progreso</td>                
+                <td>cperez</td>
+                <td>CPU</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5/11/2016</td>
+                <td>En Progreso</td>                
+                <td>cperez</td>
+                <td>Hitachi</td>
+                <td></td>
+            </tr>
+               <tr>
+                <td>5/11/2016</td>
+                <td>Creada</td>               
+                <td></td>
+                <td>Host Error Alarm</td>
+                <td></td>
+            </tr>
+               <tr>
+                <td>5/11/2016</td>
+                <td>En Progreso</td>                
+                <td>cperez</td>
+                <td>Network Redundancy Lost Alarm</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>      
+    <div>
+  </div>  
 </div>
