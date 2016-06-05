@@ -11,7 +11,8 @@
 angular
   .module('yapp', [
     'ui.router',
-    'ngAnimate'
+    'ngAnimate',
+    'datatables'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
@@ -36,15 +37,14 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('overview', {
+          .state('notificaciones', {
             url: '/overview',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/overview.html'
           })
-          .state('reports', {
+          .state('reportes', {
             url: '/reports',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/reports.html'
           });
-
   });
