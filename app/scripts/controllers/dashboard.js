@@ -8,6 +8,7 @@
 angular.module('rac')
   .controller('DashboardCtrl', function($scope, $state) {
 
+	$scope.user_name = "Fernando Peralta";
     $scope.$state = $state;
 
   });
