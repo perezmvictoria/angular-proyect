@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp')
+angular.module('rac')
   .controller('UsuariosCtrl', function($scope, $http) {
 
 

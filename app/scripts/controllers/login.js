@@ -7,12 +7,10 @@
  * # MainCtrl
  * Controller of yapp
  */
-
-angular.module('yapp')
+angular.module('rac')
   .controller('LoginCtrl', function($scope, $location, $http) {
 
   	$scope.mLogin = function () {
-
   		var config = {
   			headers : {
   				'Content-Type' : 'application/json; charset=utf-8'
