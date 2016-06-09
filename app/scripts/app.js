@@ -50,7 +50,8 @@ angular
           .state('usuarios', {
             url: '/usuarios',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios.html'
+            templateUrl: 'views/dashboard/usuarios.html',
+            controller: 'UsuariosCtrl'
           })
           .state('usuarios-edit', {
             url: '/usuarios-edit',
