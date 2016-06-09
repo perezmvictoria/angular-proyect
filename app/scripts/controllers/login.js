@@ -7,10 +7,14 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp')
+angular.module('rac')
   .controller('LoginCtrl', function($scope, $location) {
 
-    $scope.submit = function() {
+	$scope.usuario ="fperalta";
+
+
+
+    $scope.logueo = function() {
 
     //  $location.path('/notificaciones');
 

@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp')
+angular.module('rac')
   .controller('NotificacionesCtrl', function($scope, $state) {
 
     $scope.$state = $state;
