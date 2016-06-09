@@ -7,14 +7,32 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp')
-  .controller('LoginCtrl', function($scope, $location) {
+angular.module('rac')
+  .controller('LoginCtrl', function($scope, $location, $http) {
 
-    $scope.submit = function() {
+  	$scope.mLogin = function () {
+  		var config = {
+  			headers : {
+  				'Content-Type' : 'application/json; charset=utf-8'
+  			}
+  		}
 
-      $location.path('/dashboard');
+  		var data = {
+			"usuario" : $scope.usuario,
+			"contrasenia" : $scope.contrasenia
+		}
 
-      return false;
-    }
-
+  		$http.post('http://192.168.1.108:5000/perfil/iniciar_sesion', data, config)
+    	.success(function (data, status, headers, config) {
+			$scope.PostDataResponse = data;
+			console.log(data);
+			$location.path('/dashboard');
+        	})
+    	.error(function (data, status, header, config) {
+        	$scope.ResponseDetails = "Data: " + data +
+				"<hr />status: " + status +
+            	"<hr />headers: " + header +
+            	"<hr />config: " + config;
+        	});
+    	};
   });

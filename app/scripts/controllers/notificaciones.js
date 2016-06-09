@@ -4,11 +4,11 @@
  * @ngdoc function
  * @name yapp.controller:MainCtrl
  * @description
+ * # MainCtrl
+ * Controller of yapp
  */
 angular.module('rac')
-  .controller('DashboardCtrl', function($scope, $state) {
+  .controller('NotificacionesCtrl', function($scope, $state) {
 
-	$scope.user_name = "Fernando Peralta";
     $scope.$state = $state;
-
   });

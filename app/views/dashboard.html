@@ -1,24 +1,52 @@
-<div class="dashboard-page">
-  <div class="container-fluid">
+
+<div id="wrapper">
+
+  <div class="dashboard-page">
+    <div class="container-fluid">
+
+
     <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar">
+    
+         <div class="text-center">
+          <img src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /><br />
+  
+        </div>
 
-       <div class="text-center">
-        <h2 class="brand">Ani Theme <small>Free Edition</small></h2>
-        <img src="images/flat-avatar.png" class="user-avatar" /><br />
-        <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
+        <ul class="nav nav-sidebar">
+          <li ng-class="{active: $state.includes('notificaciones')}"><a ui-sref="notificaciones">Notificaciones <span class="sr-only">(current)</span></a></li>
+          <li ng-class="{active: $state.includes('reportes')}"><a ui-sref="reportes">Reportes</a></li>
+          <li ng-class="{active: $state.includes('usuarios')}"><a ui-sref="usuarios">Usuarios</a></li>
+          <li ng-class="{active: $state.includes('reglas')}"><a ui-sref="reglas">Reglas</a></li>
+          <li ng-class="{active: $state.includes('auditorias')}"><a ui-sref="auditorias">Auditorias</a></li>
+          <li ng-class="{active: $state.includes('medios')}"><a ui-sref="medios">Medios</a></li>
+        </ul>
+
       </div>
-
-      <ul class="nav nav-sidebar">
-        <li ng-class="{active: $state.includes('overview')}"><a ui-sref="overview">Overview <span class="sr-only">(current)</span></a></li>
-        <li ng-class="{active: $state.includes('reports')}"><a ui-sref="reports">Reports</a></li>
-        <li><a href="http://startreact.com/product/ani-theme/">Free React version</a></li>
-        <li><a href="http://www.strapui.com/ani-angularjs-theme">Angular Premium Edition</a></li>
-      </ul>
-
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view>
+      </div>
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view>
+        <div class="row col-md-12">
+      <ul class="nav navbar-nav navbar-right">            
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="glyphicon glyphicon-user"></i>  
+             {{user_name}}
+              <span class="caret"></span></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="glyphicon glyphicon-user"></i> Perfil</a>
+                </li>
+                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Password</a>
+                </li>
+                <li class="divider"></li>
+                <li><a ui-sref="login"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+                </li>
+            </ul>
+        </li>        
+      </ul>
+       
     </div>
   </div>
-</div>
+  </div>
 </div>
