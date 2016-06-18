@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('yapp', [
+  .module('rac', [
     'ui.router',
     'ngAnimate',
     'datatables'

@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp')
+angular.module('rac')
   .controller('UsuariosCtrl', function($scope, $location,$http) {
 	$scope.listarUsuarios = function () {
 		var config = {
@@ -30,12 +30,6 @@ angular.module('yapp')
 			//$location.path('/dashboard');
 			//$location.path('/usuarios');
         })
-    	.error(function (data, status, header, config) {
-	        $scope.ResponseDetails = "Data: " + data +
-				"<hr />status: " + status +
-	            "<hr />headers: " + header +
-	            "<hr />config: " + config;
-	        	});
-			};
+    	}
     $scope.listarUsuarios();
-	});
+});
