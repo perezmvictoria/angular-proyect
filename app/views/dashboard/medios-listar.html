@@ -1,0 +1,43 @@
+<div> 
+  <h2>Medios</h2>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        Medios de comunicación del sistema
+    </div>    
+  <div class="panel panel-default">    
+    <div class="panel-body">
+        <table datatable="" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Destino</th>
+                <th>Clave</th>
+                <th>Dominio</th>
+                <th>Tipo</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>SMSAgesic</td>
+                <td>0991231234</td>               
+                <td>1234</td>
+                <td>@antel.com.uy</td>
+                <td>SMS</td>
+                <td> <a class="btn btn-success btn-xs" ui-sref="medios-edit" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
+                 <a class="btn btn-danger btn-xs" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a></td>
+            </tr>
+               <tr>
+                <td>MailAgesic</td>
+                <td>tecnicosAgesic</td>               
+                <td></td>
+                <td>@pyxis.com</td>
+                <td>Mail</td>
+                <td> <a class="btn btn-success btn-xs" ui-sref="medios-edit" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
+                 <a class="btn btn-danger btn-xs" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a></td>
+            </tbody>
+        </table>
+    <div>
+        <button class="btn btn-md " ui-sref="medios-create">Crear Medio</button>
+    </div>        
+</div>

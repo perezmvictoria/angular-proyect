@@ -3,7 +3,7 @@
 angular.module('rac')
   .controller('UsuariosListarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	
-    $scope.msjerror = "";
+  $scope.msjerror = "";
 	$scope.listarUsuarios = function () {
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())

@@ -1,10 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yapp.controller:MainCtrl
- * @description
- */
 angular.module('rac')
   .controller('DashboardCtrl', function(perfilService,$scope, $state) {
 

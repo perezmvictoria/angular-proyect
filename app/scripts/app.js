@@ -8,7 +8,7 @@ angular
   ]) 
   .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/dashboard', '/dashboard/notificaciones');
+    $urlRouterProvider.when('/dashboard', '/dashboard/notificaciones-listar');
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -29,85 +29,62 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
+
           .state('usuarios-listar', {
             url: '/usuarios-listar',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/usuarios-listar.html',
             controller: 'UsuariosListarCtrl'
           })
-          .state('usuarios-edit', {
-            url: '/usuarios-edit',
+          .state('usuarios-editar', {
+            url: '/usuarios-editar',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/usuarios-editar.html',
             controller: 'UsuariosEditarCtrl'
-          })
-          .state('notificaciones', {
-            url: '/notificaciones',
+          })      
+
+          .state('reglas-listar', {
+            url: '/reglas-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/notificaciones.html'
+            templateUrl: 'views/dashboard/reglas-listar.html',
+            controller: 'ReglasListarCtrl'
           })
-          .state('reportes', {
-            url: '/reportes',
+          .state('reglas-editar', {
+            url: '/reglas-editar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/reportes.html'
+            templateUrl: 'views/dashboard/reglas-editar.html',
+            controller: 'ReglasEditarCtrl'
           })
-          .state('usuarios', {
-            url: '/usuarios',
+
+          .state('medios-listar', {
+            url: '/medios-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios.html',
-            controller: 'UsuariosCtrl'
+            templateUrl: 'views/dashboard/medios-listar.html',
+            controller: 'MediosListarCtrl'
           })
-          .state('usuarios-create', {
-            url: '/usuarios-create',
+          .state('medios-editar', {
+            url: '/medios-editar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios-create.html',
-            controller: 'UsuariosCtrl'
+            templateUrl: 'views/dashboard/medios-editar.html',
+            controller: 'MediosEditarCtrl'
           })
-          .state('usuarios-edit', {
-            url: '/usuarios-edit',
+
+          .state('notificaciones-listar', {
+            url: '/notificaciones-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios-edit.html',
-            controller: 'UsuariosCtrl'
+            templateUrl: 'views/dashboard/notificaciones-listar.html',
+            controller: 'NotificacionesListarCtrl'
           })
-          .state('reglas', {
-            url: '/reglas',
+          .state('reportes-listar', {
+            url: '/reportes-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/reglas.html',
-            controller: 'ReglasCtrl'
+            templateUrl: 'views/dashboard/reportes-listar.html',
+            controller: 'ReportesListarCtrl'
           })
-          .state('reglas-create', {
-            url: '/reglas-create',
+          .state('auditorias-listar', {
+            url: '/auditorias-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/reglas-create.html',
-            controller: 'ReglasCtrl'
-          })
-           .state('reglas-edit', {
-            url: '/reglas-edit',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/reglas-edit.html',
-            controller: 'ReglasCtrl'
-          })
-          .state('medios', {
-            url: '/medios',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/medios.html',
-            controller: 'MediosCtrl'
-          })
-          .state('medios-create', {
-            url: '/medios-create',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/medios-create.html',
-            controller: 'MediosCtrl'
-          })
-          .state('medios-edit', {
-            url: '/medios-edit',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/medios-edit.html',
-            controller: 'MediosCtrl'
-          })
-          .state('auditorias', {
-            url: '/auditorias',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/auditorias.html'
+            templateUrl: 'views/dashboard/auditorias-listar.html',
+            controller: 'AuditoriasListarCtrl'
           });
   });

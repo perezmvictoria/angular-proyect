@@ -8,7 +8,7 @@
  * Controller of yapp
  */
 angular.module('rac')
-  .controller('NotificacionesCtrl', function($scope, $state) {
+  .controller('ReportesListarCtrl', function(perfilService,$scope, $state) {
 
     $scope.$state = $state;
   });
