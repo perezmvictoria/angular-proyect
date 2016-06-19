@@ -18,28 +18,28 @@ angular.module('rac')
     }
     $scope.listarUsuarios();
   	$scope.crearUsuario = function () {
-		usuarioService.setUsuario(undefined);		
-		usuarioService.setModoEditar(false);
-		$location.path('/dashboard/usuarios-editar');
-		return "/dashboard/usuarios-editar";
+  		usuarioService.setUsuario(undefined);		
+  		usuarioService.setModoEditar(false);
+  		$location.path('/dashboard/usuarios-editar');
+  		return "/dashboard/usuarios-editar";
     }
     $scope.editarUsuario = function (usuario) {
-		usuarioService.setUsuario(usuario);				
-		usuarioService.setModoEditar(true);		
-		$location.path('/dashboard/usuarios-editar');
-		return "/dashboard/usuarios-editar";
+  		usuarioService.setUsuario(usuario);				
+  		usuarioService.setModoEditar(true);		
+  		$location.path('/dashboard/usuarios-editar');
+  		return "/dashboard/usuarios-editar";
     }
   
     $scope.eliminarUsuario = function (usuario) {
-		usuarioService.setUsuario(undefined);		
-		//funcion para eliminar usuario
-		$scope.listarUsuarios();		
-		return false;
+  		usuarioService.setUsuario(undefined);		
+  		//funcion para eliminar usuario
+  		$scope.listarUsuarios();		
+  		return false;
     }
     $scope.desbloquearUsuario = function (usuario) {
-		usuarioService.setUsuario(undefined);		
-		//funcion de desbloquear
-		$scope.listarUsuarios();		
-		return false;
+  		usuarioService.setUsuario(undefined);		
+  		//funcion de desbloquear
+  		$scope.listarUsuarios();		
+  		return false;
     }
 });

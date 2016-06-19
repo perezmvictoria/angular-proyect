@@ -4,8 +4,8 @@ angular.module('rac')
   .controller('UsuariosEditarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
-    $scope.nombreUsuario = perfilService.getNombreUsuario();
-    $scope.rolUsuario = perfilService.getRolUsuario();
+    $scope.nombreUsuario = perfilService.getUsuario().nombre;
+    $scope.rolUsuario    = perfilService.getUsuario().rol;
 
     $scope.modoEditar = function(){
     	return usuarioService.isModoEditar();

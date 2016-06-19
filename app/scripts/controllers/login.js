@@ -33,7 +33,8 @@ angular.module('rac')
         	.error(function (data, status, header, config) {              
               $scope.msjerror = "Usuario y/o contraseña incorrectos ";                            
               perfilService.setPerfil("error","admin",$scope.contrasenia);
-              $location.path('/login');
+              //$location.path('/login');
+              $location.path('/dashboard');           
               return false;
         })            
     };
