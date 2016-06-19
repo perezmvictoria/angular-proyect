@@ -25,6 +25,7 @@ angular
         url: '',
         templateUrl: 'views/base.html'
       })
+<<<<<<< Updated upstream
         .state('login', {
           url: '/login',
           parent: 'base',

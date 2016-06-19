@@ -6,6 +6,22 @@ angular.module('rac')
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
 
+		$scope.CrearUsuario = function () {
+			
+		var data = {
+ 			"usuario_exec":"superrac",
+ 			"rol_exec":"super_admin",
+ 			"usuario": $scope.usuario,
+ 			"tipo_usuario": $scope.tipo,
+ 			"contrasenia": $scope.contrasenia,
+ 			"mail" : $scope.mail,
+ 			"telefono": $scope.telefono
+ 		}
+    	$http.post('http://192.168.1.108:5000/usuarios/crear_usuario', data, config)
+    		.success(function (data, status, headers, config) {
+        })
+    }
+
 	$scope.listarUsuarios = function () {
 
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
