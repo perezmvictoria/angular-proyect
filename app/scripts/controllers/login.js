@@ -16,6 +16,11 @@ angular.module('rac')
         return "text";        
       }
     }
+
+    $scope.validate=function(){
+          return $scope.loginForm.$valid;
+    };
+
    	$scope.mLogin = function () {
   		$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', 
             perfilService.getData(),perfilService.getConfig())
