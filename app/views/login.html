@@ -3,17 +3,19 @@
 	<div class="row">
 		<div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2" >
         	<img src="images/pyxis_rac_lg.png" class="logo-pic-avatar-lg" />
+<<<<<<< HEAD
 			<form role="form" name="loginForm" >
 				<div class="form<i class='glyphicon glyphicon-eye-close' ></i>-content">
 					
 					<div class="form-group" >
-						<input type="text" class="form-control input-underline-dark  input-lg" placeholder="usuario" name="usuario" ng-model="usuario" required >
+						<input type="text" class="form-control input-underline-dark  input-lg" 	
+						       placeholder="usuario" name="usuario" ng-model="usuario" required >
 						<span ng-show="loginForm.usuario.$touched && loginForm.usuario.$error.required">Ingrese el usuario.</span>
 					</div>
 					<div class="form-group" >
 						<input type="{{verpasswd_tipo();}}" placeholder="contrasenia"
 						       class="form-control input-underline-dark  input-lg" 
-						       value="{{contrasenia}}" ng-model=contrasenia 
+						       ng-model="contrasenia"
 							   ng-keypress="$event.keyCode == 13 && mLogin();" required>			
 						<input type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
 						       titulo="ver contraseña" />
@@ -25,7 +27,8 @@
         				<span ng-show="loginForm.contrasenia.$touched && !loginForm.contrasenia.$valid">Ingrese la Contraseña.</span>
 					</div>						
 					<div class="alert-danger">{{msjerror}}</div>									
-					<a class="btn btn-secondary btn-rounded btn-lg rac-grey-btn" ng-click="mLogin();">Login</a>
+					<a class="btn btn-secondary btn-rounded btn-lg rac-grey-btn" 
+					   ng-click="mLogin();">Login</a>
 				</div>				
 			</form>
 		</div>	
