@@ -13,7 +13,7 @@ angular
     'ui.router',
     'ngAnimate',
     'datatables'
-  ])
+  ]) 
   .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/notificaciones');
@@ -37,6 +37,18 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
+          .state('usuarios', {
+            url: '/usuarios',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/usuarios.html',
+            controller: 'UsuariosCtrl'
+          })
+          .state('usuarios-edit', {
+            url: '/usuarios-edit',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/usuarios-edit.html',
+            controller: 'UsuariosCtrl'
+          })
           .state('notificaciones', {
             url: '/notificaciones',
             parent: 'dashboard',
@@ -47,18 +59,6 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/reportes.html'
           })
-          .state('usuarios', {
-            url: '/usuarios',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios.html',
-            controller: 'UsuariosCtrl'
-          })
-          .state('usuarios-edit', {
-            url: '/usuarios-edit',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios-edit.html'
-          })
-
           .state('reglas', {
             url: '/reglas',
             parent: 'dashboard',

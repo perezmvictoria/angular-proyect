@@ -6,9 +6,9 @@
  * @description
  */
 angular.module('rac')
-  .controller('DashboardCtrl', function($scope, $state) {
+  .controller('DashboardCtrl', function(perfilService,$scope, $state) {
 
-	$scope.user_name = "Fernando Peralta";
+	$scope.user_name = perfilService.getNombreUsuario();
     $scope.$state = $state;
 
   });

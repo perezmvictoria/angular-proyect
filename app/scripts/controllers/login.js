@@ -1,37 +1,22 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yapp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of yapp
- */
 angular.module('rac')
-  .controller('LoginCtrl', function($scope, $location, $http) {
-
-  	$scope.mLogin = function () {
-  		var config = {
-  			headers : {
-  				'Content-Type' : 'application/json; charset=utf-8'
-  			}
-  		}
-
-  		var data = {
-			"usuario" : $scope.usuario,
-			"contrasenia" : $scope.contrasenia
-		}
-  		$http.post('http://192.168.1.108:5000/perfil/iniciar_sesion', data, config)
-    	.success(function (data, status, headers, config) {
-			$scope.PostDataResponse = data;
-			//console.log(data);
-			$location.path('/dashboard');
+  .controller('LoginCtrl', function(perfilService,$scope, $location, $http) {
+    $scope.error = false;
+   	$scope.mLogin = function () {
+  		$http.post('http://190.64.30.76:5000/perfil/iniciar_sesion', 
+            perfilService.getData(),perfilService.getConfig())
+    	    .success(function (data, status, headers, config) {
+              perfilService.setPerfil($scope.usuario,"admin",$scope.contrasenia);
+          		$location.path('/dashboard');              
+              return false;
         	})
-    	.error(function (data, status, header, config) {
-        	$scope.ResponseDetails = "Data: " + data +
-				"<hr />status: " + status +
-            	"<hr />headers: " + header +
-            	"<hr />config: " + config;
-        	});
-    	};
-  });
+        	.error(function (data, status, header, config) {              
+              $scope.msjerror = "Usuario y/o contraseña incorrectos ";                            
+              perfilService.setPerfil("error","admin",$scope.contrasenia);
+              $location.path('/dashboard');
+              return false;
+          })
+            
+    };
+});
