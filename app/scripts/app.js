@@ -25,7 +25,6 @@ angular
         url: '',
         templateUrl: 'views/base.html'
       })
-<<<<<<< Updated upstream
         .state('login', {
           url: '/login',
           parent: 'base',
@@ -38,17 +37,17 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('usuarios', {
-            url: '/usuarios',
+          .state('usuarios-listar', {
+            url: '/usuarios-listar',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios.html',
-            controller: 'UsuariosCtrl'
+            templateUrl: 'views/dashboard/usuarios-listar.html',
+            controller: 'UsuariosListarCtrl'
           })
           .state('usuarios-edit', {
             url: '/usuarios-edit',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/usuarios-edit.html',
-            controller: 'UsuariosCtrl'
+            templateUrl: 'views/dashboard/usuarios-editar.html',
+            controller: 'UsuariosEditarCtrl'
           })
           .state('notificaciones', {
             url: '/notificaciones',

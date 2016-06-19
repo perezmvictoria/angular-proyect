@@ -17,9 +17,9 @@ angular.module('rac')
                             "rol_exec":"super_admin"
                       };
         //ruta local
-        //perfil.ruta = "http://192.168.1.108:5000";                      
+        perfil.ruta = "http://192.168.1.108:5000";                      
         //ruta testing
-        perfil.ruta = "http://190.64.30.76:5000";
+        //perfil.ruta = "http://190.64.30.76:5000";
 
         
         return{

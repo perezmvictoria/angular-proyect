@@ -1,29 +1,10 @@
 'use strict';
 
 angular.module('rac')
-  .controller('UsuariosCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  .controller('UsuariosListarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	
-  	$scope.usuario_seleccionado = usuarioService.getUsuario();
-    $scope.msjerror = ""; 
-
-		$scope.CrearUsuario = function () {
-			
-		var data = {
- 			"usuario_exec":"superrac",
- 			"rol_exec":"super_admin",
- 			"usuario": $scope.usuario,
- 			"tipo_usuario": $scope.tipo,
- 			"contrasenia": $scope.contrasenia,
- 			"mail" : $scope.mail,
- 			"telefono": $scope.telefono
- 		}
-    	$http.post('http://192.168.1.108:5000/usuarios/crear_usuario', data, config)
-    		.success(function (data, status, headers, config) {
-        })
-    }
-
+    $scope.msjerror = "";
 	$scope.listarUsuarios = function () {
-
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
@@ -61,18 +42,5 @@ angular.module('rac')
 		//funcion de desbloquear
 		$scope.listarUsuarios();		
 		return false;
-    }
-    $scope.generarUsuario = function () {
-		usuarioService.setUsuario(undefined);		
-		if(usuarioService.getModo()==="crear"){
-			//funcion crear
-			//Hay que usar $scope.usuario_seleccionado
-		}else{
-			//funcion editar
-			//Hay que usar $scope.usuario_seleccionado
-		}		
-		$scope.listarUsuarios();
-		$location.path('/dashboard/usuarios');
-		return "'/dashboard/usuarios'";
     }
 });

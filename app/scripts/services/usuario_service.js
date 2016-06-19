@@ -17,11 +17,7 @@ angular.module('rac')
             },
             setModo: function(value){
                 datos.modo = value;
-            },
-            setUsuario: function(value){
-                datos.modo=value;
             }
-
         };
    })
    
