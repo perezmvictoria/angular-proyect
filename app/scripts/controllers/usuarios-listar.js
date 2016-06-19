@@ -20,13 +20,13 @@ angular.module('rac')
 
   	$scope.crearUsuario = function () {
 		usuarioService.setUsuario(undefined);		
-		usuarioService.setModo("crear");
+		usuarioService.setModoEditar(false);
 		$location.path('/dashboard/usuarios-editar');
 		return "/dashboard/usuarios-editar";
     }
     $scope.editarUsuario = function (usuario) {
 		usuarioService.setUsuario(usuario);				
-		usuarioService.setModo("editar");		
+		usuarioService.setModoEditar(true);		
 		$location.path('/dashboard/usuarios-editar');
 		return "/dashboard/usuarios-editar";
     }

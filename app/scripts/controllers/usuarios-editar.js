@@ -5,12 +5,19 @@ angular.module('rac')
   	//debugger;
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
+    $scope.modoEditar = function(){
+    	return usuarioService.isModoEditar();
+    }
 
-	$scope.generarUsuario = function () {
+	$scope.cancelar = function(){
 		usuarioService.setUsuario(undefined);
-		//debugger;
-		console.log("estoy dentro del generar usuario" + usuarioService.getModo());
-		if(usuarioService.getModo()==="crear"){
+		$location.path('/dashboard/usuarios-listar');
+		return "'/dashboard/usuarios-listar'";
+	}
+	
+	$scope.generarUsuario = function () {
+		usuarioService.setUsuario(undefined);		
+		if(usuarioService.isModoEditar()){
 			//funcion crear
 			var data = {
 	 			"usuario_exec":"superrac",

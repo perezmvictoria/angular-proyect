@@ -4,7 +4,7 @@ angular.module('rac')
       .service('usuarioService',function(){
         var datos= {};        
         datos.usuario = "";        
-        datos.modo = "";     
+        datos.modoEditar = false;     
         return{
             getUsuario: function(){
                 return datos.usuario;
@@ -12,11 +12,11 @@ angular.module('rac')
             setUsuario: function(value){
                 datos.usuario=value;
             },
-            getModo: function(){
-                return datos.modo;
+            isModoEditar: function(){
+                return datos.modoEditar;
             },
-            setModo: function(value){
-                datos.modo = value;
+            setModoEditar: function(value){
+                datos.modoEditar = value;
             }
         };
    })

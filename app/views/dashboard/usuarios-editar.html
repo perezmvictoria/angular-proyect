@@ -11,8 +11,8 @@
 
                 <div class="form-group">
                         <input class="form-control" placeholder="Nombre" name="nombre" 
-                        ng-model="nombre" ng-maxlength="12" 
-                        ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,50}+$/" >
+                        ng-model="usuario_seleccionado.nombre"  >
+                        <!--ng-maxlength="12" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,50}+$/"-->
 
                          <span style="color:red" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 12 caracteres.</span> 
 
@@ -22,14 +22,14 @@
 
               
                <div class="form-group">
-                        <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario"disabled>
+                        <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();">
                 </div>
                 
 
                 <div class="form-group">
 
                         <input class="form-control" placeholder="Contraseña" name="contrasenia"
-                        ng-model="contrasenia" type="password" ng-minlength="6" ng-maxlength="20"required>
+                        ng-model="usuario_seleccionado.contrasenia" type="password" ng-minlength="6" ng-maxlength="20" required>
 
                         <span style="color:red" ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$error.required">Ingrese la contraseña.</span>
 
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
 
-                        <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="contrasenia2" type="password" ng-maxlength="20" ng-maxlength="20"required>
+                        <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="usuario_seleccionado.contrasenia2" type="password" ng-maxlength="20" ng-maxlength="20"required>
 
                         <span style="color:red" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$error.required">Repita la contraseña.</span>
 
@@ -53,7 +53,8 @@
                     
                 <div class="form-group">
 
-                        <input class="form-control" placeholder="Mail" name="email" ng-model="email" type="email"required>
+                        <input class="form-control" placeholder="Mail" name="email"
+                         ng-model="usuario_seleccionado.mail" type="email" required>
 
                         <span style="color:red" ng-show="usuariosEForm.email.$touched && usuariosEForm.email.$error.required">Ingrese el mail.</span>
 
@@ -62,7 +63,8 @@
                 </div>
                     
                 <div class="form-group">
-                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="telefono" ng-pattern="/^[0-9]{1,12}/" required>
+                        <input class="form-control" placeholder="Telefono" name="telefono" 
+                        ng-model="usuario_seleccionado.telefono" ng-pattern="/^[0-9]{1,12}/" required>
 
                          <span style="color:red" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.required">Ingrese el teléfono.</span>
 
@@ -70,7 +72,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <select class="selectpicker" data-style="btn-default" data-live-search="true">
+                        <select class="selectpicker" data-style="btn-default" data-live-search="true"
+                                ng-model="usuario_seleccionado.tipo">
                             <option>Admin</option>
                             <option>Auditor</option>
                             <option>Operador</option>
@@ -83,8 +86,8 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" ng-click="validarEditarUsuarios() && generarUsuario();">Crear</button>
-                        <button class="btn btn-md" ui-sref="usuarios">Cancelar</button>
+                        <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid"        ng-click="generarUsuario();">Crear</button>
+                        <button class="btn btn-md" ng-click="cancelar();">Cancelar</button>
                     </div>
                     
                     </div> 
