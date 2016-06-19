@@ -17,7 +17,6 @@ angular.module('rac')
       })
     }
     $scope.listarUsuarios();
-
   	$scope.crearUsuario = function () {
 		usuarioService.setUsuario(undefined);		
 		usuarioService.setModo("crear");
