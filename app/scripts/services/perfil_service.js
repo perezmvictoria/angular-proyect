@@ -3,9 +3,11 @@
 angular.module('rac')
     .service('perfilService',function(){
         var perfil= {};        
-        perfil.nombre_usuario = "";
-        perfil.rol_usuario    = "";
-        perfil.token          = "";
+        perfil.usuario = {}
+        perfil.usuario.nombre   = "superrac";
+        perfil.usuario.rol      = "super_admin";        
+        perfil.usuario.password = "";
+        perfil.token            = "";
 
         perfil.config = {
                             headers : {
@@ -23,6 +25,17 @@ angular.module('rac')
 
         
         return{
+            getUsuario: function(){
+                return perfil.usuario;
+            },
+            setUsuario: function(value){
+                perfil.usuario = value;
+            },            
+            setPerfil: function(nombre,rol,token){
+               perfil.usuario.nombre = nombre;
+               perfil.usuario.rol    = rol;
+               perfil.token          = token;
+            },
             getRuta: function(){
                 return perfil.ruta;
             },
@@ -32,19 +45,8 @@ angular.module('rac')
             getData: function(){
                 return perfil.data;
             },
-            getNombreUsuario: function(){
-                return perfil.nombre_usuario;
-            },
-            getRolUsuario: function(){
-                return perfil.rol_usuario;
-            },
             getToken: function(){
                 return perfil.token;
-            },
-            setPerfil: function(nombre,rol,token){
-               perfil.nombre_usuario = nombre;
-               perfil.rol_usuario    = rol;
-               perfil.token          = token;
             }
         };
    })
