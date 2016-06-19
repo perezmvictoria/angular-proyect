@@ -23,12 +23,16 @@
                     <div class="form-group">
                         <input class="form-control" placeholder="Contraseña" ng-model="contrasenia">
                     </div> 
-                    <button class="btn btn-md btn-success" ng-click="generarUsuario();">Crear</button>
+                    <div class="form-group">
+                        <div class="alert-danger">{{msjerror}}</div>
                     </div>
+                    <div class="form-group">
+                        <button class="btn btn-md btn-success" ng-click="generarUsuario();">
+                            Crear
+                        </button>
+                    </div> 
                 </form>
-
             </div>            
-            <div class="row"><div class="alert-danger">{{msjerror}}</div>  </div>
         </div>  
 
       

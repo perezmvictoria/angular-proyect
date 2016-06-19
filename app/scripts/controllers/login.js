@@ -2,7 +2,20 @@
 
 angular.module('rac')
   .controller('LoginCtrl', function(perfilService,$scope, $location, $http) {
-    $scope.error = false;
+    $scope.error     = false;
+    $scope.noverpasswd = true;
+
+    $scope.verpasswd = function(){
+      $scope.noverpasswd != $scope.noverpasswd;      
+    }
+
+    $scope.verpasswd_tipo = function(){
+      if ($scope.noverpasswd){
+        return "password";
+      }else{
+        return "text";        
+      }
+    }
    	$scope.mLogin = function () {
   		$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', 
             perfilService.getData(),perfilService.getConfig())

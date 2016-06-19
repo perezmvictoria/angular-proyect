@@ -8,7 +8,7 @@ angular.module('rac')
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
-				$scope.datos = data.info;
+				$scope.datos = data.info;        
 				return false;
        	})
     	.error(function (data, status, header, config) {          
