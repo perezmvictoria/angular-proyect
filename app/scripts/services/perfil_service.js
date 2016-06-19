@@ -23,6 +23,9 @@ angular.module('rac')
 
         
         return{
+            getRuta: function(){
+                return perfil.ruta;
+            },
             getConfig: function(){
                 return perfil.config;
             },

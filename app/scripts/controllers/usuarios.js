@@ -4,11 +4,11 @@ angular.module('rac')
   .controller('UsuariosCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
-
+    $scope.msjerror = ""; 
 
 	$scope.listarUsuarios = function () {
 
-    	$http.post(perfilService.ruta(),'/usuarios/listar_usuarios', 
+    	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
 				$scope.datos = data.info;
@@ -29,7 +29,7 @@ angular.module('rac')
     }
     $scope.editarUsuario = function (usuario) {
 		usuarioService.setUsuario(usuario);				
-		usuarioService.setModo("editar");
+		usuarioService.setModo("editar");		
 		$location.path('/dashboard/usuarios-edit');
 		return "/dashboard/usuarios-edit";
     }

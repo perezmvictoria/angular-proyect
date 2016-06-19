@@ -15,6 +15,9 @@ angular.module('rac')
             getModo: function(){
                 return datos.modo;
             },
+            setModo: function(value){
+                datos.modo = value;
+            },
             setUsuario: function(value){
                 datos.modo=value;
             }
