@@ -1,43 +1,64 @@
 <div> 
-  <h2>Medios</h2>
+  <h2>Edición de Medios</h2>
   <div class="panel panel-success">
     <div class="panel-heading">
-        Medios de comunicación del sistema
-    </div>    
-  <div class="panel panel-default">    
+        Ingrese los datos a modificar
+    </div>
     <div class="panel-body">
-        <table datatable="" class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Destino</th>
-                <th>Clave</th>
-                <th>Dominio</th>
-                <th>Tipo</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>SMSAgesic</td>
-                <td>0991231234</td>               
-                <td>1234</td>
-                <td>@antel.com.uy</td>
-                <td>SMS</td>
-                <td> <a class="btn btn-success btn-xs" ui-sref="medios-edit" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                 <a class="btn btn-danger btn-xs" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a></td>
-            </tr>
-               <tr>
-                <td>MailAgesic</td>
-                <td>tecnicosAgesic</td>               
-                <td></td>
-                <td>@pyxis.com</td>
-                <td>Mail</td>
-                <td> <a class="btn btn-success btn-xs" ui-sref="medios-edit" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                 <a class="btn btn-danger btn-xs" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a></td>
-            </tbody>
-        </table>
-    <div>
-        <button class="btn btn-md " ui-sref="medios-create">Crear Medio</button>
-    </div>        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-1">
+                <form role="form" name=mediosEForm>
+                    
+                    <<div class="form-group">
+                        <input class="form-control" placeholder=" Nombre" name="nombre" ng-model="nombre"disabled>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder=" Destino" ng-model="destino"
+                        name="destino" ng-minlength="3" ng-maxlength="50" 
+                        ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./"required>
+
+                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.required">Ingrese el destino.</span> 
+
+                         <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.minlength">El destino debe contener al menos 3 caracteres.</span>
+                        
+                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.maxlength">El destino no puede tener más de 50 caracteres.</span>
+                        
+                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.pattern">El destino no puede contener espacios en blanco.</span>
+
+                    </div>
+
+                     <div class="form-group">
+                        <input class="form-control" placeholder=" Dominio" name="dominio" ng-model="dominio" ng-minlength="3" ng-maxlength="50" 
+                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"required>
+
+                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
+
+                         <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.minlength">El dominio debe contener al menos 3 caracteres.</span>
+                        
+                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.maxlength">El dominio no puede tener más de 50 caracteres.</span>
+                        
+                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.pattern">El formato del dominio es invalido. (Ex: pyxis.com o antel.com.uy)</span>
+
+                    </div>
+
+                     <div class="form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox"  ng-model="checkedMail"  ng-disabled="checkedSMS" value="">Es del tipo Mail </label>
+                            <label><input type="checkbox"  ng-disabled="checkedMail" ng-model="checkedSMS" value=""> Es del tipo SMS </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" ng-disabled="checkedMail" placeholder="Clave del SMS">
+                    </div>
+
+                    <div class="form-group">
+                    <button class="btn btn-md btn-success" ng-click="submitMedios();"">Editar</button>
+                    <button class="btn btn-md" ui-sref="medios">Cancelar</button>
+                    </div>
+                </form>
+            </div>            
+        </div>        
+    </div>
+  </div>
 </div>

@@ -2,10 +2,10 @@
 
 angular.module('rac')
     .service('perfilService',function(){
-        var perfil= {};        
+        var perfil= {};
         perfil.usuario = {}
         perfil.usuario.nombre   = "superrac";
-        perfil.usuario.rol      = "super_admin";        
+        perfil.usuario.rol      = "super_admin";
         perfil.usuario.password = "";
         perfil.token            = "";
 
@@ -15,14 +15,13 @@ angular.module('rac')
                             }
                         };
         perfil.data = {
-                            "usuario_exec":"superrac",
-                            "rol_exec":"super_admin"
+                            "usuario_exec":perfil.usuario.nombre,
+                            "rol_exec":perfil.usuario.rol
                       };
         //ruta local
-        perfil.ruta = "http://192.168.1.108:5000";                      
+        perfil.ruta = "http://192.168.1.108:5000";
         //ruta testing
         //perfil.ruta = "http://190.64.30.76:5000";
-
         
         return{
             getUsuario: function(){
@@ -32,9 +31,10 @@ angular.module('rac')
                 perfil.usuario = value;
             },            
             setPerfil: function(nombre,rol,token){
-               perfil.usuario.nombre = nombre;
-               perfil.usuario.rol    = rol;
-               perfil.token          = token;
+                //setea datos para mantener en la sesion
+                perfil.usuario.nombre = nombre;
+                perfil.usuario.rol    = rol;
+                perfil.token          = token;
             },
             getRuta: function(){
                 return perfil.ruta;

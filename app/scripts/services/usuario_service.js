@@ -2,7 +2,7 @@
 
 angular.module('rac')
       .service('usuarioService',function(){
-        var datos= {};        
+        var datos = {};        
         datos.usuario = "";        
         datos.modoEditar = false;     
         return{

@@ -1,22 +1,21 @@
 'use strict';
 
 angular.module('rac')
-  .controller('MediosListarCtrl', function(perfilService,mediosService,$scope, $state) {
+  .controller('MediosListarCtrl', function(perfilService,mediosService,$scope, $location,$http) {
   $scope.msjerror = "";
-  	$scope.listarMedios = function () {
-  		//Agregar la funcion correcta
-      	/*$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
-      				perfilService.getData(),perfilService.getConfig())
-      		.success(function (data, status, headers, config) {    			
-  				$scope.datos = data.info;        
-  				return false;
-         	})
-      	.error(function (data, status, header, config) {          
-            $scope.msjerror = "No se pudo cargar la lista de usuarios";          
-            return false;
-        })*/
-    }
-    $scope.listarMedios();
+  $scope.listarMedios = function () {
+   	$http.post(perfilService.getRuta()+'/medios/listar_medios', 
+  	perfilService.getData(),perfilService.getConfig())
+  	.success(function (data, status, headers, config) {    			
+  		$scope.datos = data.info;        
+  		return false;
+   	})
+   	.error(function (data, status, header, config) {          
+      $scope.msjerror = "No se pudo cargar la lista de medios";          
+      return false;
+    })
+  }
+  $scope.listarMedios();
 
    	$scope.crearMedio = function () {
   		mediosService.setMedio(undefined);		
