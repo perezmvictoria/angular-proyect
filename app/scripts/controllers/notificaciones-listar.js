@@ -2,6 +2,17 @@
 
 angular.module('rac')
   .controller('NotificacionesListarCtrl', function(perfilService,$scope, $state) {
+      $scope.msjerror = "";
 
-    $scope.$state = $state;
+      $scope.filtro = { fechaIni :'',
+                        fechaFin :'',
+                        tecnico  :'',
+                        accion   :''
+                      };
+
+      $scope.listarReportes = function () {
+
+      }
+      $scope.listarReportes();
+
   });

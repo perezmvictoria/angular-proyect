@@ -1,11 +1,11 @@
-<div> 
+<div>
   <h2>Auditorias</h2>
   <div class="panel panel-success">
     <div class="panel-heading">
         Auditorias sobre el sistema
     </div>
     <div class="panel-body">
-      <form role="form">        
+      <form role="form">
           <div class="form-group  col-md-4" >
             <div class='input-group date' id='fini'>
               <input type='text' class="form-control" placeholder="Desde"/>
@@ -20,91 +20,48 @@
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
-          </div>  
+          </div>
         </div>
         <div class="form-group col-md-4">
           <button type="submit" class="btn btn-default btn-md ">Generar</button>
         </div>
         <div class="form-group  col-md-4">
-          <input type="text" class="form-control input-sm" id="tec" placeholder="Técnico">
+          <select ng-model="filtro.tecnico" placeholder="Técnico" class="form-control input-sm">
+                <option ng-repeat="tecnico in lstTecnicos"
+                        value="{{tecnico}}" data-subtext="{{tecnico.id}}">{{tecnico.nombre}}</option>
+          </select>
         </div>
         <div class="form-group  col-md-4">
-          <input type="text" class="form-control input-sm" id="est" placeholder="Accion">
-        </div>        
+              <select ng-model="filtro.accion" placeholder="Acción" class="form-control input-sm">
+                  <option ng-repeat="accion in lstAccion"
+                          value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+              </select>
+        </div>
       </form>
     </div>
-  </div>      
-  <div class="panel panel-default">    
-    <div class="panel-body">
-        <table datatable="" class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>Fecha</th>                
-                <th>Técnico</th>
-                <th>Accion</th>
-                <th>Descripción</th>
-                <th>Comentario</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>5/11/2016</td>
-                <td>jlopez</td>
-                <td>Resuleta</td>                               
-                <td>Hitachi Sorage</td>
-                <td>reiniciar servidor</td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>VMWare</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td></td>
-                <td>Creada</td>                               
-                <td>Alarm Host Connection State</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>jlopez</td>
-                <td>Cerrada</td>                                                
-                <td>Storage Connectivity Alarm</td>
-                <td>no requiere acción</td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>CPU</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>Hitachi</td>
-                <td></td>
-            </tr>
-               <tr>
-                <td>5/11/2016</td>
-                <td></td>
-                <td>Creada</td>                               
-                <td>Host Error Alarm</td>
-                <td></td>
-            </tr>
-               <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>Network Redundancy Lost Alarm</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>      
-    <div>
-  </div>  
+  </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+      <table datatable="ng" class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Técnico</th>
+            <th>Accion</th>
+            <th>Descripción</th>
+            <th>Comentario</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="auditoria in datos" >
+            <td>{{auditoria.fecha}}</td>
+            <td>{{auditoria.tecnico}}</td>
+            <td>{{auditoria.accion}}</td>
+            <td>{{auditoria.descripcion}}</td>
+            <td>{{auditoria.comentario}}</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
 </div>

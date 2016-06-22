@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rac')
-  .controller('MediosListarCtrl', function(perfilService,mediosService,$scope, $state) {
+  .controller('MediosListarCtrl', function(perfilService,mediosService,$scope, $state, $location) {
   $scope.msjerror = "";
   	$scope.listarMedios = function () {
   		//Agregar la funcion correcta
