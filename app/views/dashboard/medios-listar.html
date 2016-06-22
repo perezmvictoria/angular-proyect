@@ -25,13 +25,8 @@
                     <td>{{medio.dominio}}</td>
                     <td>{{medio.tipo}}</td>
                     <td>                     
-                        <a class="btn btn-success btn-xs" ng-click="editarUsuario(usuario);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-danger btn-xs" ng-click="eliminarUsuario(usuario);" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
-                        <a  ng-show="usuario.bloqueado" class="btn btn-warning btn-xs" 
-                            ng-click="desbloquearUsuario(usuario);"
-                            title="Usuario Bloqueado">
-                            <i class="glyphicon glyphicon-lock"></i>
-                        </a>
+                        <a class="btn btn-success btn-xs" ng-click="editarMedio(medio);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a class="btn btn-danger btn-xs" ng-click="eliminarMedio(medio);" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             </tbody>

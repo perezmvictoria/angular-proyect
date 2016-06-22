@@ -4,7 +4,7 @@ angular.module('rac')
       .service('mediosService',function(){
         var datos= {};     
         datos.medio = undefined;
-        datos.modo  = undefined;
+        datos.modoEditar = false;     
         return{
             getMedio: function(){
                 return datos.medio;
@@ -12,11 +12,11 @@ angular.module('rac')
             setMedio: function(value){
                 datos.medio=value;
             },
-            getModo: function(){
-                return datos.modo;
+            isModoEditar: function(){
+                return datos.modoEditar;
             },
-            setModo: function(value){
-                datos.modo = value;
+            setModoEditar: function(value){
+                datos.modoEditar = value;
             }
         };
    })
