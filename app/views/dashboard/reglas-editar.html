@@ -25,15 +25,14 @@
                      <div class="form-group" novalidate>
                           <textarea class="form-control vresize" name="condicion" placeholder="Condición" 
                           rows="10" ng-model="condicion" ng-model="regla_seleccionada.condicion"required></textarea>
-                         
+
                           <span style="color:red"  ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$error.required">Ingrese la condición.</span> 
                     </div>
 
                     <div class="form-group" novalidate>
-                        <select class="selectpicker" data-style="btn-default" placeholder="Acción" name="accion" data-live-search="true" ng-model="regla_seleccionada.accion" name="accion">
-                            <option>Esperar</option>
-                            <option>Consolidar</option>
-                            <option>Descartar</option>  
+                        <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" name="accion" data-live-search="true" ng-model="regla_seleccionada.accion" name="accion">
+                            <option ng-repeat="accion in lstAccion" value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+                          
                          </select>
                          <span style="color:red"  ng-show="reglasEForm.accion.$touched && reglasEForm.accion.$error.required">Seleccione la acción.</span> 
                     </div>
@@ -45,17 +44,18 @@
 
                     <div class="form-group" novalidate>
                         
-                        <textarea class="form-control vresize" name="descripcion" placeholder="Descripción" ng-model="descripcion"rows="10"required></textarea>
+                        <textarea class="form-control vresize" name="descripcion"
+                                  placeholder="Descripción" ng-model="descripcion"rows="10"required></textarea>
 
-                        <span style="color:red"  ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$error.required">Ingrese la descripción.</span> 
+                        <span style="color:red"  ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$error.required">
+                            Ingrese la descripción.</span>
                     </div>
 
                     <div class="form-group" novalidate>
-                        <select class="selectpicker" data-style="btn-default" placeholder="Medio" data-live-search="true" ng-model="regla_seleccionada.medio">
-                            <option>Medio 1</option>
-                            <option>Medio 2</option>
-                            <option>Medio 3</option>  
-                         </select>
+                        <select class="form-control input-sm" data-style="btn-default" placeholder="Medio" data-live-search="true" ng-model="regla_seleccionada.medio">
+                            <option ng-repeat="medio in lstMedio"
+                                    value="{{medio}}" data-subtext="{{medio.id}}">{{medio.nombre}}</option>
+                        </select>
                     </div>  
    
                     <div class="form-group">

@@ -3,7 +3,19 @@
 angular.module('rac')
   .controller('ReglasEditarCtrl', function(perfilService,reglasService,$scope, $state) {
 
-    $scope.regla_seleccionado =  reglasService.getregla();
+    //Lo prolijo es obtener estos datos de un webservice, para desacoplarlo
+    $scope.lstAccion = [
+       { 'id': '1', 'nombre': 'Esperar' },
+       { 'id': '2', 'nombre': 'Consolidar' },
+       { 'id': '3', 'nombre': 'Descartar' }
+    ];
+    $scope.lstMedio = [
+       { 'id': '1', 'nombre': 'Medio 1' },
+       { 'id': '2', 'nombre': 'Medio 2' },
+       { 'id': '3', 'nombre': 'Medio 3' }
+    ];
+
+    $scope.regla_seleccionado =  reglasService.getRegla();
     $scope.msjerror = ""; 
     $scope.modoEditar = function(){
       return reglasService.isModoEditar();

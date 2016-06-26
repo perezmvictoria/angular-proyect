@@ -19,27 +19,44 @@ angular.module('rac')
   }
   
   $scope.generarMedio = function () {
-    mediosService.setMedio(undefined);   
+    
+    if ($scope.checkedMail){ 
+      $scope.medio_seleccionado.tipo_medio = "mail";
+      $scope.medio_seleccionado.clave ="";
+    }
+    else{
+      $scope.medio_seleccionado.tipo_medio = "sms";
+    }
+
     if(!mediosService.isModoEditar()){
-      //Hay que usar $scope.medio_seleccionado
-            var data = {
+      var data = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario,
-        "nombre":$scope.usuario_seleccionado.nombre,
-        "usuario":$scope.usuario_seleccionado.usuario,
-        "tipo_usuario": $scope.usuario_seleccionado.tipo,
-        "contrasenia":$scope.usuario_seleccionado.contrasenia,
-        "mail":$scope.usuario_seleccionado.mail,
-        "telefono":$scope.usuario_seleccionado.telefono
+        "nombre":$scope.medio_seleccionado.nombre,
+        "dominio":$scope.medio_seleccionado.dominio,
+        "destino":$scope.medio_seleccionado.destino,
+        "tipo_medio":$scope.medio_seleccionado.tipo_medio,
+        "clave":$scope.medio_seleccionado.clave
       }
-      $http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
-        .success(function (data, status, headers, config) {
+      $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
+      .success(function (data, status, headers, config) {
 
       });
     }else{
-      //funcion editar
-      //Hay que usar $scope.medio_seleccionado
-    }   
+      var data = {
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario,
+        "nombre":$scope.medio_seleccionado.nombre,
+        "dominio":$scope.medio_seleccionado.dominio,
+        "destino":$scope.medio_seleccionado.destino,
+        "tipo_medio":$scope.medio_seleccionado.tipo_medio,
+        "clave":$scope.medio_seleccionado.clave
+      }
+      $http.post(perfilService.getRuta()+'/medios/editar_medio', data, perfilService.getConfig())
+      .success(function (data, status, headers, config) {
+
+      });
+    }  
     $location.path('/dashboard/medios-listar');
     return "'/dashboard/medios-listar'";
     }

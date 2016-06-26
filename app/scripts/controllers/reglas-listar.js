@@ -2,7 +2,7 @@
 
 
 angular.module('rac')
-  .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state) {
+  .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state, $location) {
  	
     $scope.msjerror = "";
 	$scope.listarReglas = function () {

@@ -6,11 +6,17 @@ angular.module('rac')
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.editar = usuarioService.isModoEditar();
-    
-    $scope.modoEditar = function(){
-    	return usuarioService.isModoEditar();
-    }
+
+	$scope.lstUsuario = [
+	  { 'id': '1', 'nombre': 'Admin' },
+	  { 'id': '2', 'nombre': 'Auditor' },
+	  { 'id': '3', 'nombre': 'Operador' },
+	  { 'id': '4', 'nombre': 'Técnico' }
+	];
+
+	$scope.modoEditar = function(){
+		return usuarioService.isModoEditar();
+	}
 
 	$scope.cancelar = function(){
 		usuarioService.setUsuario(undefined);		

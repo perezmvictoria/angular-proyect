@@ -13,7 +13,7 @@ angular.module('rac')
                 datos.medio=value;
             },
             isModoEditar: function(){
-                return datos.modoEditar;
+                return datos.modo;
             },
             setModoEditar: function(value){
                 datos.modoEditar = value;
