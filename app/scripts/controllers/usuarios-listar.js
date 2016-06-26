@@ -22,20 +22,21 @@ angular.module('rac')
     $scope.listarUsuarios();
   	
     $scope.crearUsuario = function () {
-  		usuarioService.setUsuario(undefined);		
-  		usuarioService.setModoEditar(false);
+  		usuarioService.setUsuario(undefined);
+      usuarioService.setModoEditar(false);
   		$location.path('/dashboard/usuarios-editar');
   		return "/dashboard/usuarios-editar";
     }
     $scope.editarUsuario = function (usuario) {
-  		usuarioService.setUsuario(usuario);				
-  		usuarioService.setModoEditar(true);		
+  		usuario.tipo="{'id':'2','nombre':'Admin'}";
+      usuarioService.setUsuario(usuario);
+  		usuarioService.setModoEditar(true);
   		$location.path('/dashboard/usuarios-editar');
   		return "/dashboard/usuarios-editar";
     }  
     $scope.eliminarUsuario = function (usuario) {
-      usuarioService.setUsuario(usuario); 
-      $scope.usuario_seleccionado = usuario;      
+      usuarioService.setUsuario(usuario);
+      $scope.usuario_seleccionado = usuario;
       var dataPost = {
         "usuario":$scope.usuario_seleccionado.usuario,
         "usuario_exec":$scope.nombreUsuario,
