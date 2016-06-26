@@ -40,69 +40,20 @@
             <thead>
             <tr>
                 <th>Fecha</th>                
-                <th>Técnico</th>
-                <th>Accion</th>
+                <th>Usuario</th>
+                <th>Acción</th>
                 <th>Descripción</th>
-                <th>Comentario</th>
+                <th>Tipo Acción</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>5/11/2016</td>
-                <td>jlopez</td>
-                <td>Resuleta</td>                               
-                <td>Hitachi Sorage</td>
-                <td>reiniciar servidor</td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>VMWare</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td></td>
-                <td>Creada</td>                               
-                <td>Alarm Host Connection State</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>jlopez</td>
-                <td>Cerrada</td>                                                
-                <td>Storage Connectivity Alarm</td>
-                <td>no requiere acción</td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>CPU</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>Hitachi</td>
-                <td></td>
-            </tr>
-               <tr>
-                <td>5/11/2016</td>
-                <td></td>
-                <td>Creada</td>                               
-                <td>Host Error Alarm</td>
-                <td></td>
-            </tr>
-               <tr>
-                <td>5/11/2016</td>
-                <td>cperez</td>
-                <td>En Progreso</td>                                
-                <td>Network Redundancy Lost Alarm</td>
-                <td></td>
-            </tr>
+                <tr ng-repeat="registro in datos" >
+                    <td>{{registro.fecha}}</td>
+                    <td>{{registro.usuario}}</td>
+                    <td>{{registro.accion}}</td>
+                    <td>{{registro.descripcion}}</td>
+                    <td>{{registro.tipo_accion}}</td>
+                </tr>
             </tbody>
         </table>      
     <div>
