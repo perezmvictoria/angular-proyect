@@ -49,7 +49,7 @@
 
                     <div class="form-group" novalidate>
 
-                        <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="usuario_seleccionado.contrasenia2" type="password" ng-minlength="6" ng-maxlength="20"required>
+                        <input class="form-control" ng-show="usuariosEForm.contrasenia.$touched" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="usuario_seleccionado.contrasenia2" type="password" ng-minlength="6" ng-maxlength="20"required>
 
                             <span style="color:red" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$error.required">Repita la contraseña.</span>
 
