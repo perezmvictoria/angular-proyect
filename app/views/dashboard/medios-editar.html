@@ -1,5 +1,5 @@
 <div> 
-  <h2>Edición de Medios</h2>
+  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
   <div class="panel panel-success">
     <div class="panel-heading">
         Ingrese los datos a modificar
@@ -9,13 +9,14 @@
             <div class="col-md-8 col-md-offset-1">
                 <form role="form" name=mediosEForm>
                     
-                    <<div class="form-group">
-                        <input class="form-control" placeholder=" Nombre" name="nombre" ng-model="nombre"disabled>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="medio_seleccionado.nombre" ng-disabled="modoEditar();">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder=" Destino" ng-model="destino"
-                        name="destino" ng-minlength="3" ng-maxlength="50" 
-                        ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./"required>
+                        <input class="form-control" placeholder="Destino" ng-model="medio_seleccionado.destino"
+                        name="destino" ng-minlength="3" ng-maxlength="50" required> 
+
+                        <!-- ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./" -->
 
                         <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.required">Ingrese el destino.</span> 
 
@@ -28,8 +29,8 @@
                     </div>
 
                      <div class="form-group">
-                        <input class="form-control" placeholder=" Dominio" name="dominio" ng-model="dominio" ng-minlength="3" ng-maxlength="50" 
-                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"required>
+                        <input class="form-control" placeholder="Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
+                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
 
                         <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
 
@@ -37,24 +38,24 @@
                         
                         <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.maxlength">El dominio no puede tener más de 50 caracteres.</span>
                         
-                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.pattern">El formato del dominio es invalido. (Ex: pyxis.com o antel.com.uy)</span>
-
+                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.pattern">El formato del dominio es invalido. (Ex: pyxis.com.uy o antel.com.uy)</span>
                     </div>
 
                      <div class="form-group">
                         <div class="checkbox">
-                            <label><input type="checkbox"  ng-model="checkedMail"  ng-disabled="checkedSMS" value="">Es del tipo Mail </label>
-                            <label><input type="checkbox"  ng-disabled="checkedMail" ng-model="checkedSMS" value=""> Es del tipo SMS </label>
+                            <label><input type="checkbox" ng-model="checkedMail" ng-disabled="checkedSMS" value="">Es del tipo Mail </label>
+                            <label><input type="checkbox" ng-model="checkedSMS" ng-disabled="checkedMail" value=""> Es del tipo SMS </label>
+                            {{checkedMail ? $scope.medio_seleccionado.tipo_medio = "mail" : $scope.medio_seleccionado.tipo_medio = "sms"}}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" ng-disabled="checkedMail" placeholder="Clave del SMS">
+                        <input class="form-control" ng-disabled="checkedMail" placeholder="Clave del SMS" ng-model=medio_seleccionado.clave>
                     </div>
 
                     <div class="form-group">
-                    <button class="btn btn-md btn-success" ng-click="submitMedios();"">Editar</button>
-                    <button class="btn btn-md" ui-sref="medios">Cancelar</button>
+                    <button class="btn btn-md btn-success" ng-click="generarMedio();"">Guardar</button>
+                    <button class="btn btn-md" ng-click="cancelar();">Cancelar</button>
                     </div>
                 </form>
             </div>            

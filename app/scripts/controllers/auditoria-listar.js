@@ -2,7 +2,8 @@
 
 
 angular.module('rac')
-  .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state) {
+  .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state,$http) {
+
       $scope.msjerror = "";
 
       $scope.filtro = { fechaIni :'',
@@ -22,26 +23,19 @@ angular.module('rac')
           { 'id': '3', 'nombre': 'Descartar' }
       ];
       
-
-      $scope.listarReportes = function () {
-          $scope.datos =
-            [{
-                  fecha :'1/1/1981',
-                  tecnico :'tecnico 1',
-                  accion :'accion 1',
-                  descripcion :'descripcion 1',
-                  comentario :'comentario 1'
-              },
-              {
-                  fecha :'2/2/1982',
-                  tecnico :'tecnico 2',
-                  accion :'accion 2',
-                  descripcion :'descripcion 2',
-                  comentario :'comentario 2'
-              }];
+    $scope.listarAuditoria = function () {
+    	$http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
+    				perfilService.getData(),perfilService.getConfig())
+    		.success(function (data, status, headers, config) {    			
+				$scope.datos = data.info;        
+				return false;
+       	})
+    	.error(function (data, status, header, config) {          
+          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
           return false;
-      }
+      })
+    }
 
-      $scope.listarReportes();
+    $scope.listarAuditoria();
 
   });
