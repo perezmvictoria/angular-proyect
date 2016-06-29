@@ -1,28 +1,21 @@
 <div> 
   <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
-  <div class="panel panel-success">
-    <div class="panel-heading">
-        Ingrese los datos de usuario
-    </div>    
+    <div class="panel panel-info"> 
+    <div class="panel-heading">Ingrese los datos a modificar</div>
+  
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
 
                 <form role="form" name="usuariosEForm" novalidate>
       
-                   <div class="form-group" novalidate>
 
-                   <!-- COLOR -->
-                    <div class="has-error has-success has-feedback" novalidate>
-                     
-                    <input class="form-control" placeholder="Usuario" name="usuario" 
-                    ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();"
-                    ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>                              
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.usuario.$touched && !usuariosEForm.usuario.$valid"></span>
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$valid"></span>
-
+                   <div class="form-group has-feedback" novalidate>
+                      
+                      <input class="form-control" placeholder="Usuario" 
+                      name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" 
+                      ng-minlength="3" ng-maxlength="20" 
+                      ng-pattern="/^[A-Za-z0-9]+$/"required>                              
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.required">Ingrese el usuario.</span>
                             <!-- Validacion Minimo Caracteres -->
@@ -31,119 +24,157 @@
                             <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.maxlength">El usuario no puede contener más de 20 caracteres.</span> 
                             <!-- Validacion Patron del formato-->
                             <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.pattern">El usuario no puede contener caracteres especiales ni espacios.</span>
+
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.usuario.$touched && !usuariosEForm.usuario.$valid"></span>
+
+                    <!-- Validacion Ok -->
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$valid"></span>
+
                     </div>
-                </div>                    
 
                     <div class="form-group has-feedback" novalidate>
                             
-                        <input class="form-control" placeholder="Nombre" name="nombre" 
-                        ng-model="usuario_seleccionado.nombre" 
+                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" 
                         ng-maxlength="20" ng-pattern="/^[A-Za-z0-9 ]+$/">
+
+                            <!-- Validacion Maximo Caracteres-->
+                            <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
+                            <!-- Validacion Patron del formato --> 
+                            <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales.</span>
 
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.nombre.$touched && !usuariosEForm.nombre.$valid"></span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$valid"></span>
 
-                            <!-- Validacion Maximo Caracteres-->
-                            <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
-                            <!-- Validacion Patron del formato --> 
-                            <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales.</span>
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
 
-                        <input class="form-control" placeholder="Contraseña" name="contrasenia"
-                        ng-model="usuario_seleccionado.contrasenia" 
-                        type="password" ng-minlength="6" ng-maxlength="20"required>
-
-                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.contrasenia.$touched && !usuariosEForm.contrasenia.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$valid"></span>
-
-                            <!-- Validacion Campo Requerido-->
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$error.required">Ingrese la contraseña.</span>
-                            <!-- Validacion Maximo Caracteres-->
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$error.maxlength">La contraseña no puede contener más de 20 caracteres.</span>
-                            <!-- Validacion Minimo Caracteres-->
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
-                    </div>  
-
-                    <div class="form-group has-feedback" novalidate>
-
-                        <input class="form-control" ng-show="usuariosEForm.contrasenia.$touched" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="usuario_seleccionado.contrasenia2" type="password" ng-minlength="6" ng-maxlength="20"required>
-
-
-                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.contrasenia2.$touched && !usuariosEForm.contrasenia2.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$valid"></span>
-
-                            <!-- Validacion Campo Requerido-->
-
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$error.required">Repita la contraseña.</span>
-
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$error.maxlength">La contraseña no puede contener más de 20 caracteres.</span>
-
-                            <span class="help-block" ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
-                    </div>  
-                    
-                    <div class="form-group has-feedback" novalidate>
-
-                        <input class="form-control" placeholder="Mail" name="mail"
-                         ng-model="usuario_seleccionado.mail" type="email" required>
-
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched && !usuariosEForm.mail.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$valid"></span>
+                        <input class="form-control" placeholder="Mail" name="mail" ng-model="usuario_seleccionado.mail" type="email"required>
 
                             <!-- Validacion Campo Requerido-->
                             <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.required">Ingrese el mail.</span>
                             <!-- Validacion Formato-->
-                            <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.email">Formato de mail Inválido.</span> 
+                            <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.email">Formato de mail Inválido.</span>
+
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched && !usuariosEForm.mail.$valid"></span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$valid"></span> 
                     </div>
                     
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Telefono" name="telefono" 
-                        ng-model="usuario_seleccionado.telefono" ng-pattern="/^[0-9]{1,12}/"required>
 
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$valid"></span>
+                        <input class="form-control" placeholder="Telefono" 
+                        name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^[0-9]{1,12}/"required>
 
                             <!-- Validacion Campo Requerido-->
                             <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.required">Ingrese el teléfono.</span>
                             <!-- Validacion Formato-->
                             <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.pattern">Teléfono Inválido.</span>
+
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$valid"></span>
                     </div>
                     
                 <div class="form-group has-feedback">
-                    <select name="tipo" ng-model="usuario_seleccionado.tipo" placeholder="Tipo" class="form-control input-sm">
+                    <select name="tipo" ng-model="usuario_seleccionado.tipo" placeholder="Tipo" class="form-control input-sm"required>
                     <option ng-repeat="usuario in lstUsuario" value="{{usuario}}" data-subtext="{{usuario.id}}">{{usuario.nombre}}</option>
                     </select>
+
+                    <!-- Validacion Campo Requerido-->
+                    <span class="help-block" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$error.required">Seleccione el Tipo de Usuario.</span>
 
                     <!-- Validacion Error -->
                     <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.tipo.$touched && !usuariosEForm.tipo.$valid"></span>
                     <!-- Validacion Error -->
                     <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$valid"></span>
 
-                            <!-- Validacion Campo Requerido-->
-                    <span class="help-block" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$error.required">Seleccione el Tipo de Usuario.</span>
-
                     <div class="form-group" novalidate>
                
                     </div>
+
+                    
+                    <div class="form-group" novalidate>
+               
+                    <button class="btn btn-md" data-toggle="modal" data-target="#contraseña" formnovalidate> Contraseña</button>
+
+                    </div>
                     
                     <div class="form-group">
-                        <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
+                    
+                    <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
 
-                        <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
+                    <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
+                        
                     </div>
                     
                 </div> 
+
+                    <div class="modal fade" id="contraseña" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Cambiar Contraseña</h4>
+                                </div>
+                                <div class="modal-body">
+                                
+                                    <div class="form-group has-feedback">
+
+                                    <input class="form-control" placeholder="Contraseña" name="contrasenia"            ng-model="usuario_seleccionado.contrasenia"type="password" ng-minlength="6" ng-maxlength="20"required>
+
+                                    <!-- Validacion Campo Requerido-->
+                                    <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched
+                                    && usuariosEForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
+                                    <!-- Validacion Maximo-->
+                                    <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched
+                                    && usuariosEForm.contrasenia.$error.maxlength">La contraseña no puede contener mas de 20 caracteres.</span>
+                                    <!-- Validacion Minimo-->
+                                    <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched
+                                    && usuariosEForm.contrasenia.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
+
+                                    <!-- Validacion Error -->
+                                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.contrasenia.$touched && !usuariosEForm.contrasenia.$valid"></span>
+                                    <!-- Validacion Error -->
+                                    <span class="glyphicon glyphicon-ok form-control-feedback" 
+                                    ng-show="usuariosEForm.contrasenia.$touched && usuariosEForm.contrasenia.$valid"></span>
+                                
+                                    </div>
+                            
+                                    <div class="form-group has-feedback">
+
+                                        <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" ng-model="usuario_seleccionado.contrasenia2" type="password" ng-show="usuariosEForm.contrasenia.$valid"required>
+
+                                    <!-- Validacion Campo Requerido-->
+                                    <span class="help-block" 
+                                    class ng-show="usuariosEForm.contrasenia2.$touched
+                                    && usuariosEForm.contrasenia2.$error.required"> 
+                                      
+                                    >Repita la Contraseña.</span>
+
+
+                                    <!-- Validacion Error -->
+                                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.contrasenia2.$touched && !usuariosEForm.contrasenia2.$valid"></span>
+                                    <!-- Validacion Error -->
+                                    <span class="glyphicon glyphicon-ok form-control-feedback" 
+                                    ng-show="usuariosEForm.contrasenia2.$touched && usuariosEForm.contrasenia2.$valid"></span>
+
+                                    </div>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cancelar();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="usuarios-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
 
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
