@@ -13,7 +13,7 @@
                    <div class="form-group" novalidate>
                         
                         <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" 
-                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" required>
 
                             <span style="color:red" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.required">Ingrese el usuario.</span>
 

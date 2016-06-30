@@ -14,6 +14,8 @@ angular.module('rac')
 	  { 'id': '5', 'nombre': 'Operador' }
 	];
 
+	debugger;
+
 	$scope.modoEditar = function(){
 		return usuarioService.isModoEditar();
 	}

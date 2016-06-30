@@ -21,10 +21,18 @@ angular.module('rac')
               { 'id': '3', 'nombre': 'Descartar' }
           ];
 
-          $scope.listarReportes = function () {
+          /*$scope.listarReportes = function () {
 
-          }
-          $scope.listarReportes();
-
-
+          $http.post(perfilService.getRuta()+'/55555555555555555/listar_auditorias', 
+            perfilService.getData(),perfilService.getConfig())
+            .success(function (data, status, headers, config) {         
+            $scope.datos = data.info;        
+            return false;
+            })
+            .error(function (data, status, header, config) {          
+              $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+              return false;
+            })
+            }*/
+          //$scope.listarReportes();
       });

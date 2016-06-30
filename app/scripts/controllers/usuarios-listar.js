@@ -6,7 +6,11 @@ angular.module('rac')
   $scope.usuario_seleccionado = usuarioService.getUsuario();
   $scope.nombreUsuario = perfilService.getUsuario().nombre;
   $scope.rolUsuario    = perfilService.getUsuario().rol;
+  console.log($scope.nombreUsuario);
+  console.log($scope.rolUsuario);
 	$scope.listarUsuarios = function () {
+      console.log($scope.nombreUsuario);
+      console.log($scope.rolUsuario);
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
@@ -28,7 +32,7 @@ angular.module('rac')
   		return "/dashboard/usuarios-editar";
     }
     $scope.editarUsuario = function (usuario) {
-  		usuario.tipo="{'id':'2','nombre':'Admin'}";
+  		//usuario.tipo="{'id':'2','nombre':'Admin'}";
       usuarioService.setUsuario(usuario);
   		usuarioService.setModoEditar(true);
   		$location.path('/dashboard/usuarios-editar');
