@@ -8,6 +8,11 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.editar = mediosService.isModoEditar();
 
+      $scope.lstMedios = [
+    { 'id': '1', 'tipo': 'Medio de Tipo SMS' },
+    { 'id': '2', 'tipo': 'Medio de Tipo Mail' }, 
+    ];
+
     $scope.modoEditar = function(){
       return mediosService.isModoEditar();
     }
@@ -19,16 +24,14 @@ angular.module('rac')
   }
   
   $scope.generarMedio = function () {
-    
-    if ($scope.checkedMail){ 
-      $scope.medio_seleccionado.tipo_medio = "mail";
-      $scope.medio_seleccionado.clave ="";
-    }
-    else{
-      $scope.medio_seleccionado.tipo_medio = "sms";
-    }
-
     if(!mediosService.isModoEditar()){
+      switch($scope.medio_seleccionado.tipo_medio){
+        case "sms":
+        $scope.medio_seleccionado.tipo_medio = "2";
+        case "mail":
+        $scope.medio_seleccionado.tipo_medio = "3";
+        $scope.medio_seleccionado.clave ="";
+      };
       var data = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario,

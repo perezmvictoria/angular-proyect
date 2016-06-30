@@ -1,6 +1,6 @@
 <div> 
-  <h2>Edición de Reglas</h2>
-  <div class="panel panel-success">
+ <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Reglas</h2>
+  <div class="panel panel-info">
     <div class="panel-heading">
         Ingrese los datos a modificar
     </div>
@@ -9,52 +9,124 @@
             <div class="col-md-8 col-md-offset-1">
                 <form role="form" name=reglasEForm>
 
-                    <div class="form-group">
-                        <input class="form-control"  placeholder="Nombre" ng-disabled="modoEditar();"
-                        ng-model="regla_seleccionada.nombre" >
+                    <div class="form-group has-feedback" novalidate>
+                        <input class="form-control" name="nombre" placeholder="Nombre" ng-disabled="modoEditar();" ng-model="regla_seleccionada.nombre" 
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block" ng-show="reglasEForm.nombre.$touched && reglasEForm.nombre.$error.required">Ingrese el nombre.</span>
+                            <!-- Validacion Minimo Caracteres -->
+                            <span class="help-block" ng-show="reglasEForm.nombre.$touched && reglasEForm.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span>
+                            <!-- Validacion Maximo Caracteres -->
+                            <span class="help-block" ng-show="reglasEForm.nombre.$touched && reglasEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
+                            <!-- Validacion Formato Patron -->
+                            <span class="help-block" ng-show="reglasEForm.nombre.$touched && reglasEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.nombre.$touched && !reglasEForm.nombre.$valid"></span>
+                    <!-- Validacion Ok -->
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.nombre.$touched && reglasEForm.nombre.$valid"></span>
                     </div>
 
-                    <div class="form-group">
-                          <textarea class="form-control vresize" placeholder="Condición" rows="10" 
-                          name="condicion" ng-model="condicion" required
-                          ng-model="regla_seleccionada.condicion"></textarea>
-                         
-                          <span style="color:red"  ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$error.required">Ingrese la condición.</span> 
+                     <div class="form-group has-feedback" novalidate>
+                            <textarea class="form-control vresize" name="condicion" placeholder="Condición" ng-model="condicion" ng-model="regla_seleccionada.condicion"
+                            rows="10"required></textarea>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block"  ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$error.required">Ingrese la condición.</span> 
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.condicion.$touched && !reglasEForm.condicion.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$valid"></span>
                     </div>
 
-                    <div class="form-group">
-                        <select ng-model="regla_seleccionada.accion" placeholder="Acción" class="form-control input-sm">
-                            <option ng-repeat="accion in lstAccion"
-                                    value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
-                        </select>
+                    <div class="form-group has-feedback" novalidate>
+                            <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" name="accion" data-live-search="true" ng-model="regla_seleccionada.accion" name="accion"required>
+                            <option ng-repeat="accion in lstAccion" value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+                            </select>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block"  ng-show="reglasEForm.accion.$touched && reglasEForm.accion.$error.required">Seleccione la acción.</span> 
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.accion.$touched && !reglasEForm.accion.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.accion.$touched && reglasEForm.accion.$valid"></span>
                     </div>
 
-                    <div class="form-group">
-                        <input type="number" class="form-control bfh-number" placeholder="Segundos"
-                        ng-model="regla_seleccionada.segundos">
+                    <div class="form-group has-feedback" novalidate>
+                        <input type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" ng-model="regla_seleccionada.segundos"required>
+                        <!-- Validacion Campo Requerido -->
+                        <span class="help-block"  ng-show="reglasEForm.segundos.$touched && reglasEForm.segundos.$error.required">Ingrese los segundos.</span>
+                          <!-- Validacion Campo Requerido -->
+                        <span class="help-block"  ng-show="reglasEForm.segundos.$touched && reglasEForm.segundos.$error.min">El minimo de segundos es 0.</span>  
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.segundos.$touched && !reglasEForm.segundos.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.segundos.$touched && reglasEForm.segundos.$valid"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group has-feedback" novalidate>
                         
-                        <textarea class="form-control vresize" name="descripcion"
-                                  placeholder="Descripción" ng-model="descripcion"rows="10"required></textarea>
-
-                        <span style="color:red"  ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$error.required">
-                            Ingrese la descripción.</span>
+                        <textarea class="form-control vresize" name="descripcion" placeholder="Descripción" ng-model="descripcion" rows="10"required></textarea>
+                        <!-- Validacion Campo Requerido -->
+                        <span class="help-block"  ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$error.required">Ingrese la descripción.</span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.descripcion.$touched && !reglasEForm.descripcion.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$valid"></span>    
                     </div>
 
-                    <div class="form-group">
-                        <select ng-model="regla_seleccionada.medio" placeholder="Medio" class="form-control input-sm">
-                            <option ng-repeat="medio in lstMedio"
-                                    value="{{medio}}" data-subtext="{{medio.id}}">{{medio.nombre}}</option>
+                    <div class="form-group has-feedback" novalidate>
+                        <select class="form-control input-sm" name="medio" data-style="btn-default" placeholder="Medio" data-live-search="true" ng-model="regla_seleccionada.medio">
+                        <option ng-repeat="medio in lstMedio" value="{{medio}}" data-subtext="{{medio.id}}"required>{{medio.nombre}}</option>
                         </select>
+                         <!-- Validacion Campo Requerido -->
+                        <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required">Seleccione el medio.</span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && !reglasEForm.medio.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$valid"></span>        
                     </div>  
-                 
+   
                     <div class="form-group">
-                        <button class="btn btn-md btn-success"  ng-click="generarRegla();"
-                                ng-disabled="!reglasEForm.$valid" >Crear</button>
-                        <button class="btn btn-md"  ng-click="cancelar();">Cancelar</button>
+                        <button class="btn btn-md btn-success" ng-disabled="!reglasEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
+
+                        <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
+
+
+                    <div class="modal fade" id="cancelar" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Salir</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Desea salir sin guardar los cambios?</p>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cancelar();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="reglas-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    <div class="modal fade" id="crear" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Confirmar los cambios</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Desea guardar los cambios?</p>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="generarRegla();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="reglas-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal
+
                 </form>
             </div>            
         </div>        

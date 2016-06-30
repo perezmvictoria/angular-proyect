@@ -7,56 +7,138 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form role="form" name=mediosEForm>
+                <form role="form" name=mediosEForm novalidate>
                     
+                    <div class="form-group has-feedback" novalidate>
+                        <input class="form-control" placeholder=" Nombre" name="nombre" ng-disabled="modoEditar();" ng-model="medio_seleccionado.nombre" 
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.required">Ingrese el nombre.</span>
+                            <!-- Validacion Minimo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span>
+                            <!-- Validacion Maximo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
+                            <!-- Validacion Patron del formato-->
+                            <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
+
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.nombre.$touched && !mediosEForm.nombre.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$valid"></span>
+
+                    </div>
+
+                    <div class="form-group has-feedback" novalidate>
+                        <input class="form-control" placeholder=" Destino" ng-model="medio_seleccionado.destino" name="destino" 
+                        ng-minlength="3" ng-maxlength="50" ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./"required>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.required">Ingrese el destino.</span> 
+                            <!-- Validacion Minimo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.minlength">El destino debe contener al menos 3 caracteres.</span>
+                            <!-- Validacion Maximo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.maxlength">El destino no puede tener más de 50 caracteres.</span>
+                            <!-- Validacion Patron del formato-->
+                            <span class="help-block" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.pattern">El destino no puede contener espacios en blanco.</span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.destino.$touched && !mediosEForm.destino.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$valid"></span>
+
+                    </div>
+
+                     <div class="form-group has-feedback" novalidate>
+                        <input class="form-control" placeholder=" Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
+                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"required>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
+                            <!-- Validacion Minimo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.minlength">El dominio debe contener al menos 3 caracteres.</span>
+                            <!-- Validacion Maximo Caracteres -->
+                            <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.maxlength">El dominio no puede tener más de 50 caracteres.</span>
+                            <!-- Validacion Patron del Formato -->
+                            <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.pattern">El formato del dominio es invalido. (Ex: pyxis.com.uy o antel.com.uy)</span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.dominio.$touched && !mediosEForm.dominio.$valid"></span>
+                        <!-- Validacion Ok -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$valid"></span>
+                    </div>
+
+
+
+                    <div class="form-group has-feedback">
+
+                        <select name="tipo" ng-model="medio_seleccionado.tipo_medio" 
+                        placeholder="Tipo de Medio" class="form-control input-sm"required>
+                        <option ng-repeat="medio in lstMedios" value="{{medio}}" data-subtext="{{medio.id}}">{{medio.tipo}}</option>
+                        </select>
+
+                    <!-- Validacion Campo Requerido-->
+                    <span class="help-block" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
+
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.tipo.$touched && !mediosEForm.tipo.$valid"></span>
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$valid"></span>
+               
+                    </div>
+
+
+                    <div class="form-group has-feedback" novalidate>
+                        <input class="form-control" ng-model="medio_seleccionado.clave" 
+                        ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS"required>
+
+                        <span class="help-block" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$error.required">Ingrese la Clave.</span>
+
+
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.clave.$touched && !mediosEForm.clave.$valid"></span>
+                    <!-- Validacion Error -->
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$valid"></span>
+
+                    </div>
+
                     <div class="form-group">
-                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="medio_seleccionado.nombre" ng-disabled="modoEditar();">
+                        <button class="btn btn-md btn-success" ng-disabled="!mediosEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
+
+                        <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Destino" ng-model="medio_seleccionado.destino"
-                        name="destino" ng-minlength="3" ng-maxlength="50" required> 
+                    
 
-                        <!-- ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./" -->
+                    <div class="modal fade" id="cancelar" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Salir</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Desea salir sin guardar los cambios?</p>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cancelar();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="medios-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
-                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.required">Ingrese el destino.</span> 
-
-                         <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.minlength">El destino debe contener al menos 3 caracteres.</span>
-                        
-                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.maxlength">El destino no puede tener más de 50 caracteres.</span>
-                        
-                        <span style="color:red" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.pattern">El destino no puede contener espacios en blanco.</span>
-
-                    </div>
-
-                     <div class="form-group">
-                        <input class="form-control" placeholder="Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
-                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
-
-                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
-
-                         <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.minlength">El dominio debe contener al menos 3 caracteres.</span>
-                        
-                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.maxlength">El dominio no puede tener más de 50 caracteres.</span>
-                        
-                        <span style="color:red" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.pattern">El formato del dominio es invalido. (Ex: pyxis.com.uy o antel.com.uy)</span>
-                    </div>
-
-                     <div class="form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" ng-model="checkedMail" ng-disabled="checkedSMS" value="">Es del tipo Mail </label>
-                            <label><input type="checkbox" ng-model="checkedSMS" ng-disabled="checkedMail" value=""> Es del tipo SMS </label>
-                            {{checkedMail ? $scope.medio_seleccionado.tipo_medio = "mail" : $scope.medio_seleccionado.tipo_medio = "sms"}}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <input class="form-control" ng-disabled="checkedMail" placeholder="Clave del SMS" ng-model=medio_seleccionado.clave>
-                    </div>
-
-                    <div class="form-group">
-                    <button class="btn btn-md btn-success" ng-click="generarMedio();"">Guardar</button>
-                    <button class="btn btn-md" ng-click="cancelar();">Cancelar</button>
-                    </div>
+                    <div class="modal fade" id="crear" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Confirmar los cambios</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Desea guardar los cambios?</p>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="generarMedio();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="medios-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </form>
             </div>            
         </div>        
