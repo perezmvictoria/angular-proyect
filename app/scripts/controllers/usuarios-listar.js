@@ -2,15 +2,12 @@
 
 angular.module('rac')
   .controller('UsuariosListarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+
   $scope.msjerror = "";
   $scope.usuario_seleccionado = usuarioService.getUsuario();
   $scope.nombreUsuario = perfilService.getUsuario().nombre;
   $scope.rolUsuario    = perfilService.getUsuario().rol;
-  console.log($scope.nombreUsuario);
-  console.log($scope.rolUsuario);
 	$scope.listarUsuarios = function () {
-      console.log($scope.nombreUsuario);
-      console.log($scope.rolUsuario);
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
     				perfilService.getData(),perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
@@ -56,6 +53,7 @@ angular.module('rac')
           $scope.msjerror = "Error de conexion al servidor";          
           return false;
       })
+
   		$scope.listarUsuarios();
       return false;
     }

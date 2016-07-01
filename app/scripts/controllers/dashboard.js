@@ -14,6 +14,7 @@ angular.module('rac')
     }
 
  	$scope.logout = function () {
+ 		perfilService.setUsuario(undefined);
  		$location.path('/login.html');
 		return "/login.html";
  	}
