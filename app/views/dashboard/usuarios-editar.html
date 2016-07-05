@@ -101,7 +101,7 @@
                     <div class="form-group has-feedback">
 
                     
-                    <input class="form-control" placeholder="Contraseña" name="contrasenia"            ng-model="usuario_seleccionado.contrasenia"type="password" ng-minlength="6" ng-maxlength="20"required>
+                    <input class="form-control" placeholder="Contraseña" ng-hide="modoEditar();" name="contrasenia" ng-model="usuario_seleccionado.contrasenia"type="password" ng-minlength="6" ng-maxlength="20"required>
 
                     <!-- Validacion Campo Requerido-->
                     <span class="help-block" ng-show="usuariosEForm.contrasenia.$touched
