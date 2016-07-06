@@ -38,26 +38,26 @@
                     </td>
                 </tr>
             </tbody>
-        </table>      
-    </div>
-     <div class="modal fade" id="confirmar" role="dialog">
+        </table>
+        <div class="modal fade" id="confirmar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header"> 
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Confirmar los cambios</h4>
+                                    <h4 class="modal-title">Confirmar Eliminar</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>¿Desea guardar los cambios?</p>
+                                    <p>¿Desea eliminar el usuario seleccionado?</p>
                                 </div>  
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario(usuario);" >Aceptar</button>
-                                    <button type="button" class="btn btn-md" ui-sref="usuarios-editar" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="usuarios-listar" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-    <div class="alert-danger">{{msjerror}}</div>            
+                    </div><!-- /.modal -->      
+    <div>
+     <div class="alert-danger">{{msjerror}}</div>            
     <button class="btn btn-md " ng-click="crearUsuario();">Crear Usuario</button>
   </div>  
 </div>       
