@@ -6,8 +6,8 @@ angular.module('rac')
         perfil.usuario = {}
         //perfil.usuario.nombre   = "";
         //perfil.usuario.rol      = "";
-        perfil.usuario.nombre   = "superrac";
-        perfil.usuario.rol      = "super_admin";
+        //perfil.usuario.nombre   = "superrac";
+        //perfil.usuario.rol      = "super_admin";
         perfil.usuario.password = "";
         perfil.token            = "";
 
@@ -37,8 +37,6 @@ angular.module('rac')
                 perfil.usuario.nombre = nombre;
                 perfil.usuario.rol    = rol;
                 perfil.token          = token;
-                console.log(perfil.usuario.nombre);
-                console.log(perfil.usuario.rol);
             },
             getRuta: function(){
                 return perfil.ruta;

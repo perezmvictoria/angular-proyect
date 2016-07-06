@@ -13,8 +13,8 @@
                       
                       <input class="form-control" placeholder="Usuario" 
                       name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" 
-                      ng-minlength="3" ng-maxlength="20" 
-                      ng-pattern="/^[A-Za-z0-9]+$/"required>                              
+                      ng-minlength="3" ng-maxlength="20"
+                      ng-pattern="/^[A-Za-z0-9]+$/"required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.required">Ingrese el usuario.</span>
                             <!-- Validacion Minimo Caracteres -->
@@ -80,9 +80,12 @@
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$valid"></span>
                     </div>
                     
-                <div class="form-group has-feedback">
-                    <select name="tipo" ng-model="usuario_seleccionado.tipo" placeholder="Tipo" class="form-control input-sm"required>
-                    <option ng-repeat="usuario in lstUsuario" value="{{usuario}}" data-subtext="{{usuario.id}}">{{usuario.nombre}}</option>
+                    <div class="form-group has-feedback">
+                    <select name="tipo" 
+                    ng-model="dataTipoUsuario.seleccionada" placeholder="Tipo"
+                    ng-options="usuario.nombre for usuario in dataTipoUsuario.opciones track by usuario.id"
+                     class="form-control input-sm"
+                    required>
                     </select>
 
                     <!-- Validacion Campo Requerido-->

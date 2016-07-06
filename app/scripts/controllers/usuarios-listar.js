@@ -6,13 +6,17 @@ angular.module('rac')
   $scope.usuario_seleccionado = usuarioService.getUsuario();
   $scope.nombreUsuario = perfilService.getUsuario().nombre;
   $scope.rolUsuario    = perfilService.getUsuario().rol;
-  console.log($scope.nombreUsuario);
-  console.log($scope.rolUsuario);
+  //console.log($scope.nombreUsuario);
+  //console.log($scope.rolUsuario);
 	$scope.listarUsuarios = function () {
-      console.log($scope.nombreUsuario);
-      console.log($scope.rolUsuario);
+      //console.log($scope.nombreUsuario);
+      //console.log($scope.rolUsuario);
+      var dataPost = {
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario
+      } 
     	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
-    				perfilService.getData(),perfilService.getConfig())
+    				dataPost,perfilService.getConfig())
     		.success(function (data, status, headers, config) {    			
 				$scope.datos = data.info;        
 				return false;

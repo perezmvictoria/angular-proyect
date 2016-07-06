@@ -20,6 +20,7 @@ angular.module('rac')
     }
 
    	$scope.mLogin = function () {
+      //debugger;
    		var data = {
    			"usuario":$scope.usuario,
    			"contrasenia":$scope.contrasenia
