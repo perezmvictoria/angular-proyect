@@ -67,12 +67,12 @@
                     <div class="form-group has-feedback" novalidate>
 
                         <input class="form-control" placeholder="Telefono" 
-                        name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^[0-9]{1,12}/"required>
+                        name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/0-9/" ng-maxlength=9>
 
-                            <!-- Validacion Campo Requerido-->
-                            <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.required">Ingrese el teléfono.</span>
+                            <!-- Validacion Maximo Caracteres -->
+                            <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                             <!-- Validacion Formato-->
-                            <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.pattern">Teléfono Inválido.</span>
+                            <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.pattern">El teléfono solo puede contener caracteres numéricos.</span>
 
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
