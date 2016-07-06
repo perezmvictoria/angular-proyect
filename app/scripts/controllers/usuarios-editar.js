@@ -86,8 +86,7 @@ angular.module('rac')
 	 			"rol_exec":$scope.rolUsuario,
 	 			"nombre":$scope.usuario_seleccionado.nombre,
 	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": $scope.usuario_seleccionado.tipo.id,
-	 			"contrasenia":$scope.usuario_seleccionado.contrasenia,
+	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.id,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
  			}

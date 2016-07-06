@@ -37,8 +37,11 @@ angular.module('rac')
     }
     $scope.editarUsuario = function (usuario) {
   		//usuario.tipo="{'id':'2','nombre':'Admin'}";
+      usuario.contrasenia = '123456';
+      usuario.contrasenia2 = '123456';
       usuarioService.setUsuario(usuario);
   		usuarioService.setModoEditar(true);
+
   		$location.path('/dashboard/usuarios-editar');
   		return "/dashboard/usuarios-editar";
     }  
