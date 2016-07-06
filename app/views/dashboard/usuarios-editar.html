@@ -67,7 +67,7 @@
                     <div class="form-group has-feedback" novalidate>
 
                         <input class="form-control" placeholder="Telefono" 
-                        name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/0-9/" ng-maxlength=9>
+                        name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-maxlength=9>
 
                             <!-- Validacion Maximo Caracteres -->
                             <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
