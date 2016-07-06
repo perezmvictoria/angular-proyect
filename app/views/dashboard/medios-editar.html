@@ -1,9 +1,12 @@
 <div> 
-  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
-  <div class="panel panel-feedback">
+  
+    <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
+    <div class="panel panel-info">
+
     <div class="panel-heading">
         Ingrese los datos a modificar
     </div>
+    
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
@@ -20,12 +23,10 @@
                             <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
                             <!-- Validacion Patron del formato-->
                             <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
-
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.nombre.$touched && !mediosEForm.nombre.$valid"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$valid"></span>
-
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
@@ -43,10 +44,9 @@
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.destino.$touched && !mediosEForm.destino.$valid"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$valid"></span>
-
                     </div>
 
-                     <div class="form-group has-feedback" novalidate>
+                    <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder=" Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
                         ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"required>
                             <!-- Validacion Campo Requerido -->
@@ -63,46 +63,39 @@
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$valid"></span>
                     </div>
 
-
-
                     <div class="form-group has-feedback">
-
                         <select name="tipo" ng-model="medio_seleccionado.tipo_medio" 
                         placeholder="Tipo de Medio" class="form-control input-sm"required>
                         <option ng-repeat="medio in lstMedios" value="{{medio}}" data-subtext="{{medio.id}}">{{medio.tipo}}</option>
-                        </select>
-
-                    <!-- Validacion Campo Requerido-->
-                    <span class="help-block" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
-
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.tipo.$touched && !mediosEForm.tipo.$valid"></span>
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$valid"></span>
-               
+                            </select>
+                        <!-- Validacion Campo Requerido-->
+                        <span class="help-block" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.tipo.$touched && !mediosEForm.tipo.$valid"></span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$valid"></span>
                     </div>
 
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" ng-model="medio_seleccionado.clave" 
                         ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS"required>
-
                         <span class="help-block" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$error.required">Ingrese la Clave.</span>
-
-
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.clave.$touched && !mediosEForm.clave.$valid"></span>
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$valid"></span>
-
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.clave.$touched && !mediosEForm.clave.$valid"></span>
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$valid"></span>
                     </div>
 
                     <div class="form-group">
                         <button class="btn btn-md btn-success" ng-disabled="!mediosEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
-
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
-                    
+
+                </form>      
+            </div>            
+        </div>        
+    </div>
 
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
@@ -139,9 +132,6 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                </form>
-            </div>            
-        </div>        
+
     </div>
-  </div>
 </div>
