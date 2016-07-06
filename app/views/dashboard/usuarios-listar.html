@@ -27,7 +27,9 @@
                     <td>{{usuario.tipo_usuario}}</td>
                     <td>                     
                         <a class="btn btn-success btn-xs" ng-click="editarUsuario(usuario);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-danger btn-xs" ng-click="eliminarUsuario(usuario);" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
+                        
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirmar" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
+                        
                         <a  ng-show="usuario.bloqueado" class="btn btn-warning btn-xs" 
                             ng-click="desbloquearUsuario(usuario);"
                             title="Usuario Bloqueado">
@@ -37,7 +39,24 @@
                 </tr>
             </tbody>
         </table>      
-    <div>
+    </div>
+     <div class="modal fade" id="confirmar" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Confirmar los cambios</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Desea guardar los cambios?</p>
+                                </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario(usuario);" >Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="usuarios-editar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
     <div class="alert-danger">{{msjerror}}</div>            
     <button class="btn btn-md " ng-click="crearUsuario();">Crear Usuario</button>
   </div>  
