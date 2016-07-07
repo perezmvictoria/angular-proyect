@@ -28,7 +28,7 @@
                     <td>                     
                         <a class="btn btn-success btn-xs" ng-click="editarUsuario(usuario);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
                         
-                        <a class="btn btn-danger btn-xs" ng-click="eliminarUsuario(usuario);" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirmar"  title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
                         
                         <a  ng-show="usuario.bloqueado" class="btn btn-warning btn-xs" 
                             ng-click="desbloquearUsuario(usuario);"
