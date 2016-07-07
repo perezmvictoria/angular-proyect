@@ -7,8 +7,12 @@ angular.module('rac')
   $scope.nombreUsuario = perfilService.getUsuario().nombre;
   $scope.rolUsuario    = perfilService.getUsuario().rol;
   $scope.listarMedios = function () {
+    var dataPost = {
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario
+    } 
    	$http.post(perfilService.getRuta()+'/medios/listar_medios', 
-  	perfilService.getData(),perfilService.getConfig())
+  	dataPost,perfilService.getConfig())
   	.success(function (data, status, headers, config) {    			
   		$scope.datos = data.info;        
   		return false;
