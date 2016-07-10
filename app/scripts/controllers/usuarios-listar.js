@@ -47,9 +47,6 @@ angular.module('rac')
     }  
     $scope.eliminarUsuario = function (usuario) {
       usuarioService.setUsuario(usuario);
-      //$scope.usuario_seleccionado = usuarioService.getUsuario();
-      //console.log(usuario.usuario);
-      //console.log($scope.usuario_seleccionado.usuario);
       var dataPost = {
         "usuario":usuario.usuario,
         "usuario_exec":$scope.nombreUsuario,

@@ -60,11 +60,7 @@ angular.module('rac')
 	}
 	
 	$scope.generarUsuario = function () {
-
-		//$scope.usuario_seleccionado.tipo = JSON.parse($scope.usuario_seleccionado.tipo);
-
 		if(!usuarioService.isModoEditar()){
-
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
@@ -74,13 +70,14 @@ angular.module('rac')
 	 			"contrasenia":$scope.usuario_seleccionado.contrasenia,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
- 			}
-    		$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
-    			.success(function (data, status, headers, config) {
+				}
+			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
+				.success(function (data, status, headers, config) {
 
-        		});
-        		//NO OLVIDAR .error			
-		}else{
+	    		});
+	    		//NO OLVIDAR .error			
+		}else
+		{
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
@@ -89,14 +86,14 @@ angular.module('rac')
 	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.id,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
- 			}
-    		$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
-    			.success(function (data, status, headers, config) {
+				}
+			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
+				.success(function (data, status, headers, config) {
 
-        		});
-        		//falta el .error
+	    		});
+	    		//falta el .error
 		}		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";
-    }
+	}
 });

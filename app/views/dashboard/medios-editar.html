@@ -65,10 +65,11 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <select name="tipo" ng-model="medio_seleccionado.tipo_medio" 
-                        placeholder="Tipo de Medio" class="form-control input-sm"required>
-                        <option ng-repeat="medio in lstMedios" value="{{medio}}" data-subtext="{{medio.id}}">{{medio.tipo}}</option>
-                            </select>
+                        <select name="tipo" ng-model="dataTipoMedio.seleccionada" 
+                        placeholder="Tipo de Medio" class="form-control input-sm"
+                        ng-options="medio.tipo for medio in dataTipoMedio.opciones track by medio.id"
+                        required>
+                        </select>
                         <!-- Validacion Campo Requerido-->
                         <span class="help-block" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
                         <!-- Validacion Error -->

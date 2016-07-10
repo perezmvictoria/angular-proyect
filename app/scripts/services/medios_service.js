@@ -10,10 +10,10 @@ angular.module('rac')
                 return datos.medio;
             },
             setMedio: function(value){
-                datos.medio=value;
+                datos.medio = value;
             },
             isModoEditar: function(){
-                return datos.modo;
+                return datos.modoEditar;
             },
             setModoEditar: function(value){
                 datos.modoEditar = value;
