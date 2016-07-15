@@ -3,6 +3,7 @@
 angular.module('rac')
   .controller('MediosEditarCtrl', function(perfilService,mediosService,$scope, $location, $http) {
     $scope.medio_seleccionado =  mediosService.getMedio();
+    //debugger;
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
@@ -12,29 +13,20 @@ angular.module('rac')
     {
       $scope.dataTipoMedio = {
         opciones: [
-          { 'id': '1', 'tipo': 'SMS' },
-          { 'id': '2', 'tipo': 'Mail' }
+          { 'tipo': 'sms' },
+          { 'tipo': 'mail' }
         ],
-        seleccionada: { 'id': '2', 'tipo': 'Mail' }
+        seleccionada: { 'tipo': 'mail' }
       };
     }
     else
     {
-      var tipo = ""
-      switch ($scope.medio_seleccionado.tipo_medio){
-        case "SMS":
-          tipo = "1";
-          break;
-        case "Mail":
-          tipo = "2";
-          break;
-      }
       $scope.dataTipoMedio = {
         opciones: [
-          { 'id': '1', 'tipo': 'SMS' },
-          { 'id': '2', 'tipo': 'Mail' }
+          { 'tipo': 'sms' },
+          { 'tipo': 'mail' }
         ],
-        seleccionada: { 'id': tipo }
+        seleccionada: { 'tipo': $scope.medio_seleccionado.tipo }
       };
     }
 
@@ -49,29 +41,61 @@ angular.module('rac')
   }
 
   $scope.generarMedio = function () {
+    //console.log($scope.dataTipoMedio.seleccionada.id);
+    //debugger;
     if(!$scope.editar){
-      var data = {
-        "usuario_exec":$scope.nombreUsuario,
-        "rol_exec":$scope.rolUsuario,
-        "nombre":$scope.medio_seleccionado.nombre,
-        "dominio":$scope.medio_seleccionado.dominio,
-        "destino":$scope.medio_seleccionado.destino,
-        "tipo_medio":$scope.dataTipoMedio.seleccionada.id,
-        "clave":$scope.medio_seleccionado.clave
+      if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
+      {
+        var data = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario,
+          "nombre":$scope.medio_seleccionado.nombre,
+          "dominio":$scope.medio_seleccionado.dominio,
+          "destino":$scope.medio_seleccionado.destino,
+          "tipo_medio":$scope.dataTipoMedio.seleccionada.tipo,
+          "clave":$scope.medio_seleccionado.clave
+        }
+      }
+      else
+      {
+        var data = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario,
+          "nombre":$scope.medio_seleccionado.nombre,
+          "dominio":$scope.medio_seleccionado.dominio,
+          "destino":$scope.medio_seleccionado.destino,
+          "tipo_medio":$scope.dataTipoMedio.seleccionada.tipo,
+        }
       }
       $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
       });
     }else{
-      var data = {
+
+      if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
+      {
+        // SMS
+        var data = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario,
+          "nombre":$scope.medio_seleccionado.nombre,
+          "dominio":$scope.medio_seleccionado.dominio,
+          "destino":$scope.medio_seleccionado.destino,
+          "tipo_medio":$scope.dataTipoMedio.seleccionada.tipo,
+          "clave":$scope.medio_seleccionado.clave
+        }
+      }
+      else{
+        // Mail
+        var data = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario,
         "nombre":$scope.medio_seleccionado.nombre,
         "dominio":$scope.medio_seleccionado.dominio,
         "destino":$scope.medio_seleccionado.destino,
-        "tipo_medio":$scope.dataTipoMedio.seleccionada.id,
-        "clave":$scope.medio_seleccionado.clave
-      }
+        "tipo_medio":$scope.dataTipoMedio.seleccionada.tipo
+        }
+      }      
       $http.post(perfilService.getRuta()+'/medios/editar_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
       });

@@ -1,7 +1,12 @@
 'use strict';
 
 angular.module('rac')
-  .controller('ReglasEditarCtrl', function(perfilService,reglasService,$scope, $state) {
+  .controller('ReglasEditarCtrl', function(perfilService,reglasService,$scope, $state, $location, $http) {
+
+    $scope.regla_seleccionado =  reglasService.getRegla();
+    $scope.msjerror = ""; 
+    $scope.nombreUsuario = perfilService.getUsuario().nombre;
+    $scope.rolUsuario    = perfilService.getUsuario().rol;
 
     //Lo prolijo es obtener estos datos de un webservice, para desacoplarlo
     $scope.lstAccion = [
@@ -15,8 +20,7 @@ angular.module('rac')
        { 'id': '3', 'nombre': 'Medio 3' }
     ];
 
-    $scope.regla_seleccionado =  reglasService.getRegla();
-    $scope.msjerror = ""; 
+
     $scope.modoEditar = function(){
       return reglasService.isModoEditar();
     }

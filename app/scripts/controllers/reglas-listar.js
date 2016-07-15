@@ -2,21 +2,29 @@
 
 
 angular.module('rac')
-  .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state, $location) {
+  .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state, $location,$http) {
  	
     $scope.msjerror = "";
-	$scope.listarReglas = function () {
-		//Agregar la funcion correcta
-    	/*$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
-    				perfilService.getData(),perfilService.getConfig())
-    		.success(function (data, status, headers, config) {    			
-				$scope.datos = data.info;        
-				return false;
-       	})
-    	.error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+    $scope.nombreUsuario = perfilService.getUsuario().nombre;
+    $scope.rolUsuario    = perfilService.getUsuario().rol;
+
+	  $scope.listarReglas = function () {
+
+      var dataPost = {
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario
+      } 
+
+      $http.post(perfilService.getRuta()+'/reglas/listar_reglas', 
+        dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+        $scope.datos = data.info;        
+        return false;
+        })
+      .error(function (data, status, header, config) {          
+          $scope.msjerror = "No se pudo cargar la lista de reglas";          
           return false;
-      })*/
+      })
     }
     $scope.listarReglas();
 

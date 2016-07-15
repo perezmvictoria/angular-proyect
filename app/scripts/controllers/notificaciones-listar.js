@@ -5,10 +5,16 @@ angular.module('rac')
 
       $scope.$state = $state;
       $scope.filtro = { fechaIni :'', fechaFin :''};
+      $scope.nombreUsuario = perfilService.getUsuario().nombre;
+      $scope.rolUsuario    = perfilService.getUsuario().rol;
 
       $scope.listarNotificaciones = function () {
-        $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias',
-        perfilService.getData(),perfilService.getConfig())
+        var dataPost = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario
+        } 
+        $http.post(perfilService.getRuta()+'/notificaciones/listar_notificaciones',
+        dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
           return false;

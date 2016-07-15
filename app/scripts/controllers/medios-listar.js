@@ -40,9 +40,9 @@ angular.module('rac')
   
   $scope.eliminarMedio = function (medio) {
   	mediosService.setMedio(medio);	
-    $scope.medio_seleccionado = medio;      
+    //$scope.medio_seleccionado = medio;      
     var dataPost = {
-      "nombre":$scope.medio_seleccionado.nombre,
+      "nombre":medio.nombre,
       "usuario_exec":$scope.nombreUsuario,
       "rol_exec":$scope.rolUsuario
     }

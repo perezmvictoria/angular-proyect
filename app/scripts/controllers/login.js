@@ -20,7 +20,6 @@ angular.module('rac')
     }
 
    	$scope.mLogin = function () {
-      //debugger;
    		var data = {
    			"usuario":$scope.usuario,
    			"contrasenia":$scope.contrasenia
@@ -31,8 +30,8 @@ angular.module('rac')
           		$location.path('/dashboard');
               return false;
         	})
-        	.error(function (data, status, header, config) {              
-              $scope.msjerror = "Usuario y/o contraseña incorrectos ";                            
+        	.error(function (data, status, header, config) {
+              $scope.msjerror = "Usuario y/o contraseña incorrectos ";
               perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');
               return false;

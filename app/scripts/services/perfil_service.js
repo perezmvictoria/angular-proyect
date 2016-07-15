@@ -4,10 +4,6 @@ angular.module('rac')
     .service('perfilService',function(){
         var perfil= {};
         perfil.usuario = {}
-        //perfil.usuario.nombre   = "";
-        //perfil.usuario.rol      = "";
-        //perfil.usuario.nombre   = "superrac";
-        //perfil.usuario.rol      = "super_admin";
         perfil.usuario.password = "";
         perfil.token            = "";
 
@@ -21,10 +17,9 @@ angular.module('rac')
                             "rol_exec":perfil.usuario.rol
                       };
         //ruta local
-        perfil.ruta = "http://192.168.1.43:5000";
+        perfil.ruta = "http://192.168.1.105:5000";
         //ruta testing
         //perfil.ruta = "http://190.64.30.76:5000";
-        
         return{
             getUsuario: function(){
                 return perfil.usuario;

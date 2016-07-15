@@ -3,8 +3,8 @@
 angular.module('rac')
       .service('reglasService',function(){
         var datos= {};     
-        datos.regla = undefined;
-        datos.modo  = undefined;
+        datos.regla = "";
+        datos.modoEditar  = false;
         return{
             getRegla: function(){
                 return datos.regla;
@@ -13,10 +13,10 @@ angular.module('rac')
                 datos.regla=value;
             },
             isModoEditar: function(){
-                return datos.modo;
+                return datos.modoEditar;
             },
             setModoEditar: function(value){
-                datos.modo = value;
+                datos.modoEditar = value;
             }
         };
    })

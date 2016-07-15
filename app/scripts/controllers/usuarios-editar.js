@@ -22,7 +22,6 @@ angular.module('rac')
     else
     {
 		//editar usuario
-		//console.log($scope.usuario_seleccionado.tipo_usuario);
 		var tipo = ""
 		switch ($scope.usuario_seleccionado.tipo_usuario){
 			case "admin":
