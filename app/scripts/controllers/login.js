@@ -20,21 +20,33 @@ angular.module('rac')
     }
 
    	$scope.mLogin = function () {
-   		var data = {
+      var dataUsuario = {
    			"usuario":$scope.usuario,
    			"contrasenia":$scope.contrasenia
    		}
-  		$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion',data,perfilService.getConfig())
-    	    .success(function (data, status, headers, config) {
-              perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
-          		$location.path('/dashboard');
-              return false;
-        	})
-        	.error(function (data, status, header, config) {
-              $scope.msjerror = "Usuario y/o contraseña incorrectos ";
+  		$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
+          function (data, status, headers, config) 
+          {
+            perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
+            var dataPost = {
+              "usuario_exec":$scope.usuario,
+              "rol_exec":data.info.tipo_usuario
+            } 
+            $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , perfilService.getConfig()).success(
+              function (data,status,headers,config)
+              {
+                perfilService.setRolesUsuario(data);
+                $location.path('/dashboard');
+                return false;
+              }).error(loginError ("Error al cargar datos"))         
+            return false;
+          })
+          .error(loginError ("Usuario y/o contraseña incorrectos"))            
+    };
+    var loginError = function (textoError) {
+              $scope.msjerror = textoError;
               perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');
               return false;
-        })            
     };
 });

@@ -3,6 +3,7 @@
 angular.module('rac')
     .service('perfilService',function(){
         var perfil= {};
+        perfil.rolesUsuario = ""
         perfil.usuario = {}
         perfil.usuario.password = "";
         perfil.token            = "";
@@ -28,10 +29,13 @@ angular.module('rac')
                 perfil.usuario = value;
             },            
             setPerfil: function(nombre,rol,token){
-                //setea datos para mantener en la sesion
                 perfil.usuario.nombre = nombre;
                 perfil.usuario.rol    = rol;
                 perfil.token          = token;
+            },
+            setRolesUsuario: function(roles){
+                perfil.rolesUsuario = roles;
+                //debugger;
             },
             getRuta: function(){
                 return perfil.ruta;
