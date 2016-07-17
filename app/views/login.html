@@ -12,7 +12,7 @@
 						<span ng-show="loginForm.usuario.$touched && loginForm.usuario.$error.required">Ingrese el usuario.</span>
 					</div>
 					<div class="form-group" >
-						<input type="{{verpasswd_tipo();}}" placeholder="contrasenia"
+						<input type="{{verpasswd_tipo();}}" placeholder="contraseña"
 						       class="form-control input-underline-dark  input-lg" 
 						       ng-model="contrasenia"
 							   ng-keypress="$event.keyCode == 13 && mLogin();" required>			
@@ -27,7 +27,7 @@
 					</div>						
 					<div class="alert-danger">{{msjerror}}</div>									
 					<a class="btn btn-secondary btn-rounded btn-lg rac-grey-btn" 
-					   ng-click="mLogin();">Login</a>
+					   ng-click="mLogin();">Iniciar</a>
 				</div>				
 			</form>
 		</div>	
