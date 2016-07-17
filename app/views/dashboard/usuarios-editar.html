@@ -66,7 +66,7 @@
                     <div class="form-group has-feedback">
                         <select name="tipo" ng-model="dataTipoUsuario.seleccionada" placeholder="Tipo"
                         ng-options="usuario.name for usuario in dataTipoUsuario.opciones track by usuario.name"
-                        class="form-control input-sm"required>
+                        class="form-control input-sm" required>
                         </select>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$error.required">Seleccione el Tipo de Usuario.</span>
