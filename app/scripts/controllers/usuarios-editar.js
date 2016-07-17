@@ -10,31 +10,13 @@ angular.module('rac')
     if (!usuarioService.isModoEditar()) {
     	$scope.dataTipoUsuario = {
     	opciones: [],
-    	seleccionada: {}
+    	seleccionada: {'name': 'tecnico'}
     	};
     	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
     	}
     else
     {
 		//editar usuario
-
-		// este pedazo de codigo debería estar al pedo ... fernando eliminarlo en breve !!!!
-		/*var tipo = ""
-		switch ($scope.usuario_seleccionado.tipo_usuario){
-			case "admin":
-				tipo = "2";
-				break;
-			case "auditor":
-				tipo = "3";
-				break;
-			case "tecnico":
-				tipo = "4";
-				break;
-			case "operador":
-				tipo = "5";
-				break;
-		}*/
-		// -- fin de pedazo de codigo al pedo !!!
 
 		$scope.dataTipoUsuario = {
     	opciones: [],

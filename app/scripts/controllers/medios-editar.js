@@ -3,7 +3,6 @@
 angular.module('rac')
   .controller('MediosEditarCtrl', function(perfilService,mediosService,$scope, $location, $http) {
     $scope.medio_seleccionado =  mediosService.getMedio();
-    //debugger;
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
@@ -41,8 +40,7 @@ angular.module('rac')
   }
 
   $scope.generarMedio = function () {
-    //console.log($scope.dataTipoMedio.seleccionada.id);
-    //debugger;
+    debugger;
     if(!$scope.editar){
       if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
       {
