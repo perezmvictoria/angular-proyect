@@ -8,13 +8,6 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
 
     if (!usuarioService.isModoEditar()) {
-    	//crear usuario
-    	//$scope.dataTipoUsuario = {
-    	//opciones: ,
-    	//seleccionada: { 'id': '4', 'nombre': 'Técnico' }
-    	//};
-    	//$scope.dataTipoUsuario.opciones = perfil.getRolesUsuario();
-		//debugger;
     	$scope.dataTipoUsuario = {
     	opciones: [],
     	seleccionada: {}
@@ -24,6 +17,8 @@ angular.module('rac')
     else
     {
 		//editar usuario
+
+		// este pedazo de codigo debería estar al pedo ... fernando eliminarlo en breve !!!!
 		var tipo = ""
 		switch ($scope.usuario_seleccionado.tipo_usuario){
 			case "admin":
@@ -39,25 +34,14 @@ angular.module('rac')
 				tipo = "5";
 				break;
 		}
+		// -- fin de pedazo de codigo al pedo !!!
 
 		$scope.dataTipoUsuario = {
     	opciones: [],
     	seleccionada: {}
     	};
-    	//debugger;
     	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
     	$scope.dataTipoUsuario.seleccionada = {'name': $scope.usuario_seleccionado.tipo_usuario};
-    	//debugger;
-		//$scope.dataTipoUsuario = {
-    	//opciones: [
-	  	//	{ 'id': '2', 'nombre': 'Admin' },
-	  	//	{ 'id': '3', 'nombre': 'Auditor' },
-	  	
-	  	//	{ 'id': '4', 'nombre': 'Técnico' },
-	  	//	{ 'id': '5', 'nombre': 'Operador' }
-    	//],
-    	//seleccionada: { 'id': tipo }
-    
     }
 
 	$scope.modoEditar = function(){
@@ -77,7 +61,7 @@ angular.module('rac')
 	 			"rol_exec":$scope.rolUsuario,
 	 			"nombre":$scope.usuario_seleccionado.nombre,
 	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.id,
+	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.value,
 	 			"contrasenia":$scope.usuario_seleccionado.contrasenia,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
@@ -89,12 +73,20 @@ angular.module('rac')
 	    		//NO OLVIDAR .error			
 		}else
 		{
+			var retorno = "";
+			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
+ 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.usuario_seleccionado.tipo_usuario)
+ 				{
+					retorno = $scope.dataTipoUsuario.opciones[i].value;			
+ 				}
+			}
+
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
 	 			"nombre":$scope.usuario_seleccionado.nombre,
 	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.id,
+	 			"tipo_usuario": retorno,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
 				}
