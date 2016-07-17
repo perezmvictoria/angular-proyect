@@ -75,22 +75,36 @@
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.tipo.$touched && !mediosEForm.tipo.$valid"></span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$valid"></span>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.tipo.$touche
+                        && mediosEForm.tipo.$valid"></span>
                     </div>
-
+                </form>
+                <form role="form" name="ClaveEForm" novalidate>
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" ng-model="medio_seleccionado.clave" ng-hide="dataTipoMedio.seleccionada.tipo == 'mail';"
                         ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS"required>
-                        <span class="help-block" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$error.required">Ingrese la Clave.</span>
+                        <span class="help-block" ng-show="ClaveEForm.clave.$touched && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.clave.$touched && !mediosEForm.clave.$valid"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ClaveEForm.clave.$touched && !ClaveEForm.clave.$valid && dataTipoMedio.seleccionada.tipo == 'sms';"></span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.clave.$touched && mediosEForm.clave.$valid"></span>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="ClaveEForm.clave.$touched
+                        && ClaveEForm.clave.$valid && dataTipoMedio.seleccionada.tipo == 'sms';"></span>
                     </div>
-
+                </form>
+                        
                     <div class="form-group">
-                        <button class="btn btn-md btn-success" ng-disabled="!mediosEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
+                        <button class="btn btn-md btn-success" 
+                        ng-disabled="!mediosEForm.$valid" 
+                        ng-show="dataTipoMedio.seleccionada.tipo == 'mail';" 
+                        data-toggle="modal" data-target="#crear">Guardar</button>
+                        
+                        <button class="btn btn-md btn-success" 
+                        ng-disabled="!mediosEForm.$valid || !ClaveEForm.clave.$valid" 
+                        ng-show="dataTipoMedio.seleccionada.tipo == 'sms';" 
+                        data-toggle="modal" data-target="#crear">Guardar</button>
+
+
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
 

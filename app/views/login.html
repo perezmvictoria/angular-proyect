@@ -12,10 +12,14 @@
 						<span ng-show="loginForm.usuario.$touched && loginForm.usuario.$error.required">Ingrese el usuario.</span>
 					</div>
 					<div class="form-group" >
-						<input type="{{verpasswd_tipo();}}" placeholder="contrasenia"
+						<input type="{{verpasswd_tipo();}}" placeholder="contraseña"
 						       class="form-control input-underline-dark  input-lg" 
-						       ng-model="contrasenia"
-							   ng-keypress="$event.keyCode == 13 && mLogin();" required>			
+						       ng-model="contrasenia" name="contrasenia"
+							   ng-keypress="$event.keyCode == 13 && mLogin();" required>
+
+        				<span ng-show="loginForm.contrasenia.$touched && loginForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
+					</div>	
+        			<div class="form-group" >			
 						<input type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
 						       titulo="ver contraseña" />
 					   <label for="verpasswd" >					        
@@ -23,11 +27,13 @@
         					<i class='glyphicon glyphicon-eye-open'  ></i>
         					<span class='label-content'>Ver contraseña</span>
         				</label>
-        				<span ng-show="loginForm.contrasenia.$touched && !loginForm.contrasenia.$valid">Ingrese la Contraseña.</span>
 					</div>						
-					<div class="alert-danger">{{msjerror}}</div>									
+					<div class="alert-danger">{{msjerror}}</div>
+
+					<div class="form-group" >										
 					<a class="btn btn-secondary btn-rounded btn-lg rac-grey-btn" 
-					   ng-click="mLogin();">Login</a>
+					   ng-click="mLogin();" ng-disabled="!loginForm.$valid">Iniciar</a>
+					</div>	
 				</div>				
 			</form>
 		</div>	
