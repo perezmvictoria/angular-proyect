@@ -9,15 +9,17 @@ angular.module('rac')
 
     if (!usuarioService.isModoEditar()) {
     	//crear usuario
+    	//$scope.dataTipoUsuario = {
+    	//opciones: ,
+    	//seleccionada: { 'id': '4', 'nombre': 'Técnico' }
+    	//};
+    	//$scope.dataTipoUsuario.opciones = perfil.getRolesUsuario();
+		//debugger;
     	$scope.dataTipoUsuario = {
-    	opciones: [
-	  		{ 'id': '2', 'nombre': 'Admin' },
-	  		{ 'id': '3', 'nombre': 'Auditor' },
-	  		{ 'id': '4', 'nombre': 'Técnico' },
-	  		{ 'id': '5', 'nombre': 'Operador' }
-    	],
-    	seleccionada: { 'id': '4', 'nombre': 'Técnico' }
+    	opciones: [],
+    	seleccionada: {}
     	};
+    	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
     	}
     else
     {
@@ -37,15 +39,25 @@ angular.module('rac')
 				tipo = "5";
 				break;
 		}
+
 		$scope.dataTipoUsuario = {
-    	opciones: [
-	  		{ 'id': '2', 'nombre': 'Admin' },
-	  		{ 'id': '3', 'nombre': 'Auditor' },
-	  		{ 'id': '4', 'nombre': 'Técnico' },
-	  		{ 'id': '5', 'nombre': 'Operador' }
-    	],
-    	seleccionada: { 'id': tipo }
-    };
+    	opciones: [],
+    	seleccionada: {}
+    	};
+    	//debugger;
+    	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
+    	$scope.dataTipoUsuario.seleccionada = {'name': $scope.usuario_seleccionado.tipo_usuario};
+    	//debugger;
+		//$scope.dataTipoUsuario = {
+    	//opciones: [
+	  	//	{ 'id': '2', 'nombre': 'Admin' },
+	  	//	{ 'id': '3', 'nombre': 'Auditor' },
+	  	
+	  	//	{ 'id': '4', 'nombre': 'Técnico' },
+	  	//	{ 'id': '5', 'nombre': 'Operador' }
+    	//],
+    	//seleccionada: { 'id': tipo }
+    
     }
 
 	$scope.modoEditar = function(){

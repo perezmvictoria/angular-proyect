@@ -35,7 +35,10 @@ angular.module('rac')
             },
             setRolesUsuario: function(roles){
                 perfil.rolesUsuario = roles;
-                //debugger;
+               // debugger;
+            },
+            getRolesUsuario: function(){
+                return perfil.rolesUsuario;
             },
             getRuta: function(){
                 return perfil.ruta;

@@ -6,11 +6,8 @@ angular.module('rac')
   $scope.usuario_seleccionado = usuarioService.getUsuario();
   $scope.nombreUsuario = perfilService.getUsuario().nombre;
   $scope.rolUsuario    = perfilService.getUsuario().rol;
-  //console.log($scope.nombreUsuario);
-  //console.log($scope.rolUsuario);
+
 	$scope.listarUsuarios = function () {
-      //console.log($scope.nombreUsuario);
-      //console.log($scope.rolUsuario);
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
@@ -36,7 +33,6 @@ angular.module('rac')
   		return "/dashboard/usuarios-editar";
     }
     $scope.editarUsuario = function (usuario) {
-  		//usuario.tipo="{'id':'2','nombre':'Admin'}";
       usuario.contrasenia = '123456';
       usuario.contrasenia2 = '123456';
       usuarioService.setUsuario(usuario);
