@@ -41,8 +41,11 @@ angular.module('rac')
   		$location.path('/dashboard/usuarios-editar');
   		return "/dashboard/usuarios-editar";
     }  
-    $scope.eliminarUsuario = function (usuario) {
-      usuarioService.setUsuario(usuario);
+    $scope.setearUsuarioAEliminar = function (usuario){
+      usuarioService.setUsuario(usuario);      
+    }
+    $scope.eliminarUsuario = function () {      
+      var usuario = usuarioService.getUsuario();
       console.log(usuario.usuario);
       var dataPost = {
         "usuario":usuario.usuario,
@@ -52,13 +55,13 @@ angular.module('rac')
       $http.post(perfilService.getRuta()+'/usuarios/eliminar_usuario', 
             dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-        $scope.datos = data.info;        
-        return false;
+        $scope.datos = data.info;                
         })
       .error(function (data, status, header, config) {          
           $scope.msjerror = "Error de conexion al servidor";          
-          return false;
+          
       })
+      debugger;
   		$scope.listarUsuarios();
       return false;
     }

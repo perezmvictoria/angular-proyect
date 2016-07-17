@@ -55,17 +55,19 @@ angular.module('rac')
 	}
 	
 	$scope.generarUsuario = function () {
-		if(!usuarioService.isModoEditar()){
-			var data = {
+
+		var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
 	 			"nombre":$scope.usuario_seleccionado.nombre,
 	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.value,
-	 			"contrasenia":$scope.usuario_seleccionado.contrasenia,
+	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.value,	 			
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
 				}
+		if(!usuarioService.isModoEditar()){
+			data.contrasenia = $scope.usuario_seleccionado.contrasenia;
+			
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
@@ -81,15 +83,6 @@ angular.module('rac')
  				}
 			}
 
-			var data = {
-	 			"usuario_exec":$scope.nombreUsuario,
-	 			"rol_exec":$scope.rolUsuario,
-	 			"nombre":$scope.usuario_seleccionado.nombre,
-	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": retorno,
-	 			"mail":$scope.usuario_seleccionado.mail,
-	 			"telefono":$scope.usuario_seleccionado.telefono
-				}
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
