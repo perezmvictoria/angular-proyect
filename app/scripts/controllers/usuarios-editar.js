@@ -19,7 +19,7 @@ angular.module('rac')
 		//editar usuario
 
 		// este pedazo de codigo debería estar al pedo ... fernando eliminarlo en breve !!!!
-		var tipo = ""
+		/*var tipo = ""
 		switch ($scope.usuario_seleccionado.tipo_usuario){
 			case "admin":
 				tipo = "2";
@@ -33,7 +33,7 @@ angular.module('rac')
 			case "operador":
 				tipo = "5";
 				break;
-		}
+		}*/
 		// -- fin de pedazo de codigo al pedo !!!
 
 		$scope.dataTipoUsuario = {
@@ -75,7 +75,7 @@ angular.module('rac')
 		{
 			var retorno = "";
 			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
- 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.usuario_seleccionado.tipo_usuario)
+ 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)
  				{
 					retorno = $scope.dataTipoUsuario.opciones[i].value;			
  				}
