@@ -27,6 +27,7 @@ angular.module('rac')
   		$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
           function (data, status, headers, config) 
           {
+            
             //console.log("dentro del iniciar sesion");
             perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
             var dataPost = {
@@ -36,7 +37,7 @@ angular.module('rac')
             $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , perfilService.getConfig()).success(
               function (data,status,headers,config)
               {
-                //console.log("dentro del listar roles");
+                //console.log("dentro del listar roles");                
                 perfilService.setRolesUsuario(data.info);
                 $location.path('/dashboard');
                 return false;
