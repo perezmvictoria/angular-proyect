@@ -42,7 +42,12 @@ angular
             templateUrl: 'views/dashboard/usuarios-editar.html',
             controller: 'UsuariosEditarCtrl'
           })      
-
+          .state('perfil-editar', {
+            url: '/perfil-editar',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/perfil-editar.html',
+            controller: 'PerfilEditarCtrl'
+          })  
           .state('reglas-listar', {
             url: '/reglas-listar',
             parent: 'dashboard',
