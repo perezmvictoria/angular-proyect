@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('rac')
-  .controller('UsuariosEditarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
-  	perfilService.validarSesion($location);
+  .controller('PerfilEditarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
