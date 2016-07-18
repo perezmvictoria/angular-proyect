@@ -2,8 +2,8 @@
 
 
 angular.module('rac')
-  .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state,$http) {
-
+  .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state,$http,$location) {
+      perfilService.validarSesion($location);
       $scope.msjerror = "";
 
       $scope.filtro = { fechaIni :'',

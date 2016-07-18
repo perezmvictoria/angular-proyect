@@ -2,6 +2,7 @@
 
 angular.module('rac')
   .controller('MediosEditarCtrl', function(perfilService,mediosService,$scope, $location, $http) {
+    perfilService.validarSesion($location);
     $scope.medio_seleccionado =  mediosService.getMedio();
     //debugger;
     $scope.msjerror = ""; 

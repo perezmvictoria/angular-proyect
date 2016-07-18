@@ -50,6 +50,15 @@ angular.module('rac')
             },
             getToken: function(){
                 return perfil.token;
+            },
+            validarSesion: function($location){
+                debugger;
+                if (perfil.usuario != undefined && perfil.usuario != null && 
+                    perfil.usuario.usuario != undefined && perfil.usuario.password != null){
+                    return false;
+                }
+                $location.path('/login');
+                return "/login";
             }
         };
    })

@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('rac')
-  .controller('NotificacionesListarCtrl', function(perfilService,$scope, $state, $http) {
+  .controller('NotificacionesListarCtrl', function(perfilService,$scope, $state, $http,$location) {
 
+      perfilService.validarSesion($location);
       $scope.$state = $state;
       $scope.filtro = { fechaIni :'', fechaFin :''};
       $scope.nombreUsuario = perfilService.getUsuario().nombre;

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('rac')
-  .controller('ReportesListarCtrl', function(perfilService,$scope, $state) {
+  .controller('ReportesListarCtrl', function(perfilService,$scope, $state,$location) {
+          perfilService.validarSesion($location);
           $scope.msjerror = "";
 
           $scope.filtro = { fechaIni :'',
