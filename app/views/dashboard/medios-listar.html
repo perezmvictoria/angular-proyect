@@ -27,7 +27,7 @@
                     <td>                     
                         <a class="btn btn-success btn-xs" ng-click="editarMedio(medio);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
 
-                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirmar" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirmar" title="Eliminar" ng-click="setearMedioAEliminar(medio);"><i class="glyphicon glyphicon-remove"></i></a>
 
                     </td>
                 </tr>
@@ -44,7 +44,7 @@
                                     <p>¿Desea eliminar el medio seleccionado?</p>
                                 </div>  
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarMedio(medio);" >Aceptar</button>
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarMedio();" >Aceptar</button>
                                     <button type="button" class="btn btn-md" ui-sref="medios-listar" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div><!-- /.modal-content -->

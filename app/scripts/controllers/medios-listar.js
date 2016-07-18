@@ -39,6 +39,9 @@ angular.module('rac')
 	  return "/dashboard/medios-editar";
   }
   
+  $scope.setearMedioAEliminar = function (medio){
+      mediosService.setMedio(medio);      
+   }
   $scope.eliminarMedio = function (medio) {
   	mediosService.setMedio(medio);	
     //$scope.medio_seleccionado = medio;      
