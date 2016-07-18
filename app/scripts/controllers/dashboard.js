@@ -8,7 +8,7 @@ angular.module('rac')
 
     $scope.editarPerfil = function () {
 		usuarioService.setUsuario(perfilService.getUsuario());				
-		usuarioService.setModoEditar(true);		
+		//usuarioService.setModoEditar(true);		
 		$location.path('/dashboard/perfil-editar');
 		return "/dashboard/perfil-editar";
     }

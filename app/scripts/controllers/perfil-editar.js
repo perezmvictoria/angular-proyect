@@ -7,71 +7,25 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
 
-    if (!usuarioService.isModoEditar()) {
-    	$scope.dataTipoUsuario = {
-    	opciones: [],
-    	seleccionada: {'name': 'tecnico'}
-    	};
-    	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
-    	}
-    else
-    {
-		//editar usuario
-
-		$scope.dataTipoUsuario = {
-    	opciones: [],
-    	seleccionada: {}
-    	};
-    	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
-    	$scope.dataTipoUsuario.seleccionada = {'name': $scope.usuario_seleccionado.tipo_usuario};
-    }
-
-	$scope.modoEditar = function(){
-		return usuarioService.isModoEditar();
-	}
-
 	$scope.cancelar = function(){
-		usuarioService.setUsuario(undefined);
-		$location.path('/dashboard/usuarios-listar');
-		return "'/dashboard/usuarios-listar'";
-	}
-	
-	$scope.generarUsuario = function () {
-
+		$location.path('/dashboard');
+		return "'/dashboard'";
+	}	
+	$scope.guardarPerfil = function () {
 		var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
 	 			"nombre":$scope.usuario_seleccionado.nombre,
-	 			"usuario":$scope.usuario_seleccionado.usuario,
-	 			"tipo_usuario": $scope.dataTipoUsuario.seleccionada.value,	 			
+	 			"usuario":$scope.nombreUsuario,
 	 			"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
-				}
-		if(!usuarioService.isModoEditar()){
-			data.contrasenia = $scope.usuario_seleccionado.contrasenia;
-			
-			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
+				}			
+			$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
 	    		});
-	    		//NO OLVIDAR .error			
-		}else
-		{
-			var retorno = "";
-			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
- 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)
- 				{
-					retorno = $scope.dataTipoUsuario.opciones[i].value;			
- 				}
-			}
-
-			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
-				.success(function (data, status, headers, config) {
-
-	    		});
-	    		//falta el .error
-		}		
-		$location.path('/dashboard/usuarios-listar');
-		return "'/dashboard/usuarios-listar'";
+	    		//NO OLVIDAR .error	
+		$location.path('/dashboard');
+		return "'/dashboard'";
 	}
 });
