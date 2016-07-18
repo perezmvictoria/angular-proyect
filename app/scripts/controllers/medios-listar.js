@@ -2,6 +2,7 @@
 
 angular.module('rac')
   .controller('MediosListarCtrl', function(perfilService,mediosService,$scope, $state, $location,$http) {
+  perfilService.validarSesion($location);
   $scope.msjerror = "";
   $scope.medio_seleccionado = mediosService.getMedio();
   $scope.nombreUsuario = perfilService.getUsuario().nombre;

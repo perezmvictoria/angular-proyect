@@ -3,6 +3,7 @@
 
 angular.module('rac')
   .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state, $location,$http) {
+    perfilService.validarSesion($location);
  	
     $scope.msjerror = "";
     $scope.nombreUsuario = perfilService.getUsuario().nombre;

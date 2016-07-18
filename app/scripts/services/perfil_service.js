@@ -6,7 +6,7 @@ angular.module('rac')
         perfil.rolesUsuario = ""
         perfil.usuario = {}
         perfil.usuario.password = "";
-        perfil.token            = "";
+
 
         perfil.config = {
                             headers : {
@@ -33,10 +33,10 @@ angular.module('rac')
                 perfil.usuario.rol    = rol;
                 perfil.token          = token;
             },
-            setRolesUsuario: function(roles){
+            setRolesUsuario: function(roles){                
                 perfil.rolesUsuario = roles;
             },
-            getRolesUsuario: function(){
+            getRolesUsuario: function(){                
                 return perfil.rolesUsuario;
             },
             getRuta: function(){
@@ -47,9 +47,14 @@ angular.module('rac')
             },
             getData: function(){
                 return perfil.data;
-            },
-            getToken: function(){
-                return perfil.token;
+            },            
+            validarSesion: function($location){                
+                if ((perfil.usuario == null || perfil.usuario.nombre == undefined )){
+                    $location.path('/login');
+                    return "/login";                    
+                }
+                return false;
+                
             }
         };
    })

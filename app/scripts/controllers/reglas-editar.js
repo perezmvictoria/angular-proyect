@@ -2,6 +2,7 @@
 
 angular.module('rac')
   .controller('ReglasEditarCtrl', function(perfilService,reglasService,$scope, $state, $location, $http) {
+    perfilService.validarSesion($location);
 
     $scope.regla_seleccionado =  reglasService.getRegla();
     $scope.msjerror = ""; 

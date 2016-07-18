@@ -2,6 +2,7 @@
 
 angular.module('rac')
   .controller('UsuariosEditarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  	perfilService.validarSesion($location);
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
@@ -57,6 +58,7 @@ angular.module('rac')
 	    		//NO OLVIDAR .error			
 		}else
 		{
+			debugger;
 			var retorno = "";
 			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
  				if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)

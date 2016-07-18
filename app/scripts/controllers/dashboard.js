@@ -2,7 +2,7 @@
 
 angular.module('rac')
   .controller('DashboardCtrl', function(perfilService,usuarioService,$scope, $location,$state) {
-
+	perfilService.validarSesion($location);
 	$scope.$state = $state;
 	$scope.usuario =  perfilService.getUsuario();
 
