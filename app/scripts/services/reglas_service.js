@@ -2,9 +2,13 @@
 
 angular.module('rac')
       .service('reglasService',function(){
+        //$scope.nombreUsuario = perfilService.getUsuario().nombre;
+        //$scope.rolUsuario    = perfilService.getUsuario().rol;
         var datos= {};     
         datos.regla = "";
         datos.modoEditar  = false;
+        var listaDeMedios = undefined;
+
         return{
             getRegla: function(){
                 return datos.regla;
@@ -17,6 +21,12 @@ angular.module('rac')
             },
             setModoEditar: function(value){
                 datos.modoEditar = value;
+            },
+            setListaDeMedios: function(lista){
+                listaDeMedios = lista;
+            },
+            getListaDeMedios: function(){
+                return listaDeMedios;
             }
         };
    })

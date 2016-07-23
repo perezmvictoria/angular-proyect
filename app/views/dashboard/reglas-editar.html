@@ -27,7 +27,7 @@
                     </div>
 
                      <div class="form-group has-feedback" novalidate>
-                            <textarea class="form-control vresize" name="condicion" placeholder="Condición" ng-model="condicion" ng-model="regla_seleccionada.condicion"
+                            <textarea class="form-control vresize" name="condicion" placeholder="Condición"  ng-model="regla_seleccionada.condicion"
                             rows="10"required></textarea>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block"  ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$error.required">Ingrese la condición.</span> 
@@ -63,7 +63,9 @@
 
                     <div class="form-group has-feedback" novalidate>
                         
-                        <textarea class="form-control vresize" name="descripcion" placeholder="Descripción" ng-model="descripcion" rows="10"required></textarea>
+                        <textarea ng-model="regla_seleccionada.descripcion" 
+                        class="form-control vresize" name="descripcion" placeholder="Descripción"  
+                        rows="10" required></textarea>
                         <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$error.required">Ingrese la descripción.</span>
                         <!-- Validacion Error -->
