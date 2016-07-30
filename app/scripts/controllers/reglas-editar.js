@@ -11,9 +11,9 @@ angular.module('rac')
 
     //Lo prolijo es obtener estos datos de un webservice, para desacoplarlo
     $scope.lstAccion = [
-       { 'id': '1', 'nombre': 'Esperar' },
-       { 'id': '2', 'nombre': 'Descartar' },
-       { 'id': '3', 'nombre': 'Consolidar' }
+       { 'id': '1', 'nombre': 'esperar' },
+       { 'id': '2', 'nombre': 'descartar' },
+       { 'id': '3', 'nombre': 'consolidar' }
     ];
     $scope.dataListaAcciones = {
       opciones: [],
