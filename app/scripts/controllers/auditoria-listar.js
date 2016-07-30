@@ -1,10 +1,11 @@
 'use strict';
 
-
 angular.module('rac')
   .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state,$http,$location) {
-      perfilService.validarSesion($location);
-      $scope.msjerror = "";
+    $scope.nombreUsuario = perfilService.getUsuario().nombre;
+    $scope.rolUsuario    = perfilService.getUsuario().rol;
+    perfilService.validarSesion($location);
+    $scope.msjerror = "";
 
       $scope.filtro = { fechaIni :'',
                         fechaFin :'',
@@ -24,14 +25,18 @@ angular.module('rac')
       ];
       
     $scope.listarAuditoria = function () {
-    	$http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
-    				perfilService.getData(),perfilService.getConfig())
-    		.success(function (data, status, headers, config) {    			
+    var dataPost = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario
+    } 
+    $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
+    	dataPost,perfilService.getConfig())
+    .success(function (data, status, headers, config) {    			
 				$scope.datos = data.info;        
 				return false;
        	})
     	.error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+          $scope.msjerror = "No se pudo cargar la lista de auditorias";          
           return false;
       })
     }

@@ -35,14 +35,14 @@ angular.module('rac')
 		$location.path('/dashboard/reglas-editar');
 		return "/dashboard/reglas-editar";
     }
-    $scope.editarRegla = function (usuario) {
+    $scope.editarRegla = function (regla) {
 		reglasService.setRegla(regla);				
 		reglasService.setModoEditar(true);		
 		$location.path('/dashboard/reglas-editar');
 		return "/dashboard/reglas-editar";
     }
   
-    $scope.eliminarRegla = function (usuario) {
+    $scope.eliminarRegla = function (regla) {
 		reglasService.setRegla(undefined);	
 		//funcion para eliminar regla
 		$scope.listarReglas();

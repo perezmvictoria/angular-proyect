@@ -49,7 +49,6 @@ angular.module('rac')
       }
       $scope.eliminarUsuario = function () {      
         var usuario = usuarioService.getUsuario();
-        console.log(usuario.usuario);
         var dataPost = {
           "usuario":usuario.usuario,
           "usuario_exec":$scope.nombreUsuario,
@@ -64,7 +63,6 @@ angular.module('rac')
             $scope.msjerror = "Error de conexion al servidor";          
             
         })
-
     		$scope.listarUsuarios();
         return "false";
       }
