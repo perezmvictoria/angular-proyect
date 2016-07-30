@@ -8,8 +8,8 @@
         <table datatable="ng" class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
-                <th>Fecha</th>
-                <th>Estado</th>
+                <th>Orden</th>
+                <th>Nombre</th>
                 <th>Técnico</th>
                 <th>Descripción</th>
                 <th></th>
@@ -17,8 +17,8 @@
             </thead>
             <tbody>
              <tr ng-repeat="regla in datos" >
-                <td>{{regla.fecha}}</td>
-                <td>{{regla.estado}}}</td>               
+                <td>{{regla.orden}}</td>
+                <td>{{regla.nombre}}</td>               
                 <td>{{regla.tecnico}}</td>
                 <td>{{regla.descripcion}}</td>
                 <td>                     

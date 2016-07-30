@@ -12,23 +12,22 @@ angular.module('rac')
     //Lo prolijo es obtener estos datos de un webservice, para desacoplarlo
     $scope.lstAccion = [
        { 'id': '1', 'nombre': 'Esperar' },
-       { 'id': '2', 'nombre': 'Consolidar' },
-       { 'id': '3', 'nombre': 'Descartar' }
+       { 'id': '2', 'nombre': 'Descartar' },
+       { 'id': '3', 'nombre': 'Consolidar' }
     ];
-    $scope.lstMedio = [
-       { 'id': '1', 'nombre': 'Medio 1' },
-       { 'id': '2', 'nombre': 'Medio 2' },
-       { 'id': '3', 'nombre': 'Medio 3' }
-    ];
-    //debugger;
-    //var largoLista = reglasService.getListaDeMedios();
-
+    $scope.dataListaAcciones = {
+      opciones: [],
+      seleccionado: {}
+    }
+    $scope.dataListaAcciones.opciones = $scope.lstAccion;
+    
+     //debugger;
     if (reglasService.getListaDeMedios() == undefined){
 
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
-        } 
+        }
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             //listaDeMedios = data.info;
@@ -38,8 +37,12 @@ angular.module('rac')
             // "/medios/listar_medios"
     }
 
-    $scope.lstMedio = reglasService.getListaDeMedios();
+    $scope.dataListaMedios = {
+    opciones: [],
+    seleccionado: {}
+    };
     
+    $scope.dataListaMedios.opciones = reglasService.getListaDeMedios();
 
     $scope.modoEditar = function(){
       return reglasService.isModoEditar();
@@ -54,7 +57,20 @@ angular.module('rac')
   $scope.generarRegla = function () {
     if(!reglasService.isModoEditar()){
         //reglasService.setRegla(undefined);   
+
+        var listaDeMediosParaEnviar =  [];
+        angular.forEach($scope.dataListaMedios.seleccionado, function(value,key)
+          {
+            listaDeMediosParaEnviar.push(value.nombre);
+
+            //console.log(listaDeMediosParaEnviar);
+          }
+          );
   
+        var listaDeAccionesParaEnviar = [];
+        //listaDeAccionesParaEnviar.push(1);
+        //console.log(listaDeAccionesParaEnviar);
+        listaDeAccionesParaEnviar = [{"accion": "2", "tiempo": $scope.regla_seleccionada.segundos}];
       //Hay que usar $scope.regla_seleccionado
       //debugger;
       var data = {
@@ -64,8 +80,8 @@ angular.module('rac')
         "condicion" : $scope.regla_seleccionada.condicion,
         //"descripcion":
         "orden" : "1",
-        "medios" : "medio1",
-        "acciones" : "descartar"
+        "medios" : listaDeMediosParaEnviar,
+        "acciones" : listaDeAccionesParaEnviar
       }
       $http.post(perfilService.getRuta()+'/reglas/crear_regla', data, perfilService.getConfig())
         .success(function (data, status, headers, config) {

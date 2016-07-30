@@ -36,10 +36,9 @@
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.condicion.$touched && reglasEForm.condicion.$valid"></span>
                     </div>
-
                     <div class="form-group has-feedback" novalidate>
-                            <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" name="accion" data-live-search="true" ng-model="regla_seleccionada.accion" name="accion"required>
-                            <option ng-repeat="accion in lstAccion" value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+                            <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" name="accion" data-live-search="true" ng-model="$scope.dataListaAcciones.seleccionado" name="accion"
+                            ng-options="accion.nombre for accion in dataListaAcciones.opciones track by accion.nombre" required>
                             </select>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block"  ng-show="reglasEForm.accion.$touched && reglasEForm.accion.$error.required">Seleccione la acción.</span> 
@@ -48,9 +47,9 @@
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.accion.$touched && reglasEForm.accion.$valid"></span>
                     </div>
-
                     <div class="form-group has-feedback" novalidate>
-                        <input type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" ng-model="regla_seleccionada.segundos"required>
+                        <input type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" ng-model="regla_seleccionada.segundos" 
+                         required>
                         <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEForm.segundos.$touched && reglasEForm.segundos.$error.required">Ingrese los segundos.</span>
                           <!-- Validacion Campo Requerido -->
@@ -60,9 +59,7 @@
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.segundos.$touched && reglasEForm.segundos.$valid"></span>
                     </div>
-
-                    <div class="form-group has-feedback" novalidate>
-                        
+                    <div class="form-group has-feedback" novalidate>                        
                         <textarea ng-model="regla_seleccionada.descripcion" 
                         class="form-control vresize" name="descripcion" placeholder="Descripción"  
                         rows="10" required></textarea>
@@ -73,10 +70,10 @@
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.descripcion.$touched && reglasEForm.descripcion.$valid"></span>    
                     </div>
-
                     <div class="form-group has-feedback" novalidate>
-                        <select class="form-control input-sm" name="medio" data-style="btn-default" placeholder="Medio" data-live-search="true" ng-model="regla_seleccionada.medio">
-                        <option ng-repeat="medio in lstMedio" value="{{medio}}" data-subtext="{{medio.id}}"required>{{medio.nombre}}</option>
+                        <select multiple class="form-control input-sm" name="medio" data-style="btn-default" placeholder="Medio" data-live-search="true" ng-multiple="true" ng-model="dataListaMedios.seleccionado"
+                        ng-options="medio.nombre for medio in dataListaMedios.opciones track by medio.nombre"
+                        required >
                         </select>
                          <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required">Seleccione el medio.</span>
@@ -84,15 +81,12 @@
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && !reglasEForm.medio.$valid"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$valid"></span>        
-                    </div>  
-   
+                    </div>   
                     <div class="form-group">
                         <button class="btn btn-md btn-success" ng-disabled="!reglasEForm.$valid" data-toggle="modal" data-target="#crear">Crear</button>
 
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
-
-
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
