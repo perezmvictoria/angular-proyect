@@ -15,7 +15,7 @@ angular.module('rac')
       opciones: [{ 'id': 1, 'nombre': 'esperar' },
                 { 'id': 2, 'nombre': 'descartar' },
                 { 'id': 3, 'nombre': 'consolidar' }],
-      seleccionado: { 'nombre': 'esperar' }
+      seleccionado: { 'id': 2, 'nombre': 'descartar' }
     }
 
     $scope.dataListaMedios = {
@@ -63,7 +63,7 @@ angular.module('rac')
   
   $scope.generarRegla = function () {
     if(!reglasService.isModoEditar()){
-
+        debugger;
         var listaDeMediosParaEnviar =  [];
         angular.forEach($scope.dataListaMedios.seleccionado, function(value,key)
         {
@@ -79,7 +79,6 @@ angular.module('rac')
           $scope.regla_seleccionada.segundos = 0;
         }
         listaDeAccionesParaEnviar = [{"accion": $scope.dataListaAcciones.seleccionado.id, "tiempo": $scope.regla_seleccionada.segundos}];
-      //Hay que usar $scope.regla_seleccionado
       var data = {
         "usuario_exec" : $scope.nombreUsuario,
         "rol_exec" : $scope.rolUsuario,
