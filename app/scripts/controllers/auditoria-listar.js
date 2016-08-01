@@ -32,7 +32,7 @@ angular.module('rac')
     $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
     	dataPost,perfilService.getConfig())
     .success(function (data, status, headers, config) {    			
-				$scope.datos = data.info;        
+				$scope.datos = data.info;      
 				return false;
        	})
     	.error(function (data, status, header, config) {          

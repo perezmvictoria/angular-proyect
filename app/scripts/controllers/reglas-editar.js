@@ -12,13 +12,13 @@ angular.module('rac')
     //Lo prolijo es obtener estos datos de un webservice, para desacoplarlo
 
     $scope.dataListaAcciones = {
-      opciones: [
-                { 'id': 1, 'nombre': 'esperar' },
+      opciones: [{ 'id': 1, 'nombre': 'esperar' },
                 { 'id': 2, 'nombre': 'descartar' },
                 { 'id': 3, 'nombre': 'consolidar' }],
       seleccionado: { 'id': 1, 'nombre': 'esperar' }
     }
     //$scope.dataListaAcciones.opciones = $scope.lstAccion;
+    // La consulta al web service solo se realiza si la lista de medios de reglasService está vacio
     if (reglasService.getListaDeMedios() == undefined){
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
@@ -36,6 +36,20 @@ angular.module('rac')
     };
     
     $scope.dataListaMedios.opciones = reglasService.getListaDeMedios();
+
+    if (reglasService.isModoEditar()){
+        $scope.regla_seleccionada.segundos = $scope.regla_seleccionada.acciones[0].tiempo;
+
+        // tengo que armar un array para esto !!
+        var arrayParaSeleccionMedios = [];
+        angular.forEach($scope.regla_seleccionada.medios, function(value,key){
+          console.log(reglasService.getMedio(value))
+          arrayParaSeleccionMedios.push(reglasService.getMedio(value));
+        }
+        )
+        $scope.dataListaMedios.seleccionado = arrayParaSeleccionMedios;
+
+    }
 
     $scope.modoEditar = function(){
       return reglasService.isModoEditar();
@@ -56,7 +70,8 @@ angular.module('rac')
             listaDeMediosParaEnviar.push(value.nombre);
         }
         );
-  
+        //debugger;
+        //console.log($scope.dataListaMedios.seleccionado);
         var listaDeAccionesParaEnviar = [];
         //debugger;
         if ($scope.regla_seleccionada.segundos == undefined)

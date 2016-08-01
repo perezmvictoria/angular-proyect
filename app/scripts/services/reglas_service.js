@@ -27,6 +27,18 @@ angular.module('rac')
             },
             getListaDeMedios: function(){
                 return listaDeMedios;
+            },
+            getMedio: function(medio){
+                var retorno = "";
+                if (listaDeMedios != undefined){
+                    angular.forEach(listaDeMedios, function(value,key)
+                    {
+                        if (value.nombre == medio){
+                            retorno = value;
+                        }
+                    })
+                }
+                return retorno;
             }
         };
    })
