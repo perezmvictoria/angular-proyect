@@ -40,7 +40,6 @@ angular.module('rac')
 
     if (reglasService.isModoEditar()){
         $scope.regla_seleccionada.segundos = $scope.regla_seleccionada.acciones[0].tiempo;
-
         // armo un array con los objetos completos para seleccionar medios
         var arrayParaSeleccionMedios = [];
         angular.forEach($scope.regla_seleccionada.medios, function(value,key){
@@ -48,18 +47,8 @@ angular.module('rac')
         }
         )
         $scope.dataListaMedios.seleccionado = arrayParaSeleccionMedios;
-        //debugger;
         // para seleccionar accion
-        //$scope.dataListaAcciones.seleccionado = { 'id': $scope.regla_seleccionada.acciones[0].accion_valor, 'nombre': $scope.regla_seleccionada.acciones[0].accion_nombre };
         $scope.dataListaAcciones.seleccionado = { 'nombre': $scope.regla_seleccionada.acciones[0].accion_nombre };
-        //$scope.dataListaAcciones.seleccionado = { 'id': 1, 'nombre': 'esperar' };
-        //$scope.regla_seleccionada.acciones[0].accion_nombre
-        //$scope.regla_seleccionada.acciones[0].accion_valor
-
-
-
-        //debugger;
-
     }
 
     $scope.modoEditar = function(){
