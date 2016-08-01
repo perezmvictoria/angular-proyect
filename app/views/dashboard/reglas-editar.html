@@ -74,19 +74,19 @@
                     <form role="form" name=reglasEFormS nonvalidate>
                     <div class="form-group has-feedback" novalidate>
                         <input type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" max="3600" ng-model="regla_seleccionada.segundos"
-                        ng-hide="$scope.dataListaAcciones.seleccionado.nombre == 'descartar';" 
+                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
                          required>
                         <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.required && 
-                        $scope.dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese los segundos.</span>   <!-- Validacion Minimo -->
+                        dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese los segundos.</span>   <!-- Validacion Minimo -->
                         <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.min  && 
-                        $scope.dataListaAcciones.seleccionado.nombre != 'descartar';">El mínimo de segundos es 0.</span>
+                        dataListaAcciones.seleccionado.nombre != 'descartar';">El mínimo de segundos es 0.</span>
                         <!-- Validacion Maximo -->
-                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.max  &&                    $scope.dataListaAcciones.seleccionado.nombre != 'descartar';">El máximo de segundos es 3600.</span>
+                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.max  &&                    dataListaAcciones.seleccionado.nombre != 'descartar';">El máximo de segundos es 3600.</span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormS.segundos.$touched && !reglasEFormS.segundos.$valid && $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormS.segundos.$touched && !reglasEFormS.segundos.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$valid && $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                     </div>
                 </form>
 
@@ -95,23 +95,23 @@
                         <textarea ng-model="regla_seleccionada.evento" 
                         class="form-control vresize" name="evento" placeholder="Evento que cancela la espera"  
                         rows="10"  
-                        ng-show="regla_seleccionada.segundos != '0' && $scope.dataListaAcciones.seleccionado.nombre == 'esperar';" 
+                        ng-show="regla_seleccionada.segundos != '0' && dataListaAcciones.seleccionado.nombre == 'esperar';" 
                         ng-hide="regla_seleccionada.segundos == '0' || 
-                        $scope.dataListaAcciones.seleccionado.nombre != 'esperar';" required></textarea>
+                        dataListaAcciones.seleccionado.nombre != 'esperar';" required></textarea>
                         
                         <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$error.required && regla_seleccionada.segundos != '0' &&
-                        $scope.dataListaAcciones.seleccionado.nombre == 'esperar';">Ingrese el evento.</span>                       
+                        dataListaAcciones.seleccionado.nombre == 'esperar';">Ingrese el evento.</span>                       
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" 
                         ng-show="reglasEFormEvento.evento.$touched && !reglasEFormEvento.evento.$valid &&regla_seleccionada.segundos != '0' && 
-                        $scope.dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
+                        dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
 
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
                         ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$valid &&
                         regla_seleccionada.segundos != '0' &&
-                        $scope.dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
+                        dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
       
                     </div>
                     </form>
@@ -119,13 +119,13 @@
                     <div class="form-group has-feedback" novalidate>                        
                         <textarea ng-model="regla_seleccionada.mensaje" 
                         class="form-control vresize" name="mensaje" placeholder="Escriba el Texto de la Notificación" 
-                        rows="3" ng-hide="$scope.dataListaAcciones.seleccionado.nombre == 'descartar';" required></textarea>
+                        rows="3" ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" required></textarea>
                         <!-- Validacion Campo Requerido -->
-                        <span class="help-block" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$error.required && $scope.dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese el texto de Notificacion.</span>                       
+                        <span class="help-block" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$error.required && dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese el texto de Notificacion.</span>                       
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.mensaje.$touched && !reglasEForm.mensaje.$valid && $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.mensaje.$touched && !reglasEForm.mensaje.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$valid && $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>    
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>    
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
@@ -134,36 +134,36 @@
                         data-style="btn-default" data-live-search="true" ng-multiple="true" 
                         ng-model="dataListaMedios.seleccionado" 
                         ng-options="medio.nombre for medio in dataListaMedios.opciones track by medio.nombre"
-                        ng-hide="$scope.dataListaAcciones.seleccionado.nombre == 'descartar';" 
+                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
                         required >
                         </select>
 
                          <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required && 
-                        !$scope.dataListaAcciones.seleccionado.nombre == 'descartar';">Seleccione el medio.</span>
+                        !dataListaAcciones.seleccionado.nombre == 'descartar';">Seleccione el medio.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && !reglasEForm.medio.$valid &&
-                        $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
+                        dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$valid &&
-                        $scope.dataListaAcciones.seleccionado.nombre != 'descartar';"></span>      
+                        dataListaAcciones.seleccionado.nombre != 'descartar';"></span>      
                     </div> 
                     </form>
 
                     <div class="form-group">
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid" 
-                        ng-show= "$scope.dataListaAcciones.seleccionado.nombre == 'descartar';"
+                        ng-show= "dataListaAcciones.seleccionado.nombre == 'descartar';"
                         data-toggle="modal" data-target="#crear">Crear</button>
 
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid" 
-                        ng-show= "$scope.dataListaAcciones.seleccionado.nombre == 'consolidar';"
+                        ng-show= "dataListaAcciones.seleccionado.nombre == 'consolidar';"
                         data-toggle="modal" data-target="#crear">Crear</button>
 
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid || !reglasEFormEvento.$valid" 
-                        ng-show= "$scope.dataListaAcciones.seleccionado.nombre == 'esperar';"
+                        ng-show= "dataListaAcciones.seleccionado.nombre == 'esperar';"
                         data-toggle="modal" data-target="#crear">Crear</button>
                        
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
