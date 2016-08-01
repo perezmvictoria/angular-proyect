@@ -15,8 +15,14 @@ angular.module('rac')
       opciones: [{ 'id': 1, 'nombre': 'esperar' },
                 { 'id': 2, 'nombre': 'descartar' },
                 { 'id': 3, 'nombre': 'consolidar' }],
-      seleccionado: { 'id': 1, 'nombre': 'esperar' }
+      seleccionado: { 'nombre': 'esperar' }
     }
+
+    $scope.dataListaMedios = {
+    opciones: [],
+    seleccionado: {}
+    };
+
     //$scope.dataListaAcciones.opciones = $scope.lstAccion;
     // La consulta al web service solo se realiza si la lista de medios de reglasService está vacio
     if (reglasService.getListaDeMedios() == undefined){
@@ -29,25 +35,30 @@ angular.module('rac')
             reglasService.setListaDeMedios(data.info);
         });
     }
-
-    $scope.dataListaMedios = {
-    opciones: [],
-    seleccionado: {}
-    };
     
     $scope.dataListaMedios.opciones = reglasService.getListaDeMedios();
 
     if (reglasService.isModoEditar()){
         $scope.regla_seleccionada.segundos = $scope.regla_seleccionada.acciones[0].tiempo;
 
-        // tengo que armar un array para esto !!
+        // armo un array con los objetos completos para seleccionar medios
         var arrayParaSeleccionMedios = [];
         angular.forEach($scope.regla_seleccionada.medios, function(value,key){
-          console.log(reglasService.getMedio(value))
           arrayParaSeleccionMedios.push(reglasService.getMedio(value));
         }
         )
         $scope.dataListaMedios.seleccionado = arrayParaSeleccionMedios;
+        //debugger;
+        // para seleccionar accion
+        //$scope.dataListaAcciones.seleccionado = { 'id': $scope.regla_seleccionada.acciones[0].accion_valor, 'nombre': $scope.regla_seleccionada.acciones[0].accion_nombre };
+        $scope.dataListaAcciones.seleccionado = { 'nombre': $scope.regla_seleccionada.acciones[0].accion_nombre };
+        //$scope.dataListaAcciones.seleccionado = { 'id': 1, 'nombre': 'esperar' };
+        //$scope.regla_seleccionada.acciones[0].accion_nombre
+        //$scope.regla_seleccionada.acciones[0].accion_valor
+
+
+
+        //debugger;
 
     }
 

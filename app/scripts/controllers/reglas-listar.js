@@ -41,10 +41,26 @@ angular.module('rac')
 		$location.path('/dashboard/reglas-editar');
 		return "/dashboard/reglas-editar";
     }
+
+    $scope.setearReglaAEliminar = function (regla) {
+      reglasService.setRegla(regla);
+   }
   
     $scope.eliminarRegla = function (regla) {
-		reglasService.setRegla(undefined);	
-		//funcion para eliminar regla
+      var reglaAEliminar = reglasService.getRegla();
+      var dataPost = {
+      "nombre":reglaAEliminar.nombre,
+      "usuario_exec":$scope.nombreUsuario,
+      "rol_exec":$scope.rolUsuario
+      }
+      $http.post(perfilService.getRuta()+'/reglas/eliminar_regla',
+      dataPost,perfilService.getConfig())
+      .success(function (data, status, headers, config) {
+        $scope.datos = data.info;
+        })
+      .error(function (data, status, header, config) {
+        $scope.msjerror = "Error de conexion al servidor";
+      })
 		$scope.listarReglas();
 		return false;
     }
