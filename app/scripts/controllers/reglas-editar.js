@@ -63,7 +63,7 @@ angular.module('rac')
   
   $scope.generarRegla = function () {
     if(!reglasService.isModoEditar()){
-        debugger;
+        //debugger;
         var listaDeMediosParaEnviar =  [];
         angular.forEach($scope.dataListaMedios.seleccionado, function(value,key)
         {
