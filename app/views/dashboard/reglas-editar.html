@@ -60,7 +60,7 @@
 
                     <div class="form-group has-feedback" novalidate>
                             <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" 
-                            name="accion" data-live-search="true" ng-model="dataListaAcciones.seleccionado" ng-options="accion.nombre for accion in dataListaAcciones.opciones track by accion.nombre" required>
+                            name="accion" ng-disabled="modoEditar();" data-live-search="true" ng-model="dataListaAcciones.seleccionado" ng-options="accion.nombre for accion in dataListaAcciones.opciones track by accion.nombre" required>
                             </select>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block"  ng-show="reglasEFormAll.accion.$touched && reglasEFormAll.accion.$error.required">Seleccione la acción.</span> 
