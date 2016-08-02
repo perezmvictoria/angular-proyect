@@ -47,11 +47,114 @@
 			  <td>{{notificacion.estado}}</td>
 			  <td>{{notificacion.tecnico}}</td>
 			  <td>{{notificacion.descripcion}}</td>
-			  <td> <a class="btn btn-success btn-circle btn-xs" title="Asignar"><i class="glyphicon glyphicon-link"></i></a>
-			  </td>
+			  
+			<td> 
+			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar">
+			<i class="glyphicon glyphicon-link"></i></a>
+			
+			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver">
+			<i class="glyphicon glyphicon-ok"></i></a>
+			
+            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar">
+            <i class="glyphicon glyphicon-log-out"></i></a>
+			</td>
+			
 		  </tr>
 		  </tbody>
 	  </table>
+
+	  	<div class="modal fade" id="resolver" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Resolver Notificación</h4>
+                                </div>
+                                <div class="modal-body">
+                                	
+                                	<form role="form" name=notificaForm novalidate>
+                                    
+									<div class="form-group has-feedback" novalidate>
+                        				<textarea class="form-control"  name="comentario" 
+                        				placeholder="Comentario" style = "resize:none" ng-model="notificacion_seleccionada.comentario"
+                            			rows="3" required></textarea>
+
+			                            <!-- Validacion Campo Requerido -->
+			                            <span class="help-block" ng-show="notificaForm.comentario.$touched && notificaForm.comentario.$error.required">Ingrese el comentario.</span>
+			                          
+			                        <!-- Validacion Error -->
+			                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="notificaForm.comentario.$touched && !notificaForm.comentario.$valid"></span>
+			                        <!-- Validacion Ok -->
+			                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="notificaForm.comentario.$touched && notificaForm.comentario.$valid"></span>
+                    				</div>
+                				    </form>	
+                               </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="resolverNotificacion();" ng-disabled="!notificaForm.comentario.$valid">Aceptar</button>
+
+                                    <button type="button" class="btn btn-md" ui-sref="notificaciones-listar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->      
+    	<div>
+
+	  	<div class="modal fade" id="cerrar" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Cerrar Notificación</h4>
+                                </div>
+                                <div class="modal-body">
+                                	
+                                	<form role="form" name=notificaFormC novalidate>
+                                									
+									<div class="form-group has-feedback" novalidate>
+                        				<textarea class="form-control"  name="comentarioCerrar" 
+                        				placeholder="Comentario" style = "resize:none" ng-model="notificacion_seleccionada.comentarioCerrar"
+                            			rows="3" required></textarea>
+
+			                            <!-- Validacion Campo Requerido -->
+			                            <span class="help-block" ng-show="notificaFormC.comentarioCerrar.$touched && notificaFormC.comentarioCerrar.$error.required">Ingrese el comentario.</span>
+			                          
+			                        <!-- Validacion Error -->
+			                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="notificaFormC.comentarioCerrar.$touched && !notificaFormC.comentarioCerrar.$valid"></span>
+			                        <!-- Validacion Ok -->
+			                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="notificaFormC.comentarioCerrar.$touched && notificaFormC.comentarioCerrar.$valid"></span>
+                    				</div>
+                				    </form>	
+                               </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cerrarNotificacion();" ng-disabled="!notificaFormC.comentarioCerrar.$valid">Aceptar</button>
+
+                                    <button type="button" class="btn btn-md" ui-sref="notificaciones-listar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->      
+    	<div>
+
+	<div class="modal fade" id="asignar" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Asignar Notificación</h4>
+                                </div>
+                                <div class="modal-body">
+                                	<p>¿Desea Asignarse la notificacion?</p>
+                               </div>  
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="asignarNotificacion();">Aceptar</button>
+
+                                    <button type="button" class="btn btn-md" ui-sref="notificaciones-listar" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->      
+    	<div>
+
 	</div>
 	</div>
 </div>
