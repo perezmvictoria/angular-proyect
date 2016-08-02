@@ -143,13 +143,13 @@
 
                         <span class="help-block"  ng-show="reglasEForm.medio.$touched &&  
                         dataListaMedios.seleccionado.length == undefined &&
-                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione AL MENOS UN medio.</span>
+                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione al menos un medio.</span>
 
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && !reglasEForm.medio.$valid &&
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && (!reglasEForm.medio.$valid || dataListaMedios.seleccionado.length == undefined ) &&
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$valid &&
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched &&  dataListaMedios.seleccionado.length != undefined  && reglasEForm.medio.$valid &&
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>      
                     </div> 
                     </form>
@@ -161,17 +161,17 @@
                         data-toggle="modal" data-target="#crear">Guardar</button>
 
                         <button class="btn btn-md btn-success" 
-                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid" 
+                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid ||  dataListaMedios.seleccionado.length == undefined"
                         ng-show= "dataListaAcciones.seleccionado.nombre == 'consolidar';"
                         data-toggle="modal" data-target="#crear">Guardar</button>
 
                         <button class="btn btn-md btn-success" 
-                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid || !reglasEFormEvento.$valid" 
+                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid || !reglasEFormEvento.$valid ||  dataListaMedios.seleccionado.length == undefined " 
                         ng-show= "dataListaAcciones.seleccionado.nombre == 'esperar' && regla_seleccionada.segundos != '0';"
                         data-toggle="modal" data-target="#crear">Guardar</button>
 
                          <button class="btn btn-md btn-success" 
-                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid" 
+                        ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid ||  dataListaMedios.seleccionado.length == undefined "  
                         ng-show= "dataListaAcciones.seleccionado.nombre == 'esperar' && regla_seleccionada.segundos == '0';"
                         data-toggle="modal" data-target="#crear">Crear</button>
                        
