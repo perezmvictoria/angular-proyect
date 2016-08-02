@@ -90,6 +90,7 @@
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.maxlength">La contraseña no puede contener mas de 20 caracteres.</span>
                                 <!-- Validacion Minimo-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
+
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="contraseniaEForm.contrasenia.$touched && !contraseniaEForm.contrasenia.$valid"></span>
                         <!-- Validacion Error -->
@@ -104,12 +105,24 @@
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched
                                 && contraseniaEForm.contrasenia2.$error.required">Repita la Contraseña.</span>
-                                <!-- Validacion Error -->
-                                <span class="glyphicon glyphicon-remove form-control-feedback" 
-                                ng-show="contraseniaEForm.contrasenia2.$touched && !contraseniaEForm.contrasenia2.$valid"></span>
+
+                                <!-- Validacion Contraseñas Coinciden-->
+                                <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
+                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">La contraseña no coinciden.</span>
+
+
+                        <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" 
+                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
+                        contraseniaEForm.contrasenia.$valid &&
+                        (!contraseniaEForm.contrasenia2.$valid || 
+                        !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))"></span>
+                        
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$valid"></span>
+                        ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$valid &&
+                        (usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)"></span>
+
                     </div>
                 </form>
 
