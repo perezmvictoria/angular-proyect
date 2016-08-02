@@ -134,13 +134,17 @@
                         data-style="btn-default" data-live-search="true" ng-multiple="true" 
                         ng-model="dataListaMedios.seleccionado" 
                         ng-options="medio.nombre for medio in dataListaMedios.opciones track by medio.nombre"
-                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
-                        required >
+                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" required>
                         </select>
 
                          <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required && 
-                        !dataListaAcciones.seleccionado.nombre == 'descartar';">Seleccione el medio.</span>
+                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione el medio.</span>
+
+                        <span class="help-block"  ng-show="reglasEForm.medio.$touched &&  
+                        dataListaMedios.seleccionado.length == '0' &&
+                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione AL MENOS UN medio.</span>
+
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && !reglasEForm.medio.$valid &&
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
