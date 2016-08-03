@@ -116,17 +116,6 @@
                     </div>
                     </form>
                     <form role="form" name=reglasEForm novalidate>
-                    <div class="form-group has-feedback" novalidate>                        
-                        <textarea ng-model="regla_seleccionada.mensaje" 
-                        class="form-control vresize" name="mensaje" placeholder="Escriba el Texto de la Notificación" 
-                        rows="3" ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" required></textarea>
-                        <!-- Validacion Campo Requerido -->
-                        <span class="help-block" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$error.required && dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese el texto de Notificacion.</span>                       
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.mensaje.$touched && !reglasEForm.mensaje.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
-                        <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.mensaje.$touched && reglasEForm.mensaje.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>    
-                    </div>
 
                     <div class="form-group has-feedback" novalidate>
                         
