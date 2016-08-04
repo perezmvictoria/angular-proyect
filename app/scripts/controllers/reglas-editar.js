@@ -52,6 +52,12 @@ angular.module('rac')
         $scope.dataListaMedios.seleccionado = arrayParaSeleccionMedios;
         // para seleccionar accion
         $scope.dataListaAcciones.seleccionado = { 'nombre': $scope.regla_seleccionada.acciones[0].accion_nombre };
+
+        var condicionDeRegla = $scope.regla_seleccionada.condicion;
+        var inicioTrigger = condicionDeRegla.indexOf("<trigger>");
+        $scope.regla_seleccionada.evento = condicionDeRegla.substr(inicioTrigger + 9, condicionDeRegla.length - inicioTrigger - 19);
+        $scope.regla_seleccionada.condicion = condicionDeRegla.substr(0+7,inicioTrigger - 15);
+
     }
 
     $scope.modoEditar = function(){
@@ -84,12 +90,20 @@ angular.module('rac')
             $scope.regla_seleccionada.segundos = 0;
         }
         listaDeAccionesParaEnviar = [{"accion": $scope.dataListaAcciones.seleccionado.id, "tiempo": $scope.regla_seleccionada.segundos}];
-      
+        
+        // esto es para evitar que guarde undefined en la base cuando es una regla de tipo
+        // descartar
+        if ($scope.regla_seleccionada.evento == undefined){
+            $scope.regla_seleccionada.evento = "";
+        }
+
+        var condicion = "<regla>" + $scope.regla_seleccionada.condicion + "</regla><trigger>" + $scope.regla_seleccionada.evento + "</trigger>";
+
         var data = {
             "usuario_exec" : $scope.nombreUsuario,
             "rol_exec" : $scope.rolUsuario,
             "nombre" : $scope.regla_seleccionada.nombre,
-            "condicion" : $scope.regla_seleccionada.condicion,
+            "condicion" : condicion,
             "orden" : $scope.regla_seleccionada.orden,
             "medios" : listaDeMediosParaEnviar,
             "acciones" : listaDeAccionesParaEnviar
