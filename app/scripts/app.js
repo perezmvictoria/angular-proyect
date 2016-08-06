@@ -41,13 +41,26 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/usuarios-editar.html',
             controller: 'UsuariosEditarCtrl'
-          })      
+          })
+          .state('usuarios-contrasenia', {
+            url: '/usuarios-contrasenia',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/usuarios-contrasenia.html',
+            controller: 'UsuarioscontraseniaCtrl'
+          })       
           .state('perfil-editar', {
             url: '/perfil-editar',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/perfil-editar.html',
             controller: 'PerfilEditarCtrl'
-          })  
+          })
+          .state('perfil-contrasenia', {
+            url: '/perfil-contrasenia',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/perfil-contrasenia.html',
+            controller: 'PerfilContraseniaCtrl'
+          })    
+
           .state('reglas-listar', {
             url: '/reglas-listar',
             parent: 'dashboard',
