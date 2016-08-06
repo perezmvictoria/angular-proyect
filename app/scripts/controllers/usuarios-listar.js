@@ -25,29 +25,32 @@ angular.module('rac')
             $scope.msjerror = "No se pudo cargar la lista de usuarios";          
             return false;
         })
-      }
+    }
 
-      $scope.listarUsuarios();
+    $scope.listarUsuarios();
     	
-      $scope.crearUsuario = function () {
+    $scope.crearUsuario = function () {
     		usuarioService.setUsuario(undefined);
         usuarioService.setModoEditar(false);
     		$location.path('/dashboard/usuarios-editar');
     		return "/dashboard/usuarios-editar";
-      }
-      $scope.editarUsuario = function (usuario) {
-        usuario.contrasenia = '123456';
-        usuario.contrasenia2 = '123456';
+    }
+    
+    $scope.editarUsuario = function (usuario) {
+        usuario.contrasenia = ' ';
+        usuario.contrasenia2 = ' ';
         usuarioService.setUsuario(usuario);
     		usuarioService.setModoEditar(true);
 
     		$location.path('/dashboard/usuarios-editar');
     		return "/dashboard/usuarios-editar";
-      }  
-      $scope.setearUsuarioAEliminar = function (usuario){
+    }  
+    
+    $scope.setearUsuarioAEliminar = function (usuario){
         usuarioService.setUsuario(usuario);      
-      }
-      $scope.eliminarUsuario = function () {      
+    }
+    
+    $scope.eliminarUsuario = function () {      
         var usuario = usuarioService.getUsuario();
         var dataPost = {
           "usuario":usuario.usuario,
@@ -65,8 +68,9 @@ angular.module('rac')
         })
     		$scope.listarUsuarios();
         return "false";
-      }
-      $scope.desbloquearUsuario = function (usuario) {
+    }
+    
+    $scope.desbloquearUsuario = function (usuario) {
     		usuarioService.setUsuario(usuario);
         $scope.usuario_seleccionado = usuario;   
         var dataPost = {
@@ -86,5 +90,5 @@ angular.module('rac')
         })
     		$scope.listarUsuarios();		
     		return false;
-      }
+    }
 });

@@ -13,7 +13,9 @@ angular.module('rac')
 		return "/dashboard/perfil-editar";
     }
 
+    // Cerrar sesion
  	$scope.logout = function () {
+ 		perfilService.setUsuario({});
  		$location.path('/login.html');
 		return "/login.html";
  	}

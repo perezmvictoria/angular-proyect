@@ -1,26 +1,63 @@
 'use strict';
 
 angular.module('rac')
-  .controller('ReportesListarCtrl', function(perfilService,$scope, $state,$location) {
-          perfilService.validarSesion($location);
-          $scope.msjerror = "";
+  .controller('ReportesListarCtrl', function(perfilService,$scope, $state,$location,$http) {
+    perfilService.validarSesion($location);
+    $scope.msjerror = "";
+    $scope.nombreUsuario = perfilService.getUsuario().nombre;
+    $scope.rolUsuario    = perfilService.getUsuario().rol;
+    $scope.datos = {};
+    $scope.listaUsuarios = "";
+    
+    $scope.filtro = { fechaIni :'',
+        fechaFin :'',
+        tecnico  :'',
+        estado   :'',
+    };
 
-          $scope.filtro = { fechaIni :'',
-              fechaFin :'',
-              tecnico  :'',
-              estado   :'',};
+    $scope.lstTecnicos = {
+      opciones: [],
+      seleccionado: {}
+    };
 
-          $scope.lstTecnicos = [
-              { 'id': '1', 'nombre': 'Juan' },
-              { 'id': '2', 'nombre': 'Jose' },
-              { 'id': '3', 'nombre': 'Pepe' }
-          ];
+    //if (perfilService.getListaUsuarios.length == 0){
 
-          $scope.lstEstado = [
-              { 'id': '1', 'nombre': 'Esperar' },
-              { 'id': '2', 'nombre': 'Consolidar' },
-              { 'id': '3', 'nombre': 'Descartar' }
-          ];
+      var dataPost = {
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario
+      } 
+
+
+
+      $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
+        dataPost,perfilService.getConfig())
+        .then(function (response){
+          //debugger;
+          perfilService.setListaUsuarios(response.data.info);       
+        }, function (error){
+          var data = error.data;
+          $scope.msjerror = "Error en carga de datos";
+        }
+
+      
+      );
+
+
+/*
+        .success(function (data, status, headers, config) {  
+        })
+        .error(function (data, status, header, config) {          
+          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+        })*/
+    //}
+
+    $scope.lstTecnicos.opciones = perfilService.getListaUsuarios();
+
+    $scope.lstEstado = [
+        { 'id': '1', 'nombre': 'Esperar' },
+        { 'id': '2', 'nombre': 'Consolidar' },
+        { 'id': '3', 'nombre': 'Descartar' }
+    ];
 
           /*$scope.listarReportes = function () {
 

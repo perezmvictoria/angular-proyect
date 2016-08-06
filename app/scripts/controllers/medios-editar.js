@@ -2,7 +2,9 @@
 
 angular.module('rac')
   .controller('MediosEditarCtrl', function(perfilService,mediosService,$scope, $location, $http) {
+    // Validacion existe sesion 
     perfilService.validarSesion($location);
+    //
     $scope.medio_seleccionado =  mediosService.getMedio();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
@@ -30,10 +32,12 @@ angular.module('rac')
       };
     }
 
+  // Set de modo de pantalla en editar
   $scope.modoEditar = function(){
     return mediosService.isModoEditar();
   }
   
+  // Cancelo la edicion del medio, vuelvo al lista de medios
   $scope.cancelar = function(){
     mediosService.setMedio(undefined);
     $location.path('/dashboard/medios-listar');
@@ -41,9 +45,8 @@ angular.module('rac')
   }
 
   $scope.generarMedio = function () {
-    debugger;
-    if(!$scope.editar){
-      if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
+    if(!$scope.editar){ // Si estoy creando el medio
+      if ($scope.dataTipoMedio.seleccionada.tipo == "sms") // Si estoy creando un medio SMS
       {
         var data = {
           "usuario_exec":$scope.nombreUsuario,
@@ -55,7 +58,7 @@ angular.module('rac')
           "clave":$scope.medio_seleccionado.clave
         }
       }
-      else
+      else // Si estoy creando un medio MAIL
       {
         var data = {
           "usuario_exec":$scope.nombreUsuario,
@@ -69,7 +72,7 @@ angular.module('rac')
       $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
       });
-    }else{
+    }else{ // Si estoy editando el medio
 
       if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
       {
