@@ -87,4 +87,17 @@ angular.module('rac')
     		$scope.listarUsuarios();		
     		return false;
       }
+
+$scope.cambiarContrasenia = function (usuario) {
+        usuario.contrasenia = '123456';
+        usuario.contrasenia2 = '123456';
+        usuarioService.setUsuario(usuario);
+        usuarioService.setModoEditar(true);
+
+        $location.path('/dashboard/usuarios-contrasenia');
+        return "/dashboard/usuarios-contrasenia";
+      }  
+
+
+      
 });

@@ -1,5 +1,5 @@
 <div> 
-  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
+  <h2>Cambiar Contraseña de Usuario</h2>
     <div class="panel panel-info"> 
     <div class="panel-heading">Ingrese los datos a modificar</div>
   
@@ -7,21 +7,19 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
 
-                <form role="form" name="usuariosEForm" novalidate>
+                <form role="form" name="contraseniaEForm" novalidate>
       
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();">
+                        <input class="form-control" placeholder="Usuario" name="usuario" 
+                        ng-model="usuario_seleccionado.usuario" ng-disabled="true">
                              
                     </div>
 
-                </form>
-
-                <form role="form" name="contraseniaEForm" novalidate>
-
                     <div class="form-group has-feedback">
-                        <input class="form-control" placeholder="Contraseña" ng-hide="modoEditar();" 
+                        <input class="form-control" placeholder="Contraseña" 
                         name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
-                        type="password" ng-minlength="6" ng-maxlength="20"required>
+                        type="password" ng-minlength="6" ng-maxlength="20" required>
+                                
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
                                 <!-- Validacion Maximo-->
@@ -34,12 +32,13 @@
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
                         ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid"></span>
+                  
                     </div>
                     
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
                         ng-model="usuario_seleccionado.contrasenia2" type="password" 
-                        ng-show="contraseniaEForm.contrasenia.$valid && !modoEditar()"required>
+                        ng-show="contraseniaEForm.contrasenia.$valid" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched
                                 && contraseniaEForm.contrasenia2.$error.required">Repita la Contraseña.</span>
@@ -64,10 +63,9 @@
                     </div>
                 </form>
 
-                    <button class="btn btn-md btn-success" ng-hide="modoEditar();" ng-disabled="!usuariosEForm.$valid || !contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
+                    <button class="btn btn-md btn-success" ng-disabled="!contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
 
-                    <button class="btn btn-md btn-success" ng-show="modoEditar();" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
-                    
+                                       
                     <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                         
                     </div>

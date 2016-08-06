@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rac')
-  .controller('PerfilContraseñaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  .controller('PerfilContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
@@ -20,7 +20,7 @@ angular.module('rac')
 	 			"usuario":$scope.nombreUsuario,
 	 			"contrasenia":$scope.usuario_seleccionado.contrasenia
 				}			
-			$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
+			$http.post(perfilService.getRuta()+'/perfil/', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
 	    		});

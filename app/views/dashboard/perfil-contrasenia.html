@@ -1,28 +1,30 @@
 <div> 
-  <h2>Editar Perfil</h2>
+  <h2>Cambiar Contraseña</h2>
     <div class="panel panel-info"> 
-    <div class="panel-heading">Ingrese los datos a modificar</div>
+    <div class="panel-heading">Ingrese la contsaeña para su perfil de usuario.</div>
   
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
 
-                <form role="form" name="usuariosEForm" novalidate>
+                <form role="form" name="contraseniaEForm" novalidate>
       
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Usuario" name="usuario" 
                         ng-model="nombreUsuario" ng-disabled="true" >
                               
                     </div>
-                    <form role="form" name="contraseniaEForm" novalidate>
 
                     <div class="form-group has-feedback">
-                        <input class="form-control" placeholder="Contraseña" ng-hide="modoEditar();" 
+                        
+                        <input class="form-control" placeholder="Contraseña" 
                         name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
-                        type="password" ng-minlength="6" ng-maxlength="20"required>
-                                <!-- Validacion Campo Requerido-->
+                        type="password" ng-minlength="6" ng-maxlength="20" required>
+                                
+                
+                          <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
-                                <!-- Validacion Maximo-->
+                                                          <!-- Validacion Maximo-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.maxlength">La contraseña no puede contener mas de 20 caracteres.</span>
                                 <!-- Validacion Minimo-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
@@ -31,42 +33,43 @@
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="contraseniaEForm.contrasenia.$touched && !contraseniaEForm.contrasenia.$valid"></span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid"></span>
+                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid"></span>      
                     </div>
                     
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
                         ng-model="usuario_seleccionado.contrasenia2" type="password" 
-                        ng-show="contraseniaEForm.contrasenia.$valid && !modoEditar()"required>
+                        ng-show="contraseniaEForm.contrasenia.$valid" required> 
+                               
                                 <!-- Validacion Campo Requerido-->
-                                <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched
-                                && contraseniaEForm.contrasenia2.$error.required">Repita la Contraseña.</span>
+                                <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$error.required && 
+                                contraseniaEForm.contrasenia.$valid">Repita la Contraseña.</span>
 
                                 <!-- Validacion Contraseñas Coinciden-->
-                                <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
-                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">La contraseña no coinciden.</span>
+                                <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
+                                contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
+                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)">La contraseña no coinciden.</span>
 
 
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" 
                         ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
-                        contraseniaEForm.contrasenia.$valid &&
-                        (!contraseniaEForm.contrasenia2.$valid || 
+                        contraseniaEForm.contrasenia.$valid && 
+                        (!contraseniaEForm.contrasenia2.$valid ||
                         !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))"></span>
                         
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$valid &&
+                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
                         (usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)"></span>
 
                     </div>
                 </form>
                    
-                    
-                
-       
-
-                    <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
+                    <button class="btn btn-md btn-success" 
+                    ng-disabled="!contraseniaEForm.$valid || 
+                        !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))" 
+                        data-toggle="modal" data-target="#crear">Guardar</button>
                     
                     <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                         
@@ -85,7 +88,7 @@
                                 </div>  
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cancelar();">Aceptar</button>
-                                    <button type="button" class="btn btn-md" ui-sref="perfil-editar" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="perfil-contrasenia" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
@@ -102,8 +105,8 @@
                                     <p>¿Desea guardar los cambios?</p>
                                 </div>  
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="guardarPerfil();">Aceptar</button>
-                                    <button type="button" class="btn btn-md" ui-sref="perfil-editar" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="guardarContrasenia();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" ui-sref="perfil-contrasenia" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->

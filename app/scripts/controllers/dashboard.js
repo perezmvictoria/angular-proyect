@@ -13,6 +13,12 @@ angular.module('rac')
 		return "/dashboard/perfil-editar";
     }
 
+     $scope.cambiarContrasenia = function () {
+		usuarioService.setUsuario(perfilService.getUsuario());
+		$location.path('/dashboard/perfil-contrasenia');
+		return "/dashboard/perfil-contrasenia";
+    }
+
  	$scope.logout = function () {
  		$location.path('/login.html');
 		return "/login.html";
