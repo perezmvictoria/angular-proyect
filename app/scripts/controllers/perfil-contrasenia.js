@@ -6,25 +6,27 @@ angular.module('rac')
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
+    $scope.contrasenia = "";
+    $scope.contrasenia2 = "";
 
 	$scope.cancelar = function(){
 		$location.path('/dashboard');
 		return "'/dashboard'";
-	}	
-	//TODO:esto es copia de perfil-editar, hay que limpiar para cambiar contrasenia
+	}
+
+	// TODO:
 	$scope.guardarContrasenia = function () {
 		var data = {
-	 			"usuario_exec":$scope.nombreUsuario,
-	 			"rol_exec":$scope.rolUsuario,
-	 			"nombre":$scope.usuario_seleccionado.nombre,
-	 			"usuario":$scope.nombreUsuario,
-	 			"contrasenia":$scope.usuario_seleccionado.contrasenia
-				}			
-			$http.post(perfilService.getRuta()+'/perfil/', data, perfilService.getConfig())
+	 			"usuario_exec": $scope.nombreUsuario,
+	 			"rol_exec": $scope.rolUsuario,
+	 			"usuario": $scope.nombreUsuario,
+	 			"contrasenia": $scope.contrasenia
+			}			
+			$http.post(perfilService.getRuta()+'/perfil/cambiar_contrasenia_perfil', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
 	    		});
-	    		//NO OLVIDAR .error	
+	    		// TODO: .error	
 		$location.path('/dashboard');
 		return "'/dashboard'";
 	}

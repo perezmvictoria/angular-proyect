@@ -1,7 +1,7 @@
 <div> 
   <h2>Cambiar Contraseña de Usuario</h2>
     <div class="panel panel-info"> 
-    <div class="panel-heading">Ingrese la neuva contraseña del usuario:</div>
+    <div class="panel-heading">Ingrese la nueva contraseña del usuario:</div>
   
     <div class="panel-body">
         <div class="row">
@@ -45,7 +45,7 @@
 
                                 <!-- Validacion Contraseñas Coinciden-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
-                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">La contraseña no coinciden.</span>
+                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">Las contraseñas no coinciden.</span>
 
 
                         <!-- Validacion Error -->
@@ -100,7 +100,7 @@
                                     <p>¿Desea guardar los cambios?</p>
                                 </div>  
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="generarUsuario();">Aceptar</button>
+                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="cambiarContrasenia();">Aceptar</button>
                                     <button type="button" class="btn btn-md" ui-sref="usuarios-editar" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div><!-- /.modal-content -->

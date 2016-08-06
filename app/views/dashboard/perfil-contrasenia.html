@@ -1,7 +1,7 @@
 <div> 
   <h2>Cambiar Contraseña</h2>
     <div class="panel panel-info"> 
-    <div class="panel-heading">Ingrese la contsaeña para su perfil de usuario:</div>
+    <div class="panel-heading">Ingrese la contraseña para su perfil de usuario:</div>
   
     <div class="panel-body">
         <div class="row">
@@ -18,7 +18,7 @@
                     <div class="form-group has-feedback">
                         
                         <input class="form-control" placeholder="Contraseña" 
-                        name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
+                        name="contrasenia" ng-model="contrasenia" 
                         type="password" ng-minlength="6" ng-maxlength="20" required>
                                 
                 
@@ -38,7 +38,7 @@
                     
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
-                        ng-model="usuario_seleccionado.contrasenia2" type="password" 
+                        ng-model="contrasenia2" type="password" 
                         ng-show="contraseniaEForm.contrasenia.$valid" required> 
                                
                                 <!-- Validacion Campo Requerido-->
@@ -47,8 +47,8 @@
 
                                 <!-- Validacion Contraseñas Coinciden-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
-                                contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
-                                !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)">La contraseña no coinciden.</span>
+                                contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid 
+                                && !(contrasenia == contrasenia2)">Las contraseñas no coinciden.</span>
 
 
                         <!-- Validacion Error -->
@@ -56,19 +56,19 @@
                         ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
                         contraseniaEForm.contrasenia.$valid && 
                         (!contraseniaEForm.contrasenia2.$valid ||
-                        !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))"></span>
+                        !(contrasenia == contrasenia2))"></span>
                         
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
                         ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
-                        (usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)"></span>
+                        (contrasenia == contrasenia2)"></span>
 
                     </div>
                 </form>
                    
                     <button class="btn btn-md btn-success" 
                     ng-disabled="!contraseniaEForm.$valid || 
-                        !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))" 
+                        !(contrasenia == contrasenia2)" 
                         data-toggle="modal" data-target="#crear">Guardar</button>
                     
                     <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>

@@ -46,7 +46,7 @@ angular
             url: '/usuarios-contrasenia',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/usuarios-contrasenia.html',
-            controller: 'UsuarioscontraseniaCtrl'
+            controller: 'UsuariosContraseniaCtrl'
           })       
           .state('perfil-editar', {
             url: '/perfil-editar',
