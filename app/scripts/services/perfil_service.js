@@ -3,10 +3,10 @@
 angular.module('rac')
     .service('perfilService',function(){
         var perfil= {};
-        perfil.rolesUsuario = ""
-        perfil.usuario = {}
+        perfil.rolesUsuario = "";
+        perfil.usuario = {};
         perfil.usuario.password = "";
-
+        perfil.listaUsuarios = "";
 
         perfil.config = {
                             headers : {
@@ -38,6 +38,12 @@ angular.module('rac')
             },
             getRolesUsuario: function(){                
                 return perfil.rolesUsuario;
+            },
+            setListaUsuarios: function(usuarios){                
+                perfil.listaUsuarios = usuarios;
+            },
+            getListaUsuarios: function(){                
+                return perfil.listaUsuarios;
             },
             getRuta: function(){
                 return perfil.ruta;

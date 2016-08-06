@@ -25,10 +25,10 @@
  			  <div class="form-group col-md-4">
 				  <button type="submit" class="btn btn-default btn-md ">Generar</button>
 				</div>
-			  <div class="form-group  col-md-4">
-				  <select ng-model="filtro.tecnico" placeholder="Técnico" class="form-control input-sm">
-					  <option ng-repeat="tecnico in lstTecnicos"
-							  value="{{tecnico}}" data-subtext="{{tecnico.id}}">{{tecnico.nombre}}</option>
+			  <div class="form-group col-md-4">
+				  <select name="tecnico" class="form-control input-sm"
+				  ng-model="lstTecnicos.seleccionado" placeholder="Técnico" 
+				  ng-options="tecnico.nombre for tecnico in lstTecnicos.opciones track by tecnico.nombre">
 				  </select>
 			  </div>
 			  <div class="form-group  col-md-4">
