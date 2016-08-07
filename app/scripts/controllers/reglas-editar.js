@@ -141,7 +141,14 @@ angular.module('rac')
             $scope.regla_seleccionada.evento = "";
         }
 
-        var condicion = "<regla>" + $scope.regla_seleccionada.condicion + "</regla><trigger>" + $scope.regla_seleccionada.evento + "</trigger>";
+        if ($scope.dataListaAcciones.seleccionado.nombre == "esperar" && $scope.regla_seleccionada.segundos == 0)
+        {
+            var condicion = "<regla>" + $scope.regla_seleccionada.condicion + "</regla><trigger></trigger>";
+        }
+        else
+        {
+            var condicion = "<regla>" + $scope.regla_seleccionada.condicion + "</regla><trigger>" + $scope.regla_seleccionada.evento + "</trigger>";
+        }
 
         var data = {
             "usuario_exec" : $scope.nombreUsuario,
