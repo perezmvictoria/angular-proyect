@@ -31,7 +31,7 @@ angular.module('rac')
 		var data = {
 			"usuario_exec": $scope.nombreUsuario,
 			"rol_exec": $scope.rolUsuario,
-			"usuario": $scope.usuario_seleccionado.nombre,
+			"usuario": $scope.usuario_seleccionado.usuario,
 			"contrasenia": $scope.usuario_seleccionado.contrasenia
 		}			
 
