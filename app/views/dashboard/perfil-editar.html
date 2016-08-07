@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" 
+                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="perfil_seleccionado.nombre" 
                         ng-maxlength="20" ng-pattern="/^[A-Za-z0-9 ]+$/">
                                 <!-- Validacion Maximo Caracteres-->
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Mail" name="mail" ng-model="usuario_seleccionado.mail" 
+                        <input class="form-control" placeholder="Mail" name="mail" ng-model="perfil_seleccionado.mail" 
                         type="email"required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.required">Ingrese el mail.</span>
@@ -42,7 +42,7 @@
                     </div>
                     
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-maxlength=9>
+                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="perfil_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-maxlength=9>
                                 <!-- Validacion Maximo Caracteres -->
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                                 <!-- Validacion Formato-->

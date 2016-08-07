@@ -15,7 +15,6 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
 
-
   	$scope.listarUsuarios = function () {
         var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
@@ -31,6 +30,21 @@ angular.module('rac')
             $scope.msjerror = "No se pudo cargar la lista de usuarios";          
             return false;
         })
+
+        $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , 
+        perfilService.getConfig()).success(
+        function (data,status,headers,config)
+        {
+          perfilService.setRolesUsuario(data.info);
+          //$location.path('/dashboard');
+          return false;
+        }).error (
+          function () {
+            $scope.msjerror = "Error al cargar datos";
+            //perfilService.setPerfil("error","admin",$scope.contrasenia);
+            //$location.path('/login');
+            return false;
+          })
     }
    	
     $scope.crearUsuario = function () {

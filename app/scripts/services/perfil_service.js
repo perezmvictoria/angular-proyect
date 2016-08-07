@@ -7,6 +7,7 @@ angular.module('rac')
         perfil.usuario = {};
         perfil.usuario.password = "";
         perfil.listaUsuarios = "";
+        perfil.datosPerfil = "";
 
         perfil.config = {
                             headers : {
@@ -21,6 +22,7 @@ angular.module('rac')
         perfil.ruta = "http://192.168.1.149:5000";
         //ruta testing
         //perfil.ruta = "http://190.64.30.76:5000";
+
         return{
             getUsuario: function(){
                 return perfil.usuario;
@@ -38,6 +40,12 @@ angular.module('rac')
             },
             getRolesUsuario: function(){                
                 return perfil.rolesUsuario;
+            },
+            setDatosPerfil: function(datos){                
+                perfil.datosPerfil = datos;
+            },
+            getDatosPerfil: function(){                
+                return perfil.datosPerfil;
             },
             setListaUsuarios: function(usuarios){                
                 perfil.listaUsuarios = usuarios;

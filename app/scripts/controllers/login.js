@@ -36,10 +36,12 @@ angular.module('rac')
         "usuario_exec":$scope.usuario,
         "rol_exec":data.info.tipo_usuario
       } 
-      $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , perfilService.getConfig()).success(
+      $http.post(perfilService.getRuta()+'/perfil/obtener_perfil',dataPost , 
+        perfilService.getConfig()).success(
         function (data,status,headers,config)
         {
-          perfilService.setRolesUsuario(data.info);
+          perfilService.setDatosPerfil(data.info);
+          //debugger;
           $location.path('/dashboard');
           return false;
         }).error (
