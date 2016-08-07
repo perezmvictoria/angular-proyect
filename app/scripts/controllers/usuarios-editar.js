@@ -7,7 +7,7 @@ angular.module('rac')
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    scope.noverpasswd = false;
+    $scope.noverpasswd = false;
   
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
