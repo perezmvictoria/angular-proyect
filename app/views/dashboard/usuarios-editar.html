@@ -1,7 +1,7 @@
 <div> 
   <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
     <div class="panel panel-info"> 
-    <div class="panel-heading">Ingrese los datos a modificar:</div>
+    <div class="panel-heading">Ingrese los datos del usuario:</div>
   
     <div class="panel-body">
         <div class="row">
@@ -83,7 +83,7 @@
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Contraseña" ng-hide="modoEditar();" 
                         name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
-                        type="password" ng-minlength="6" ng-maxlength="20"required>
+                        type="{{verpasswd_tipo();}}" ng-minlength="6" ng-maxlength="20"required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
                                 <!-- Validacion Maximo-->
@@ -100,7 +100,7 @@
                     
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
-                        ng-model="usuario_seleccionado.contrasenia2" type="password" 
+                        ng-model="usuario_seleccionado.contrasenia2" type="{{verpasswd_tipo();}}" 
                         ng-show="contraseniaEForm.contrasenia.$valid && !modoEditar()"required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched
@@ -125,6 +125,16 @@
 
                     </div>
                 </form>
+
+                 <div class="form-group" >           
+                        <input type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
+                               titulo="ver contraseña" />
+                       <label for="verpasswd" >                         
+                            <i class='glyphicon glyphicon-eye-close' ></i>
+                            <i class='glyphicon glyphicon-eye-open'  ></i>
+                            <span class='label-content'>Contraseña</span>
+                        </label>
+                    </div>  
 
                     <button class="btn btn-md btn-success" ng-hide="modoEditar();" ng-disabled="!usuariosEForm.$valid || !contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
 

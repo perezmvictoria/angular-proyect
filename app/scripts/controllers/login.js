@@ -4,7 +4,7 @@ angular.module('rac')
   .controller('LoginCtrl', function(perfilService,$scope, $location, $http) {
 
     $scope.error     = false;
-    $scope.noverpasswd = true;
+    $scope.noverpasswd = false;
     $scope.msjerror = "";
 
     $scope.verpasswd = function(){
@@ -14,9 +14,9 @@ angular.module('rac')
     // Funcion para cambiar modo de textbox y mostrar o no la contraseña en texto
     $scope.verpasswd_tipo = function(){
       if ($scope.noverpasswd){
-        return "password";
-      }else{
         return "text";
+      }else{
+        return "password";
       }
     }
 
