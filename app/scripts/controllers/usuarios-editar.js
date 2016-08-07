@@ -46,7 +46,6 @@ angular.module('rac')
  				}
 			}
 		if(!usuarioService.isModoEditar()){
-			//debugger;
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
@@ -60,9 +59,9 @@ angular.module('rac')
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
-	    		})
-	    		.error(function (data, status, header, config) {  };
-		}else
+	    		});
+		}
+		else
 		{
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
@@ -77,7 +76,7 @@ angular.module('rac')
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
-	    		}).error(function (data, status, header, config) {  };
+	    		});
 		}		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";

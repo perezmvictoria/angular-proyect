@@ -35,14 +35,11 @@ angular.module('rac')
 			"contrasenia": $scope.usuario_seleccionado.contrasenia
 		}			
 
-		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', data, perfilService.getConfig())
+		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', 
+			data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
 
-	  		})
-	  		.error(function (data, status, header, config) {
-	  		
-	  		$scope.msjerror = "Error al ejecutar la accion";
-		};
+	  		});
 		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";
