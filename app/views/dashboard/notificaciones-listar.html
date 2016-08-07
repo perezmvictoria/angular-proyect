@@ -49,13 +49,13 @@
 			  <td>{{notificacion.descripcion}}</td>
 			  
 			<td> 
-			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar">
+			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);">
 			<i class="glyphicon glyphicon-link"></i></a>
 			
-			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver">
+			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);">
 			<i class="glyphicon glyphicon-ok"></i></a>
 			
-            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar">
+            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar" ng-click="setNotificacion(notificacion);">
             <i class="glyphicon glyphicon-log-out"></i></a>
 			</td>
 			
