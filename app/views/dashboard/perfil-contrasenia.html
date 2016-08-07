@@ -19,7 +19,7 @@
                         
                         <input class="form-control" placeholder="Contraseña" 
                         name="contrasenia" ng-model="contrasenia" 
-                        type="password" ng-minlength="6" ng-maxlength="20" required>
+                        type="{{verpasswd_tipo();}} " ng-minlength="6" ng-maxlength="20" required>
                                 
                 
                           <!-- Validacion Campo Requerido-->
@@ -38,7 +38,7 @@
                     
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
-                        ng-model="contrasenia2" type="password" 
+                        ng-model="contrasenia2" type="{{verpasswd_tipo();}} " 
                         ng-show="contraseniaEForm.contrasenia.$valid" required> 
                                
                                 <!-- Validacion Campo Requerido-->
@@ -65,6 +65,16 @@
 
                     </div>
                 </form>
+
+                 <div class="form-group" >           
+                        <input type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
+                               titulo="ver contraseña" />
+                       <label for="verpasswd" >                         
+                            <i class='glyphicon glyphicon-eye-close' ></i>
+                            <i class='glyphicon glyphicon-eye-open'  ></i>
+                            <span class='label-content'>Contraseña</span>
+                        </label>
+                    </div>  
                    
                     <button class="btn btn-md btn-success" 
                     ng-disabled="!contraseniaEForm.$valid || 

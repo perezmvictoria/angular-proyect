@@ -7,6 +7,20 @@ angular.module('rac')
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
+    scope.noverpasswd = false;
+  
+	$scope.verpasswd = function(){
+      $scope.noverpasswd != $scope.noverpasswd;
+    }
+    
+	$scope.verpasswd_tipo = function(){
+      if ($scope.noverpasswd){
+        return "text";
+      }else{
+        return "password";
+      }
+    }
+    
 
     if (!usuarioService.isModoEditar()) {
     	$scope.dataTipoUsuario = {

@@ -12,6 +12,19 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.contrasenia = "";
     $scope.contrasenia2 = "";
+    $scope.noverpasswd = false;
+  
+	$scope.verpasswd = function(){
+      $scope.noverpasswd != $scope.noverpasswd;
+    }
+    
+	$scope.verpasswd_tipo = function(){
+      if ($scope.noverpasswd){
+        return "text";
+      }else{
+        return "password";
+      }
+    }
 
 	$scope.cancelar = function(){
 		$location.path('/dashboard');
