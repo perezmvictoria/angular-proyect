@@ -60,18 +60,10 @@ angular.module('rac')
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
-	    		});
-	    		//NO OLVIDAR .error			
+	    		})
+	    		.error(function (data, status, header, config) {  };
 		}else
 		{
-			/*debugger;
-			var retorno = "";
-			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
- 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)
- 				{
-					retorno = $scope.dataTipoUsuario.opciones[i].value;			
- 				}
-			}*/
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
 	 			"rol_exec":$scope.rolUsuario,
@@ -85,8 +77,7 @@ angular.module('rac')
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
-	    		});
-	    		//falta el .error
+	    		}).error(function (data, status, header, config) {  };
 		}		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";

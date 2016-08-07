@@ -2,6 +2,9 @@
 
 angular.module('rac')
   .controller('PerfilEditarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  	
+    perfilService.validarSesion($location);
+
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
@@ -13,19 +16,20 @@ angular.module('rac')
 	}	
 	$scope.guardarPerfil = function () {
 		var data = {
-	 			"usuario_exec":$scope.nombreUsuario,
-	 			"rol_exec":$scope.rolUsuario,
-	 			"nombre":$scope.usuario_seleccionado.nombre,
-	 			"usuario":$scope.nombreUsuario,
-	 			"mail":$scope.usuario_seleccionado.mail,
-	 			"telefono":$scope.usuario_seleccionado.telefono
-				}			
-			$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
-				.success(function (data, status, headers, config) {
+	 		"usuario_exec":$scope.nombreUsuario,
+ 			"rol_exec":$scope.rolUsuario,
+ 			"nombre":$scope.usuario_seleccionado.nombre,
+ 			"usuario":$scope.nombreUsuario,
+ 			"mail":$scope.usuario_seleccionado.mail,
+ 			"telefono":$scope.usuario_seleccionado.telefono
+		}			
+		$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
+			.success(function (data, status, headers, config) {
 
-	    		});
-	    		//NO OLVIDAR .error	
-		$location.path('/dashboard');
-		return "'/dashboard'";
+	    	});
+	    	// TODO: .error	
+	$location.path('/dashboard');
+	return "'/dashboard'";
+	
 	}
 });

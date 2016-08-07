@@ -1,19 +1,29 @@
+/*
+Controller usuarios-contrasenia
+*/
+
 'use strict';
 
 angular.module('rac')
   .controller('UsuariosContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
   	
+  	// Validacion de sesion
   	perfilService.validarSesion($location);
   	
+  	// Variables
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
   
 	$scope.cancelar = function(){
+
+		// Limpio usuario seleccionado
 		usuarioService.setUsuario(undefined);
+
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";
+
 	}
 	
 	$scope.cambiarContrasenia = function () {
@@ -28,8 +38,11 @@ angular.module('rac')
 		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
 
-	  		});
-	   		// TODO: .error	
+	  		})
+	  		.error(function (data, status, header, config) {
+	  		
+	  		$scope.msjerror = "Error al ejecutar la accion";
+		};
 		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";

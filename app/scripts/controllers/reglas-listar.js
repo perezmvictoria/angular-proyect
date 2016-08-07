@@ -3,6 +3,8 @@
 
 angular.module('rac')
   .controller('ReglasListarCtrl', function(perfilService,reglasService,$scope, $state, $location,$http) {
+    
+    // Validacion de sesion
     perfilService.validarSesion($location);
  	
     $scope.msjerror = "";
@@ -14,8 +16,8 @@ angular.module('rac')
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
-      } 
-
+      }
+      
       if (reglasService.getListaDeMedios() == undefined){
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
@@ -34,7 +36,6 @@ angular.module('rac')
           return false;
       })
     }
-    $scope.listarReglas();
 
   	$scope.crearRegla = function () {
 		reglasService.setRegla(undefined);		
@@ -42,6 +43,7 @@ angular.module('rac')
 		$location.path('/dashboard/reglas-editar');
 		return "/dashboard/reglas-editar";
     }
+
     $scope.editarRegla = function (regla) {
 		reglasService.setRegla(regla);				
 		reglasService.setModoEditar(true);		
@@ -51,15 +53,17 @@ angular.module('rac')
 
     $scope.setearReglaAEliminar = function (regla) {
       reglasService.setRegla(regla);
-   }
+    }
   
     $scope.eliminarRegla = function (regla) {
+
       var reglaAEliminar = reglasService.getRegla();
       var dataPost = {
-      "nombre":reglaAEliminar.nombre,
-      "usuario_exec":$scope.nombreUsuario,
-      "rol_exec":$scope.rolUsuario
+        "nombre":reglaAEliminar.nombre,
+        "usuario_exec":$scope.nombreUsuario,
+        "rol_exec":$scope.rolUsuario
       }
+
       $http.post(perfilService.getRuta()+'/reglas/eliminar_regla',
       dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {
@@ -68,7 +72,11 @@ angular.module('rac')
       .error(function (data, status, header, config) {
         $scope.msjerror = "Error de conexion al servidor";
       })
+
 		$scope.listarReglas();
 		return false;
     }
+
+  $scope.listarReglas();
+
 });

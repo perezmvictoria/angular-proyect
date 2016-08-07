@@ -2,6 +2,10 @@
 
 angular.module('rac')
   .controller('PerfilContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  	
+	perfilService.validarSesion($location);
+
+
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
