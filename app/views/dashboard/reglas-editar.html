@@ -2,7 +2,7 @@
  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Reglas</h2>
   <div class="panel panel-info">
     <div class="panel-heading">
-        Ingrese los datos a modificar:
+        Ingrese los datos de la regla:
     </div>
     <div class="panel-body">
         <div class="row">
@@ -162,7 +162,7 @@
                          <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid || !reglasEFormS.$valid || !reglasEForm.$valid ||  dataListaMedios.seleccionado.length == undefined "  
                         ng-show= "dataListaAcciones.seleccionado.nombre == 'esperar' && regla_seleccionada.segundos == '0';"
-                        data-toggle="modal" data-target="#crear">Crear</button>
+                        data-toggle="modal" data-target="#crear">Guardar</button>
                        
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
