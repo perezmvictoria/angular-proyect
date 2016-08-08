@@ -9,11 +9,11 @@ angular.module('rac')
     $scope.datos = {};
     $scope.listaUsuarios = "";
     
-    $scope.filtro = { fechaIni :'',
+   /* $scope.filtro = { fechaIni :'',
         fechaFin :'',
         tecnico  :'',
         estado   :'',
-    };
+    };*/
 
     $scope.lstTecnicos = {
       opciones: [],
@@ -54,10 +54,17 @@ angular.module('rac')
     $scope.lstTecnicos.opciones = perfilService.getListaUsuarios();
 
     $scope.lstEstado = [
-        { 'id': '1', 'nombre': 'Esperar' },
-        { 'id': '2', 'nombre': 'Consolidar' },
-        { 'id': '3', 'nombre': 'Descartar' }
+        { 'id': '1', 'nombre': 'resuelta' },
+        { 'id': '2', 'nombre': 'cancelada' }
     ];
+
+    $scope.dataListaFiltro = {
+      opciones: [{ 'id': 1, 'nombre': 'fecha' },
+                { 'id': 2, 'nombre': 'técnico' },
+                { 'id': 3, 'nombre': 'estado' }],
+      seleccionado: { 'id': 2, 'nombre': 'fecha' }
+    }
+
 
           /*$scope.listarReportes = function () {
 

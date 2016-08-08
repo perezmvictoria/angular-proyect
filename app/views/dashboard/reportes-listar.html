@@ -1,45 +1,75 @@
 <div>	
 	<h2>Reportes</h2>
-  <div class="panel panel-success">
-    <div class="panel-heading">
-				Seleccione uno de los filtros para generar su reporte
-    </div>
+	<div class="panel panel-success">
+    	<div class="panel-heading">
+				Seleccione uno de los filtros para generar su reporte:
+		</div>	
+   
     <div class="panel-body">
-      <form role="form">      	
-		  		<div class="form-group  col-md-4" >
-				    <div class='input-group date' id='fini'>
-              <input type='text' class="form-control" placeholder="Desde"/>
-              <span class="input-group-addon">
-                 <span class="glyphicon glyphicon-calendar"></span>
-     					</span>
-	          </div>
-			  </div>
-			  <div class="form-group col-md-4">
-			    <div class='input-group date' id='ffin'>
-            <input type='text' class="form-control" placeholder="Hasta"/>
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-  	      </div>	
-			  </div>
- 			  <div class="form-group col-md-4">
-				  <button type="submit" class="btn btn-default btn-md ">Generar</button>
-				</div>
-			  <div class="form-group col-md-4">
-				  <select name="tecnico" class="form-control input-sm"
-				  ng-model="lstTecnicos.seleccionado" placeholder="Técnico" 
-				  ng-options="tecnico.nombre for tecnico in lstTecnicos.opciones track by tecnico.nombre">
-				  </select>
-			  </div>
-			  <div class="form-group  col-md-4">
-				  <select ng-model="filtro.estado" placeholder="Estado" class="form-control input-sm">
-					  <option ng-repeat="estado in lstEstado"
-							  value="{{estado}}" data-subtext="{{estado.id}}">{{estado.nombre}}</option>
-				  </select>
-			  </div>
-  		</form>
-    </div>
-  </div>		  
+
+    <div class="col-md-4">
+    <select class="form-control input-sm" data-style="btn-default" placeholder="Filtro" 
+     name="filtro"  data-live-search="true" ng-model="dataListaFiltro.seleccionado" ng-options="filtro.nombre for filtro in dataListaFiltro.opciones track by filtro.nombre" required>
+    </select>
+
+	</div>    
+
+	    <form role="form" name="filtroform">      	
+		  		
+    		<div class="col-md-4">
+		  	<div class="form-group has-feedback" novalidate>
+            	
+            	<input class="form-control" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';" 
+            	placeholder="Desde (mm/dd/yyyy)" name="desde"  ng-model="desde" 
+            	ng-pattern="/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/">
+     
+                    <!-- Validacion Patron del formato-->
+	                    <span class="help-block" ng-show="filtroform.desde.$touched && filtroform.desde.$error.pattern">Formato fecha invalido.</span>
+                    <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.desde.$touched && !filtroform.desde.$valid"></span>
+	                <!-- Validacion Ok -->
+	                	<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="filtroform.desde.$touched && filtroform.desde.$valid"></span>
+
+
+	            <select name="tecnico" class="form-control input-sm"
+				ng-model="lstTecnicos.seleccionado" placeholder="Técnico" 
+				ng-show="dataListaFiltro.seleccionado.nombre == 'técnico';" 
+				ng-options="tecnico.nombre for tecnico in lstTecnicos.opciones track by tecnico.nombre">
+				</select>
+
+				<select ng-model="filtro.estado" placeholder="Estado" ng-show="dataListaFiltro.seleccionado.nombre == 'estado';" class="form-control input-sm">
+				<option ng-repeat="estado in lstEstado" value="{{estado}}" data-subtext="{{estado.id}}">{{estado.nombre}}</option>
+				</select>
+
+			</div>     
+	        </div> 
+	        
+			<div class="col-md-4">
+			<div class="form-group has-feedback" novalidate>
+
+				<input class="form-control" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';" 
+				placeholder="Hasta (mm/dd/yyyy)"  name="hasta"  ng-model="hasta" 
+                ng-pattern="/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/">
+                        
+                                            
+	                        <!-- Validacion Patron del formato-->
+	                        <span class="help-block" ng-show="filtroform.hasta.$touched && filtroform.hasta.$error.pattern">Formato fecha invalido.</span>
+
+	                        <!-- Validacion Error -->
+	                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.hasta.$touched && !filtroform.hasta.$valid"></span>
+	                        <!-- Validacion Ok -->
+	                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="filtroform.hasta.$touched && filtroform.hasta.$valid"></span> 
+
+	        </div>
+	        </div>
+
+		</form>
+	</div>
+	</div>
+
+	
+
+
 	<div class="panel panel-default">    
     <div class="panel-body">
 

@@ -77,7 +77,8 @@
                         ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
                          required>
                         <!-- Validacion Campo Requerido -->
-                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.required && 
+                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.required 
+                        && 
                         dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese los segundos.</span>   <!-- Validacion Minimo -->
                         <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.min  && 
                         dataListaAcciones.seleccionado.nombre != 'descartar';">El mínimo de segundos es 0.</span>
