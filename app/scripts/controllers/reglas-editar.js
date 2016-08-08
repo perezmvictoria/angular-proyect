@@ -1,3 +1,6 @@
+/*
+Controller reglas-editar
+*/
 'use strict';
 
 angular.module('rac')
@@ -133,6 +136,7 @@ angular.module('rac')
         {
           $scope.regla_seleccionada.segundos = 0;
         }
+
         listaDeAccionesParaEnviar = [{"accion": $scope.regla_seleccionada.acciones[0].accion_valor, "tiempo": $scope.regla_seleccionada.segundos}];
         //debugger;
         // esto es para evitar que guarde undefined en la base cuando es una regla de tipo
@@ -141,6 +145,7 @@ angular.module('rac')
             $scope.regla_seleccionada.evento = "";
         }
 
+        // si la accion es esperar y el tiempo es 0 no mando trigger
         if ($scope.dataListaAcciones.seleccionado.nombre == "esperar" && $scope.regla_seleccionada.segundos == 0)
         {
             var condicion = "<regla>" + $scope.regla_seleccionada.condicion + "</regla><trigger></trigger>";
@@ -159,10 +164,11 @@ angular.module('rac')
             "medios" : listaDeMediosParaEnviar,
             "acciones" : listaDeAccionesParaEnviar
         }
+
         $http.post(perfilService.getRuta()+'/reglas/editar_regla', data, perfilService.getConfig())
         .success(function (data, status, headers, config) {
 
-          });
+        });
     }   
     $location.path('/dashboard/reglas-listar');
     return "'/dashboard/reglas-listar'";
