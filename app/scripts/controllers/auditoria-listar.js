@@ -18,8 +18,8 @@ angular.module('rac')
       $scope.listaDeUsuarios = data.info;        
       return false;
       })
-    .error(function (data, status, header, config) {          
-        //$scope.msjerror = "No se pudo cargar la lista de usuarios";          
+    .error(function (data, status, header, config) {
+        alert(data.error);
         return false;
     })
 

@@ -19,7 +19,8 @@ angular.module('rac')
         var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
           "rol_exec":$scope.rolUsuario
-        } 
+        }
+        
       	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			
@@ -30,21 +31,6 @@ angular.module('rac')
             $scope.msjerror = "No se pudo cargar la lista de usuarios";          
             return false;
         })
-
-        $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , 
-        perfilService.getConfig()).success(
-        function (data,status,headers,config)
-        {
-          perfilService.setRolesUsuario(data.info);
-          //$location.path('/dashboard');
-          return false;
-        }).error (
-          function () {
-            $scope.msjerror = "Error al cargar datos";
-            //perfilService.setPerfil("error","admin",$scope.contrasenia);
-            //$location.path('/login');
-            return false;
-          })
     }
    	
     $scope.crearUsuario = function () {
@@ -128,7 +114,6 @@ angular.module('rac')
         $location.path('/dashboard/usuarios-contrasenia');
         return "/dashboard/usuarios-contrasenia";
       }  
-
 
   $scope.listarUsuarios();
 

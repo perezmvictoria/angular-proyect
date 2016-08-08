@@ -6,6 +6,7 @@
 		</div>	
    
     <div class="panel-body">
+<<<<<<< HEAD
 
     <div class="col-md-4">
     <select class="form-control input-sm" data-style="btn-default" placeholder="Filtro" 
@@ -70,6 +71,43 @@
 	
 
 
+=======
+      <form role="form">      	
+		  		<div class="form-group  col-md-4" >
+				    <div class='input-group date' id='fini'>
+              <input type='text' class="form-control" placeholder="Desde"/>
+              <span class="input-group-addon">
+                 <span class="glyphicon glyphicon-calendar"></span>
+     					</span>
+	          </div>
+			  </div>
+			  <div class="form-group col-md-4">
+			    <div class='input-group date' id='ffin'>
+            <input type='text' class="form-control" placeholder="Hasta"/>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+  	      </div>	
+			  </div>
+ 			  <div class="form-group col-md-4">
+				  <button type="submit" class="btn btn-default btn-md ">Generar</button>
+				</div>
+			  <div class="form-group col-md-4">
+				  <select name="tecnico" class="form-control input-sm"
+				  ng-model="lstTecnicos.seleccionado" placeholder="Técnico" 
+				  ng-options="tecnico.usuario for tecnico in lstTecnicos.opciones track by tecnico.usuario">
+				  </select>
+			  </div>
+			  <div class="form-group  col-md-4">
+				  <select ng-model="filtro.estado" placeholder="Estado" class="form-control input-sm">
+					  <option ng-repeat="estado in lstEstado"
+							  value="{{estado}}" data-subtext="{{estado.id}}">{{estado.nombre}}</option>
+				  </select>
+			  </div>
+  		</form>
+    </div>
+  </div>		  
+>>>>>>> 78674b8a2a8494564c9586de25e29a761c629806
 	<div class="panel panel-default">    
     <div class="panel-body">
 
