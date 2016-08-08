@@ -53,12 +53,14 @@ angular.module('rac')
 	
 	$scope.generarUsuario = function () {
 		var retorno = "";
-			for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
- 				if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)
- 				{
-					retorno = $scope.dataTipoUsuario.opciones[i].value;			
- 				}
+		
+		for (var i = 0, len = $scope.dataTipoUsuario.opciones.length; i < len; i++) {
+			if ($scope.dataTipoUsuario.opciones[i].name == $scope.dataTipoUsuario.seleccionada.name)
+			{
+			retorno = $scope.dataTipoUsuario.opciones[i].value;			
 			}
+		}
+
 		if(!usuarioService.isModoEditar()){
 			var data = {
 	 			"usuario_exec":$scope.nombreUsuario,
@@ -73,7 +75,11 @@ angular.module('rac')
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
 
-	    		});
+	    		}).error(function(data) {
+						$scope.msjerror = data.error;
+						alert(data.error);
+					}
+	    		);
 		}
 		else
 		{
@@ -91,7 +97,8 @@ angular.module('rac')
 				.success(function (data, status, headers, config) {
 
 	    		});
-		}		
+		}	
+
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";
 	}
