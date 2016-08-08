@@ -6,24 +6,46 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     perfilService.validarSesion($location);
     $scope.msjerror = "";
+    $scope.listaDeUsuarios = "";
 
-      $scope.filtro = { fechaIni :'',
-                        fechaFin :'',
-                        tecnico  :'',
-                        accion   :'',};
+    var dataPost = {
+      "usuario_exec":$scope.nombreUsuario,
+      "rol_exec":$scope.rolUsuario
+    } 
+    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
+          dataPost,perfilService.getConfig())
+      .success(function (data, status, headers, config) {         
+      $scope.listaDeUsuarios = data.info;        
+      return false;
+      })
+    .error(function (data, status, header, config) {          
+        //$scope.msjerror = "No se pudo cargar la lista de usuarios";          
+        return false;
+    })
 
-      $scope.lstTecnicos = [
-          { 'id': '1', 'nombre': 'Juan' },
-          { 'id': '2', 'nombre': 'Jose' },
-          { 'id': '3', 'nombre': 'Pepe' }
-      ];
+    $scope.filtro = { fechaIni :'',
+                      fechaFin :'',
+                      tecnico  :'',
+                      accion   :'',};
 
-      $scope.lstAccion = [
-          { 'id': '1', 'nombre': 'Esperar' },
-          { 'id': '2', 'nombre': 'Consolidar' },
-          { 'id': '3', 'nombre': 'Descartar' }
-      ];
-      
+    $scope.tecnicos = {
+      opciones : [],
+      seleccionado : {}
+    };
+
+    $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+
+    $scope.lstAccion = [
+        { 'id': '1', 'nombre': 'Esperar' },
+        { 'id': '2', 'nombre': 'Consolidar' },
+        { 'id': '3', 'nombre': 'Descartar' }
+    ];
+    
+    $scope.onFocusDeTecnicos = function()
+    {
+      $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+    }
+
     $scope.listarAuditoria = function () {
     var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
