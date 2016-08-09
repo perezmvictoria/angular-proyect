@@ -3,43 +3,75 @@
   <div class="panel panel-success">
     <div class="panel-heading">
         Auditorias sobre el sistema
+   </div>
+  
+  <div class="panel-body"> 
+  <div class="row">   
+      
+    <div class="col-xs-6 col-md-4">
+        <select class="form-control input-sm" data-style="btn-default" placeholder="Filtro" name="filtro"  data-live-search="true" ng-model="dataListaFiltro.seleccionado" ng-options="filtro.nombre for filtro in dataListaFiltro.opciones track by filtro.nombre" required>
+        </select>
     </div>
-    <div class="panel-body">
-      <form role="form">
-          <div class="form-group  col-md-4" >
-            <div class='input-group date' id='fini'>
-              <input type='text' class="form-control" placeholder="Desde"/>
-              <span class="input-group-addon">
-                 <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-            </div>
-        </div>
-        <div class="form-group col-md-4">
-          <div class='input-group date' id='ffin'>
-            <input type='text' class="form-control" placeholder="Hasta"/>
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+
+    <form role="form" name="filtroform">       
+    
+      <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
+          <div class="form-group has-feedback"  novalidate> 
+                <input class="form-control" 
+                placeholder="desde (DD-MM-YYYY)" name="desde"  ng-model="desde" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[-]\d?\d[-](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![-]0?2)|31(?=[-]0?[13578]|[-]1[02]))[-](0?[1-9]|1[0-2])[-]([12]\d{3})$/">
+                      <!-- Validacion Patron del formato-->
+                        <span class="help-block" 
+                        ng-show="filtroform.desde.$touched && filtroform.desde.$error.pattern &&dataListaFiltro.seleccionado.nombre == 'fecha';" >Formato fecha invalido.</span>
+                      <!-- Validacion Error -->
+                        <span class="glyphicon glyphicon-remove form-control-feedback" 
+                        ng-show="filtroform.desde.$touched && !filtroform.desde.$valid 
+                        && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                      <!-- Validacion Ok -->
+                      <span class="glyphicon glyphicon-ok form-control-feedback" 
+                      ng-show="filtroform.desde.$touched && filtroform.desde.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';""></span>
+          </div> 
+      </div> 
+      <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
+          <div class="form-group has-feedback" novalidate>
+                <input class="form-control" 
+                placeholder="hasta (DD-MM-YYYY)"  name="hasta"  ng-model="hasta" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[-]\d?\d[-](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![-]0?2)|31(?=[-]0?[13578]|[-]1[02]))[-](0?[1-9]|1[0-2])[-]([12]\d{3})$/">
+                      <!-- Validacion Patron del formato-->
+                      <span class="help-block" ng-show="filtroform.hasta.$touched && filtroform.hasta.$error.pattern && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
+                      <!-- Validacion Error -->
+                      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.hasta.$touched && !filtroform.hasta.$valid 
+                      && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                      <!-- Validacion Ok -->
+                      <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="filtroform.hasta.$touched && filtroform.hasta.$valid 
+                      && dataListaFiltro.seleccionado.nombre == 'fecha';"></span> 
           </div>
-        </div>
-        <div class="form-group col-md-4">
-          <button type="submit" class="btn btn-default btn-md ">Generar</button>
-        </div>
-        <div class="form-group  col-md-4">
-          <select ng-model="tecnicos.seleccionado" placeholder="Técnico" class="form-control input-sm"
-          ng-focus="onFocusDeTecnicos();"
-          ng-options="tecnico.usuario for tecnico in tecnicos.opciones track by tecnico.usuario">
-          </select>
-        </div>
-        <div class="form-group  col-md-4">
-              <select ng-model="filtro.accion" placeholder="Acción" class="form-control input-sm">
-                  <option ng-repeat="accion in lstAccion"
-                          value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
-              </select>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'técnico';" >
+        <select ng-model="tecnicos.seleccionado" placeholder="Técnico" class="form-control input-sm" ng-focus="onFocusDeTecnicos();" ng-options="tecnico.usuario for tecnico in tecnicos.opciones track by tecnico.usuario">
+        </select>
+      </div> 
+
+      <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'acción';">   
+        <select ng-model="filtro.accion" placeholder="Acción" 
+        class="form-control input-sm">
+        <option ng-repeat="accion in lstAccion" value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+        </select>
+      </div>
+    
+  </form>
+      <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre != 'fecha';">
+        <button type="submit" class="btn btn-default btn-md ">Generar</button>
+      </div>
   </div>
+    <div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
+        <button type="submit" class="btn btn-default btn-md ">Generar</button>
+      </div>   
+  </div>  
+</div>
+</div>
+
+
   <div class="panel panel-default">    
     <div class="panel-body">
         <table datatable="ng" class="table table-striped table-bordered table-hover">
