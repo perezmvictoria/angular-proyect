@@ -8,7 +8,10 @@ angular.module('rac')
       $scope.filtro = { fechaIni :'', fechaFin :''};
       $scope.nombreUsuario = perfilService.getUsuario().nombre;
       $scope.rolUsuario    = perfilService.getUsuario().rol;
-
+      $scope.permisoResolver="";
+      $scope.permisoAsignar="";
+      $scope.permisoCerrar="";
+      $scope.tienePermiso="";
       $scope.notificacion_seleccionada = "";
 
       $scope.setNotificacion = function (notificacion){
@@ -30,10 +33,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.permisoResolver=true;
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = "Error";
+          //$scope.permisoResolver=false;
           return false;
         })
 
@@ -59,10 +64,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.permisoCerrar=true;
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = "Error";
+          //$scope.permisoCerrar=false;
           return false;
         })
 
@@ -85,10 +92,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.permisoAsignar=true;
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = "Error";
+          //$scope.permisoAsignar=false;
           return false;
         })
 

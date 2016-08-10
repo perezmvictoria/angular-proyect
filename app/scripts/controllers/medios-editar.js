@@ -71,7 +71,9 @@ angular.module('rac')
       }
       $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
-      });
+      }).error(function(data) {
+            alert(data.error);
+        });
     }else{ // Si estoy editando el medio
 
       if ($scope.dataTipoMedio.seleccionada.tipo == "sms")
@@ -100,7 +102,9 @@ angular.module('rac')
       }      
       $http.post(perfilService.getRuta()+'/medios/editar_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
-      });
+      }).error(function(data) {
+            alert(data.error);
+        });
     }  
     $location.path('/dashboard/medios-listar');
     return "'/dashboard/medios-listar'";

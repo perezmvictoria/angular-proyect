@@ -7,11 +7,13 @@ angular.module('rac')
     perfilService.validarSesion($location);
     $scope.msjerror = "";
     $scope.listaDeUsuarios = "";
+    $scope.tienePermiso="";
 
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
       "rol_exec":$scope.rolUsuario
     } 
+
     $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
           dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {         
@@ -19,7 +21,8 @@ angular.module('rac')
       return false;
       })
     .error(function (data, status, header, config) {
-        alert(data.error);
+        //alert(data.error);
+        $scope.msjerror = "No se pudo cargar la lista de usuarios";          
         return false;
     })
 
@@ -47,6 +50,7 @@ angular.module('rac')
                 { 'id': 3, 'nombre': 'acción' }],
       seleccionado: { 'id': 2, 'nombre': 'fecha' }
     }
+
     $scope.onFocusDeTecnicos = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
@@ -60,11 +64,17 @@ angular.module('rac')
     $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
     	dataPost,perfilService.getConfig())
     .success(function (data, status, headers, config) {    			
-				$scope.datos = data.info;      
+				$scope.datos = data.info;
+        $scope.tienePermiso=true;       
 				return false;
-       	})
-    	.error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de auditorias";          
+       	}).error(function (data, status, header, config) {
+        if ( data.error.includes("permisos")){
+                $scope.tienePermiso=false; 
+                //alert(data.error);
+                //$scope.msjerror = "Permisos insuficientes";  
+        } else{
+               $scope.msjerror = "No se pudo cargar la lista de auditorias.";
+        }                   
           return false;
       })
     }

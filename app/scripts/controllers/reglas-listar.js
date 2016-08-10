@@ -10,6 +10,7 @@ angular.module('rac')
     $scope.msjerror = "";
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
+    $scope.tienePermiso="";
 
 	  $scope.listarReglas = function () {
 
@@ -28,11 +29,18 @@ angular.module('rac')
       $http.post(perfilService.getRuta()+'/reglas/listar_reglas', 
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-        $scope.datos = data.info;        
+        $scope.datos = data.info;
+        $scope.tienePermiso=true;         
         return false;
         })
-      .error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de reglas";          
+      .error(function (data, status, header, config) {
+        if ( data.error.includes("permisos")){
+                $scope.tienePermiso=false; 
+                //alert(data.error);
+                //$scope.msjerror = "Permisos insuficientes";  
+            }else{
+               $scope.msjerror = "No se pudo cargar la lista de reglas";
+            }                 
           return false;
       })
     }

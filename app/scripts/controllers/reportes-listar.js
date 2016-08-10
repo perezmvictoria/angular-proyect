@@ -8,6 +8,8 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.datos = {};
     $scope.listaUsuarios = "";
+    //cambiar al cablear
+    $scope.tienePermiso=true;
     
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
@@ -21,7 +23,8 @@ angular.module('rac')
       return false;
       })
     .error(function (data, status, header, config) {
-        alert(data.error);
+        //alert(data.error);
+        $scope.msjerror = "No se pudo cargar la lista de usuarios";
         return false;
     })
 

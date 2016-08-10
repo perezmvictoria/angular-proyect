@@ -109,9 +109,7 @@ angular.module('rac')
 				.success(function (data, status, headers, config) {
 
 	    		}).error(function(data) {
-						//$scope.msjerror = data.error;
-						//alert(data.error);
-						BootstrapDialog.alert('I want banana!');
+						alert(data.error);
 				});
 		}
 		else
@@ -132,9 +130,7 @@ angular.module('rac')
 				.success(function (data, status, headers, config) {
 
 	    		}).error(function(data) {
-						//$scope.msjerror = data.error;
-						//alert(data.error);
-						BootstrapDialog.alert('I want banana!');
+						alert(data.error);
 				});
 		}	
 

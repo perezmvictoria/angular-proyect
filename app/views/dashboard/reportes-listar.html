@@ -1,9 +1,19 @@
-<div>	
+<div>
+
 	<h2>Reportes</h2>
-	<div class="panel panel-success">
+
+	<div class="panel panel-danger" ng-hide="tienePermiso">
+    	<div class="panel-heading">
+        No tiene permisos suficientes para acceder a esta funcionalidad.
+    	</div>
+  	</div>
+
+  	<div class="panel panel-success" ng-show="tienePermiso">
+
     	<div class="panel-heading">
 				Seleccione uno de los filtros para generar su reporte:
-		</div>	
+		</div>
+
 	<div class="panel-body"> 
 	<div class="row">   
 	    
@@ -30,7 +40,8 @@
 		                	<span class="glyphicon glyphicon-ok form-control-feedback" 
 		                	ng-show="filtroform.desde.$touched && filtroform.desde.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';""></span>
 		  		</div> 
-			</div> 
+			</div>
+
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
 				<div class="form-group has-feedback" novalidate>
 					<input class="form-control" 
@@ -39,40 +50,42 @@
 	               			<!-- Validacion Patron del formato-->
 		                    <span class="help-block" ng-show="filtroform.hasta.$touched && filtroform.hasta.$error.pattern &&dataListaFiltro.seleccionado.nombre == 'fecha';"">Formato fecha invalido.</span>
 							<!-- Validacion Error -->
-		                   	<span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.hasta.$touched && !filtroform.hasta.$valid 
+		                   	<span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.hasta.$touched 
+		                   	&& !filtroform.hasta.$valid 
 		                   	&& dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
 		                    <!-- Validacion Ok -->
 		                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="filtroform.hasta.$touched && filtroform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span> 
 		   		</div>
 			</div>
+
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'técnico';" >          	
 				<select ng-model="tecnicos.seleccionado" placeholder="Técnico" class="form-control input-sm" ng-focus="onFocusDeTecnicos();" ng-options="tecnico.usuario for tecnico in tecnicos.opciones track by tecnico.usuario">
         		</select>
 			</div> 
 
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'estado';">   
-				<select ng-model="filtro.estado" placeholder="Estado" 
-				class="form-control input-sm">
+				<select ng-model="filtro.estado" placeholder="Estado" class="form-control input-sm">
 				<option ng-repeat="estado in lstEstado" value="{{estado}}" data-subtext="{{estado.id}}">{{estado.nombre}}</option>
 				</select>
     		</div>
 		
-	</form>
+		</form>
+
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre != 'fecha';">
 				<button type="submit" class="btn btn-default btn-md ">Generar</button>
 			</div>
-	</div>
-		<div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
-				<button type="submit" class="btn btn-default btn-md ">Generar</button>
-			</div>   
-	</div>  
+		</div>
 
-	   
+		<div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
+			<button type="submit" class="btn btn-default btn-md ">Generar</button>
+		</div>
+
+	</div>  
 	</div>
 
 </div>
 
-	<div class="panel panel-default">    
+	<div class="panel panel-default" ng-show="tienePermiso">    
     <div class="panel-body">
 
 		<table datatable="ng" class="table table-striped table-bordered table-hover">
@@ -96,6 +109,8 @@
 			</tr>
 			</tbody>
 		</table>
-	<div>
-	</div>	
+	</div>
+	</div>
+  	<div class="alert-danger">{{msjerror}}</div> 
+  	</div>  
 </div>

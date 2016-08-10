@@ -1,67 +1,83 @@
 <div>
-  <h2>Usuarios</h2>
-  <div class="panel panel-success">
-    <div class="panel-heading">
-        Usuarios del sistema   
-    </div>
-    
-    <div class="panel-body">
-        <table datatable="ng" class="table table-striped table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Nombre</th>
-                <th>Mail</th>                
-                <th>Telefono</th>
-                <th>Tipo</th>
-                <th></th>
-            </tr>
-            </thead>
-            
-            <tbody> 
-                <tr ng-repeat="usuario in datos" >
-                    <td>{{usuario.usuario}}</td>                    
-                    <td>{{usuario.nombre}}</td>
-                    <td>{{usuario.mail}}</td>
-                    <td>{{usuario.telefono}}</td>
-                    <td>{{usuario.tipo_usuario}}</td>
-                    <td>                     
-                        <a class="btn btn-success btn-xs" ng-click="editarUsuario(usuario);" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                        
-                        <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirmar" title="Eliminar" ng-click="setearUsuarioAEliminar(usuario);"><i class="glyphicon glyphicon-remove"></i></a>
-                        
-                        <a  ng-show="usuario.bloqueado" class="btn btn-warning btn-xs" 
-                            ng-click="desbloquearUsuario(usuario);"
-                            title="Usuario Bloqueado">
-                            <i class="glyphicon glyphicon-lock"></i>
-                        </a>
 
-                         <a class="btn btn-info btn-xs" ng-click="cambiarContrasenia(usuario);"
-                          title="Cambiar Contraseña" ><i class="glyphicon glyphicon-modal-window"></i></a>
-                        
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="modal fade" id="confirmar" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header"> 
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Confirmar Eliminar</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>¿Desea eliminar el usuario seleccionado?</p>
-                                </div>  
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario();" >Aceptar</button>
-                                    <button type="button" class="btn btn-md" ui-sref="usuarios-listar" data-dismiss="modal">Cancelar</button>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->      
+  <h2>Usuarios</h2>
+
+    <div class="panel panel-danger" ng-hide="tienePermiso">
+        <div class="panel-heading">
+        No tiene permisos suficientes para acceder a esta funcionalidad.
+        </div>
+    </div>
+   
+    <div class="panel panel-success" ng-show="tienePermiso">
+
+        <div class="panel-heading">
+            Usuarios del sistema   
+        </div>
+    
+        <div class="panel-body">
+            <table datatable="ng" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Mail</th>                
+                        <th>Telefono</th>
+                        <th>Tipo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr ng-repeat="usuario in datos" >
+
+                        <td>{{usuario.usuario}}</td>    
+
+                        <td>{{usuario.nombre}}</td>
+
+                        <td>{{usuario.mail}}</td>
+
+                        <td>{{usuario.telefono}}</td>
+
+                        <td>{{usuario.tipo_usuario}}</td>
+
+                        <td>                     
+                            <a class="btn btn-success btn-xs" title="Editar" ng-click="editarUsuario(usuario);">
+                            <i class="glyphicon glyphicon-pencil"></i></a>
+                            
+                            <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar" 
+                            ng-click="setearUsuarioAEliminar(usuario);">
+                            <i class="glyphicon glyphicon-remove"></i></a>
+                            
+                            <a class="btn btn-warning btn-xs" title="Usuario Bloqueado" ng-click="desbloquearUsuario(usuario);" 
+                            ng-show="usuario.bloqueado">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            </a>
+
+                             <a class="btn btn-info btn-xs" ng-click="cambiarContrasenia(usuario);"
+                              title="Cambiar Contraseña" ><i class="glyphicon glyphicon-modal-window"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     <div>
-     <div class="alert-danger">{{msjerror}}</div>            
-    <button class="btn btn-md " ng-click="crearUsuario();">Crear Usuario</button>
-  </div>  
-</div>       
+        <button class="btn btn-md " ng-click="crearUsuario();">Crear Usuario</button>
+    </div>
+        <div class="alert-danger">{{msjerror}}</div> 
+    </div>  
+</div>
+<div class="modal fade" id="confirmar" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirmar Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Desea eliminar el usuario seleccionado?</p>
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario();" >Aceptar</button>
+                <button type="button" class="btn btn-md" ui-sref="usuarios-listar" data-dismiss="modal">Cancelar</button>
+            </div>
+         </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->      

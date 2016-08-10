@@ -11,6 +11,7 @@ angular.module('rac')
     $scope.medio_seleccionado = mediosService.getMedio();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
+    $scope.tienePermiso="";
   
     $scope.listarMedios = function () {
       var dataPost = {
@@ -22,10 +23,17 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
     	.success(function (data, status, headers, config) {
     		$scope.datos = data.info;
+        $scope.tienePermiso=true; 
     		return false;
      	})
      	.error(function (data, status, header, config) {
-        $scope.msjerror = "No se pudo cargar la lista de medios";
+        if ( data.error.includes("permisos")){
+                $scope.tienePermiso=false; 
+                //alert(data.error);
+                //$scope.msjerror = "Permisos insuficientes";  
+            }else{
+               $scope.msjerror = "No se pudo cargar la lista de medios";
+            }
         return false;
       })
     }
