@@ -9,50 +9,35 @@ angular.module('rac')
     $scope.datos = {};
     $scope.listaUsuarios = "";
     
-   /* $scope.filtro = { fechaIni :'',
-        fechaFin :'',
-        tecnico  :'',
-        estado   :'',
-    };*/
-
-    $scope.lstTecnicos = {
-      opciones: [],
-      seleccionado: {}
-    };
-
-    //if (perfilService.getListaUsuarios.length == 0){
-
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
       } 
 
+    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
+          dataPost,perfilService.getConfig())
+      .success(function (data, status, headers, config) {         
+      $scope.listaDeUsuarios = data.info;        
+      return false;
+      })
+    .error(function (data, status, header, config) {
+        alert(data.error);
+        return false;
+    })
 
+   $scope.filtro = { fechaIni :'',
+        fechaFin :'',
+        tecnico  :'',
+        estado   :'',
+    };
 
-      $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
-        dataPost,perfilService.getConfig())
-        .then(function (response){
-          //debugger;
-          perfilService.setListaUsuarios(response.data.info);       
-        }, function (error){
-          var data = error.data;
-          $scope.msjerror = "Error en carga de datos";
-        }
+    $scope.tecnicos = {
+      opciones : [],
+      seleccionado : {}
+    };
 
-      
-      );
-
-
-/*
-        .success(function (data, status, headers, config) {  
-        })
-        .error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
-        })*/
-    //}
-
-    $scope.lstTecnicos.opciones = perfilService.getListaUsuarios();
-
+    $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+    
     $scope.lstEstado = [
         { 'id': '1', 'nombre': 'resuelta' },
         { 'id': '2', 'nombre': 'cancelada' }
@@ -64,6 +49,22 @@ angular.module('rac')
                 { 'id': 3, 'nombre': 'estado' }],
       seleccionado: { 'id': 2, 'nombre': 'fecha' }
     }
+
+    $scope.onFocusDeTecnicos = function()
+    {
+      $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+    }
+    //if (perfilService.getListaUsuarios.length == 0){
+
+/*
+        .success(function (data, status, headers, config) {  
+        })
+        .error(function (data, status, header, config) {          
+          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+        })*/
+    //}
+
+    
 
 
           /*$scope.listarReportes = function () {
