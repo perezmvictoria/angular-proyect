@@ -25,7 +25,7 @@
 			  <td>{{notificacion.descripcion}}</td>
 			  
 			<td> 
-			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);">
+			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);" ng-show="notificacion.estado == 'creada';">
 			<i class="glyphicon glyphicon-link"></i></a>
 			
 			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);">
