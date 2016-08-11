@@ -11,6 +11,7 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.tienePermiso="";
+    $scope.hayError=false;
 
 	  $scope.listarReglas = function () {
 
@@ -40,6 +41,7 @@ angular.module('rac')
                 //$scope.msjerror = "Permisos insuficientes";  
             }else{
                $scope.msjerror = "No se pudo cargar la lista de reglas";
+               $scope.hayError=true;
             }                 
           return false;
       })

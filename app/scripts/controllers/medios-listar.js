@@ -12,6 +12,7 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.tienePermiso="";
+    $scope.hayError=false;
   
     $scope.listarMedios = function () {
       var dataPost = {
@@ -33,6 +34,7 @@ angular.module('rac')
                 //$scope.msjerror = "Permisos insuficientes";  
             }else{
                $scope.msjerror = "No se pudo cargar la lista de medios";
+               $scope.hayError=true;
             }
         return false;
       })

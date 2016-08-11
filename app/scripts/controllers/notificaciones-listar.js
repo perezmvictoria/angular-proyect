@@ -11,7 +11,7 @@ angular.module('rac')
       $scope.permisoResolver="";
       $scope.permisoAsignar="";
       $scope.permisoCerrar="";
-      $scope.tienePermiso="";
+      $scope.tienePermiso=true;
       $scope.notificacion_seleccionada = "";
 
       $scope.setNotificacion = function (notificacion){
@@ -39,6 +39,7 @@ angular.module('rac')
         .error(function (data, status, header, config) {
           $scope.msjerror = "Error";
           //$scope.permisoResolver=false;
+          $scope.hayError=true;
           return false;
         })
 
@@ -120,6 +121,7 @@ angular.module('rac')
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = "No se pudo cargar la lista de notificaciones";
+          $scope.hayError=true;
           return false;
         })
       }

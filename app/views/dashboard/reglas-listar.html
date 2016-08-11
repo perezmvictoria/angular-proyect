@@ -1,6 +1,13 @@
 <div> 
 
     <h2>Reglas</h2>
+
+        <div class="panel panel-danger" ng-show="hayError" >
+        <div class="panel-heading">
+        Ups! Ha ocurrido un error: {{msjerror}}. 
+        </div>
+    </div>
+
     
     <div class="panel panel-warning" ng-hide="tienePermiso">
         <div class="panel-heading">
@@ -48,10 +55,11 @@
         </table>  
     <div>
         <button class="btn btn-md " ng-click="crearRegla();">Crear Regla</button>
-    </div>    
-    <div>
-        <div class="alert-danger">{{msjerror}}</div>             
-    </div>  
+          </div>
+        <div class="alert-danger">{{msjerror}}</div> 
+      </div>   
+  </div>
+</div>  
 
 <div class="modal fade" id="confirmar" role="dialog">
     <div class="modal-dialog">

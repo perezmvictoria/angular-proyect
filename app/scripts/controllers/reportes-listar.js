@@ -10,6 +10,7 @@ angular.module('rac')
     $scope.listaUsuarios = "";
     //cambiar al cablear
     $scope.tienePermiso=true;
+    $scope.hayError=false;
     
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
@@ -25,6 +26,7 @@ angular.module('rac')
     .error(function (data, status, header, config) {
         //alert(data.error);
         $scope.msjerror = "No se pudo cargar la lista de usuarios";
+        $scope.hayError = true;  
         return false;
     })
 

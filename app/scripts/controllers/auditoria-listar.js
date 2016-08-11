@@ -8,7 +8,8 @@ angular.module('rac')
     $scope.msjerror = "";
     $scope.listaDeUsuarios = "";
     $scope.tienePermiso=true;
-
+    $scope.hayError=false;
+    
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
       "rol_exec":$scope.rolUsuario
@@ -21,7 +22,8 @@ angular.module('rac')
       return false;
       })
     .error(function (data, status, header, config) {
-        $scope.msjerror = "No se pudo cargar la lista de usuarios";          
+        $scope.msjerror = "No se pudo cargar la lista de usuarios";
+        $scope.hayError = true;          
         return false;
     })
 
@@ -74,7 +76,7 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
-                
+            scope.hayError = true;  
             return false;
         })
 
@@ -92,7 +94,7 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
-               
+            scope.hayError = true;     
             return false;
         })
 
@@ -110,7 +112,7 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
-                
+            scope.hayError = true;      
             return false;
         })
         }

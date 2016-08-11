@@ -2,6 +2,13 @@
 
 	<h2>Notificaciones</h2>
 
+        <div class="panel panel-danger" ng-show="hayError" >
+        <div class="panel-heading">
+        Ups! Ha ocurrido un error: {{msjerror}}. 
+        </div>
+        </div>
+
+
      <div class="panel panel-warning" ng-hide="tienePermiso">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
@@ -47,8 +54,7 @@
         </table>
     <div> 
 
-    </div>
-        <div class="alert-danger">{{msjerror}}</div> 
+    </div> 
     </div>  
     </div>
 </div>     
