@@ -2,7 +2,7 @@
   
   <h2>Auditorias</h2>
 
-  <div class="panel panel-danger" ng-hide="tienePermiso">
+  <div class="panel panel-warning" ng-hide="tienePermiso">
     <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
     </div>
@@ -28,8 +28,8 @@
       <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
           <div class="form-group has-feedback"  novalidate> 
               <input class="form-control" 
-                placeholder="desde (DD-MM-YYYY)" name="desde"  ng-model="desde" 
-                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[-]\d?\d[-](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![-]0?2)|31(?=[-]0?[13578]|[-]1[02]))[-](0?[1-9]|1[0-2])[-]([12]\d{3})$/">
+                placeholder="desde (DD/MM/YYYY)" name="desde"  ng-model="desde" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/">
                 <!-- Validacion Patron del formato-->
                 <span class="help-block" 
                 ng-show="filtroform.desde.$touched && filtroform.desde.$error.pattern && 
@@ -41,15 +41,15 @@
                 <!-- Validacion Ok -->
                 <span class="glyphicon glyphicon-ok form-control-feedback" 
                 ng-show="filtroform.desde.$touched && filtroform.desde.$valid && 
-                dataListaFiltro.seleccionado.nombre == 'fecha';""></span>
+                dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
           </div> 
       </div>
 
       <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
           <div class="form-group has-feedback" novalidate>
                 <input class="form-control" 
-                placeholder="hasta (DD-MM-YYYY)"  name="hasta"  ng-model="hasta" 
-                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[-]\d?\d[-](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![-]0?2)|31(?=[-]0?[13578]|[-]1[02]))[-](0?[1-9]|1[0-2])[-]([12]\d{3})$/">
+                placeholder="hasta (DD/MM/YYYY)"  name="hasta"  ng-model="hasta" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/">
                 <!-- Validacion Patron del formato-->
                 <span class="help-block" ng-show="filtroform.hasta.$touched && filtroform.hasta.$error.pattern 
                 && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
@@ -110,7 +110,7 @@
             </tbody>
         </table>      
     </div>
-  </div>
-  <div class="alert-danger">{{msjerror}}</div> 
+      <div class="alert-danger">{{msjerror}}</div> 
   </div>  
+  </div>
 </div>  
