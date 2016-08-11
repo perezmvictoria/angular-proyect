@@ -6,14 +6,14 @@
 
 
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+      
+      <div class="col-sm-3 col-md-2 sidebar">
     
-         <div class="text-center">
-          <a ui-sref="notificaciones-listar"><img src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /></a><br />
-  
+        <div class="text-center">
+          <a ui-sref="notificaciones-listar"><img style="width: 100%; height: auto" src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /></a><br />
         </div>
 
-        <ul class="nav nav-sidebar">
+        <ul class="nav nav-sidebar" >
           <li ng-class="{active: $state.includes('notificaciones-listar')}"><a ui-sref="notificaciones-listar">Notificaciones <span class="sr-only">(current)</span></a></li>
           <li ng-class="{active: $state.includes('reportes-listar')}"><a ui-sref="reportes-listar">Reportes</a></li>
           <li ng-class="{active: $state.includes('usuarios-listar')}"><a ui-sref="usuarios-listar">Usuarios</a></li>
@@ -21,34 +21,35 @@
           <li ng-class="{active: $state.includes('reglas-listar')}"><a ui-sref="reglas-listar">Reglas</a></li>
           <li ng-class="{active: $state.includes('auditorias-listar')}"><a ui-sref="auditorias-listar">Auditorias</a></li>
         </ul>
-
       </div>
+      
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view>
       </div>
-    </div>
+      
+      </div>
         <div class="row col-md-12">
-      <ul class="nav navbar-nav navbar-right">            
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <ul class="nav navbar-nav navbar-right">            
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+            aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-user"></i>  
-             {{usuario.nombre}}
+              {{usuario.nombre}}
               <span class="caret"></span></i>
-          </a>
+            </a>
           <ul class="dropdown-menu dropdown-user">
                 <li><a href="#" ng-click="editarPerfil();">
-                <i class="glyphicon glyphicon-user"></i> Perfil</a>
+                    <i class="glyphicon glyphicon-user"></i> Perfil</a>
                 </li>
                 <li><a href="#" ng-click="cambiarContrasenia();">
-                <i class="glyphicon glyphicon-modal-window"></i> Contraseña</a>
+                    <i class="glyphicon glyphicon-modal-window"></i> Contraseña</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="#" ng-click="logout();">
-                <i class="glyphicon glyphicon-log-out"></i> Cerrar Sesión</a>
-                </li>
-            </ul>
-        </li>        
+                    <i class="glyphicon glyphicon-log-out"></i> Cerrar Sesión</a>
+              </li>
+          </ul>
+          </li>        
       </ul>
-       
     </div>
   </div>
   </div>

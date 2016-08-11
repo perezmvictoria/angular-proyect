@@ -8,11 +8,10 @@
     </div>
   </div>
 
-
   <div class="panel panel-success" ng-show="tienePermiso">
     
     <div class="panel-heading">
-        Auditorias sobre el sistema
+        Seleccione uno de los filtros para ver las auditorias del sistema:
     </div>
   
   <div class="panel-body"> 
@@ -58,7 +57,7 @@
                 && !filtroform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
                 <!-- Validacion Ok -->
                 <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="filtroform.hasta.$touched 
-                && filtroform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span> 
+                && filtroform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
           </div>
       </div>
 
@@ -75,7 +74,8 @@
     </form>
 
       <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre != 'fecha';">
-        <button type="submit" class="btn btn-default btn-md " ng-click="listarAuditoria();">Generar</button>
+        <button type="submit" class="btn btn-default btn-md " ng-click="listarAuditoria();">Generar
+        </button>
       </div>
 
     </div>
