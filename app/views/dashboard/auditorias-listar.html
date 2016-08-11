@@ -68,21 +68,20 @@
       </div> 
 
       <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'acción';">   
-          <select ng-model="filtro.accion" placeholder="Acción" class="form-control input-sm">
-            <option ng-repeat="accion in lstAccion" value="{{accion}}" data-subtext="{{accion.id}}">{{accion.nombre}}</option>
+          <select ng-model="dataListaAcciones.seleccionado" placeholder="Acción" class="form-control input-sm" ng-options="accion.nombre for accion in dataListaAcciones.opciones track by accion.nombre">
           </select>
       </div>
 
     </form>
 
       <div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre != 'fecha';">
-        <button type="submit" class="btn btn-default btn-md ">Generar</button>
+        <button type="submit" class="btn btn-default btn-md " ng-click="listarAuditoria();">Generar</button>
       </div>
 
     </div>
 
       <div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
-        <button type="submit" class="btn btn-default btn-md ">Generar</button>
+        <button type="submit" class="btn btn-default btn-md " ng-click="listarAuditoria();">Generar</button>
       </div>   
   
     </div>  

@@ -7,7 +7,7 @@ angular.module('rac')
     perfilService.validarSesion($location);
     $scope.msjerror = "";
     $scope.listaDeUsuarios = "";
-    $scope.tienePermiso="";
+    $scope.tienePermiso=true;
 
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
@@ -38,6 +38,15 @@ angular.module('rac')
 
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
 
+    $scope.dataListaAcciones = {
+      opciones: [
+          { 'id': '1', 'nombre': 'esperar' },
+          { 'id': '2', 'nombre': 'consolidar' },
+          { 'id': '3', 'nombre': 'descartar' }
+        ],
+      seleccionado: {}
+    }
+
     $scope.lstAccion = [
         { 'id': '1', 'nombre': 'esperar' },
         { 'id': '2', 'nombre': 'consolidar' },
@@ -57,28 +66,119 @@ angular.module('rac')
     }
 
     $scope.listarAuditoria = function () {
-    var dataPost = {
-          "usuario_exec":$scope.nombreUsuario,
-          "rol_exec":$scope.rolUsuario
-    } 
-    $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
+      //debugger;
+
+      if ($scope.dataListaFiltro.seleccionado.nombre == "fecha"){
+        //console.log("fecha");
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "fecha_inicio": "08/08/2016",
+          "fecha_fin": "09/08/2016"
+        };
+
+        /*var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "fecha_inicio": $scope.desde,
+          "fecha_fin": $scope.hasta
+        };*/
+
+        $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_fecha', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          //$scope.tienePermiso=true;
+          return false;
+          }).error(function (data, status, header, config) {
+          /*if ( data.error.includes("permisos")){
+                  //$scope.tienePermiso=false; 
+                  //alert(data.error);
+                  //$scope.msjerror = "Permisos insuficientes";  
+          } else{
+                 $scope.msjerror = "No se pudo cargar la lista de auditorias.";
+          } */                  
+            return false;
+        })
+
+      }
+      else if ($scope.dataListaFiltro.seleccionado.nombre == "técnico") {
+        //console.log("tecnico");
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "usuario": $scope.tecnicos.seleccionado.usuario
+        };
+        $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_usuario', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          //$scope.tienePermiso=true;
+          return false;
+          }).error(function (data, status, header, config) {
+          /*if ( data.error.includes("permisos")){
+                  //$scope.tienePermiso=false; 
+                  //alert(data.error);
+                  //$scope.msjerror = "Permisos insuficientes";  
+          } else{
+                 $scope.msjerror = "No se pudo cargar la lista de auditorias.";
+          } */                  
+            return false;
+        })
+
+      } 
+      else if ($scope.dataListaFiltro.seleccionado.nombre == "acción"){
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "accion": $scope.dataListaAcciones.seleccionado.nombre
+        };
+        $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_accion', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          //$scope.tienePermiso=true;
+          return false;
+          }).error(function (data, status, header, config) {
+          /*if ( data.error.includes("permisos")){
+                  //$scope.tienePermiso=false; 
+                  //alert(data.error);
+                  //$scope.msjerror = "Permisos insuficientes";  
+          } else{
+                 $scope.msjerror = "No se pudo cargar la lista de auditorias.";
+          } */                  
+            return false;
+        })
+// /auditorias/listar_auditoria_accion
+
+      }
+
+    /*var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario
+          "accion": 
+    } */
+  /*  $http.post(perfilService.getRuta()+'/auditorias/listar_auditorias', 
     	dataPost,perfilService.getConfig())
     .success(function (data, status, headers, config) {    			
 				$scope.datos = data.info;
-        $scope.tienePermiso=true;       
+        //$scope.tienePermiso=true;
 				return false;
        	}).error(function (data, status, header, config) {
         if ( data.error.includes("permisos")){
-                $scope.tienePermiso=false; 
+                //$scope.tienePermiso=false; 
                 //alert(data.error);
                 //$scope.msjerror = "Permisos insuficientes";  
         } else{
                $scope.msjerror = "No se pudo cargar la lista de auditorias.";
         }                   
           return false;
-      })
+      })*/
     }
 
-    $scope.listarAuditoria();
+    // $scope.listarAuditoria();
 
   });
