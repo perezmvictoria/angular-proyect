@@ -8,7 +8,7 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.datos = {};
     $scope.listaUsuarios = "";
-    //cambiar al cablear
+    // TODO: cambiar al cablear
     $scope.tienePermiso=true;
     $scope.hayError=false;
     
@@ -28,12 +28,6 @@ angular.module('rac')
         $scope.hayError = true;  
         return false;
     })
-
-   /*$scope.filtro = { fechaIni :'',
-        fechaFin :'',
-        tecnico  :'',
-        estado   :'',
-    };*/
 
     $scope.tecnicos = {
       opciones : [],
@@ -63,6 +57,7 @@ angular.module('rac')
     $scope.ejecutarReporte = function(){
 
       if ($scope.dataListaFiltro.seleccionado.nombre == 'fecha'){
+        // reporte por fecha
 
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
@@ -85,6 +80,8 @@ angular.module('rac')
       }
       else if ($scope.dataListaFiltro.seleccionado.nombre == 'técnico'){
 
+        // reporte por tecnico
+
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
           "rol_exec": $scope.rolUsuario,
@@ -101,6 +98,8 @@ angular.module('rac')
         })
 
       } else if ($scope.dataListaFiltro.seleccionado.nombre == 'estado') {
+
+        // reporte por estado
 
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,

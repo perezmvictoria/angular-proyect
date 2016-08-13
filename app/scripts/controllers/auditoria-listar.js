@@ -63,6 +63,8 @@ angular.module('rac')
 
       if ($scope.dataListaFiltro.seleccionado.nombre == "fecha"){
 
+        // Auditorias por fecha
+
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
           "rol_exec": $scope.rolUsuario,
@@ -83,6 +85,8 @@ angular.module('rac')
       }
       else if ($scope.dataListaFiltro.seleccionado.nombre == "técnico") {
 
+        // Auditoria por tecnico
+
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
           "rol_exec": $scope.rolUsuario,
@@ -100,6 +104,8 @@ angular.module('rac')
 
       } 
       else if ($scope.dataListaFiltro.seleccionado.nombre == "tipo de acción"){
+
+        // Auditoria por tipo de accion
 
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
