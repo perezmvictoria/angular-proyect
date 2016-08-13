@@ -30,7 +30,7 @@ angular.module('rac')
     $scope.filtro = { fechaIni :'',
                       fechaFin :'',
                       tecnico  :'',
-                      accion   :'',};
+                      tipoAccion   :'',};
 
     $scope.tecnicos = {
       opciones : [],
@@ -39,7 +39,7 @@ angular.module('rac')
 
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
 
-    $scope.dataListaAcciones = {
+    $scope.dataListaTipoAcciones = {
       opciones: [
           { 'id': '1', 'nombre': 'info' },
           { 'id': '2', 'nombre': 'error' },
@@ -50,7 +50,7 @@ angular.module('rac')
     $scope.dataListaFiltro = {
       opciones: [{ 'id': 1, 'nombre': 'fecha' },
                 { 'id': 2, 'nombre': 'técnico' },
-                { 'id': 3, 'nombre': 'acción' }],
+                { 'id': 3, 'nombre': 'tipo de acción' }],
       seleccionado: { 'id': 2, 'nombre': 'fecha' }
     }
 
@@ -99,12 +99,12 @@ angular.module('rac')
         })
 
       } 
-      else if ($scope.dataListaFiltro.seleccionado.nombre == "acción"){
+      else if ($scope.dataListaFiltro.seleccionado.nombre == "tipo de acción"){
 
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
           "rol_exec": $scope.rolUsuario,
-          "tipo_accion": $scope.dataListaAcciones.seleccionado.nombre
+          "tipo_accion": $scope.dataListaTipoAcciones.seleccionado.nombre
         };
         $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_tipo_accion', 
           dataPost,perfilService.getConfig())
