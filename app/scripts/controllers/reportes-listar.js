@@ -24,17 +24,16 @@ angular.module('rac')
       return false;
       })
     .error(function (data, status, header, config) {
-        //alert(data.error);
         $scope.msjerror = "No se pudo cargar la lista de usuarios";
         $scope.hayError = true;  
         return false;
     })
 
-   $scope.filtro = { fechaIni :'',
+   /*$scope.filtro = { fechaIni :'',
         fechaFin :'',
         tecnico  :'',
         estado   :'',
-    };
+    };*/
 
     $scope.tecnicos = {
       opciones : [],
@@ -43,10 +42,11 @@ angular.module('rac')
 
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     
-    $scope.lstEstado = [
-        { 'id': '1', 'nombre': 'resuelta' },
-        { 'id': '2', 'nombre': 'cancelada' }
-    ];
+    $scope.dataListaEstados = {
+      opciones: [ { 'id': '1', 'nombre': 'resuelta'   },
+                  { 'id': '2', 'nombre': 'cancelada'  } ],
+      seleccionado: {}
+    }
 
     $scope.dataListaFiltro = {
       opciones: [{ 'id': 1, 'nombre': 'fecha' },
@@ -59,31 +59,63 @@ angular.module('rac')
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     }
-    //if (perfilService.getListaUsuarios.length == 0){
 
-/*
-        .success(function (data, status, headers, config) {  
-        })
-        .error(function (data, status, header, config) {          
-          $scope.msjerror = "No se pudo cargar la lista de usuarios";          
-        })*/
-    //}
+    $scope.ejecutarReporte = function(){
 
-    
+      if ($scope.dataListaFiltro.seleccionado.nombre == 'fecha'){
 
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "fecha_inicio": $scope.desde,
+          "fecha_fin": $scope.hasta
+        };
 
-          /*$scope.listarReportes = function () {
-
-          $http.post(perfilService.getRuta()+'/55555555555555555/listar_auditorias', 
-            perfilService.getData(),perfilService.getConfig())
-            .success(function (data, status, headers, config) {         
-            $scope.datos = data.info;        
+        $http.post(perfilService.getRuta()+'/reportes/listar_reporte_fecha', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          return false;
+          }).error(function (data, status, header, config) {
+            scope.hayError = true;  
             return false;
-            })
-            .error(function (data, status, header, config) {          
-              $scope.msjerror = "No se pudo cargar la lista de usuarios";          
-              return false;
-            })
-            }*/
-          //$scope.listarReportes();
-      });
+        })
+
+
+      }
+      else if ($scope.dataListaFiltro.seleccionado.nombre == 'técnico'){
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "usuario": $scope.tecnicos.seleccionado.usuario
+        };
+        $http.post(perfilService.getRuta()+'/reportes/listar_reporte_usuario', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          return false;
+          }).error(function (data, status, header, config) {
+            scope.hayError = true;     
+            return false;
+        })
+
+      } else if ($scope.dataListaFiltro.seleccionado.nombre == 'estado') {
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "estado": $scope.dataListaEstados.seleccionado.nombre
+        };
+        $http.post(perfilService.getRuta()+'/reportes/listar_reporte_estado', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          return false;
+          }).error(function (data, status, header, config) {
+            scope.hayError = true;      
+            return false;
+        })
+      }
+    }    
+});

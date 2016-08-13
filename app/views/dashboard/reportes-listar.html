@@ -14,7 +14,7 @@
     	</div>
   	</div>
 
-  	<div class="panel panel-success" nh-hide="hayError" ng-show="tienePermiso">
+  	<div class="panel panel-success" ng-hide="hayError" ng-show="tienePermiso">
 
     	<div class="panel-heading">
 				Seleccione uno de los filtros para generar su reporte:
@@ -70,20 +70,21 @@
 			</div> 
 
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'estado';">   
-				<select ng-model="filtro.estado" placeholder="Estado" class="form-control input-sm">
-				<option ng-repeat="estado in lstEstado" value="{{estado}}" data-subtext="{{estado.id}}">{{estado.nombre}}</option>
+				<select ng-model="dataListaEstados.seleccionado" placeholder="Estado" class="form-control input-sm"
+				ng-options="estado.nombre for estado in dataListaEstados.opciones track by estado.nombre"
+				>
 				</select>
     		</div>
 		
 		</form>
 
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre != 'fecha';">
-				<button type="submit" class="btn btn-default btn-md ">Generar</button>
+				<button type="submit" class="btn btn-default btn-md " ng-click="ejecutarReporte();">Generar</button>
 			</div>
 		</div>
 
 		<div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
-			<button type="submit" class="btn btn-default btn-md ">Generar</button>
+			<button type="submit" class="btn btn-default btn-md " ng-click="ejecutarReporte();">Generar</button>
 		</div>
 
 	</div>  
