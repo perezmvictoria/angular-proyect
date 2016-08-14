@@ -8,7 +8,6 @@ angular.module('rac')
 
     $scope.editarPerfil = function () {
 		usuarioService.setUsuario(perfilService.getUsuario());				
-		//usuarioService.setModoEditar(true);		
 		$location.path('/dashboard/perfil-editar');
 		return "/dashboard/perfil-editar";
     }
@@ -25,4 +24,8 @@ angular.module('rac')
  		$location.path('/login.html');
 		return "/login.html";
  	}
+
+ 	$scope.tengoPermiso = function(permiso){
+      return perfilService.getPermiso(permiso);
+    }
   });

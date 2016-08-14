@@ -91,7 +91,6 @@ angular.module('rac')
 			}
 		}
 
-
 		if(!usuarioService.isModoEditar()){
 
 			// Crear usuario

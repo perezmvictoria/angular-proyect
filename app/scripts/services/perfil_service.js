@@ -8,6 +8,7 @@ angular.module('rac')
         perfil.usuario.password = "";
         perfil.listaUsuarios = "";
         perfil.datosPerfil = "";
+        perfil.permisos = "";
 
         perfil.config = {
                             headers : {
@@ -19,13 +20,26 @@ angular.module('rac')
                             "rol_exec":perfil.usuario.rol
                       };
         //ruta local
-        perfil.ruta = "http://192.168.1.104:5000";
+        perfil.ruta = "http://192.168.1.149:5000";
         //ruta testing
         //perfil.ruta = "http://190.64.30.76:5000";
         //ruta prod
         //perfil.ruta="http://190.64.30.85:5000";
 
         return{
+            setPermisos: function(permisos){
+                perfil.permisos = permisos;
+            },
+            getPermisos: function(){
+                return perfil.permisos;
+            },
+            getPermiso: function(permiso){
+                var retorno = false;
+                if(perfil.permisos.indexOf(permiso) !== -1) {
+                    retorno = true;
+                }
+                return retorno;
+            },
             getUsuario: function(){
                 return perfil.usuario;
             },

@@ -32,16 +32,16 @@ angular.module('rac')
       // Seteo datos en el perfil actual de usuario
       perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
       // Armo json para enviar en el POST
+      perfilService.setPermisos(data.info.operaciones);
       var dataPost = {
         "usuario_exec":$scope.usuario,
         "rol_exec":data.info.tipo_usuario
-      } 
+      }
       $http.post(perfilService.getRuta()+'/perfil/obtener_perfil',dataPost , 
         perfilService.getConfig()).success(
         function (data,status,headers,config)
         {
           perfilService.setDatosPerfil(data.info);
-          //debugger;
           $location.path('/dashboard');
           return false;
         }).error (

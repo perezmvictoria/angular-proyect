@@ -59,6 +59,10 @@ angular.module('rac')
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     }
 
+    $scope.tengoPermiso = function(permiso){
+      return perfilService.getPermiso(permiso);
+    }
+
     $scope.listarAuditoria = function () {
 
       if ($scope.dataListaFiltro.seleccionado.nombre == "fecha"){

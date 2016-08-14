@@ -8,14 +8,13 @@
         </div>
         </div>
 
-
-     <div class="panel panel-warning" ng-hide="tienePermiso">
+     <div class="panel panel-warning" ng-hide="tengoPermiso('listar_notificaciones');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
 
-	<div class="panel panel-success" ng-show="tienePermiso">
+	<div class="panel panel-success">
 		<div class="panel-heading">
 			Notificaciones del sistema
 		</div>
@@ -39,13 +38,13 @@
 			  <td>{{notificacion.descripcion}}</td>
 			  
 			<td> 
-			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);" ng-show="notificacion.estado == 'creada';">
+			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);" ng-show="notificacion.estado == 'creada' && tengoPermiso('asignar_notificacion');">
 			<i class="glyphicon glyphicon-link"></i></a>
 			
-			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);">
+			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('resolver_notificacion')">
 			<i class="glyphicon glyphicon-ok"></i></a>
 			
-            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar" ng-click="setNotificacion(notificacion);">
+            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('cerrar_notificacion')">
             <i class="glyphicon glyphicon-log-out"></i></a>
 			</td>
 			

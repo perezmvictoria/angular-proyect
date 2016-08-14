@@ -12,14 +12,13 @@
         <div class="text-center">
           <a ui-sref="notificaciones-listar"><img style="width: 100%; height: auto" src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /></a><br />
         </div>
-
         <ul class="nav nav-sidebar" >
-          <li ng-class="{active: $state.includes('notificaciones-listar')}"><a ui-sref="notificaciones-listar">Notificaciones <span class="sr-only">(current)</span></a></li>
-          <li ng-class="{active: $state.includes('reportes-listar')}"><a ui-sref="reportes-listar">Reportes</a></li>
-          <li ng-class="{active: $state.includes('usuarios-listar')}"><a ui-sref="usuarios-listar">Usuarios</a></li>
-          <li ng-class="{active: $state.includes('medios-listar')}"><a ui-sref="medios-listar">Medios</a></li>
-          <li ng-class="{active: $state.includes('reglas-listar')}"><a ui-sref="reglas-listar">Reglas</a></li>
-          <li ng-class="{active: $state.includes('auditorias-listar')}"><a ui-sref="auditorias-listar">Auditorias</a></li>
+          <li ng-class="{active: $state.includes('notificaciones-listar')}" ng-show="tengoPermiso('notificaciones');"><a ui-sref="notificaciones-listar">Notificaciones <span class="sr-only">(current)</span></a></li>
+          <li ng-class="{active: $state.includes('reportes-listar')}" ng-show="tengoPermiso('reportes');"><a ui-sref="reportes-listar">Reportes</a></li>
+          <li ng-class="{active: $state.includes('usuarios-listar')}" ng-show="tengoPermiso('usuarios');" ><a ui-sref="usuarios-listar">Usuarios</a></li>
+          <li ng-class="{active: $state.includes('medios-listar')}" ng-show="tengoPermiso('medios');"><a ui-sref="medios-listar">Medios</a></li>
+          <li ng-class="{active: $state.includes('reglas-listar')}" ng-show="tengoPermiso('reglas');"><a ui-sref="reglas-listar">Reglas</a></li>
+          <li ng-class="{active: $state.includes('auditorias-listar')}" ng-show="tengoPermiso('auditorias');"><a ui-sref="auditorias-listar" >Auditorias</a></li>
         </ul>
       </div>
       

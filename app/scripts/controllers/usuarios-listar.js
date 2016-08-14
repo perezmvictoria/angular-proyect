@@ -14,8 +14,12 @@ angular.module('rac')
     $scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.tienePermiso="";
+    //$scope.tienePermiso="";
     $scope.hayError=false;
+
+    $scope.tengoPermiso = function(permiso){
+      return perfilService.getPermiso(permiso);
+    }
 
   	$scope.listarUsuarios = function () {
         var dataPost = {
@@ -27,15 +31,16 @@ angular.module('rac')
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			
   				    $scope.datos = data.info;
-              $scope.tienePermiso=true;       
+              //$scope.tienePermiso=true;       
   				return false;
          	}).error(function (data, status, header, config) {          
             if ( data.error.includes("permisos")){
-                $scope.tienePermiso=false; 
+                //$scope.tienePermiso=false; 
                 //alert(data.error);
                 //$scope.msjerror = "Permisos insuficientes";  
             }else{
-               $scope.msjerror = "No se pudo cargar la lista de usuarios";
+               //$scope.msjerror = "No se pudo cargar la lista de usuarios";
+               $scope.msjerror = data.error;
                $scope.hayError=true;
             }
           return false;

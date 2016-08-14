@@ -9,7 +9,6 @@ angular.module('rac')
     $scope.datos = {};
     $scope.listaUsuarios = "";
     // TODO: cambiar al cablear
-    $scope.tienePermiso=true;
     $scope.hayError=false;
     
       var dataPost = {
@@ -17,7 +16,7 @@ angular.module('rac')
         "rol_exec":$scope.rolUsuario
       } 
 
-    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
+    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios_nombres', 
           dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {         
       $scope.listaDeUsuarios = data.info;        
@@ -25,6 +24,7 @@ angular.module('rac')
       })
     .error(function (data, status, header, config) {
         $scope.msjerror = "No se pudo cargar la lista de usuarios";
+        $scope.msjerror = data.error;
         $scope.hayError = true;  
         return false;
     })

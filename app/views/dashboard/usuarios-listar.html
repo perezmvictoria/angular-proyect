@@ -8,14 +8,13 @@
         </div>
     </div>
 
-
-    <div class="panel panel-warning" ng-hide="tienePermiso">
+    <div class="panel panel-warning" ng-hide="tengoPermiso('listar_usuarios')">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
    
-    <div class="panel panel-success" ng-show="tienePermiso">
+    <div class="panel panel-success" ng-show="tengoPermiso('listar_usuarios')">
 
         <div class="panel-heading">
             Usuarios del sistema   
@@ -36,14 +35,10 @@
                 <tbody> 
                     <tr ng-repeat="usuario in datos" >
 
-                        <td>{{usuario.usuario}}</td>    
-
+                        <td>{{usuario.usuario}}</td>
                         <td>{{usuario.nombre}}</td>
-
                         <td>{{usuario.mail}}</td>
-
                         <td>{{usuario.telefono}}</td>
-
                         <td>{{usuario.tipo_usuario}}</td>
 
                         <td>                     
@@ -66,7 +61,7 @@
                 </tbody>
             </table>
     <div>
-        <button class="btn btn-md " ng-click="crearUsuario();">Crear Usuario</button>
+        <button class="btn btn-md " ng-click="crearUsuario();" ng-hide="!tengoPermiso('crear_usuario')">Crear Usuario</button>
           </div>
       </div>   
   </div>
