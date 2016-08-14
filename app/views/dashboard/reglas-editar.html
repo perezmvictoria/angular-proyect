@@ -1,6 +1,15 @@
 <div> 
  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Reglas</h2>
-  <div class="panel panel-info">
+    
+    <!--Panel de Warning: Permisos-->
+    <div class="panel panel-warning" 
+    ng-hide="tengoPermiso('editar_regla');">
+        <div class="panel-heading">
+        No tiene permisos suficientes para acceder a esta funcionalidad.
+        </div>
+    </div>
+
+  <div class="panel panel-info" ng-show="tengoPermiso('editar_regla');">
     <div class="panel-heading">
         Ingrese los datos de la regla:
     </div>
@@ -136,7 +145,8 @@
                         dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione al menos un medio.</span>
 
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched && (!reglasEForm.medio.$valid || dataListaMedios.seleccionado.length == undefined ) &&
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched 
+                        && (!reglasEForm.medio.$valid || dataListaMedios.seleccionado.length == undefined ) &&
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched &&  dataListaMedios.seleccionado.length != undefined  && reglasEForm.medio.$valid &&
@@ -167,6 +177,12 @@
                        
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
+                </form>
+            </div>            
+        </div>        
+    </div>
+  </div>
+</div>
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -201,11 +217,4 @@
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal
-
-                </form>
-            </div>            
-        </div>        
-    </div>
-  </div>
-</div>
+                    </div><!-- /.modal-->

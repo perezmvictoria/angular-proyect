@@ -1,9 +1,19 @@
 <div> 
-  
-    <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
-    <div class="panel panel-info">
 
-    <div class="panel-heading">
+    <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
+
+    <!--Panel de Warning: Permisos-->
+    <div class="panel panel-warning" 
+    ng-hide="tengoPermiso('editar_medio_comunicacion');">
+        <div class="panel-heading">
+        No tiene permisos suficientes para acceder a esta funcionalidad.
+        </div>
+    </div>
+
+    <div class="panel panel-info" 
+    ng-show="tengoPermiso('editar_medio_comunicacion');">
+ 
+    <div class="panel-heading" >
         Ingrese los datos del medio de comunicación:
     </div>
     
@@ -14,7 +24,7 @@
                     
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Nombre" name="nombre" ng-disabled="modoEditar();" ng-model="medio_seleccionado.nombre" 
-                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.required">Ingrese el nombre.</span>
                             <!-- Validacion Minimo Caracteres -->
@@ -24,7 +34,8 @@
                             <!-- Validacion Patron del formato-->
                             <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.nombre.$touched && !mediosEForm.nombre.$valid"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.nombre.$touched 
+                        && !mediosEForm.nombre.$valid"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$valid"></span>
                     </div>
@@ -49,7 +60,7 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
-                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"required>
+                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
                             <!-- Validacion Minimo Caracteres -->
@@ -72,7 +83,8 @@
                         required>
                         </select>
                         <!-- Validacion Campo Requerido-->
-                        <span class="help-block" ng-show="mediosEForm.tipo.$touched && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
+                        <span class="help-block" ng-show="mediosEForm.tipo.$touched 
+                        && mediosEForm.tipo.$error.required">Seleccione el Tipo de Medio.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="mediosEForm.tipo.$touched && !mediosEForm.tipo.$valid"></span>
                         <!-- Validacion Error -->
@@ -85,7 +97,8 @@
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" ng-model="medio_seleccionado.clave" ng-hide="dataTipoMedio.seleccionada.tipo == 'mail';"
                         ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS"required>
-                        <span class="help-block" ng-show="ClaveEForm.clave.$touched && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
+                        <span class="help-block" ng-show="ClaveEForm.clave.$touched 
+                        && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ClaveEForm.clave.$touched && !ClaveEForm.clave.$valid && dataTipoMedio.seleccionada.tipo == 'sms';"></span>
                         <!-- Validacion Error -->

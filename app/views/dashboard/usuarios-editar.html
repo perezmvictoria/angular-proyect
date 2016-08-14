@@ -1,6 +1,13 @@
 <div> 
   <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
-    <div class="panel panel-info"> 
+
+    <div class="panel panel-warning" ng-hide="tengoPermiso('editar_usuario');">
+        <div class="panel-heading">
+        No tiene permisos suficientes para acceder a esta funcionalidad.
+        </div>
+    </div>
+
+    <div class="panel panel-info" ng-show="tengoPermiso('editar_usuario');"> 
     <div class="panel-heading">Ingrese los datos del usuario:</div>
   
     <div class="panel-body">
@@ -47,7 +54,8 @@
                                 <!-- Validacion Formato-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.email">Formato de mail Inválido.</span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched && !usuariosEForm.mail.$valid"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched 
+                        && !usuariosEForm.mail.$valid"></span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$valid"></span> 
                     </div>
@@ -72,7 +80,8 @@
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$error.required">Seleccione el Tipo de Usuario.</span>
                         <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.tipo.$touched && !usuariosEForm.tipo.$valid"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.tipo.$touched 
+                        && !usuariosEForm.tipo.$valid"></span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$valid"></span>
                     </div>
@@ -146,7 +155,14 @@
                     </div>
                     
                 </div> 
-                    <div class="modal fade" id="cancelar" role="dialog">
+                   
+            
+            </div>            
+        </div>  
+    </div>
+  </div>
+</div>
+ <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -181,9 +197,3 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-            
-            </div>            
-        </div>  
-    </div>
-  </div>
-</div>
