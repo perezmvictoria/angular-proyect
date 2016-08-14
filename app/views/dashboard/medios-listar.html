@@ -47,10 +47,13 @@
                         <td>{{medio.tipo}}</td>
                         
                         <td>                     
-                            <a class="btn btn-success btn-xs" title="Editar" ng-click="editarMedio(medio);" >
+                            <a class="btn btn-success btn-xs" title="Editar" 
+                            ng-show="tengoPermiso('editar_medio_comunicacion');"
+                            ng-click="editarMedio(medio);" >
                             <i class="glyphicon glyphicon-pencil"></i></a>
 
-                            <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar"  
+                            <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar"
+                            ng-show="tengoPermiso('borrar_medio_comunicacion');"  
                             ng-click="setearMedioAEliminar(medio);">
                             <i class="glyphicon glyphicon-remove"></i></a>
                         </td>
@@ -58,7 +61,7 @@
                 </tbody>
             </table>     
         <div> 
-            <button class="btn btn-md " ng-click="crearMedio();">Crear Medio</button>
+            <button class="btn btn-md" ng-show="tengoPermiso('crear_medios_comunicaciones');" ng-click="crearMedio();">Crear Medio</button>
         </div> 
       </div>   
   </div>

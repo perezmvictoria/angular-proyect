@@ -44,17 +44,19 @@
                     <td>{{regla.acciones[0].tiempo}}</td>
 
                     <td>                     
-                            <a class="btn btn-success btn-xs"  title="Editar" ng-click="editarRegla(regla);">
+                            <a class="btn btn-success btn-xs"  title="Editar" 
+                            ng-show="tengoPermiso('editar_regla');"
+                            ng-click="editarRegla(regla);">
                             <i class="glyphicon glyphicon-pencil"></i></a>
 
-                            <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar" ng-click="setearReglaAEliminar(regla);">
+                            <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar" ng-show="tengoPermiso('eliminar_regla');" ng-click="setearReglaAEliminar(regla);">
                             <i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             </tbody>
         </table>  
     <div>
-        <button class="btn btn-md " ng-click="crearRegla();">Crear Regla</button>
+        <button class="btn btn-md " ng-show="tengoPermiso('crear_regla');" ng-click="crearRegla();">Crear Regla</button>
           </div>
       </div>   
   </div>

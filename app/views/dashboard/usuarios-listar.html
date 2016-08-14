@@ -42,26 +42,28 @@
                         <td>{{usuario.tipo_usuario}}</td>
 
                         <td>                     
-                            <a class="btn btn-success btn-xs" title="Editar" ng-click="editarUsuario(usuario);">
+                            <a class="btn btn-success btn-xs" title="Editar" 
+                            ng-show="tengoPermiso('editar_usuario');"
+                            ng-click="editarUsuario(usuario);">
                             <i class="glyphicon glyphicon-pencil"></i></a>
                             
                             <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar" 
+                            ng-show="tengoPermiso('borrar_usuario');"
                             ng-click="setearUsuarioAEliminar(usuario);">
                             <i class="glyphicon glyphicon-remove"></i></a>
                             
                             <a class="btn btn-warning btn-xs" title="Usuario Bloqueado" ng-click="desbloquearUsuario(usuario);" 
-                            ng-show="usuario.bloqueado">
+                            ng-show="usuario.bloqueado && tengoPermiso('desbloquear_usuario');">
                             <i class="glyphicon glyphicon-lock"></i>
                             </a>
 
-                             <a class="btn btn-info btn-xs" ng-click="cambiarContrasenia(usuario);"
-                              title="Cambiar Contraseña" ><i class="glyphicon glyphicon-modal-window"></i></a>
+                             <a class="btn btn-info btn-xs" ng-show="tengoPermiso('cambiar_contrasenia_usuario');" ng-click="cambiarContrasenia(usuario);" title="Cambiar Contraseña" ><i class="glyphicon glyphicon-modal-window"></i></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
     <div>
-        <button class="btn btn-md " ng-click="crearUsuario();" ng-hide="!tengoPermiso('crear_usuario')">Crear Usuario</button>
+        <button class="btn btn-md " ng-show="tengoPermiso('crear_usuario');" ng-click="crearUsuario();" ng-hide="!tengoPermiso('crear_usuario')">Crear Usuario</button>
           </div>
       </div>   
   </div>
