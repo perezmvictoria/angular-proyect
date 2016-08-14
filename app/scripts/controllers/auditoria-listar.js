@@ -7,7 +7,6 @@ angular.module('rac')
     perfilService.validarSesion($location);
     $scope.msjerror = "";
     $scope.listaDeUsuarios = "";
-    $scope.tienePermiso=true;
     $scope.hayError=false;
     
     var dataPost = {
