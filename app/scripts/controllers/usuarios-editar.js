@@ -11,6 +11,7 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.noverpasswd = false;
+    $scope.hayError=false; 
   
 	var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
@@ -108,6 +109,7 @@ angular.module('rac')
 				.success(function (data, status, headers, config) {
 
 	    		}).error(function(data) {
+	    			   $scope.hayError=true; 
 						alert(data.error);
 				});
 		}

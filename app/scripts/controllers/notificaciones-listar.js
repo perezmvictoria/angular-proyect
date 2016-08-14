@@ -8,6 +8,7 @@ angular.module('rac')
       $scope.filtro = { fechaIni :'', fechaFin :''};
       $scope.nombreUsuario = perfilService.getUsuario().nombre;
       $scope.rolUsuario    = perfilService.getUsuario().rol;
+      $scope.hayError=false; 
 
       $scope.notificacion_seleccionada = "";
 
@@ -34,10 +35,11 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
-          $scope.msjerror = "Error";
+          $scope.msjerror = data.error;
           $scope.hayError=true;
           return false;
         })
@@ -64,10 +66,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
-          $scope.msjerror = "Error";
+          $scope.msjerror = data.error;
+          $scope.hayError=true;   
           return false;
         })
 
@@ -90,10 +94,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
-          $scope.msjerror = "Error";
+          $scope.msjerror = data.error;
+          $scope.hayError=true;     
           return false;
         })
 
@@ -112,11 +118,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
+          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
-          $scope.msjerror = "No se pudo cargar la lista de notificaciones";
-          $scope.hayError=true;
+          $scope.msjerror = data.error;
+          $scope.hayError=true;   
           return false;
         })
       }

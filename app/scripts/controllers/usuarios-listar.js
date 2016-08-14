@@ -14,7 +14,6 @@ angular.module('rac')
     $scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    //$scope.tienePermiso="";
     $scope.hayError=false;
 
     $scope.tengoPermiso = function(permiso){
@@ -30,19 +29,11 @@ angular.module('rac')
       	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			
-  				    $scope.datos = data.info;
-              //$scope.tienePermiso=true;       
+  				    $scope.datos = data.info;     
   				return false;
          	}).error(function (data, status, header, config) {          
-            if ( data.error.includes("permisos")){
-                //$scope.tienePermiso=false; 
-                //alert(data.error);
-                //$scope.msjerror = "Permisos insuficientes";  
-            }else{
-               //$scope.msjerror = "No se pudo cargar la lista de usuarios";
-               $scope.msjerror = data.error;
-               $scope.hayError=true;
-            }
+              $scope.msjerror = data.error;
+              $scope.hayError=true;
           return false;
         })
     }
@@ -57,7 +48,7 @@ angular.module('rac')
     }
     
     $scope.editarUsuario = function (usuario) {
-
+      //TODO: REVISAR CONTASENIA??
         usuario.contrasenia = ' ';
         usuario.contrasenia2 = ' ';
         usuarioService.setUsuario(usuario);
@@ -88,7 +79,8 @@ angular.module('rac')
           $scope.datos = data.info;                
           })
         .error(function (data, status, header, config) {          
-            $scope.msjerror = "Error de conexion al servidor";          
+            $scope.msjerror = data.error;
+            $scope.hayError=true;         
             
         })
     		$scope.listarUsuarios();
@@ -112,8 +104,9 @@ angular.module('rac')
           $scope.datos = data.info;        
           return false;
           })
-        .error(function (data, status, header, config) {          
-            $scope.msjerror = "Error de conexion al servidor";          
+        .error(function (data, status, heder, config) {          
+            $scope.msjerror = data.error;
+            $scope.hayError=true;        
             return false;
         })
 

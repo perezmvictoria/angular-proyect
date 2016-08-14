@@ -10,6 +10,7 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.perfil_seleccionado = perfilService.getDatosPerfil();
+    $scope.hayError=false; 
 
 	$scope.cancelar = function(){
 		$location.path('/dashboard');

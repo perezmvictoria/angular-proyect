@@ -13,7 +13,8 @@ angular.module('rac')
     $scope.contrasenia = "";
     $scope.contrasenia2 = "";
     $scope.noverpasswd = false;
-  
+ 	 $scope.hayError=false;
+ 	  
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
     }

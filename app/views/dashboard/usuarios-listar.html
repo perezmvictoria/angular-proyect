@@ -2,9 +2,10 @@
 
   <h2>Usuarios</h2>
 
-    <div class="panel panel-danger" ng-show="hayError" >
+    <div class="panel panel-danger" ng-show="hayError"  >
         <div class="panel-heading">
-        Ups! Ha ocurrido un error: {{msjerror}}. 
+        Ups! Ha ocurrido un error: {{msjerror}}.
+        <button type="button"  class="close" data-dismiss="modal">&times;</button> o></button> 
         </div>
     </div>
 
@@ -80,7 +81,7 @@
                 <p>¿Desea eliminar el usuario seleccionado?</p>
             </div>  
             <div class="modal-footer">
-                <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario();" >Aceptar</button>
+                <button type="button" class="btn btn-md" data-dismiss="modal" ng-click="eliminarUsuario();">Aceptar</button>
                 <button type="button" class="btn btn-md" ui-sref="usuarios-listar" data-dismiss="modal">Cancelar</button>
             </div>
          </div><!-- /.modal-content -->

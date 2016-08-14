@@ -11,6 +11,7 @@ angular.module('rac')
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
+    $scope.hayError=false; 
 
     // estructura para manejar el combo box de acciones
     $scope.dataListaAcciones = {
