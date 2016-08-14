@@ -29,7 +29,7 @@ angular.module('rac')
     $scope.filtro = { fechaIni :'',
                       fechaFin :'',
                       tecnico  :'',
-                      tipoAccion   :'',};
+                      tipoAccion   :''};
 
     $scope.tecnicos = {
       opciones : [],
@@ -49,7 +49,8 @@ angular.module('rac')
     $scope.dataListaFiltro = {
       opciones: [{ 'id': 1, 'nombre': 'fecha' },
                 { 'id': 2, 'nombre': 'técnico' },
-                { 'id': 3, 'nombre': 'tipo de acción' }],
+                { 'id': 3, 'nombre': 'acción' },
+                { 'id': 4, 'nombre': 'tipo de acción' }],
       seleccionado: { 'id': 2, 'nombre': 'fecha' }
     }
 
