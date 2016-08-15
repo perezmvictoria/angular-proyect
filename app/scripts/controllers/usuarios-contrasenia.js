@@ -51,8 +51,13 @@ angular.module('rac')
 		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', 
 			data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
-
-	  		});
+				//    $scope.msjerror = "";
+	  		}).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
+        });
 		
 		$location.path('/dashboard/usuarios-listar');
 		return "'/dashboard/usuarios-listar'";

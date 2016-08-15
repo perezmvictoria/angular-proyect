@@ -8,10 +8,10 @@ angular.module('rac')
     perfilService.validarSesion($location);
 
     $scope.regla_seleccionada =  reglasService.getRegla();
-    $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.hayError=false; 
+    $scope.msjerror = ""; 
 
     // estructura para manejar el combo box de acciones
     $scope.dataListaAcciones = {
@@ -39,6 +39,12 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             reglasService.setListaDeMedios(data.info);
+            //$scope.hayError=false;
+        }).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
         });
     }
     
@@ -114,7 +120,12 @@ angular.module('rac')
         }
         $http.post(perfilService.getRuta()+'/reglas/crear_regla', data, perfilService.getConfig())
         .success(function (data, status, headers, config) {
-
+            //$scope.hayError = false;
+        }).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
         });
     }
     else { // Si estoy editando la regla
@@ -168,8 +179,14 @@ angular.module('rac')
 
         $http.post(perfilService.getRuta()+'/reglas/editar_regla', data, perfilService.getConfig())
         .success(function (data, status, headers, config) {
-
+            //$scope.hayError = false;
+        }).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
         });
+
     }   
     $location.path('/dashboard/reglas-listar');
     return "'/dashboard/reglas-listar'";

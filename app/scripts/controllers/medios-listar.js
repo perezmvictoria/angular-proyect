@@ -7,11 +7,10 @@ angular.module('rac')
     perfilService.validarSesion($location);
   
     // Variables
-    $scope.msjerror = "";
     $scope.medio_seleccionado = mediosService.getMedio();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.tienePermiso="";
+    $scope.msjerror = "";
     $scope.hayError=false;
   
     $scope.listarMedios = function () {
@@ -24,13 +23,13 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
     	.success(function (data, status, headers, config) {
     		$scope.datos = data.info;
-        $scope.tienePermiso=true;
-        //TODO
-        $scope.hayError=false; 
+        //$scope.hayError=false; 
     		return false;
      	})
      	.error(function (data, status, header, config) {
         $scope.msjerror = data.error;
+        $scope.msjerror = $scope.msjerror.split(":").pop();
+        alert($scope.msjerror)
         $scope.hayError=true;
         return false;
       })
@@ -74,10 +73,12 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {
         $scope.datos = data.info;
-        $scope.hayError=false;
+        //$scope.hayError=false;
         })
       .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
+        $scope.msjerror= $scope.msjerror.split(":").pop();
+        alert($scope.msjerror)
         $scope.hayError=true;
       })
 

@@ -2,19 +2,23 @@
 
   <h2>Medios</h2>
 
+    <!-- Panel de Danger para Errores -->  
     <div class="panel panel-danger" ng-show="hayError"  >
         <div class="panel-heading">
         Ups! Ha ocurrido un error: {{msjerror}}.
         <button type="button"  class="close" data-dismiss="modal">&times;</button> o></button> 
+        <!--TODO: REFRESH AL CERRAR ERROR -->
         </div>
     </div>
 
+    <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide= "tengoPermiso('listar_medios_comunicaciones');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
 
+    <!-- Panel de Success para Tabla de Medios -->
     <div class="panel panel-success" ng-show="tengoPermiso('listar_medios_comunicaciones');">
 
         <div class="panel-heading">
@@ -35,23 +39,19 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="medio in datos" >
-                        
                         <td>{{medio.nombre}}</td>
-                        
                         <td>{{medio.destino}}</td>               
-                        
                         <td>{{medio.clave}}</td>
-                        
                         <td>{{medio.dominio}}</td>
-                        
                         <td>{{medio.tipo}}</td>
-                        
-                        <td>                     
+                        <!-- Columna con iconos --> 
+                        <td>
+                        <!-- Icono Editar -->                      
                             <a class="btn btn-success btn-xs" title="Editar" 
                             ng-show="tengoPermiso('editar_medio_comunicacion');"
                             ng-click="editarMedio(medio);" >
                             <i class="glyphicon glyphicon-pencil"></i></a>
-
+                        <!-- Icono Eliminar -->
                             <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar"
                             ng-show="tengoPermiso('borrar_medio_comunicacion');"  
                             ng-click="setearMedioAEliminar(medio);">
@@ -61,13 +61,15 @@
                 </tbody>
             </table>     
         <div> 
-            <button class="btn btn-md" ng-show="tengoPermiso('crear_medio_comunicacion');" ng-click="crearMedio();">Crear Medio</button>
+            <!-- Boton Crear -->
+            <button class="btn btn-md" ng-show="tengoPermiso('crear_medio_comunicacion');" 
+            ng-click="crearMedio();">Crear Medio</button>
         </div> 
       </div>   
   </div>
 </div>  
 
-       
+<!-- Modal Confirmar Eliminar Medio-->  
 <div class="modal fade" id="confirmar" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">

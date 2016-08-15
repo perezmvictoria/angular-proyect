@@ -6,11 +6,9 @@ angular.module('rac')
     
     // Validacion de sesion
     perfilService.validarSesion($location);
- 	
-    $scope.msjerror = "";
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.tienePermiso="";
+     $scope.msjerror = "";
     $scope.hayError=false;
 
 	  $scope.listarReglas = function () {
@@ -25,20 +23,21 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             reglasService.setListaDeMedios(data.info);
+            //$scope.hayError=false;
         });
       //}
 
       $http.post(perfilService.getRuta()+'/reglas/listar_reglas', 
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-        $scope.datos = data.info;
-        $scope.tienePermiso=true;
-        $scope.hayError=false;         
+            $scope.datos = data.info;
+            //$scope.hayError=false;         
         return false;
         })
       .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
+          alert($scope.msjerror);
           $scope.hayError=true;
           return false;
       })
@@ -75,11 +74,12 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {
         $scope.datos = data.info;
-        $scope.hayError=false;
+        //$scope.hayError=false;
         })
       .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
         $scope.msjerror= $scope.msjerror.split(":").pop();
+        alert($scope.msjerror);
         $scope.hayError=true;
       })
 

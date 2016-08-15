@@ -1,20 +1,24 @@
 <div> 
-  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
+    <!-- Titulo de la UI -->
+    <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
 
-    <!--Panel de Error-->
-  <div class="panel panel-danger" ng-show="hayError" >
-    <div class="panel-heading">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-      Ups! Ha ocurrido un error: {{msjerror}}. 
+    <!-- Panel de Danger para Errores -->  
+    <div class="panel panel-danger" ng-show="hayError" >
+        <div class="panel-heading">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          Ups! Ha ocurrido un error: {{msjerror}}. 
+        </div>
+        <!--TODO: REFRESH AL CERRAR ERROR -->
     </div>
-  </div>
 
+    <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide="tengoPermiso('editar_usuario');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
-
+    
+    <!-- Panel de Success para Campos de Usuarios -->
     <div class="panel panel-info" ng-show="tengoPermiso('editar_usuario');"> 
     <div class="panel-heading">Ingrese los datos del usuario:</div>
   
@@ -25,7 +29,7 @@
                 <form role="form" name="usuariosEForm" novalidate>
       
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                        <input class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" required>
                                 <!-- Validacion Campo Requerido -->
                                 <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.required">Ingrese el usuario.</span>
                                 <!-- Validacion Minimo Caracteres -->
@@ -42,8 +46,10 @@
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" 
+                        <input class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" ng-minlength="3"
                         ng-maxlength="20" ng-pattern="/^[A-Za-z0-9 ]+$/">
+                                <!-- Validacion Min Caracteres-->
+                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.minlength">El debe contener al menos 3 caracteres.</span> 
                                 <!-- Validacion Maximo Caracteres-->
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
                                 <!-- Validacion Patron del formato --> 
@@ -56,7 +62,7 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Mail" name="mail" ng-model="usuario_seleccionado.mail" 
-                        type="email"required>
+                        type="email" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.required">Ingrese el mail.</span>
                                 <!-- Validacion Formato-->
@@ -69,7 +75,9 @@
                     </div>
                     
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-maxlength=9>
+                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-minlength=8 ng-maxlength=9 >
+                                <!-- Validacion Minimo Caracteres -->
+                                <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.minlength">El teléfono no puede contener menos de 8 caracteres.</span> 
                                 <!-- Validacion Maximo Caracteres -->
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                                 <!-- Validacion Formato-->
@@ -92,8 +100,7 @@
                         && !usuariosEForm.tipo.$valid"></span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.tipo.$touched && usuariosEForm.tipo.$valid"></span>
-                    </div>
-                    
+                    </div> 
                 </form>
 
                 <form role="form" name="contraseniaEForm" novalidate>
@@ -128,7 +135,6 @@
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
                                 !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">La contraseña no coinciden.</span>
 
-
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" 
                         ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
@@ -153,7 +159,7 @@
                             <span class='label-content'>Contraseña</span>
                         </label>
                     </div>  
-
+                    <!-- Boton Guardar/Cancelar-->    
                     <button class="btn btn-md btn-success" ng-hide="modoEditar();" ng-disabled="!usuariosEForm.$valid || !contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
 
                     <button class="btn btn-md btn-success" ng-show="modoEditar();" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
@@ -163,13 +169,12 @@
                     </div>
                     
                 </div> 
-                   
-            
             </div>            
         </div>  
     </div>
   </div>
 </div>
+ <!-- Modal-->    
  <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">

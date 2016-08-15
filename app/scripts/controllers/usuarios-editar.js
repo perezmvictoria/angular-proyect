@@ -23,13 +23,14 @@ angular.module('rac')
         function (data,status,headers,config)
         {
           perfilService.setRolesUsuario(data.info);
-          $scope.hayError=false;
+          //$scope.hayError=false;
           return false;
         }).error (
-          function () {
-            //$scope.msjerror=data.error;
-	    	//$scope.msjerror= $scope.msjerror.split(":").pop();
-	    	//$scope.hayError = true;
+          function (data) {
+            $scope.msjerror=data.error;
+	    	$scope.msjerror= $scope.msjerror.split(":").pop();
+	    	alert($scope.msjerror);
+	    	$scope.hayError = true;
             return false;
     })
 
@@ -112,12 +113,12 @@ angular.module('rac')
 			}			
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-					$scope.hayError = false;
+					//$scope.hayError = false;
 	    		}).error(function(data) {
 	    			   	$scope.hayError = true;
 	    			   	$scope.msjerror=data.error;
 	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
-						//alert($scope.msjerror);
+						alert($scope.msjerror);
 				});
 		}
 		else
@@ -136,21 +137,16 @@ angular.module('rac')
 
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-					$scope.hayError = false;
+					//$scope.hayError = false;
 	    		}).error(function(data) {
 	    				$scope.hayError = true;
 						$scope.msjerror=data.error;
 	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
-						//alert($scope.msjerror);
+						alert($scope.msjerror);
 				});
-		}	
-		if (!hayError){
+		}		
 			$location.path('/dashboard/usuarios-listar');
 			return "'/dashboard/usuarios-listar'";
-		} else{
-			$location.path('/dashboard/usuarios-editar');
-			return "'/dashboard/usuarios-editar'";
-		}
-		
+
 	}
 });

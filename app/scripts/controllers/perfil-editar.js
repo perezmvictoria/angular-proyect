@@ -6,11 +6,11 @@ angular.module('rac')
     perfilService.validarSesion($location);
 
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
-    $scope.msjerror = "";
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.perfil_seleccionado = perfilService.getDatosPerfil();
     $scope.hayError=false; 
+    $scope.msjerror = "";
 
 	$scope.cancelar = function(){
 		$location.path('/dashboard');
@@ -30,9 +30,13 @@ angular.module('rac')
 
 		$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
-
-	    });
-	// TODO: .error	
+				//$scope.hayError = true;
+	    }).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
+        });
 
 	$location.path('/dashboard');
 	return "'/dashboard'";

@@ -1,18 +1,20 @@
 <div> 
+  <!-- Titulo de la UI -->
  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Reglas</h2>
     
     <!--Panel de Warning: Permisos-->
-    <div class="panel panel-warning" 
-    ng-hide="tengoPermiso('editar_regla');">
+    <div class="panel panel-warning" ng-hide="tengoPermiso('editar_regla');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!--TODO: REFRESH AL CERRAR ERROR -->
     </div>
+    <!-- Panel de Warning para Permisos -->
+    <div class="panel panel-info" ng-show="tengoPermiso('editar_regla');">
+    <div class="panel-heading"> Ingrese los datos de la regla: </div>
 
-  <div class="panel panel-info" ng-show="tengoPermiso('editar_regla');">
-    <div class="panel-heading">
-        Ingrese los datos de la regla:
-    </div>
+    <!-- Panel de Success para Campos de Usuarios -->
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
@@ -153,7 +155,7 @@
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>      
                     </div> 
                     </form>
-
+                     <!-- Boton Guardar/Cancelar-->  
                     <div class="form-group">
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid" 
@@ -183,6 +185,7 @@
     </div>
   </div>
 </div>
+ <!-- Modal-->  
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
