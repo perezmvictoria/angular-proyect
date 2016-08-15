@@ -5,7 +5,6 @@ angular.module('rac')
   	
 	perfilService.validarSesion($location);
 
-
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
@@ -13,7 +12,7 @@ angular.module('rac')
     $scope.contrasenia = "";
     $scope.contrasenia2 = "";
     $scope.noverpasswd = false;
- 	 $scope.hayError=false;
+ 	$scope.hayError = false;
  	  
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
@@ -38,7 +37,7 @@ angular.module('rac')
 	 			"usuario_exec": $scope.nombreUsuario,
 	 			"rol_exec": $scope.rolUsuario,
 	 			"usuario": $scope.nombreUsuario,
-	 			"contrasenia": $scope.contrasenia
+	 			"contrasenia": md5.createHash($scope.contrasenia)
 			}			
 			$http.post(perfilService.getRuta()+'/perfil/cambiar_contrasenia_perfil', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {

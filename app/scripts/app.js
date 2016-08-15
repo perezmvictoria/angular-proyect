@@ -2,6 +2,7 @@
 
 angular
   .module('rac', [
+    'angular-md5',
     'ui.router',
     'ngAnimate',
     'datatables'

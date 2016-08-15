@@ -101,7 +101,7 @@ angular.module('rac')
 	 			"nombre":$scope.usuario_seleccionado.nombre,
 	 			"usuario":$scope.usuario_seleccionado.usuario,
 	 			"tipo_usuario": retorno,
-	 			"contrasenia": $scope.usuario_seleccionado.contrasenia,
+	 			"contrasenia": md5.createHash($scope.usuario_seleccionado.contrasenia),
 				"mail":$scope.usuario_seleccionado.mail,
 	 			"telefono":$scope.usuario_seleccionado.telefono
 			}			

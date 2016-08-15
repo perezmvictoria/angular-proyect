@@ -45,7 +45,7 @@ angular.module('rac')
 			"usuario_exec": $scope.nombreUsuario,
 			"rol_exec": $scope.rolUsuario,
 			"usuario": $scope.usuario_seleccionado.usuario,
-			"contrasenia": $scope.usuario_seleccionado.contrasenia
+			"contrasenia": md5.createHash($scope.usuario_seleccionado.contrasenia)
 		}			
 
 		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', 
