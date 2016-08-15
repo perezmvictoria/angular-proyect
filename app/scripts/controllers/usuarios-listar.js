@@ -29,11 +29,13 @@ angular.module('rac')
       	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			
-  				    $scope.datos = data.info;     
+  				    $scope.datos = data.info;
+            //$scope.hayError=false;     
   				return false;
          	}).error(function (data, status, header, config) {          
               $scope.msjerror = data.error;
               $scope.msjerror= $scope.msjerror.split(":").pop();
+              alert($scope.msjerror);
               $scope.hayError=true;
           return false;
         })
@@ -76,11 +78,13 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/usuarios/eliminar_usuario', 
               dataPost,perfilService.getConfig())
           .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;                
+          $scope.datos = data.info;
+          //$scope.hayError=false;                
           })
         .error(function (data, status, header, config) {          
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             $scope.hayError=true;         
             
         })
@@ -102,12 +106,14 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/usuarios/desbloquear_usuario', 
               dataPost,perfilService.getConfig())
           .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;        
+          $scope.datos = data.info;
+          //$scope.hayError=false;         
           return false;
           })
         .error(function (data, status, heder, config) {          
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             $scope.hayError=true;        
             return false;
         })

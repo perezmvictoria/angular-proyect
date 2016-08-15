@@ -1,17 +1,25 @@
 <div> 
-
+    <!-- Titulo de la UI -->  
     <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
 
-    <!--Panel de Warning: Permisos-->
-    <div class="panel panel-warning" 
-    ng-hide="tengoPermiso('editar_medio_comunicacion');">
+    <!-- Panel de Danger para Errores -->  
+    <div class="panel panel-danger" ng-show="hayError"  >
+        <div class="panel-heading">
+        Ups! Ha ocurrido un error: {{msjerror}}.
+        <button type="button"  class="close" data-dismiss="modal">&times;</button> o></button> 
+        <!--TODO: REFRESH AL CERRAR ERROR -->
+        </div>
+    </div>
+
+    <!-- Panel de Warning para Permisos -->
+    <div class="panel panel-warning" ng-hide="tengoPermiso('editar_medio_comunicacion');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
 
-    <div class="panel panel-info" 
-    ng-show="tengoPermiso('editar_medio_comunicacion');">
+    <!-- Panel de Success para Campos de Medios -->
+    <div class="panel panel-info" ng-show="tengoPermiso('editar_medio_comunicacion');">
  
     <div class="panel-heading" >
         Ingrese los datos del medio de comunicación:
@@ -96,9 +104,16 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" ng-model="medio_seleccionado.clave" ng-hide="dataTipoMedio.seleccionada.tipo == 'mail';"
-                        ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS"required>
+                        ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS" ng-minlength="4" ng-maxlength="4" required>
+                        <!-- Validacion Requerido -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
                         && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
+                        <!-- Validacion Cant Caracteres -->
+                        <span class="help-block" ng-show="ClaveEForm.clave.$touched 
+                        && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
+                        <!-- Validacion Cant Caracteres -->
+                        <span class="help-block" ng-show="ClaveEForm.clave.$touched 
+                        && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="ClaveEForm.clave.$touched && !ClaveEForm.clave.$valid && dataTipoMedio.seleccionada.tipo == 'sms';"></span>
                         <!-- Validacion Error -->
@@ -106,7 +121,7 @@
                         && ClaveEForm.clave.$valid && dataTipoMedio.seleccionada.tipo == 'sms';"></span>
                     </div>
                 </form>
-                        
+                 <!-- Boton Guardar/Cancelar-->        
                     <div class="form-group">
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!mediosEForm.$valid" 
@@ -118,15 +133,13 @@
                         ng-show="dataTipoMedio.seleccionada.tipo == 'sms';" 
                         data-toggle="modal" data-target="#crear">Guardar</button>
 
-
                         <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
                     </div>
-
                 </form>      
             </div>            
         </div>        
     </div>
-
+<!-- Modal Confirmar Eliminar Medio--> 
                     <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">

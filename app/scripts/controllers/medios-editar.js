@@ -6,10 +6,11 @@ angular.module('rac')
     perfilService.validarSesion($location);
     //
     $scope.medio_seleccionado =  mediosService.getMedio();
-    $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.editar = mediosService.isModoEditar();
+    $scope.hayError=false;
+    $scope.msjerror = "";
 
     if (!$scope.editar)
     {
@@ -71,8 +72,12 @@ angular.module('rac')
       }
       $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
+          //$scope.hayError = false;
       }).error(function(data) {
-            alert(data.error);
+          $scope.hayError = true;
+          $scope.msjerror=data.error;
+          $scope.msjerror= $scope.msjerror.split(":").pop();
+          alert($scope.msjerror);
         });
     }else{ // Si estoy editando el medio
 
@@ -102,8 +107,12 @@ angular.module('rac')
       }      
       $http.post(perfilService.getRuta()+'/medios/editar_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
+        //$scope.hayError = true;
       }).error(function(data) {
-            alert(data.error);
+          $scope.msjerror=data.error;
+          $scope.msjerror= $scope.msjerror.split(":").pop();
+          $scope.hayError = true;
+          alert($scope.msjerror);
         });
     }  
     $location.path('/dashboard/medios-listar');
