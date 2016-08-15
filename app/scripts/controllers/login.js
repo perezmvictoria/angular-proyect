@@ -52,16 +52,22 @@ angular.module('rac')
               $location.path('/dashboard');
               return false;
             }).error (
-              function () {
-                $scope.msjerror = "Error al cargar datos";
+              function (data) {
+                $scope.msjerror = data.error;
+                $scope.msjerror= $scope.msjerror.split(":").pop();
+                $scope.hayError=true;
                 perfilService.setPerfil("error","admin",$scope.contrasenia);
                 $location.path('/login');
                 return false;
               })
               return false;
           }).error (
-            function () {              
-              $scope.msjerror = "Usuario y/o contraseña incorrectos";
+            function (data) {              
+            
+              $scope.msjerror = data.error;
+              $scope.msjerror= $scope.msjerror.split(":").pop();
+              $scope.hayError=true;
+              //REVISAR ERROR PERMISOS
               perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');
               return false;
