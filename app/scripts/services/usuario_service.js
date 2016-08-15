@@ -10,7 +10,7 @@ angular.module('rac')
                 return datos.usuario;
             },
             setUsuario: function(value){
-                datos.usuario=value;
+                datos.usuario = value;
             },
             isModoEditar: function(){
                 return datos.modoEditar;

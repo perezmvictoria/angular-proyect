@@ -14,8 +14,8 @@ angular.module('rac')
     $scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.hayError=false;
-
+    $scope.hayError = false;
+    
     $scope.tengoPermiso = function(permiso){
       return perfilService.getPermiso(permiso);
     }

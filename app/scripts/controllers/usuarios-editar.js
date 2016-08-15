@@ -109,7 +109,7 @@ angular.module('rac')
 				.success(function (data, status, headers, config) {
 
 	    		}).error(function(data) {
-	    			   $scope.hayError=true; 
+	    			   	$scope.hayError = true;
 						alert(data.error);
 				});
 		}

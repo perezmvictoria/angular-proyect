@@ -44,7 +44,7 @@ angular.module('rac')
           { 'id': '1', 'nombre': 'info' },
           { 'id': '2', 'nombre': 'error' },
         ],
-      seleccionado: {}
+      seleccionado: {'id': '1', 'nombre': 'info'}
     }
    
     $scope.dataListaFiltro = {
@@ -52,7 +52,7 @@ angular.module('rac')
                 { 'id': 2, 'nombre': 'técnico' },
                 { 'id': 3, 'nombre': 'acción' },
                 { 'id': 4, 'nombre': 'tipo de acción' }],
-      seleccionado: { 'id': 2, 'nombre': 'fecha' }
+      seleccionado: { 'id': 1, 'nombre': 'fecha' }
     }
 
     $scope.onFocusDeTecnicos = function()
