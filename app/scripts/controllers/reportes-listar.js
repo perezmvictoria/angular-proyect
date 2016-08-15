@@ -37,21 +37,22 @@ angular.module('rac')
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     
     $scope.dataListaEstados = {
-      opciones: [ { 'id': '1', 'nombre': 'resuelta'   },
-                  { 'id': '2', 'nombre': 'cancelada'  } ],
-      seleccionado: {}
+      opciones: [ { 'id': '1', 'nombre': 'resuelta' },
+                  { 'id': '2', 'nombre': 'cancelada' } ],
+      seleccionado: { 'id': '1', 'nombre': 'resuelta' }
     }
 
     $scope.dataListaFiltro = {
       opciones: [{ 'id': 1, 'nombre': 'fecha' },
                 { 'id': 2, 'nombre': 'técnico' },
                 { 'id': 3, 'nombre': 'estado' }],
-      seleccionado: { 'id': 2, 'nombre': 'fecha' }
+      seleccionado: { 'id': 1, 'nombre': 'fecha' }
     }
 
     $scope.onFocusDeTecnicos = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+      $scope.tecnicos.seleccionado = { 'id': 1 };
     }
 
     $scope.ejecutarReporte = function(){

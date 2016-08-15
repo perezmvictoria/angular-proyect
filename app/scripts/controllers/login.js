@@ -33,7 +33,7 @@ angular.module('rac')
      		"usuario":$scope.usuario,
      		"contrasenia": md5.createHash($scope.contrasenia)
      	}
-      console.log(md5.createHash($scope.contrasenia));
+      //console.log(md5.createHash($scope.contrasenia));
     	$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
         function (data, status, headers, config){
           // Seteo datos en el perfil actual de usuario
