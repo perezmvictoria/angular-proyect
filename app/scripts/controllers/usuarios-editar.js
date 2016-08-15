@@ -7,11 +7,11 @@ angular.module('rac')
   	perfilService.validarSesion($location);
 
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
-    $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.noverpasswd = false;
-    $scope.hayError=false; 
+    $scope.hayError=false;
+    $scope.msjerror = "";
   
 	var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
@@ -23,10 +23,13 @@ angular.module('rac')
         function (data,status,headers,config)
         {
           perfilService.setRolesUsuario(data.info);
+          $scope.hayError=false;
           return false;
         }).error (
           function () {
-            $scope.msjerror = "Error al cargar datos";
+            //$scope.msjerror=data.error;
+	    	//$scope.msjerror= $scope.msjerror.split(":").pop();
+	    	//$scope.hayError = true;
             return false;
     })
 
@@ -54,7 +57,7 @@ angular.module('rac')
 
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
-    }
+    } 
     
 	$scope.verpasswd_tipo = function(){
       if ($scope.noverpasswd){
@@ -70,6 +73,8 @@ angular.module('rac')
     	$scope.dataTipoUsuario.opciones = perfilService.getRolesUsuario();    	
 
     }
+
+
 
 	$scope.modoEditar = function(){
 		return usuarioService.isModoEditar();
@@ -107,10 +112,12 @@ angular.module('rac')
 			}			
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-
+					$scope.hayError = false;
 	    		}).error(function(data) {
 	    			   	$scope.hayError = true;
-						alert(data.error);
+	    			   	$scope.msjerror=data.error;
+	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
+						//alert($scope.msjerror);
 				});
 		}
 		else
@@ -129,13 +136,21 @@ angular.module('rac')
 
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-
+					$scope.hayError = false;
 	    		}).error(function(data) {
-						alert(data.error);
+	    				$scope.hayError = true;
+						$scope.msjerror=data.error;
+	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
+						//alert($scope.msjerror);
 				});
 		}	
-
-		$location.path('/dashboard/usuarios-listar');
-		return "'/dashboard/usuarios-listar'";
+		if (!hayError){
+			$location.path('/dashboard/usuarios-listar');
+			return "'/dashboard/usuarios-listar'";
+		} else{
+			$location.path('/dashboard/usuarios-editar');
+			return "'/dashboard/usuarios-editar'";
+		}
+		
 	}
 });

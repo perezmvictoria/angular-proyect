@@ -1,6 +1,14 @@
 <div> 
   <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Usuario</h2>
 
+    <!--Panel de Error-->
+  <div class="panel panel-danger" ng-show="hayError" >
+    <div class="panel-heading">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+      Ups! Ha ocurrido un error: {{msjerror}}. 
+    </div>
+  </div>
+
     <div class="panel panel-warning" ng-hide="tengoPermiso('editar_usuario');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
