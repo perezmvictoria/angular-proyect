@@ -23,8 +23,8 @@ angular.module('rac')
       return false;
       })
     .error(function (data, status, header, config) {
-        $scope.msjerror = "No se pudo cargar la lista de usuarios";
         $scope.msjerror = data.error;
+        $scope.msjerror= $scope.msjerror.split(":").pop();
         $scope.hayError = true;  
         return false;
     })
@@ -72,6 +72,7 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             scope.hayError = true;  
             return false;
         })
@@ -93,7 +94,8 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
-            scope.hayError = true;     
+            $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop(); 
             return false;
         })
 
@@ -112,7 +114,8 @@ angular.module('rac')
           $scope.datos = data.info;
           return false;
           }).error(function (data, status, header, config) {
-            scope.hayError = true;      
+            $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();     
             return false;
         })
       }

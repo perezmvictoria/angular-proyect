@@ -85,6 +85,7 @@ angular.module('rac')
           return false;
           }).error(function (data, status, header, config) {
             $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             $scope.hayError=true; 
             return false;
         })
@@ -107,6 +108,7 @@ angular.module('rac')
           return false;
           }).error(function (data, status, header, config) {
             $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             $scope.hayError=true;   
             return false;
         })
@@ -129,6 +131,7 @@ angular.module('rac')
           return false;
           }).error(function (data, status, header, config) {
             $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             $scope.hayError=true;  
             return false;
         })
