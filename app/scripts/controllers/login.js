@@ -23,42 +23,41 @@ angular.module('rac')
 
     // Funcion de login
    	$scope.mLogin = function () {
-    var dataUsuario = {
-   		"usuario":$scope.usuario,
-   		"contrasenia":$scope.contrasenia
-   	}
-  	$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
-      function (data, status, headers, config) 
-    {
-      // Seteo datos en el perfil actual de usuario
-      perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
-      // Armo json para enviar en el POST
-      perfilService.setPermisos(data.info.operaciones);
-      var dataPost = {
-        "usuario_exec":$scope.usuario,
-        "rol_exec":data.info.tipo_usuario
-      }
-      $http.post(perfilService.getRuta()+'/perfil/obtener_perfil',dataPost , 
-        perfilService.getConfig()).success(
-        function (data,status,headers,config)
-        {
-          perfilService.setDatosPerfil(data.info);
-          $location.path('/dashboard');
-          return false;
-        }).error (
-          function () {
-            $scope.msjerror = "Error al cargar datos";
-            perfilService.setPerfil("error","admin",$scope.contrasenia);
-            $location.path('/login');
-            return false;
-          })
-          return false;
-        }).error (
-          function () {              
-            $scope.msjerror = "Usuario y/o contraseña incorrectos";
-            perfilService.setPerfil("error","admin",$scope.contrasenia);
-            $location.path('/login');
-            return false;
+      var dataUsuario = {
+     		"usuario":$scope.usuario,
+     		"contrasenia":$scope.contrasenia
+     	}
+    	$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
+        function (data, status, headers, config){
+          // Seteo datos en el perfil actual de usuario
+          perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
+          // Armo json para enviar en el POST
+          perfilService.setPermisos(data.info.operaciones);
+          var dataPost = {
+            "usuario_exec":$scope.usuario,
+            "rol_exec":data.info.tipo_usuario
+          }
+          $http.post(perfilService.getRuta()+'/perfil/obtener_perfil',dataPost , 
+            perfilService.getConfig()).success(
+            function (data,status,headers,config)
+            {
+              perfilService.setDatosPerfil(data.info);
+              $location.path('/dashboard');
+              return false;
+            }).error (
+              function () {
+                $scope.msjerror = "Error al cargar datos";
+                perfilService.setPerfil("error","admin",$scope.contrasenia);
+                $location.path('/login');
+                return false;
+              })
+              return false;
+          }).error (
+            function () {              
+              $scope.msjerror = "Usuario y/o contraseña incorrectos";
+              perfilService.setPerfil("error","admin",$scope.contrasenia);
+              $location.path('/login');
+              return false;
           })
     };
 });

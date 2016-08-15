@@ -14,7 +14,7 @@ angular.module('rac')
       "rol_exec":$scope.rolUsuario
     } 
 
-    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
+    $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios_nombres', 
           dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {         
         $scope.listaDeUsuarios = data.info;  
