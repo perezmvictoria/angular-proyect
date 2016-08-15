@@ -6,11 +6,11 @@ angular.module('rac')
 	perfilService.validarSesion($location);
 
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
-    $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.contrasenia = "";
     $scope.contrasenia2 = "";
+    $scope.msjerror = ""; 
     $scope.noverpasswd = false;
  	$scope.hayError = false;
  	  
@@ -41,9 +41,13 @@ angular.module('rac')
 			}			
 			$http.post(perfilService.getRuta()+'/perfil/cambiar_contrasenia_perfil', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-
-	    		});
-	    		// TODO: .error	
+					//$scope.hayError = false;
+	    		}).error(function(data) {
+            $scope.hayError = true;
+            $scope.msjerror=data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
+        });
 		$location.path('/dashboard');
 		return "'/dashboard'";
 	}
