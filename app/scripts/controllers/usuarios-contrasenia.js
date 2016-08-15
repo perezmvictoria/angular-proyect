@@ -5,7 +5,7 @@ Controller usuarios-contrasenia
 'use strict';
 
 angular.module('rac')
-  .controller('UsuariosContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  .controller('UsuariosContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http,md5) {  	
   	
   	// Validacion de sesion
   	perfilService.validarSesion($location);

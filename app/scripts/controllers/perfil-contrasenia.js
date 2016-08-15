@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rac')
-  .controller('PerfilContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  .controller('PerfilContraseniaCtrl', function(perfilService,usuarioService,$scope, $location,$http,md5) {  	
   	
 	perfilService.validarSesion($location);
 
