@@ -21,6 +21,7 @@ angular.module('rac')
       }
       
       if (reglasService.getListaDeMedios() == undefined){
+        
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             reglasService.setListaDeMedios(data.info);

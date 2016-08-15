@@ -30,18 +30,18 @@ angular.module('rac')
     // Funcion de login
    	$scope.mLogin = function () {
       var dataUsuario = {
-     		"usuario":$scope.usuario,
+     		"usuario":$scope.usuario.toLowerCase(),
      		"contrasenia": md5.createHash($scope.contrasenia)
      	}
       //console.log(md5.createHash($scope.contrasenia));
     	$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
         function (data, status, headers, config){
           // Seteo datos en el perfil actual de usuario
-          perfilService.setPerfil($scope.usuario,data.info.tipo_usuario,$scope.contrasenia);
+          perfilService.setPerfil($scope.usuario.toLowerCase(),data.info.tipo_usuario,$scope.contrasenia);
           // Armo json para enviar en el POST
           perfilService.setPermisos(data.info.operaciones);
           var dataPost = {
-            "usuario_exec":$scope.usuario,
+            "usuario_exec":$scope.usuario.toLowerCase(),
             "rol_exec":data.info.tipo_usuario
           }
           $http.post(perfilService.getRuta()+'/perfil/obtener_perfil',dataPost , 
