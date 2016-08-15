@@ -136,5 +136,26 @@ angular.module('rac')
             return false;
         })
         }
+        else if ($scope.dataListaFiltro.seleccionado.nombre == "acción"){
+
+        // Auditoria por tipo de accion
+
+        var dataPost = {
+          "usuario_exec": $scope.nombreUsuario,
+          "rol_exec": $scope.rolUsuario,
+          "accion": $scope.accion
+        };
+        $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_accion', 
+          dataPost,perfilService.getConfig())
+        .success(function (data, status, headers, config) {         
+          $scope.datos = data.info;
+          $scope.hayError=false; 
+          return false;
+          }).error(function (data, status, header, config) {
+            $scope.msjerror = data.error;
+            $scope.hayError=true;  
+            return false;
+        })
+        }
   }
 });
