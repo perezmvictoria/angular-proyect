@@ -26,7 +26,7 @@ angular.module('rac')
           //$scope.hayError=false;
           return false;
         }).error (
-          function () {
+          function (data) {
             $scope.msjerror=data.error;
 	    	$scope.msjerror= $scope.msjerror.split(":").pop();
 	    	alert($scope.msjerror);

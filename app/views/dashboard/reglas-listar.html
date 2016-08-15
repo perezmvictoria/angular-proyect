@@ -2,19 +2,21 @@
 
     <h2>Reglas</h2>
 
+     <!-- Panel de Danger para Errores --> 
     <div class="panel panel-danger" ng-show="hayError"  >
         <div class="panel-heading">
         Ups! Ha ocurrido un error: {{msjerror}}.
-        <button type="button"  class="close" data-dismiss="modal">&times;</button> o></button> 
+        <button type="button"  class="close" data-dismiss="modal">&times;</button></button> 
+         <!--TODO: REFRESH AL CERRAR ERROR --> 
         </div>
     </div>
-    
+    <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide="tengoPermiso('listar_reglas');">
         <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
         </div>
     </div>
-
+    <!-- Panel de Success para Tabla de Reglas -->
     <div class="panel panel-success" ng-show="tengoPermiso('listar_reglas');">
         
         <div class="panel-heading">        
@@ -34,21 +36,18 @@
             </thead>
             <tbody>
                 <tr ng-repeat="regla in datos" >
-
                     <td>{{regla.orden}}</td>
-
                     <td>{{regla.nombre}}</td>
-
                     <td>{{regla.acciones[0].accion_nombre}}</td>
-
                     <td>{{regla.acciones[0].tiempo}}</td>
-
-                    <td>                     
+                    <!-- Columna con iconos -->
+                    <td>
+                    <!-- Icono Editar -->                      
                             <a class="btn btn-success btn-xs"  title="Editar" 
                             ng-show="tengoPermiso('editar_regla');"
                             ng-click="editarRegla(regla);">
                             <i class="glyphicon glyphicon-pencil"></i></a>
-
+                    <!-- Icono Eliminar -->  
                             <a class="btn btn-danger btn-xs" title="Eliminar" data-toggle="modal" data-target="#confirmar" ng-show="tengoPermiso('eliminar_regla');" ng-click="setearReglaAEliminar(regla);">
                             <i class="glyphicon glyphicon-remove"></i></a>
                     </td>
@@ -56,12 +55,13 @@
             </tbody>
         </table>  
     <div>
+    <!-- Icono Editar -->   
         <button class="btn btn-md " ng-show="tengoPermiso('crear_regla');" ng-click="crearRegla();">Crear Regla</button>
           </div>
       </div>   
   </div>
 </div>  
-
+<!-- Modal -->  
 <div class="modal fade" id="confirmar" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
