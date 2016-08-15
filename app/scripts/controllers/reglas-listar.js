@@ -20,13 +20,13 @@ angular.module('rac')
         "rol_exec":$scope.rolUsuario
       }
       
-      if (reglasService.getListaDeMedios() == undefined){
+      //if (reglasService.getListaDeMedios() == undefined){
         
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             reglasService.setListaDeMedios(data.info);
         });
-      }
+      //}
 
       $http.post(perfilService.getRuta()+'/reglas/listar_reglas', 
         dataPost,perfilService.getConfig())
