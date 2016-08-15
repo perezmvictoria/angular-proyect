@@ -19,7 +19,7 @@
 
         				<span ng-show="loginForm.contrasenia.$touched && loginForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
 					</div>	
-        			<div class="form-group" >			
+        		
 						<input type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
 						       titulo="ver contraseña" />
 					   <label for="verpasswd" >					        
@@ -27,8 +27,8 @@
         					<i class='glyphicon glyphicon-eye-open'  ></i>
         					<span class='label-content'>Contraseña</span>
         				</label>
-					</div>						
-					<div class="alert-danger">{{msjerror}}</div>
+									
+					<div >{{msjerror}}</div>
 
 					<div class="form-group" >										
 					<a class="btn btn-secondary btn-rounded btn-lg rac-grey-btn" 

@@ -56,7 +56,7 @@
                     </div>
 
                      <div class="form-group has-feedback" novalidate>
-                            <textarea class="form-control vresize" name="condicion" placeholder="Condición"  
+                            <textarea class="form-control" style = "resize:vertical" name="condicion" placeholder="Condición"  
                             ng-model="regla_seleccionada.condicion"
                             rows="10"required></textarea>
                             <!-- Validacion Campo Requerido -->
@@ -103,7 +103,7 @@
                 <form role="form" name=reglasEFormEvento novalidate>
                      <div class="form-group has-feedback" novalidate>                        
                         <textarea ng-model="regla_seleccionada.evento" 
-                        class="form-control vresize" name="evento" placeholder="Evento que cancela la espera"  
+                        class="form-control" style = "resize:vertical" name="evento" placeholder="Evento que cancela la espera"  
                         rows="10"  
                         ng-show="regla_seleccionada.segundos != '0' && dataListaAcciones.seleccionado.nombre == 'esperar';" 
                         ng-hide="regla_seleccionada.segundos == '0' || 
@@ -119,8 +119,8 @@
 
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$valid &&
-                        regla_seleccionada.segundos != '0' &&
+                        ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$valid 
+                        && regla_seleccionada.segundos != '0' &&
                         dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
       
                     </div>
