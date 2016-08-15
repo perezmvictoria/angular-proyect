@@ -33,6 +33,7 @@ angular.module('rac')
   				return false;
          	}).error(function (data, status, header, config) {          
               $scope.msjerror = data.error;
+              $scope.msjerror= $scope.msjerror.split(":").pop();
               $scope.hayError=true;
           return false;
         })
@@ -47,8 +48,7 @@ angular.module('rac')
 
     }
     
-    $scope.editarUsuario = function (usuario) {
-      //TODO: REVISAR CONTASENIA??
+    $scope.editarUsuario = function (usuario) { 
         usuario.contrasenia = ' ';
         usuario.contrasenia2 = ' ';
         usuarioService.setUsuario(usuario);
@@ -80,6 +80,7 @@ angular.module('rac')
           })
         .error(function (data, status, header, config) {          
             $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             $scope.hayError=true;         
             
         })
@@ -106,6 +107,7 @@ angular.module('rac')
           })
         .error(function (data, status, heder, config) {          
             $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
             $scope.hayError=true;        
             return false;
         })
