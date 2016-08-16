@@ -8,7 +8,7 @@ angular.module('rac')
     perfilService.validarSesion($location);
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-     $scope.msjerror = "";
+    $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.hayError=false;
 
 	  $scope.listarReglas = function () {
@@ -23,22 +23,19 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/medios/listar_medios', dataPost, perfilService.getConfig())
         .success(function (data, status, headers, config) {
             reglasService.setListaDeMedios(data.info);
-            //$scope.hayError=false;
         });
       //}
 
       $http.post(perfilService.getRuta()+'/reglas/listar_reglas', 
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-            $scope.datos = data.info;
-            //$scope.hayError=false;         
+            $scope.datos = data.info;   
         return false;
         })
       .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
           alert($scope.msjerror);
-          $scope.hayError=true;
           return false;
       })
     }
@@ -74,13 +71,11 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {
         $scope.datos = data.info;
-        //$scope.hayError=false;
         })
       .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
         $scope.msjerror= $scope.msjerror.split(":").pop();
         alert($scope.msjerror);
-        $scope.hayError=true;
       })
 
 		$scope.listarReglas();

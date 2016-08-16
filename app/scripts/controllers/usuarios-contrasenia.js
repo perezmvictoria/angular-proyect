@@ -12,10 +12,10 @@ angular.module('rac')
   	
   	// Variables
   	$scope.usuario_seleccionado = usuarioService.getUsuario();
-    $scope.msjerror = ""; 
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.noverpasswd = false;
+    $scope.msjerror = "Ups! Ha ocurrido un error"; 
   
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
@@ -51,9 +51,8 @@ angular.module('rac')
 		$http.post(perfilService.getRuta()+'/usuarios/cambiar_contrasenia_usuario', 
 			data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
-				//    $scope.msjerror = "";
-	  		}).error(function(data) {
-            $scope.hayError = true;
+	  		})
+	  		.error(function(data) {
             $scope.msjerror=data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
             alert($scope.msjerror);

@@ -5,8 +5,7 @@ angular.module('rac')
 
     //$scope.error     = false;
     $scope.noverpasswd = false;
-    $scope.msjerror = "";
-    $scope.hayError=false;
+    $scope.msjerror = "Ups! Ha ocurrido un error";
     
 
     $scope.verpasswd = function(){
@@ -50,22 +49,17 @@ angular.module('rac')
               perfilService.setDatosPerfil(data.info);
               $location.path('/dashboard/perfil-ayuda');
               return false;
-            }).error (
-              function (data) {
+            }).error (function (data) {
                 $scope.msjerror = data.error;
                 $scope.msjerror= $scope.msjerror.split(":").pop();
-                $scope.hayError=true;
                 //perfilService.setPerfil("error","admin",$scope.contrasenia);
                 $location.path('/login');
                 return false;
               })
               return false;
-          }).error (
-            function (data) {              
-            
+          }).error (function (data) {              
               $scope.msjerror = data.error;
               $scope.msjerror= $scope.msjerror.split(":").pop();
-              $scope.hayError=true;
               //REVISAR ERROR PERMISOS
               //perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');

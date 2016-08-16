@@ -2,14 +2,6 @@
   <!-- Titulo de la UI -->
  <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Reglas</h2>
     
-    <!--Panel de Warning: Permisos-->
-    <div class="panel panel-warning" ng-hide="tengoPermiso('editar_regla');">
-        <div class="panel-heading">
-        No tiene permisos suficientes para acceder a esta funcionalidad.
-        </div>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <!--TODO: REFRESH AL CERRAR ERROR -->
-    </div>
     <!-- Panel de Warning para Permisos -->
     <div class="panel panel-info" ng-show="tengoPermiso('editar_regla');">
     <div class="panel-heading"> Ingrese los datos de la regla: </div>
@@ -21,8 +13,7 @@
                 
                 <form role="form" name=reglasEFormAll novalidate>
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" name="nombre" placeholder="Nombre" 
-                        ng-disabled="modoEditar();" ng-model="regla_seleccionada.nombre" 
+                        <input autocomplete="off" class="form-control" name="nombre" placeholder="Nombre" ng-disabled="modoEditar();" ng-model="regla_seleccionada.nombre" 
                         ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.required">Ingrese el nombre.</span>
@@ -41,8 +32,7 @@
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
-                        <input type="number" class="form-control bfh-number" placeholder="Orden" name="orden" 
-                        type="number" min="1" max="100" ng-model="regla_seleccionada.orden" required>
+                        <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Orden" name="orden" type="number" min="1" max="100" ng-model="regla_seleccionada.orden" required>
                         <!-- Validacion Campo Requerido -->
                         <span class="help-block"  ng-show="reglasEFormAll.orden.$touched && reglasEFormAll.orden.$error.required">Ingrese el orden.</span>
                           <!-- Validacion Minimo -->
@@ -84,7 +74,7 @@
 
                     <form role="form" name=reglasEFormS nonvalidate>
                     <div class="form-group has-feedback" novalidate>
-                        <input type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" max="3600" ng-model="regla_seleccionada.segundos"
+                        <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" max="3600" ng-model="regla_seleccionada.segundos"
                         ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
                          required>
                         <!-- Validacion Campo Requerido -->

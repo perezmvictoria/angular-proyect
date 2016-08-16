@@ -2,20 +2,19 @@
   
   <h2>Auditorias</h2>
   
-  <!--Panel de Error-->
-  <div class="panel panel-danger" ng-show="hayError" >
-    <div class="panel-heading">
-      Ups! Ha ocurrido un error: {{msjerror}}. 
+<!--TODO: delete prueba de funcion-->
+    <div class="panel-heading" ng-hide="fechaValidav();">
+      PRUEBA FECHA VALIDA  
     </div>
-  </div>
+
+
   <!--Panel de Warning: Permisos-->
   <div class="panel panel-warning" ng-hide="tengoPermiso('generar_auditoria');">
     <div class="panel-heading">
         No tiene permisos suficientes para acceder a esta funcionalidad.
     </div>
   </div>
-  <!--Auditoria-->
-  
+  <!--Auditoria-->  
   <div class="panel panel-success" ng-show="tengoPermiso('generar_auditoria');">
     <div class="panel-heading">
         Seleccione uno de los filtros para ver las auditorias del sistema:
@@ -38,7 +37,7 @@
           <div class="form-group has-feedback"  novalidate> 
               <input class="form-control" 
                 placeholder="desde (DD/MM/YYYY)" name="desde"  ng-model="desde" 
-                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" autocomplete="off" required>
                 <!-- Validacion Requerido-->
                 <span class="help-block" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$error.required && 
@@ -63,7 +62,7 @@
           <div class="form-group has-feedback" novalidate>
                 <input class="form-control" 
                 placeholder="hasta (DD/MM/YYYY)"  name="hasta"  ng-model="hasta" 
-                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" autocomplete="off" required>
                 <!-- Validacion Requerido-->
                 <span class="help-block" 
                 ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.required && 
@@ -129,7 +128,7 @@
       <div class="col-xs-6 col-md-4" 
       ng-show="dataListaFiltro.seleccionado.nombre == 'acción';">   
       <div class="form-group has-feedback"  novalidate>    
-          <input class="form-control" ng-model="accion" placeholder="Acción" name="accion" required>
+          <input class="form-control" ng-model="accion" placeholder="Acción" name="accion" autocomplete="off" required>
              <!-- Validacion Requerido-->
               <span class="help-block" 
               ng-show="accionForm.accion.$touched && accionForm.accion.$error.required && 

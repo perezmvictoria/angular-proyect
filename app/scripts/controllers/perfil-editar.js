@@ -10,7 +10,7 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.perfil_seleccionado = perfilService.getDatosPerfil();
     $scope.hayError=false; 
-    $scope.msjerror = "";
+    $scope.msjerror = "Ups! Ha ocurrido un error";
 
 	$scope.cancelar = function(){
 		$location.path('/dashboard/perfil-ayuda');
@@ -30,12 +30,11 @@ angular.module('rac')
 
 		$http.post(perfilService.getRuta()+'/perfil/editar_perfil', data, perfilService.getConfig())
 			.success(function (data, status, headers, config) {
-				//$scope.hayError = true;
-	    }).error(function(data) {
-            $scope.hayError = true;
-            $scope.msjerror=data.error;
-            $scope.msjerror= $scope.msjerror.split(":").pop();
-            alert($scope.msjerror);
+	    	})
+			.error(function(data) {
+	            $scope.msjerror=data.error;
+	            $scope.msjerror= $scope.msjerror.split(":").pop();
+	            alert($scope.msjerror);
         });
 
 	$location.path('/dashboard/perfil-ayuda');

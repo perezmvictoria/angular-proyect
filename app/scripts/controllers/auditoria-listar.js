@@ -2,12 +2,14 @@
 
 angular.module('rac')
   .controller('AuditoriasListarCtrl', function(perfilService,$scope, $state,$http,$location) {
+    
+    perfilService.validarSesion($location);
+    
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    perfilService.validarSesion($location);
-    $scope.msjerror = "";
+    
+    $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.listaDeUsuarios = "";
-    $scope.hayError=false;
     
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
@@ -17,14 +19,12 @@ angular.module('rac')
     $http.post(perfilService.getRuta()+'/usuarios/listar_usuarios_nombres', 
           dataPost,perfilService.getConfig())
       .success(function (data, status, headers, config) {         
-        $scope.listaDeUsuarios = data.info;  
-        $scope.hayError=false;      
+        $scope.listaDeUsuarios = data.info;     
       return false;
       })
-    .error(function (data, status, header, config) {
+      .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
-        $scope.msjerror= $scope.msjerror.split(":").pop();
-        $scope.hayError=true;        
+        $scope.msjerror= $scope.msjerror.split(":").pop();        
         return false;
     })
 
@@ -79,15 +79,14 @@ angular.module('rac')
         };
 
         $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_fecha', 
-          dataPost,perfilService.getConfig())
+            dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;
-          $scope.hayError=false;
-          return false;
-          }).error(function (data, status, header, config) {
+            $scope.datos = data.info;
+            return false;
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            $scope.hayError=true; 
             return false;
         })
 
@@ -105,12 +104,11 @@ angular.module('rac')
           dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
-          }).error(function (data, status, header, config) {
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            $scope.hayError=true;   
             return false;
         })
 
@@ -127,13 +125,12 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/auditorias/listar_auditoria_tipo_accion', 
           dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;
-          $scope.hayError=false; 
-          return false;
-          }).error(function (data, status, header, config) {
+            $scope.datos = data.info;
+            return false;
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            $scope.hayError=true;  
             return false;
         })
         }
@@ -150,12 +147,11 @@ angular.module('rac')
           dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {         
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
-          }).error(function (data, status, header, config) {
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            $scope.hayError=true;  
             return false;
         })
         }

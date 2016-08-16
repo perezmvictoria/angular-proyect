@@ -4,13 +4,12 @@ angular.module('rac')
   .controller('MediosEditarCtrl', function(perfilService,mediosService,$scope, $location, $http) {
     // Validacion existe sesion 
     perfilService.validarSesion($location);
-    //
+    
     $scope.medio_seleccionado =  mediosService.getMedio();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.editar = mediosService.isModoEditar();
-    $scope.hayError=false;
-    $scope.msjerror = "";
+    $scope.msjerror = "Ups! Ha ocurrido un error";
 
     if (!$scope.editar)
     {
@@ -72,10 +71,9 @@ angular.module('rac')
       }
       $http.post(perfilService.getRuta()+'/medios/crear_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
-          //$scope.hayError = false;
+
       }).error(function(data) {
-          $scope.hayError = true;
-          $scope.msjerror=data.error;
+          $scope.msjerror= data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
           alert($scope.msjerror);
         });
@@ -107,11 +105,10 @@ angular.module('rac')
       }      
       $http.post(perfilService.getRuta()+'/medios/editar_medio', data, perfilService.getConfig())
       .success(function (data, status, headers, config) {
-        //$scope.hayError = true;
+
       }).error(function(data) {
           $scope.msjerror=data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
-          $scope.hayError = true;
           alert($scope.msjerror);
         });
     }  

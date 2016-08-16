@@ -10,9 +10,9 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.contrasenia = "";
     $scope.contrasenia2 = "";
-    $scope.msjerror = ""; 
+    $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.noverpasswd = false;
- 	$scope.hayError = false;
+
  	  
 	$scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
@@ -41,12 +41,12 @@ angular.module('rac')
 			}			
 			$http.post(perfilService.getRuta()+'/perfil/cambiar_contrasenia_perfil', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-					//$scope.hayError = false;
-	    		}).error(function(data) {
-            $scope.hayError = true;
-            $scope.msjerror=data.error;
-            $scope.msjerror= $scope.msjerror.split(":").pop();
-            alert($scope.msjerror);
+
+	    		})
+	    		.error(function(data) {
+		            $scope.msjerror=data.error;
+		            $scope.msjerror= $scope.msjerror.split(":").pop();
+		            alert($scope.msjerror);
         });
 		$location.path('/dashboard/perfil-ayuda');
 		return "'/dashboard/perfil-ayuda'";

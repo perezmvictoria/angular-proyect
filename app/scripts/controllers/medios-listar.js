@@ -10,7 +10,7 @@ angular.module('rac')
     $scope.medio_seleccionado = mediosService.getMedio();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.msjerror = "";
+    $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.hayError=false;
   
     $scope.listarMedios = function () {
@@ -23,14 +23,12 @@ angular.module('rac')
       dataPost,perfilService.getConfig())
     	.success(function (data, status, headers, config) {
     		$scope.datos = data.info;
-        //$scope.hayError=false; 
     		return false;
      	})
      	.error(function (data, status, header, config) {
         $scope.msjerror = data.error;
         $scope.msjerror = $scope.msjerror.split(":").pop();
         alert($scope.msjerror)
-        $scope.hayError=true;
         return false;
       })
     }
@@ -79,7 +77,6 @@ angular.module('rac')
         $scope.msjerror = data.error;
         $scope.msjerror= $scope.msjerror.split(":").pop();
         alert($scope.msjerror)
-        $scope.hayError=true;
       })
 
       $scope.listarMedios();
