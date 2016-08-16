@@ -5,7 +5,7 @@ angular.module('rac')
 
     //$scope.error     = false;
     $scope.noverpasswd = false;
-    $scope.msjerror = "Ups! Ha ocurrido un error";
+    $scope.msjerror = "";
     
 
     $scope.verpasswd = function(){
