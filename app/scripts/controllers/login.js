@@ -3,7 +3,7 @@
 angular.module('rac')
   .controller('LoginCtrl', function(perfilService,$scope, $location, $http,md5) {
 
-    $scope.error     = false;
+    //$scope.error     = false;
     $scope.noverpasswd = false;
     $scope.msjerror = "";
     $scope.hayError=false;
