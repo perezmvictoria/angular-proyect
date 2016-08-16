@@ -30,6 +30,12 @@ angular
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
         })
+        .state('perfil-ayuda', {
+          url: '/perfil-ayuda',
+          parent: 'dashboard',
+          templateUrl: 'views/dashboard/perfil-ayuda.html',
+          controller: 'PerfilAyudaCtrl'
+        })
 
           .state('usuarios-listar', {
             url: '/usuarios-listar',

@@ -1,14 +1,7 @@
 <div>
 
   <h2>Usuarios</h2>
-    <!-- Panel de Danger para Errores -->  
-    <div class="panel panel-danger" ng-show="hayError"  >
-        <div class="panel-heading">
-        Ups! Ha ocurrido un error: {{msjerror}}.
-        <button type="button"  class="close" data-dismiss="modal">&times;</button></button>
-        <!--TODO: REFRESH AL CERRAR ERROR --> 
-        </div>
-    </div>
+
     <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide="tengoPermiso('listar_usuarios');">
         <div class="panel-heading">

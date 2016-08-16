@@ -3,14 +3,12 @@
 angular.module('rac')
   .controller('ReportesListarCtrl', function(perfilService,$scope, $state,$location,$http) {
     perfilService.validarSesion($location);
-    $scope.msjerror = "";
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.datos = {};
     $scope.listaUsuarios = "";
-    // TODO: cambiar al cablear
-    $scope.hayError = false;
-    
+
+    $scope.msjerror = "Ups! Ha ocurrido un error";
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
@@ -24,8 +22,7 @@ angular.module('rac')
       })
     .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
-        $scope.msjerror = $scope.msjerror.split(":").pop();
-        $scope.hayError = true;  
+        $scope.msjerror= $scope.msjerror.split(":").pop();
         return false;
     })
 
@@ -82,9 +79,11 @@ angular.module('rac')
         .success(function (data, status, headers, config) {         
           $scope.datos = data.info;
           return false;
-          }).error(function (data, status, header, config) {
+          })
+        .error(function (data, status, header, config) {
+            $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            scope.hayError = true;  
+            alert($scope.msjerror);
             return false;
         })
 
@@ -104,9 +103,11 @@ angular.module('rac')
         .success(function (data, status, headers, config) {         
           $scope.datos = data.info;
           return false;
-          }).error(function (data, status, header, config) {
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
-            $scope.msjerror= $scope.msjerror.split(":").pop(); 
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror); 
             return false;
         })
 
@@ -124,9 +125,11 @@ angular.module('rac')
         .success(function (data, status, headers, config) {         
           $scope.datos = data.info;
           return false;
-          }).error(function (data, status, header, config) {
+          })
+        .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
-            $scope.msjerror= $scope.msjerror.split(":").pop();     
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);     
             return false;
         })
       }

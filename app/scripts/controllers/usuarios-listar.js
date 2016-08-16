@@ -10,11 +10,10 @@ angular.module('rac')
     perfilService.validarSesion($location);
 
     // Variables
-    $scope.msjerror = "";
     $scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-    $scope.hayError = false;
+     $scope.msjerror = "";
     
     $scope.tengoPermiso = function(permiso){
       return perfilService.getPermiso(permiso);
@@ -25,18 +24,15 @@ angular.module('rac')
           "usuario_exec":$scope.nombreUsuario,
           "rol_exec":$scope.rolUsuario
         }
-        
       	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			
   				    $scope.datos = data.info;
-            //$scope.hayError=false;     
   				return false;
          	}).error(function (data, status, header, config) {          
               $scope.msjerror = data.error;
               $scope.msjerror= $scope.msjerror.split(":").pop();
               alert($scope.msjerror);
-              $scope.hayError=true;
           return false;
         })
     }
@@ -78,15 +74,12 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/usuarios/eliminar_usuario', 
               dataPost,perfilService.getConfig())
           .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;
-          //$scope.hayError=false;                
+          $scope.datos = data.info;             
           })
         .error(function (data, status, header, config) {          
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            alert($scope.msjerror);
-            $scope.hayError=true;         
-            
+            alert($scope.msjerror);              
         })
     		$scope.listarUsuarios();
         return false;
@@ -106,15 +99,13 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/usuarios/desbloquear_usuario', 
               dataPost,perfilService.getConfig())
           .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;
-          //$scope.hayError=false;         
+          $scope.datos = data.info;   
           return false;
           })
         .error(function (data, status, heder, config) {          
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
-            alert($scope.msjerror);
-            $scope.hayError=true;        
+            alert($scope.msjerror);    
             return false;
         })
 

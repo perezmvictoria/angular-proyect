@@ -10,8 +10,7 @@ angular.module('rac')
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.noverpasswd = false;
-    $scope.hayError=false;
-    $scope.msjerror = "";
+    $scope.msjerror = "Ups! Ha ocurrido un error";
   
 	var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
@@ -23,14 +22,12 @@ angular.module('rac')
         function (data,status,headers,config)
         {
           perfilService.setRolesUsuario(data.info);
-          //$scope.hayError=false;
           return false;
         }).error (
           function (data) {
             $scope.msjerror=data.error;
 	    	$scope.msjerror= $scope.msjerror.split(":").pop();
 	    	alert($scope.msjerror);
-	    	$scope.hayError = true;
             return false;
     })
 
@@ -113,9 +110,7 @@ angular.module('rac')
 			}			
 			$http.post(perfilService.getRuta()+'/usuarios/crear_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-					//$scope.hayError = false;
 	    		}).error(function(data) {
-	    			   	$scope.hayError = true;
 	    			   	$scope.msjerror=data.error;
 	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
 						alert($scope.msjerror);
@@ -137,9 +132,7 @@ angular.module('rac')
 
 			$http.post(perfilService.getRuta()+'/usuarios/editar_usuario', data, perfilService.getConfig())
 				.success(function (data, status, headers, config) {
-					//$scope.hayError = false;
 	    		}).error(function(data) {
-	    				$scope.hayError = true;
 						$scope.msjerror=data.error;
 	    			   	$scope.msjerror= $scope.msjerror.split(":").pop();
 						alert($scope.msjerror);

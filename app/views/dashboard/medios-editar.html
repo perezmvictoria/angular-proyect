@@ -2,15 +2,6 @@
     <!-- Titulo de la UI -->  
     <h2>{{modoEditar() ? 'Edición': 'Creación'}} de Medios</h2>
 
-    <!-- Panel de Danger para Errores -->  
-    <div class="panel panel-danger" ng-show="hayError"  >
-        <div class="panel-heading">
-        Ups! Ha ocurrido un error: {{msjerror}}.
-        <button type="button"  class="close" data-dismiss="modal">&times;</button> </button> 
-        <!--TODO: REFRESH AL CERRAR ERROR -->
-        </div>
-    </div>
-
     <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide="tengoPermiso('editar_medio_comunicacion');">
         <div class="panel-heading">
@@ -32,7 +23,7 @@
                     
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Nombre" name="nombre" ng-disabled="modoEditar();" ng-model="medio_seleccionado.nombre" 
-                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" required>
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" autocomplete="off" required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="mediosEForm.nombre.$touched && mediosEForm.nombre.$error.required">Ingrese el nombre.</span>
                             <!-- Validacion Minimo Caracteres -->
@@ -50,7 +41,7 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Destino" ng-model="medio_seleccionado.destino" name="destino" 
-                        ng-minlength="3" ng-maxlength="50"  required>
+                        ng-minlength="3" ng-maxlength="50" autocomplete="off"  required>
                         <!-- ng-pattern="/^[A-Za-z0-9 ]+$+_+-+./" -->
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="mediosEForm.destino.$touched && mediosEForm.destino.$error.required">Ingrese el destino.</span> 
@@ -67,8 +58,7 @@
                     </div>
 
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Dominio" name="dominio" ng-model="medio_seleccionado.dominio" ng-minlength="3" ng-maxlength="50" 
-                        ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
+                        <input class="form-control" placeholder="Dominio" name="dominio" ng-model="medio_seleccionado.dominio" autocomplete="off" ng-minlength="3" ng-maxlength="50" ng-pattern="/^([A-Za-z0-9 ]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block" ng-show="mediosEForm.dominio.$touched && mediosEForm.dominio.$error.required">Ingrese el dominio.</span> 
                             <!-- Validacion Minimo Caracteres -->
@@ -86,9 +76,7 @@
                     <div class="form-group has-feedback">
                         <select name="tipo" ng-model="dataTipoMedio.seleccionada" 
                         placeholder="Tipo de Medio" class="form-control input-sm" 
-                         ng-disabled="modoEditar();"
-                        ng-options="medio.tipo for medio in dataTipoMedio.opciones track by medio.tipo"
-                        required>
+                        ng-disabled="modoEditar();" ng-options="medio.tipo for medio in dataTipoMedio.opciones track by medio.tipo" required>
                         </select>
                         <!-- Validacion Campo Requerido-->
                         <span class="help-block" ng-show="mediosEForm.tipo.$touched 
@@ -104,13 +92,13 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" ng-model="medio_seleccionado.clave" ng-hide="dataTipoMedio.seleccionada.tipo == 'mail';"
-                        ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS" ng-minlength="4" ng-maxlength="4" required>
+                        ng-disabled="checkedMail" name="clave" placeholder="Clave del SMS" ng-minlength="4" ng-maxlength="4" autocomplete="off" required>
                         <!-- Validacion Requerido -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
                         && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
                         <!-- Validacion Cant Caracteres -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
-                        && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
+                        && ClaveEForm.clave.$error.minLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
                         <!-- Validacion Cant Caracteres -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
                         && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>

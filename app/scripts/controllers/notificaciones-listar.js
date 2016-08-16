@@ -8,8 +8,7 @@ angular.module('rac')
       $scope.filtro = { fechaIni :'', fechaFin :''};
       $scope.nombreUsuario = perfilService.getUsuario().nombre;
       $scope.rolUsuario    = perfilService.getUsuario().rol;
-      $scope.hayError=false; 
-
+      $scope.msjerror = "Ups! Ha ocurrido un error";
       $scope.notificacion_seleccionada = "";
 
       $scope.tengoPermiso = function(permiso){
@@ -35,17 +34,16 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
-          $scope.hayError=true;
+          alert($scope.msjerror);
           return false;
         })
 
-        console.log($scope.notificacion_seleccionada);
+        //console.log($scope.notificacion_seleccionada);
 
         $location.path('/dashboard/notificaciones-listar');
         return "/dashboard/notificaciones-listar";
@@ -67,13 +65,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
-          $scope.hayError=true;   
+          alert($scope.msjerror);
           return false;
         })
 
@@ -96,13 +93,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
-          $scope.hayError=true;     
+          alert($scope.msjerror);   
           return false;
         })
 
@@ -121,13 +117,12 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          $scope.hayError=false; 
           return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
-          $scope.hayError=true;   
+          alert($scope.msjerror); 
           return false;
         })
       }
