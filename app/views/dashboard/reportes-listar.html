@@ -137,7 +137,7 @@
 	<!--Boton Generar xa Fecha-->		
 		<div class="form-group" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
 			<button type="submit" class="btn btn-default btn-md " 
-			ng-disabled= "!fechaform.desde.$valid || !fechaform.hasta.$valid" 
+			ng-disabled= "!fechaform.desde.$valid || !fechaform.hasta.$valid || fechaInValida();" 
 			ng-click="ejecutarReporte();">Generar</button>
 		</div>
 	</div>  
