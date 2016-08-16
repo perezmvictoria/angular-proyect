@@ -25,7 +25,6 @@ angular.module('rac')
           "usuario_exec":$scope.nombreUsuario,
           "rol_exec":$scope.rolUsuario
         }
-        
       	$http.post(perfilService.getRuta()+'/usuarios/listar_usuarios', 
       				dataPost,perfilService.getConfig())
       		.success(function (data, status, headers, config) {    			

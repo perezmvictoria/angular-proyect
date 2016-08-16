@@ -27,8 +27,8 @@ angular.module('rac')
     }
 
 	$scope.cancelar = function(){
-		$location.path('/dashboard');
-		return "'/dashboard'";
+		$location.path('/dashboard/perfil-ayuda');
+		return "'/dashboard/perfil-ayuda'";
 	}
 
 	// TODO:
@@ -48,7 +48,7 @@ angular.module('rac')
             $scope.msjerror= $scope.msjerror.split(":").pop();
             alert($scope.msjerror);
         });
-		$location.path('/dashboard');
-		return "'/dashboard'";
+		$location.path('/dashboard/perfil-ayuda');
+		return "'/dashboard/perfil-ayuda'";
 	}
 });

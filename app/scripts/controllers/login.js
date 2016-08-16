@@ -7,6 +7,7 @@ angular.module('rac')
     $scope.noverpasswd = false;
     $scope.msjerror = "";
     $scope.hayError=false;
+    
 
     $scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
@@ -22,9 +23,7 @@ angular.module('rac')
     }
 
     $scope.crearHash = function(texto){
-
       return md5.createHash(texto);
-
     }
 
     // Funcion de login
@@ -49,14 +48,14 @@ angular.module('rac')
             function (data,status,headers,config)
             {
               perfilService.setDatosPerfil(data.info);
-              $location.path('/dashboard');
+              $location.path('/dashboard/perfil-ayuda');
               return false;
             }).error (
               function (data) {
                 $scope.msjerror = data.error;
                 $scope.msjerror= $scope.msjerror.split(":").pop();
                 $scope.hayError=true;
-                perfilService.setPerfil("error","admin",$scope.contrasenia);
+                //perfilService.setPerfil("error","admin",$scope.contrasenia);
                 $location.path('/login');
                 return false;
               })
@@ -68,7 +67,7 @@ angular.module('rac')
               $scope.msjerror= $scope.msjerror.split(":").pop();
               $scope.hayError=true;
               //REVISAR ERROR PERMISOS
-              perfilService.setPerfil("error","admin",$scope.contrasenia);
+              //perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');
               return false;
           })

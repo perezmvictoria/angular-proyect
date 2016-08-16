@@ -13,8 +13,8 @@ angular.module('rac')
     $scope.msjerror = "";
 
 	$scope.cancelar = function(){
-		$location.path('/dashboard');
-		return "'/dashboard'";
+		$location.path('/dashboard/perfil-ayuda');
+		return "'/dashboard/perfil-ayuda'";
 	}
 
 	$scope.guardarPerfil = function () {
@@ -38,8 +38,8 @@ angular.module('rac')
             alert($scope.msjerror);
         });
 
-	$location.path('/dashboard');
-	return "'/dashboard'";
+	$location.path('/dashboard/perfil-ayuda');
+	return "'/dashboard/perfil-ayuda'";
 
 	}
 });
