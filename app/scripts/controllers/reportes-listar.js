@@ -35,7 +35,9 @@ angular.module('rac')
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     
     $scope.dataListaEstados = {
-      opciones: [ { 'id': '3', 'nombre': 'resuelta' },
+      opciones: [ { 'id': '1', 'nombre': 'creada' },
+                  { 'id': '2', 'nombre': 'en_proceso' },
+                  { 'id': '3', 'nombre': 'resuelta' },
                   { 'id': '4', 'nombre': 'cancelada' } ],
       seleccionado: { 'id': '3', 'nombre': 'resuelta' }
     }
