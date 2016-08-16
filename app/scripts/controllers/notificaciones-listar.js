@@ -34,20 +34,14 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
           alert($scope.msjerror);
-          return false;
         })
-
-        //console.log($scope.notificacion_seleccionada);
-
-        $location.path('/dashboard/notificaciones-listar');
-        return "/dashboard/notificaciones-listar";
-
+        $scope.listarNotificaciones();
+        return false;
       }
 
       $scope.cerrarNotificacion = function(){
@@ -65,18 +59,14 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
           alert($scope.msjerror);
-          return false;
         })
-
-        $location.path('/dashboard/notificaciones-listar');
-        return "/dashboard/notificaciones-listar";
-
+        $scope.listarNotificaciones();
+        return false;
       }
 
       $scope.asignarNotificacion = function(){
@@ -93,17 +83,14 @@ angular.module('rac')
         dataPost,perfilService.getConfig())
         .success(function (data, status, headers, config) {
           $scope.datos = data.info;
-          return false;
         })
         .error(function (data, status, header, config) {
           $scope.msjerror = data.error;
           $scope.msjerror= $scope.msjerror.split(":").pop();
           alert($scope.msjerror);   
-          return false;
         })
-
-        $location.path('/dashboard/notificaciones-listar');
-        return "/dashboard/notificaciones-listar";
+        $scope.listarNotificaciones();
+        return false;
       }
 
       $scope.listarNotificaciones = function () {

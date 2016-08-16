@@ -99,14 +99,12 @@ angular.module('rac')
         $http.post(perfilService.getRuta()+'/usuarios/desbloquear_usuario', 
               dataPost,perfilService.getConfig())
           .success(function (data, status, headers, config) {         
-          $scope.datos = data.info;   
-          return false;
+          $scope.datos = data.info; 
           })
         .error(function (data, status, heder, config) {          
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
             alert($scope.msjerror);    
-            return false;
         })
 
     		$scope.listarUsuarios();		

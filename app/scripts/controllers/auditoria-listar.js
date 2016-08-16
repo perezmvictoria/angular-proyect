@@ -10,6 +10,7 @@ angular.module('rac')
     
     $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.listaDeUsuarios = "";
+
     
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
@@ -55,6 +56,15 @@ angular.module('rac')
                 { 'id': 4, 'nombre': 'tipo de acción' }],
       seleccionado: { 'id': 1, 'nombre': 'fecha' }
     }
+
+    $scope.fechaInValida = function (){
+        var retorno =false;
+        if ($scope.desde > $scope.hasta ){
+          retorno=true;
+        }
+        return retorno;
+    }
+
 
     $scope.onFocusDeTecnicos = function()
     {
