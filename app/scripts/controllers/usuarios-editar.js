@@ -11,25 +11,7 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.noverpasswd = false;
     $scope.msjerror = "Ups! Ha ocurrido un error";
-  
-	var dataPost = {
-          "usuario_exec":$scope.nombreUsuario,
-          "rol_exec":$scope.rolUsuario
-    } 
 
-	$http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , 
-        perfilService.getConfig()).success(
-        function (data,status,headers,config)
-        {
-          perfilService.setRolesUsuario(data.info);
-          return false;
-        }).error (
-          function (data) {
-            $scope.msjerror=data.error;
-	    	$scope.msjerror= $scope.msjerror.split(":").pop();
-	    	alert($scope.msjerror);
-            return false;
-    })
 
     if (!usuarioService.isModoEditar()) {
 

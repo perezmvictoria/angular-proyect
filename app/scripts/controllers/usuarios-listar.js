@@ -13,8 +13,27 @@ angular.module('rac')
     $scope.usuario_seleccionado = usuarioService.getUsuario();
     $scope.nombreUsuario = perfilService.getUsuario().nombre;
     $scope.rolUsuario    = perfilService.getUsuario().rol;
-     $scope.msjerror = "";
+    $scope.msjerror = "";
     
+    var dataPost = {
+          "usuario_exec":$scope.nombreUsuario,
+          "rol_exec":$scope.rolUsuario
+    } 
+
+    $http.post(perfilService.getRuta()+'/perfil/listar_roles',dataPost , 
+    perfilService.getConfig()).success(
+    function (data,status,headers,config)
+    {
+      perfilService.setRolesUsuario(data.info);
+      return false;
+    }).error (
+      function (data) {
+        $scope.msjerror=data.error;
+    $scope.msjerror= $scope.msjerror.split(":").pop();
+    alert($scope.msjerror);
+        return false;
+    })
+
     $scope.tengoPermiso = function(permiso){
       return perfilService.getPermiso(permiso);
     }
@@ -41,6 +60,9 @@ angular.module('rac')
 
     		usuarioService.setUsuario(undefined);
         usuarioService.setModoEditar(false);
+
+        
+
     		$location.path('/dashboard/usuarios-editar');
     		return "/dashboard/usuarios-editar";
 

@@ -7,8 +7,8 @@ angular.module('rac')
     $scope.rolUsuario    = perfilService.getUsuario().rol;
     $scope.datos = {};
     $scope.listaUsuarios = "";
-    $scope.msjerror = "Ups! Ha ocurrido un error";
 
+    $scope.msjerror = "Ups! Ha ocurrido un error";
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
         "rol_exec":$scope.rolUsuario
@@ -34,9 +34,9 @@ angular.module('rac')
     $scope.tecnicos.opciones = $scope.listaDeUsuarios;
     
     $scope.dataListaEstados = {
-      opciones: [ { 'id': '1', 'nombre': 'resuelta' },
-                  { 'id': '2', 'nombre': 'cancelada' } ],
-      seleccionado: { 'id': '1', 'nombre': 'resuelta' }
+      opciones: [ { 'id': '3', 'nombre': 'resuelta' },
+                  { 'id': '4', 'nombre': 'cancelada' } ],
+      seleccionado: { 'id': '3', 'nombre': 'resuelta' }
     }
 
     $scope.dataListaFiltro = {
@@ -49,7 +49,17 @@ angular.module('rac')
     $scope.onFocusDeTecnicos = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
-      $scope.tecnicos.seleccionado = { 'id': 1 };
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
+    }
+
+    $scope.onFocusDeFiltro = function()
+    {
+      $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
     }
 
     $scope.ejecutarReporte = function(){
@@ -108,7 +118,7 @@ angular.module('rac')
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
           "rol_exec": $scope.rolUsuario,
-          "estado": $scope.dataListaEstados.seleccionado.nombre
+          "estado": $scope.dataListaEstados.seleccionado.id
         };
         $http.post(perfilService.getRuta()+'/reportes/listar_reporte_estado', 
           dataPost,perfilService.getConfig())

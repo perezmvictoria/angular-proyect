@@ -20,7 +20,9 @@
                 <form role="form" name="usuariosEForm" novalidate>
       
                     <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" autocomplete="off" required>
+                        <input autocomplete="off" class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-disabled="modoEditar();" ng-minlength="3" 
+                        ng-focus="onFocusUsuario();"
+                        ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/" autocomplete="off" required>
                                 <!-- Validacion Campo Requerido -->
                                 <span class="help-block" ng-show="usuariosEForm.usuario.$touched && usuariosEForm.usuario.$error.required">Ingrese el usuario.</span>
                                 <!-- Validacion Minimo Caracteres -->
