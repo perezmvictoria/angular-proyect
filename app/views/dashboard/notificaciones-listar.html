@@ -36,10 +36,10 @@
 			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);" ng-show="notificacion.estado == 'creada' && tengoPermiso('asignar_notificacion');">
 			<i class="glyphicon glyphicon-link"></i></a>
 			
-			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('resolver_notificacion')">
+			<a class="btn btn-info btn-circle btn-xs" data-toggle="modal"  data-target="#resolver" title="Resolver" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('resolver_notificacion') && notificacion.estado == 'en_proceso'">
 			<i class="glyphicon glyphicon-ok"></i></a>
 			
-            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('cerrar_notificacion')">
+            <a class="btn btn-warning btn-circle btn-xs" data-toggle="modal" data-target="#cerrar"  title="Cerrar" ng-click="setNotificacion(notificacion);" ng-show="tengoPermiso('cerrar_notificacion') && notificacion.estado == 'en_proceso' ">
             <i class="glyphicon glyphicon-log-out"></i></a>
 			</td>
 			
