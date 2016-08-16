@@ -40,11 +40,6 @@ angular.module('rac')
         return false;
     })
 
-
-
-
-
-
  		perfilService.setUsuario({});
  		$location.path('/login.html');
 		return "/login.html";

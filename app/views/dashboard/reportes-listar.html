@@ -29,52 +29,49 @@
 		<!--Filtro-->
 		<form role="form" name="fechaform">  	   
   	    <!--Fecha Desde-->
-			<div class="col-xs-6 col-md-4" 
-			ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
-		  		<div class="form-group has-feedback"  novalidate> 
-              		<input class="form-control" name="desde" ng-model="desde" 
-                	type=date max="2099-12-31" min="1900-01-01" autocomplete="off" required>
-            
-                    <!-- Validacion Requerido-->
-                    <span class="help-block" 
-                    ng-show="fechaform.desde.$touched && fechaform.desde.$error.required && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
-
-                    <!-- Validacion Desde Hasta-->
-                    <span class="help-block" ng-show=" fechaform.hasta.$touched &&  fechaform.desde.$touched && fechaInValida();">Rango de fechas invalido.</span>
-                    
-                    <!-- Validacion Minima-->
-                    <span class="help-block" ng-show="fechaform.desde.$touched && fechaform.desde.$error.min && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha mayor.</span>
-                    
-                    <!-- Validacion Maxima-->
-                    <span class="help-block" ng-show="fechaform.desde.$touched && fechaform.desde.$error.max && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha menor.</span>
-           		</div> 
+			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
+		  	<div class="form-group has-feedback"  novalidate> 
+              <input class="form-control" 
+                placeholder="desde (DD/MM/YYYY)" name="desde"  ng-model="desde" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+                <!-- Validacion Requerido-->
+                <span class="help-block" 
+                ng-show="fechaform.desde.$touched && fechaform.desde.$error.required && 
+                dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
+                <!-- Validacion Patron del formato-->
+                <span class="help-block" 
+                ng-show="fechaform.desde.$touched && fechaform.desde.$error.pattern 
+                && dataListaFiltro.seleccionado.nombre == 'fecha';" >Formato fecha invalido.</span>
+                <!-- Validacion Error -->
+                <span class="glyphicon glyphicon-remove form-control-feedback" 
+                ng-show="fechaform.desde.$touched && !fechaform.desde.$valid && 
+                dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <!-- Validacion Ok -->
+                <span class="glyphicon glyphicon-ok form-control-feedback" 
+                ng-show="fechaform.desde.$touched && fechaform.desde.$valid && 
+                dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+         	</div> 
 		  	</div> 
-		
 			 <!--Fecha Hasta-->
 			<div class="col-xs-6 col-md-4" ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
 				<div class="form-group has-feedback" novalidate>
-					  <input class="form-control"  name="hasta"  ng-model="hasta" 
-                		type=date  autocomplete="off" max="2099-12-31" min="1900-01-01" required>
-    
-                    <!-- Validacion Requerido-->
-                    <span class="help-block" 
-                    ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.required && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
-
-                    <!-- Validacion Desde Hasta-->
-                    <span class="help-block" ng-show=" fechaform.hasta.$touched &&  fechaform.desde.$touched && fechaInValida();">Rango de fechas invalido.</span>
-                    
-                    <!-- Validacion Minima-->
-                    <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.min && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha mayor.</span>
-                    <!-- Validacion Maxima-->
-                    <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.max && 
-                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha menor.</span>
-
-		   		</div>
+                <input class="form-control" 
+                placeholder="hasta (DD/MM/YYYY)"  name="hasta"  ng-model="hasta" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+                <!-- Validacion Requerido-->
+                <span class="help-block" 
+                ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.required && 
+                dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
+                <!-- Validacion Patron del formato-->
+                <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.pattern 
+                && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
+                <!-- Validacion Error -->
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="fechaform.hasta.$touched
+                && !fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <!-- Validacion Ok -->
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="fechaform.hasta.$touched 
+                && fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+          	</div>
 			</div>
 			</form>
 
@@ -82,21 +79,24 @@
       		<form role="form" name="tecnicoForm">
 			<div class="col-xs-6 col-md-4" 
 			ng-show="dataListaFiltro.seleccionado.nombre == 'técnico';" >
-			<div class="form-group has-feedback"  novalidate>             	
-				<select ng-model="tecnicos.seleccionado" placeholder="Técnico" class="form-control input-sm" ng-focus="onFocusDeTecnicos();" ng-options="tecnico.usuario for tecnico in tecnicos.opciones track by tecnico.usuario">
-        		</select>
-        		<!-- Validacion Requerido-->
-	            <span class="help-block" 
-	            ng-show="tecnicoForm.tecnico.$touched && tecnicoForm.tecnico.$error.required 
-	            && dataListaFiltro.seleccionado.nombre == 'técnico';" >Seleccione un técnico.</span>
+			<<div class="form-group has-feedback" novalidate>
+                <input class="form-control" 
+                placeholder="hasta (DD/MM/YYYY)"  name="hasta"  ng-model="hasta" 
+                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+                <!-- Validacion Requerido-->
+                <span class="help-block" 
+                ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.required && 
+                dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
+                <!-- Validacion Patron del formato-->
+                <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.pattern 
+                && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
                 <!-- Validacion Error -->
-                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.tecnico.$touched
-                && !tecnicoForm.tecnico.$valid && dataListaFiltro.seleccionado.nombre == 'técnico';"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="fechaform.hasta.$touched
+                && !fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
                 <!-- Validacion Ok -->
-                <span class="glyphicon glyphicon-ok form-control-feedback" 
-                ng-show="tecnicoForm.tecnico.$touched 
-                && tecnicoForm.tecnico.$valid && dataListaFiltro.seleccionado.nombre == 'técnico';"></span>
-        	</div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="fechaform.hasta.$touched 
+                && fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+          </div>
 			</div>
 			</form>
 

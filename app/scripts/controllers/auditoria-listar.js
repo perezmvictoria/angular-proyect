@@ -11,7 +11,7 @@ angular.module('rac')
     $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.listaDeUsuarios = "";
 
-    
+
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
       "rol_exec":$scope.rolUsuario
@@ -25,7 +25,8 @@ angular.module('rac')
       })
       .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
-        $scope.msjerror= $scope.msjerror.split(":").pop();        
+        $scope.msjerror= $scope.msjerror.split(":").pop();
+        alert($scope.msjerror);        
         return false;
     })
 
@@ -108,6 +109,7 @@ angular.module('rac')
         .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             return false;
         })
 
@@ -130,6 +132,7 @@ angular.module('rac')
         .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             return false;
         })
 
@@ -152,6 +155,7 @@ angular.module('rac')
         .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             return false;
         })
         }
@@ -173,6 +177,7 @@ angular.module('rac')
         .error(function (data, status, header, config) {
             $scope.msjerror = data.error;
             $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
             return false;
         })
         }
