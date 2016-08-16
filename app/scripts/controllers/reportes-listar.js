@@ -62,6 +62,14 @@ angular.module('rac')
       }      
     }
 
+    $scope.fechaInValida = function (){
+        var retorno =false;
+        if ($scope.desde > $scope.hasta ){
+          retorno=true;
+        }
+        return retorno;
+    }
+
     $scope.ejecutarReporte = function(){
 
       if ($scope.dataListaFiltro.seleccionado.nombre == 'fecha'){

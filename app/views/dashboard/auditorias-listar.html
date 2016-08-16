@@ -31,24 +31,33 @@
       ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
           <div class="form-group has-feedback"  novalidate> 
               <input class="form-control" name="desde" ng-model="desde" 
-                type=date  autocomplete="off" required>
+                type=date max="2099-12-31" min="1900-01-01" autocomplete="off" required>
             
                     <!-- Validacion Requerido-->
                     <span class="help-block" 
                     ng-show="fechaform.desde.$touched && fechaform.desde.$error.required && 
                     dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
-                    <!-- Validacion Desde Hasta-->
+                    
+                    <!-- Validacion Desde/Hasta-->
                     <span class="help-block" ng-show=" fechaform.hasta.$touched &&  fechaform.desde.$touched && fechaInValida();">Rango de fechas invalido.</span>
+                    
+                    <!-- Validacion Minima-->
+                    <span class="help-block" ng-show="fechaform.desde.$touched && fechaform.desde.$error.min && 
+                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha mayor.</span>
+                    
+                    <!-- Validacion Maxima-->
+                    <span class="help-block" ng-show="fechaform.desde.$touched && fechaform.desde.$error.max && 
+                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha menor.</span>
               
-
           </div> 
       </div>
       <!--Fecha Hasta-->
       <div class="col-xs-6 col-md-4" 
       ng-show="dataListaFiltro.seleccionado.nombre == 'fecha';">
           <div class="form-group has-feedback" novalidate>
+                
                 <input class="form-control"  name="hasta"  ng-model="hasta" 
-                type=date  autocomplete="off" required>
+                type=date  autocomplete="off" max="2099-12-31" min="1900-01-01" required>
     
                     <!-- Validacion Requerido-->
                     <span class="help-block" 
@@ -57,7 +66,14 @@
 
                     <!-- Validacion Desde Hasta-->
                     <span class="help-block" ng-show=" fechaform.hasta.$touched &&  fechaform.desde.$touched && fechaInValida();">Rango de fechas invalido.</span>
-
+                    
+                    <!-- Validacion Minima-->
+                    <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.min && 
+                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha mayor.</span>
+                   
+                   <!-- Validacion Maxima-->
+                    <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.max && 
+                    dataListaFiltro.seleccionado.nombre == 'fecha';">Ingrese una fecha menor.</span>
           </div>
       </div>
       </form>
