@@ -79,24 +79,24 @@
       		<form role="form" name="tecnicoForm">
 			<div class="col-xs-6 col-md-4" 
 			ng-show="dataListaFiltro.seleccionado.nombre == 'técnico';" >
-			<div class="form-group has-feedback" novalidate>
-                <input class="form-control" 
-                placeholder="hasta (DD/MM/YYYY)"  name="hasta"  ng-model="hasta" 
-                ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
-                <!-- Validacion Requerido-->
-                <span class="help-block" 
-                ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.required && 
-                dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
-                <!-- Validacion Patron del formato-->
-                <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.pattern 
-                && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
+			<div class="form-group has-feedback" novalidate>   
+            <select ng-model="tecnicos.seleccionado" placeholder="Técnico" 
+            class="form-control input-sm" ng-focus="onFocusDeTecnicos();" 
+            ng-options="tecnico.usuario for tecnico in tecnicos.opciones track by tecnico.usuario" name="tecnico" required>
+            </select>
+              <!-- Validacion Requerido-->
+              <span class="help-block" 
+              ng-show="tecnicoForm.tecnico.$touched && tecnicoForm.tecnico.$error.required && 
+              dataListaFiltro.seleccionado.nombre == 'técnico';" >Seleccione un técnico.</span>
                 <!-- Validacion Error -->
-                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="fechaform.hasta.$touched
-                && !fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.tecnico.$touched
+                && !tecnicoForm.tecnico.$valid && dataListaFiltro.seleccionado.nombre == 'técnico';"></span>
                 <!-- Validacion Ok -->
-                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="fechaform.hasta.$touched 
-                && fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <span class="glyphicon glyphicon-ok form-control-feedback" 
+                ng-show="tecnicoForm.tecnico.$touched 
+                && tecnicoForm.tecnico.$valid && dataListaFiltro.seleccionado.nombre == 'técnico';"></span>
           </div>
+      
 			</div>
 			</form>
 
