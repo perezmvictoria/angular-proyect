@@ -9,7 +9,7 @@ angular.module('rac')
     $scope.datos = {};
     $scope.listaUsuarios = "";
     // TODO: cambiar al cablear
-    $scope.hayError=false;
+    $scope.hayError = false;
     
       var dataPost = {
         "usuario_exec":$scope.nombreUsuario,
@@ -24,7 +24,7 @@ angular.module('rac')
       })
     .error(function (data, status, header, config) {
         $scope.msjerror = data.error;
-        $scope.msjerror= $scope.msjerror.split(":").pop();
+        $scope.msjerror = $scope.msjerror.split(":").pop();
         $scope.hayError = true;  
         return false;
     })
@@ -52,7 +52,17 @@ angular.module('rac')
     $scope.onFocusDeTecnicos = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
-      $scope.tecnicos.seleccionado = { 'id': 1 };
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
+    }
+
+    $scope.onFocusDeFiltro = function()
+    {
+      $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
     }
 
     $scope.ejecutarReporte = function(){

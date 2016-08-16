@@ -59,6 +59,17 @@ angular.module('rac')
     $scope.onFocusDeTecnicos = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
+    }
+
+    $scope.onFocusDeFiltro = function()
+    {
+      $scope.tecnicos.opciones = $scope.listaDeUsuarios;
+      if ($scope.tecnicos.opciones.length > 0){
+        $scope.tecnicos.seleccionado = { 'usuario': $scope.tecnicos.opciones[0].usuario };
+      }      
     }
 
     $scope.tengoPermiso = function(permiso){

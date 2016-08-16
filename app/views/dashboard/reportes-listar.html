@@ -27,7 +27,7 @@
 	    
 	    <!--Filtro-->
 	    <div class="col-xs-6 col-md-4">
-    		<select class="form-control input-sm" data-style="btn-default" placeholder="Filtro" name="filtro"  data-live-search="true" 
+    		<select class="form-control input-sm" data-style="btn-default" placeholder="Filtro" name="filtro"  data-live-search="true" ng-focus="onFocusDeFiltro();"
     		ng-model="dataListaFiltro.seleccionado" ng-options="filtro.nombre for filtro in dataListaFiltro.opciones track by filtro.nombre" required>
     		</select>
 		</div>
