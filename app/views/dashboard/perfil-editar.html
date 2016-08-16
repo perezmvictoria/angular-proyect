@@ -35,11 +35,13 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Nombre" name="nombre" ng-model="perfil_seleccionado.nombre" 
-                        ng-maxlength="20" ng-pattern="/^[A-Za-z0-9 ]+$/">
+                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-zA-Z]$/">
+                                <!-- Validacion Maximo Caracteres-->
+                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span> 
                                 <!-- Validacion Maximo Caracteres-->
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
                                 <!-- Validacion Patron del formato --> 
-                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales.</span>
+                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener números ni caracteres especiales.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.nombre.$touched 
                         && !usuariosEForm.nombre.$valid"></span>
@@ -49,7 +51,7 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Mail" name="mail" ng-model="perfil_seleccionado.mail" 
-                        type="email"required>
+                        type="email" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.required">Ingrese el mail.</span>
                                 <!-- Validacion Formato-->
@@ -62,7 +64,9 @@
                     </div>
                     
                     <div class="form-group has-feedback" novalidate>
-                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="perfil_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-maxlength=9>
+                        <input class="form-control" placeholder="Telefono" name="telefono" ng-model="perfil_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-minlength=8 ng-maxlength=9>
+                                <!-- Validacion Minimo Caracteres -->
+                                <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.minlength">El teléfono debe contener al menos 8 caracteres.</span> 
                                 <!-- Validacion Maximo Caracteres -->
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                                 <!-- Validacion Formato-->

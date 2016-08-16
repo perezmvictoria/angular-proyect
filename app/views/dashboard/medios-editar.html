@@ -86,9 +86,7 @@
                     <div class="form-group has-feedback">
                         <select name="tipo" ng-model="dataTipoMedio.seleccionada" 
                         placeholder="Tipo de Medio" class="form-control input-sm" 
-                         ng-disabled="modoEditar();"
-                        ng-options="medio.tipo for medio in dataTipoMedio.opciones track by medio.tipo"
-                        required>
+                        ng-disabled="modoEditar();" ng-options="medio.tipo for medio in dataTipoMedio.opciones track by medio.tipo" required>
                         </select>
                         <!-- Validacion Campo Requerido-->
                         <span class="help-block" ng-show="mediosEForm.tipo.$touched 
@@ -110,7 +108,7 @@
                         && ClaveEForm.clave.$error.required && dataTipoMedio.seleccionada.tipo == 'sms';"> Ingrese la Clave.</span>
                         <!-- Validacion Cant Caracteres -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
-                        && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
+                        && ClaveEForm.clave.$error.minLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>
                         <!-- Validacion Cant Caracteres -->
                         <span class="help-block" ng-show="ClaveEForm.clave.$touched 
                         && ClaveEForm.clave.$error.maxLength && dataTipoMedio.seleccionada.tipo == 'sms';"> La clave debe contener 4 digitos.</span>

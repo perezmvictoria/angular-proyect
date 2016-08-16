@@ -47,13 +47,13 @@
 
                     <div class="form-group has-feedback" novalidate>
                         <input class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" ng-minlength="3"
-                        ng-maxlength="20" ng-pattern="/^[A-Za-z0-9 ]+$/">
+                        ng-maxlength="20" ng-pattern="/^[a-zA-Z]$/">
                                 <!-- Validacion Min Caracteres-->
-                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.minlength">El debe contener al menos 3 caracteres.</span> 
+                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span> 
                                 <!-- Validacion Maximo Caracteres-->
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
                                 <!-- Validacion Patron del formato --> 
-                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener caracteres especiales.</span>
+                                <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener números ni caracteres especiales.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.nombre.$touched && !usuariosEForm.nombre.$valid"></span>
                         <!-- Validacion Error -->
