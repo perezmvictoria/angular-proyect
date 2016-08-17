@@ -57,6 +57,12 @@ angular.module('rac')
       }      
     }
 
+    $scope.fechaPosterior = function(){
+        var fechaInicio = Date.parse($scope.desde);
+        var fechaFin = Date.parse($scope.hasta);
+        return (fechaInicio >fechaFin )    
+    }
+
     $scope.onFocusDeFiltro = function()
     {
       $scope.tecnicos.opciones = $scope.listaDeUsuarios;

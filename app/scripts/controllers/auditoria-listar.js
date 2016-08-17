@@ -13,14 +13,10 @@ angular.module('rac')
 
     
     $scope.fechaPosterior = function(){
-    
         var fechaInicio = Date.parse($scope.desde);
-        console.log(fechaInicio);
         var fechaFin = Date.parse($scope.hasta);
-        console.log(fechaFin);
-        console.log(fechaInicio >fechaFin);
         return (fechaInicio >fechaFin )    
-}
+    }
 
 
 
