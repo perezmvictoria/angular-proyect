@@ -25,6 +25,7 @@
 			    <th>Estado</th>
 			    <th>Técnico</th>
 			    <th>Descripción</th>
+                <th>Medios</th>
 			    <th></th>
 		  </tr>
 		  </thead>
@@ -35,6 +36,7 @@
 			  <td>{{notificacion.estado}}</td>
 			  <td>{{notificacion.usuario}}</td>
 			  <td>{{notificacion.descripcion}}</td>
+              <td>{{notificacion.tipo_aviso}}</td>
 			  
 			<td> 
 			<a class="btn btn-success btn-circle btn-xs" data-toggle="modal"  data-target="#asignar" title="Asignar" ng-click="setNotificacion(notificacion);" ng-show="notificacion.estado == 'creada' && tengoPermiso('asignar_notificacion');">
