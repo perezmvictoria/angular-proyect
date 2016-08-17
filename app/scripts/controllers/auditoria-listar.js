@@ -18,6 +18,16 @@ angular.module('rac')
         return (fechaInicio >fechaFin )    
     }
 
+    $scope.fechaRango = function(){
+        var fechaInicio = Date.parse($scope.desde);
+        console.log(fechaInicio);
+        var fechaFin = Date.parse($scope.hasta);
+        console.log(fechaFin);
+        var rangoInicio = fechaInicio + 7;
+        console.log(rangoInicio);
+        console.log(fechaFin > rangoInicio);
+        return (fechaFin > rangoInicio )    
+    }
 
 
 

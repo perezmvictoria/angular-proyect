@@ -32,27 +32,35 @@
                 <input class="form-control" 
                 placeholder="desde (DD/MM/YYYY)" name="desde"  autocomplete="off" ng-model="desde" 
                 ng-pattern="/^(0?[1-9]|1\d|2[0-8]|29(?=[/]\d?\d[/](?!1[01345789]00|2[1235679]00)\d\d(?:[02468][048]|[13579][26]))|30(?![/]0?2)|31(?=[/]0?[13578]|[/]1[02]))[/](0?[1-9]|1[0-2])[/]([12]\d{3})$/" required>
+
                 <!-- Validacion Requerido-->
                 <span class="help-block" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$error.required && 
                 dataListaFiltro.seleccionado.nombre == 'fecha';" >Ingrese una fecha.</span>
+
                 <!-- Validacion Patron del formato-->
                 <span class="help-block" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$error.pattern 
                 && dataListaFiltro.seleccionado.nombre == 'fecha';" >Formato fecha invalido.</span>
 
+                <!-- Validacion Rango Valido-->
                 <span class="help-block" 
                 ng-show=  "fechaform.desde.$touched && fechaform.hasta.$touched &&
-                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango inválido.</span>
+                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango de fechas inválido.</span>
 
+                <!-- Validacion Rango -->
+                <span class="help-block" 
+                ng-show=  "fechaform.desde.$touched && fechaform.hasta.$touched &&
+                fechaform.desde.$valid && fechaform.hasta.$valid  && (!fechaPosterior() && fechaRango());" >El rango de fechas debe ser menor a 7 días.</span>
+                
                 <!-- Validacion Error -->
                 <span class="glyphicon glyphicon-remove form-control-feedback" 
-                ng-show="fechaform.desde.$touched && (!fechaform.desde.$valid || fechaPosterior());"></span>
+                ng-show="fechaform.desde.$touched && (!fechaform.desde.$valid || fechaPosterior() || fechaRango());"></span>
 
                 <!-- Validacion Ok -->
                 <span class="glyphicon glyphicon-ok form-control-feedback" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$valid && 
-                !fechaPosterior();"></span>
+                (!fechaPosterior() && !fechaRango());"></span>
 
           </div> 
       </div>
@@ -69,19 +77,25 @@
                 <!-- Validacion Patron del formato-->
                 <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.pattern 
                 && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
-
+                
+                <!-- Validacion Rango Valido-->
                 <span class="help-block" 
-                ng-show=  "fechaform.hasta.$touched && fechaform.hasta.$touched &&
-                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango inválido.</span>
+                ng-show=  "fechaform.desde.$touched && fechaform.hasta.$touched &&
+                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango de fechas inválido.</span>
 
+                <!-- Validacion Rango -->
+                <span class="help-block" 
+                ng-show=  "fechaform.desde.$touched && fechaform.hasta.$touched &&
+                fechaform.desde.$valid && fechaform.hasta.$valid  && (!fechaPosterior() && fechaRango());" >El rango de fechas debe ser menor a 7 días.</span>
+                
                 <!-- Validacion Error -->
                 <span class="glyphicon glyphicon-remove form-control-feedback" 
-                ng-show="fechaform.hasta.$touched && (!fechaform.hasta.$valid || fechaPosterior());"></span>
+                ng-show="fechaform.hasta.$touched && (!fechaform.hasta.$valid || fechaPosterior() || fechaRango());"></span>
 
                 <!-- Validacion Ok -->
                 <span class="glyphicon glyphicon-ok form-control-feedback" 
-                ng-show="fechaform.hasta.$touched && fechaform.hasta  .$valid && 
-                !fechaPosterior();"></span>
+                ng-show="fechaform.hasta.$touched && fechaform.hasta.$valid && 
+                (!fechaPosterior() && !fechaRango());"></span>
 
           </div>
       </div>
