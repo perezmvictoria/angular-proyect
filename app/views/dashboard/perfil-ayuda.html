@@ -1,97 +1,235 @@
 <div> 
  <h2>Sistema de Gestion de Alertas </h2>
 
-<!-- Panel de Success para Tabla de Medios -->
     <div class="panel panel-info" >
-
         <div class="panel-heading">
-            Expanda las secciones para mayor informacion del sistema.
-        </div>    
+            Expanda las secciones para mayor información sobre el sistema.
+        </div>
 
 
- <div class="panel-body">
+
+<div class="panel-body"> 
  <div class="panel-group" id="accordion">
-
- <!--Fila uno con 3 contenedores--> 
-    
-    <!-- Box 1 -->
-
-      <div class="panel panel-warning">
+      
+      <!--Nivel 1-->
+      <div class="panel panel-warning" ng-show="tengoPermiso('notificaciones');">
+        <!--Titulo 1-->
         <div class="panel-heading">
           <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse1"> Notificaciones</a></h4>
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse1"> 
+          Notificaciones</a></h4>
         </div>
+        <!--Contenido 1-->
         <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">El modulo.....</div>
+        <div class="panel-body">
+            
+            <p>Este módulo permite el manejo de las notificaciones generadas por el sistema, litando aquellas cuyo estado sea "creada" o "en_proceso".</p>
+
+            <p>Dependiendo del tipo de usuario, se podrá acceder a las distintas funcionalidades de este módulo: Asignar, Resolver y Cerrar</p>
+
+            <p>
+            <a class="btn btn-success btn-circle btn-xs" ><i class="glyphicon glyphicon-link"></i></a>
+            <b> Asignar:</b> a través de esta función, los técnicos podrán asignarse las notificaciones. Una vez asignada, cambia su estado a "en_proceso".
+            </p>
+
+            <p>
+            <a class="btn btn-info btn-circle btn-xs"><i class="glyphicon glyphicon-ok"></i></a>
+            <b> Resolver:</b> se podrán resolver unicamente aquellas notificaciones en estado "en_proceso" agregando un comentario sobre la resolucion aplicada.</p>
+
+            <p> <a class="btn btn-warning btn-circle btn-xs"> <i class="glyphicon glyphicon-log-out"></i></a>
+            <b> Cerrar:</b> luego de ingresar un comentario se podran cerrar las notificaciones en estado "en_proceso".</p>
+        </div>
         </div>
       </div>
-
-    <!--BOX 2-->
-
-      <div class="panel panel-warning">
+      <!--Nivel 2-->
+      <div class="panel panel-warning" ng-show="tengoPermiso('reportes');">
+        <!--Titulo 2-->
         <div class="panel-heading">
           <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse2"> Reportes</a>
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse2"> 
+          Reportes</a>
           </h4>
         </div>
+        <!--Contenido 2-->
         <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">Este componente.....</div>
+        <div class="panel-body">
+
+            <p>En este módulo se pueden consultar las notificaciones del sistema aplicando alguno de los siguientes filtros:</p>
+
+            <p><b> - Fecha:   </b> lista las notificaciones comprendidas en el rango de fechas ingresado.</p>
+            <p><b> - Técnico: </b> lista las notificaciones asignadas al tecnico seleccionado.</p>
+            <p><b> - Estado:  </b> lista las notificaciones con el estado seleccionado 
+            ("creada", "en_proceso", "cerrada", "cancelada") .</p>
+            <p><i> Nota:</i> la cantidad de registros que retorna el reporte es configurable. Ver Manual de configuarción por mayor información.</p>
+        </div>
         </div>
       </div>
-
-    <!--BOX 3-->
-
-      <div class="panel panel-warning">
+    <!--Nivel 3-->
+      <div class="panel panel-warning" ng-show="tengoPermiso('auditorias');">
+        <!--Titulo 3-->
         <div class="panel-heading">
           <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse6"> Auditoria</a></h4>
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse3"> 
+          Auditoria</a></h4>
         </div>
-        <div id="collapse6" class="panel-collapse collapse">
-        <div class="panel-body">Este componente.....</div>
+        <!--Contenido 3-->
+        <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"> 
+
+        <p>Las acciones realizadas por los usuarios del sistema son almacenadas y pueden ser consultadas a través de éste médulo utilzando los siguientes filtros: </p>
+        
+            <p><b> - Fecha: </b> lista los registros comprendidos en el rango de fechas ingresado.</p>
+            <p><b> - Técnico: </b> lista las acciones realizadas por el técnico seleccionado.</p>
+            <p><b> - Acción: </b> lista los registros que contienen la acción ingresada.</p>
+            <p><b> - Tipo de Acción: </b> lista los registros cuya accion coincide con la ingresada ("info", "error").</p>
+            <p><i> Nota:</i> la cantidad de registros que retorna el reporte de auditoria es configurable. Ver Manual de configuarción por mayor información.</p>
         </div>
-      </div>
-
-
-
-
-  
-<!--Box 4-->
-
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse3"> Usuarios</a></h4>
-        </div>
-      <div id="collapse3" class="panel-collapse collapse">
-      <div class="panel-body">Este componente.....</div>
       </div>
     </div>
- 
-  <!--Box 5-->
-
-      <div class="panel panel-warning">
+    <!--Nivel 4-->
+      <div class="panel panel-warning" ng-show="tengoPermiso('usuarios');">
+      <!--Titulo 4-->
         <div class="panel-heading">
           <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse4"> Medios</a></h4>
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse4"> 
+          Usuarios</a></h4>
         </div>
+        <!--Contenido 4-->
         <div id="collapse4" class="panel-collapse collapse">
-        <div class="panel-body">Este componente.....</div>
+        <div class="panel-body">
+
+            <p>Este módulo se utiliza para administrar los usuarios del sistema.</p>
+
+            <b> Crear Usuario:</b> se deberá completar los datos de Usuario, Mail, Tipo de Usuario y Contraseña; La informacion de Nombre y Mail no es obligatoria.</p>  
+            <p><a class="btn btn-success btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+            <b> Editar:</b> permite modificar la informacion del Nombre, Mail, Teléfono y  Tipo de Usuario.</p>  
+            <p><a class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></a> 
+            <b> Eliminar:</b> borra los usuarios del sistema, manteniendo los registros históricos de auditoria.</p> 
+            
+            <p><a class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-lock"></i></a>
+            <b> Desbloquear:</b> esta función permite reintentar al inicio de sesion a aquellos usuarios que han superadado la cantidad de intentos fallidos.</p>
+
+            <p><a class="btn btn-info btn-xs"><i class="glyphicon glyphicon-modal-window"></i></a>
+            <b>Cambiar Contraseña:</b> permite ingresar una nueva contraseña para el usuario seleccionado.</p>
+
+            <i> Nota:</i> no se podrán eliminar usuarios que tengan notificaciones asignadas.</p> 
+     
+        </div>
         </div>
       </div>
 
-  <!--Box 6-->
-
+  <!--Nivel 5-->
       <div class="panel panel-warning">
-        <div class="panel-heading">
+      <!--Titulo 5-->
+        <div class="panel-heading" ng-show="tengoPermiso('medios');">
           <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse5"> Reglas</a></h4>
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse5"> 
+          Medios</a></h4>
         </div>
         <div id="collapse5" class="panel-collapse collapse">
-        <div class="panel-body">Formato para ingresar reglas</div>
-        </div>
-   
+        <div class="panel-body">
 
+            <p>Este módulo administra los medios de comunicacion a través de los cuales se notificaran las alertas del sistema.</p>
+            <b> Crear Medio:</b> para el tipo de medio "Mail" se debera completar el Nomnbre, Destino y Dominio, en el caso del "SMS" se agrega tambien la Clave.</p>   
+            <p><a class="btn btn-success btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+            <b> Editar:</b> permite modificar la informacion del Destino, Dominio o Clave en caso de que corresponda.</p>  
+            <p><a class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></a> 
+            <b> Eliminar:</b> borra los usuarios del sistema, manteniendo los registros históricos de auditoria.</p> 
+            <i> Nota:</i> no se podrán eliminar un medio de comunicacion que este asignado a una o más reglas.</p> 
+
+        </div>
+      </div>
+     
+      </div>   
+  <!--Nivel 6-->
+
+      <div class="panel panel-warning" ng-show="tengoPermiso('reglas');">
+        <!--Nivel 6-->
+
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse6"> 
+          Reglas</a></h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">
+              
+                <p>Este modulo administra las reglas que seran utilizadas por el motor de reglas para procesar las alertas del sistema .</p>
+
+            <b> Crear Regla:</b> p se debera completar......</p>   
+            <p><a class="btn btn-success btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+            <b> Editar:</b> permite modificar la informacion del orden, condicion, segundos.</p>  
+            <p><a class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></a> 
+            <b> Eliminar:</b> borra la regla del sistema, manteniendo los registros históricos de auditoria.</p>
+
+    <div class="panel-group" id="accordion2">
+
+        <div class="panel panel-default" ng-show="tengoPermiso('reglas');">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" data-target="#collapseA"> 
+          Descartar</a></h4>
+        </div>
+        <div id="collapseA" class="panel-collapse collapse in">
+        <div class="panel-body">
+            
+            <p>Si una alerta cumple con la condición ingresada en la regla, la misma sera descartada y no se generara ninguna notificación</p>
+            <p><i>Nota:</i> se genera un registro de auditoria indicando que la alerta fue descartada.</p>
+
+
+        </div>
+        </div>
+
+      </div>  
+           <div class="panel panel-default" ng-show="tengoPermiso('reglas');">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" data-target="#collapseB"> 
+          Consolidar</a></h4>
+        </div>
+        <div id="collapseB" class="panel-collapse collapse in">
+        <div class="panel-body">
+            
+            <p>Si durante el lapso de tiempo configurado en la regla, llegan una o mas alertas, el sistema espera que expire dicho tiempo y envia una unica notificación</p>
+
+        </div>
+        </div>
+
+      </div>  
+           <div class="panel panel-default" ng-show="tengoPermiso('reglas');">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" data-target="#collapseC"> 
+          Esperar</a></h4>
+        </div>
+        <div id="collapseC" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+            <p>Si llega una alerta que cumple con el evento ingresado o expira el tiempo configurado en la regla, se envia una unica notificacion</p>
+
+        </div>
+        </div>
+
+      </div>  
+
+
+        <div class="panel panel-default" ng-show="tengoPermiso('reglas');">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion2" data-target="#collapseE"> 
+          Ejemplo</a></h4>
+        </div>
+        <div id="collapseE" class="panel-collapse collapse in">
+        <div class="panel-body">
+            
+            <p>El siguiente ejemplo demuestra el formato correcto para ingresar una regla en el sistema</p>
+            <p>
+            <img src="images/Ayuda_Regla_Ejemplo.png" style="width: 100%; height: auto" class="logo-pic-avatar-lg" />
+            </p>
+        </div>
+        </div>
+    
+      </div>  
+      </div>  
 </div>
-</div>    
- 
 </div>
