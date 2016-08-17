@@ -1,7 +1,7 @@
 <div>
   
   <h2>Auditorias</h2>
-  
+ 
   <!--Panel de Warning: Permisos-->
   <div class="panel panel-warning" ng-hide="tengoPermiso('generar_auditoria');">
     <div class="panel-heading">
@@ -40,14 +40,20 @@
                 <span class="help-block" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$error.pattern 
                 && dataListaFiltro.seleccionado.nombre == 'fecha';" >Formato fecha invalido.</span>
+
+                <span class="help-block" 
+                ng-show=  "fechaform.desde.$touched && fechaform.hasta.$touched &&
+                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango inválido.</span>
+
                 <!-- Validacion Error -->
                 <span class="glyphicon glyphicon-remove form-control-feedback" 
-                ng-show="fechaform.desde.$touched && !fechaform.desde.$valid && 
-                dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                ng-show="fechaform.desde.$touched && (!fechaform.desde.$valid || fechaPosterior());"></span>
+
                 <!-- Validacion Ok -->
                 <span class="glyphicon glyphicon-ok form-control-feedback" 
                 ng-show="fechaform.desde.$touched && fechaform.desde.$valid && 
-                dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                !fechaPosterior();"></span>
+
           </div> 
       </div>
       <!--Fecha Hasta-->
@@ -63,12 +69,20 @@
                 <!-- Validacion Patron del formato-->
                 <span class="help-block" ng-show="fechaform.hasta.$touched && fechaform.hasta.$error.pattern 
                 && dataListaFiltro.seleccionado.nombre == 'fecha';">Formato fecha invalido.</span>
+
+                <span class="help-block" 
+                ng-show=  "fechaform.hasta.$touched && fechaform.hasta.$touched &&
+                fechaform.desde.$valid && fechaform.hasta.$valid  && fechaPosterior();" >Rango inválido.</span>
+
                 <!-- Validacion Error -->
-                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="fechaform.hasta.$touched
-                && !fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" 
+                ng-show="fechaform.hasta.$touched && (!fechaform.hasta.$valid || fechaPosterior());"></span>
+
                 <!-- Validacion Ok -->
-                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="fechaform.hasta.$touched 
-                && fechaform.hasta.$valid && dataListaFiltro.seleccionado.nombre == 'fecha';"></span>
+                <span class="glyphicon glyphicon-ok form-control-feedback" 
+                ng-show="fechaform.hasta.$touched && fechaform.hasta  .$valid && 
+                !fechaPosterior();"></span>
+
           </div>
       </div>
       </form>

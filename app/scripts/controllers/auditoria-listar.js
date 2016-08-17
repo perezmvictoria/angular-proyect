@@ -11,6 +11,20 @@ angular.module('rac')
     $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.listaDeUsuarios = "";
 
+    
+    $scope.fechaPosterior = function(){
+    
+        var fechaInicio = Date.parse($scope.desde);
+        console.log(fechaInicio);
+        var fechaFin = Date.parse($scope.hasta);
+        console.log(fechaFin);
+        console.log(fechaInicio >fechaFin);
+        return (fechaInicio >fechaFin )    
+}
+
+
+
+
 
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
@@ -58,13 +72,6 @@ angular.module('rac')
       seleccionado: { 'id': 1, 'nombre': 'fecha' }
     }
 
-    $scope.fechaInValida = function (){
-        var retorno =false;
-        if ($scope.desde > $scope.hasta ){
-          retorno=true;
-        }
-        return retorno;
-    }
 
 
     $scope.onFocusDeTecnicos = function()
