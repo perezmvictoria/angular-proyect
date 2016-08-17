@@ -1,5 +1,7 @@
 'use strict';
 
+Object.assign(__env, window.__env);
+
 angular
   .module('rac', [
     'angular-md5',
@@ -112,4 +114,4 @@ angular
             templateUrl: 'views/dashboard/auditorias-listar.html',
             controller: 'AuditoriasListarCtrl'
           });
-  });
+  }).constant('__env', __env);

@@ -7,7 +7,6 @@ angular.module('rac')
     $scope.noverpasswd = false;
     $scope.msjerror = "";
     
-
     $scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
     }
