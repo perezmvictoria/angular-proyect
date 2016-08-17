@@ -12,7 +12,17 @@
     <div class="panel panel-success" ng-show="tengoPermiso('listar_reglas');">
         
         <div class="panel-heading">        
-            Reglas del Sistema
+                
+                <div class="row">  
+                <div class="col-xs-6 col-md-8" align ="left">
+                          Reglas del sistema 
+                </div>
+                <div class="col-xs-6 col-md-4" align="right">
+                <a class="btn btn-default btn-circle btn-xs" title="Refrescar"  
+                type="submit" ng-click="listarReglas();" ><i class="glyphicon glyphicon-refresh "></i></a>
+                </div>
+                </div>  
+
         </div>    
     
     <div class="panel-body">

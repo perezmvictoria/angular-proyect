@@ -12,7 +12,18 @@
     <div class="panel panel-success" ng-show="tengoPermiso('listar_usuarios');">
 
         <div class="panel-heading">
-            Usuarios del sistema   
+           
+                <div class="row">  
+                <div class="col-xs-6 col-md-8" align ="left">
+                        Usuarios del sistema
+                </div>
+                <div class="col-xs-6 col-md-4" align="right">
+                <a class="btn btn-default btn-circle btn-xs" title="Refrescar"  
+                type="submit" ng-click="listarUsuarios();" ><i class="glyphicon glyphicon-refresh "></i></a>
+                </div>
+ 
+           </div>
+
         </div>
     
         <div class="panel-body">
