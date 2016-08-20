@@ -1,15 +1,6 @@
 <div> 
   <h2>Cambiar Contraseña de Usuario</h2>
 
-    <!-- Panel de Danger para Errores -->  
-    <div class="panel panel-danger" ng-show="hayError" >
-        <div class="panel-heading">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-          Ups! Ha ocurrido un error: {{msjerror}}. 
-        </div>
-        <!--TODO: REFRESH AL CERRAR ERROR -->
-    </div>
-
     <!-- Panel de Warning para Permisos -->
     <div class="panel panel-warning" ng-hide="tengoPermiso('cambiar_contrasenia_usuario');">
         <div class="panel-heading">
@@ -24,80 +15,88 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
 
-                <form role="form" name="contraseniaEForm" novalidate>
-      
-                    <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" placeholder="Usuario" name="usuario" 
-                        ng-model="usuario_seleccionado.usuario" ng-disabled="true">
-                             
+                <form class="form-horizontal" name="contraseniaEForm" novalidate>
+
+                    <!--Usuario-->
+                    <div class="form-group in-line">
+                      <label class= "control-label col-sm-2" for="usuario">Usuario:</label>
+                       <div class="form-control-static col-sm-10">
+                        <p> {{usuario_seleccionado.usuario}}</p>
+                      </div>         
                     </div>
 
+                    <!--Contrasenia-->
                     <div class="form-group has-feedback">
-                        <input class="form-control" placeholder="Contraseña" 
-                        name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
-                        type="{{verpasswd_tipo();}}" ng-minlength="6" ng-maxlength="20" required>
-                                
+                        <label  class="control-label col-sm-2" for="contrasenia">Contraseña:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" placeholder="Contraseña" 
+                            name="contrasenia" ng-model="usuario_seleccionado.contrasenia" 
+                            type="{{verpasswd_tipo();}}" ng-minlength="6" ng-maxlength="20" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.required">Ingrese la Contraseña.</span>
                                 <!-- Validacion Maximo-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.maxlength">La contraseña no puede contener mas de 20 caracteres.</span>
                                 <!-- Validacion Minimo-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$error.minlength">La contraseña debe contener al menos 6 caracteres.</span>
-
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="contraseniaEForm.contrasenia.$touched && !contraseniaEForm.contrasenia.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid"></span>
-                  
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="contraseniaEForm.contrasenia.$touched && !contraseniaEForm.contrasenia.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" 
+                            ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid"></span>
+                        </div> 
                     </div>            
                     
                     <div class="form-group has-feedback">
-                        <input autocomplete="off" class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
-                        ng-model="usuario_seleccionado.contrasenia2" type="{{verpasswd_tipo();}}" 
-                        ng-show="contraseniaEForm.contrasenia.$valid" required>
+                        <label  class="control-label col-sm-2" for="contrasenia2">Contraseña:</label>
+                        <div class="col-sm-10">
+                            <input autocomplete="off" class="form-control" placeholder="Repetir Contraseña" name="contrasenia2" 
+                            ng-model="usuario_seleccionado.contrasenia2" type="{{verpasswd_tipo();}}" 
+                            ng-show="contraseniaEForm.contrasenia.$valid" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched
                                 && contraseniaEForm.contrasenia2.$error.required">Repita la Contraseña.</span>
-
                                 <!-- Validacion Contraseñas Coinciden-->
                                 <span class="help-block" ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia.$valid && contraseniaEForm.contrasenia2.$valid &&
                                 !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2) ">Las contraseñas no coinciden.</span>
-
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
-                        contraseniaEForm.contrasenia.$valid &&
-                        (!contraseniaEForm.contrasenia2.$valid || 
-                        !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))"></span>
-                        
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" 
-                        ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$valid &&
-                        (usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)"></span>
-
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" 
+                            ng-show="contraseniaEForm.contrasenia.$touched && contraseniaEForm.contrasenia2.$touched && 
+                            contraseniaEForm.contrasenia.$valid &&
+                            (!contraseniaEForm.contrasenia2.$valid || 
+                            !(usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2))"></span>
+                            
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" 
+                            ng-show="contraseniaEForm.contrasenia2.$touched && contraseniaEForm.contrasenia2.$valid &&
+                            (usuario_seleccionado.contrasenia == usuario_seleccionado.contrasenia2)"></span>
+                        </div>
                     </div>
-                </form>
-
-                    <div class="form-group" >           
-                        <input autocomplete="off" type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
+                    
+                    <!--Ver Password-->
+                    <div class="form-group" >
+                        <div class="col-sm-2"></div>
+                            <div class="col-sm-10">           
+                            <input autocomplete="off" type="checkbox"  class="form-verpasswd" ng-model="noverpasswd" 
                                titulo="ver contraseña" />
-                       <label for="verpasswd" >                         
+                            <label for="verpasswd" >                         
                             <i class='glyphicon glyphicon-eye-close' ></i>
                             <i class='glyphicon glyphicon-eye-open'  ></i>
                             <span class='label-content'>Contraseña</span>
-                        </label>
+                            </label>
+                        </div>
                     </div>  
 
-                    <button class="btn btn-md btn-success" ng-disabled="!contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
-
-                                       
-                    <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
-                        
+                    <!--Botones Contrasenia-->
+                    <div class="form-group">
+                        <div class="control-label col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <button class="btn btn-md btn-success" ng-disabled="!contraseniaEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>                  
+                            <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
+                        </div>
                     </div>
-                    
-                </div> 
-            
+
+                </form>
+            </div> 
             </div>            
         </div>  
     </div>

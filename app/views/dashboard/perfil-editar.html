@@ -17,16 +17,22 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
 
-                <form role="form" name="usuariosEForm" novalidate>
-      
-                    <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" placeholder="Usuario" name="usuario" 
-                        ng-model="nombreUsuario" ng-disabled="true" >
-                              
+                <form class="form-horizontal" role="form" name="usuariosEForm" novalidate>
+
+                    <!--Usuario-->
+                    <div class="form-group in-line">
+                      <label class= "control-label col-sm-2" for="usuario">Usuario:</label>
+                       <div class="form-control-static col-sm-10">
+                        <p> {{nombreUsuario}}</p>
+                      </div>         
                     </div>
 
+                    <!--Nombre-->
                     <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" placeholder="Nombre" name="nombre" ng-model="perfil_seleccionado.nombre" 
+                      <label  class="control-label col-sm-2"   for="nombre">Nombre:</label>
+                      <div class="col-sm-10">
+                        <input class="form-control" autocomplete="off" placeholder="Nombre" 
+                        name="nombre" ng-model="perfil_seleccionado.nombre" 
                         ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-zA-Z\s]*$/">
                                 <!-- Validacion Maximo Caracteres-->
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span> 
@@ -34,28 +40,35 @@
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
                                 <!-- Validacion Patron del formato --> 
                                 <span class="help-block" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$error.pattern">El nombre no puede contener números ni caracteres especiales.</span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.nombre.$touched 
-                        && !usuariosEForm.nombre.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.nombre.$touched 
+                            && !usuariosEForm.nombre.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.nombre.$touched && usuariosEForm.nombre.$valid"></span>
+                        </div>
                     </div>
 
+                    <!--Mail-->
                     <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" placeholder="Mail" name="mail" ng-model="perfil_seleccionado.mail" 
-                        type="email" required>
+                      <label  class="control-label col-sm-2" for="mail">Mail:</label>
+                      <div class="col-sm-10">
+                        <input autocomplete="off" class="form-control" placeholder="Mail" name="mail" ng-model="perfil_seleccionado.mail" type="email" required>
                                 <!-- Validacion Campo Requerido-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.required">Ingrese el mail.</span>
                                 <!-- Validacion Formato-->
                                 <span class="help-block" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$error.email">Formato de mail Inválido.</span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched 
-                        && !usuariosEForm.mail.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$valid"></span> 
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.mail.$touched 
+                            && !usuariosEForm.mail.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.mail.$touched && usuariosEForm.mail.$valid"></span> 
+                        </div>
                     </div>
-                    
+
+                    <!--Telefono-->
                     <div class="form-group has-feedback" novalidate>
+                      <label class="control-label col-sm-2" for="telefono">Teléfono:</label>
+                      <div class="col-sm-10">
                         <input autocomplete="off" class="form-control" placeholder="Telefono" name="telefono" ng-model="perfil_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-minlength=8 ng-maxlength=9>
                                 <!-- Validacion Minimo Caracteres -->
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.minlength">El teléfono debe contener al menos 8 caracteres.</span> 
@@ -63,29 +76,29 @@
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                                 <!-- Validacion Formato-->
                                 <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.pattern">El teléfono solo puede contener caracteres numéricos.</span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="usuariosEForm.telefono.$touched 
+                            && usuariosEForm.telefono.$valid"></span>
+                        </div>
                     </div>
-                    
-                
-                    
+                    <!--Guardar & Cancelar-->
+                    <div class="form-group" novalidate>
+                        <div class="control-label col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
+                            <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
+                        </div>
+                    </div>                       
                 </form>
-
-                    <button class="btn btn-md btn-success" ng-disabled="!usuariosEForm.$valid" data-toggle="modal" data-target="#crear">Guardar</button>
-                    
-                    <button class="btn btn-md" data-toggle="modal" data-target="#cancelar" formnovalidate>Cancelar</button>
-                        
-                    </div>
-                    
-                </div> 
-            </div>            
-        </div>  
+            </div>        
+        </div> 
+    </div>            
+    </div>  
     </div>
-  </div>
 </div>
-
+<!--Modal Aceptar & Cancelar-->
                    <div class="modal fade" id="cancelar" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
