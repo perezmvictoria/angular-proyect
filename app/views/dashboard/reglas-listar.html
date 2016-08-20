@@ -38,10 +38,10 @@
             </thead>
             <tbody>
                 <tr ng-repeat="regla in datos" >
-                    <td>{{regla.orden}}</td>
-                    <td>{{regla.nombre}}</td>
-                    <td>{{regla.acciones[0].accion_nombre}}</td>
-                    <td>{{regla.acciones[0].tiempo}}</td>
+                    <td  data-th="ORDEN: ">{{regla.orden}}</td>
+                    <td  data-th="NOMBRE: ">{{regla.nombre}}</td>
+                    <td  data-th="ACCION: ">{{regla.acciones[0].accion_nombre}}</td>
+                    <td  data-th="SEGUNDOS: ">{{regla.acciones[0].tiempo}}</td>
                     <!-- Columna con iconos -->
                     <td>
                     <!-- Icono Editar -->                      

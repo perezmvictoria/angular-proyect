@@ -41,11 +41,11 @@
                 <tbody> 
                     <tr ng-repeat="usuario in datos" >
 
-                        <td>{{usuario.usuario}}</td>
-                        <td>{{usuario.nombre}}</td>
-                        <td>{{usuario.mail}}</td>
-                        <td>{{usuario.telefono}}</td>
-                        <td>{{usuario.tipo_usuario}}</td>
+                        <td data-th="USUARIO: ">{{usuario.usuario}}</td>
+                        <td  data-th="NOMBRE: ">{{usuario.nombre}}</td>
+                        <td  data-th="MAIL: ">{{usuario.mail}}</td>
+                        <td  data-th="TELEFONO: ">{{usuario.telefono}}</td>
+                        <td  data-th="TIPO DE USUARIO: ">{{usuario.tipo_usuario}}</td>
                         <!-- Columna con iconos -->
                         <td>
                         <!-- Icono Editar -->                     

@@ -215,11 +215,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="registro in datos" >
-                    <td>{{registro.fecha}}</td>
-                    <td>{{registro.usuario}}</td>
-                    <td>{{registro.accion}}</td>
-                    <td>{{registro.descripcion}}</td>
-                    <td>{{registro.tipo_accion}}</td>
+                    <td data-th="FECHA: ">{{registro.fecha}}</td>
+                    <td data-th="USUARIO: ">{{registro.usuario}}</td>
+                    <td data-th="ACCION: ">{{registro.accion}}</td>
+                    <td data-th="DESCRIPCION: ">{{registro.descripcion}}</td>
+                    <td data-th="TIPO DE ACCION: ">{{registro.tipo_accion}}</td>
                 </tr>
             </tbody>
         </table>      

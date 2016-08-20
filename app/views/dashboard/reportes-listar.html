@@ -186,10 +186,10 @@
 			</thead>
 			<tbody>
 			<tr ng-repeat="notificacion in datos" >
-				<td>{{notificacion.fecha_creacion}}</td>
-				<td>{{notificacion.estado}}</td>
-				<td>{{notificacion.usuario}}</td>
-				<td>{{notificacion.descripcion}}</td>
+				<td  data-th="FECHA: ">{{notificacion.fecha_creacion}}</td>
+				<td  data-th="ESTADO: ">{{notificacion.estado}}</td>
+				<td  data-th="DESCRIPCION: ">{{notificacion.usuario}}</td>
+				<td  data-th="COMENTARIOS: ">{{notificacion.descripcion}}</td>
                 <td>{{notificacion.comentario}}</td>
 			</tr>
 			</tbody>

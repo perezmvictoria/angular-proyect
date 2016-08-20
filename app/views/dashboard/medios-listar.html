@@ -33,19 +33,19 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Destino</th>
-                        <th>Clave</th>
                         <th>Dominio</th>
+                        <th>Clave</th>
                         <th>Tipo</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="medio in datos" >
-                        <td>{{medio.nombre}}</td>
-                        <td>{{medio.destino}}</td>               
-                        <td>{{medio.clave}}</td>
-                        <td>{{medio.dominio}}</td>
-                        <td>{{medio.tipo}}</td>
+                        <td data-th="NOMBRE: ">{{medio.nombre}}</td>
+                        <td data-th="DESTINO: ">{{medio.destino}}</td>
+                        <td data-th="DOMINIO: ">{{medio.dominio}}</td>               
+                        <td data-th="CLAVE: ">{{medio.clave}}</td>
+                        <td data-th="TIPO: ">{{medio.tipo}}</td>
                         <!-- Columna con iconos --> 
                         <td>
                         <!-- Icono Editar -->                      
