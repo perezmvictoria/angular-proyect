@@ -10,7 +10,7 @@
       <div class="col-sm-3 col-md-2 sidebar">
     
         <div class="text-center">
-          <a><img style="width: 100%; height: auto" ui-sref="perfil-ayuda" src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /></a><br />
+          <a ui-sref="perfil-ayuda" ><img style="width: 100%; height: auto" src="images/pyxis_rac_sm.png" class="logo-pic-avatar-sm" /></a><br />
         </div>
         <ul class="nav nav-sidebar" >
           <li ng-class="{active: $state.includes('notificaciones-listar')}" ng-show="tengoPermiso('notificaciones');"><a ui-sref="notificaciones-listar">Notificaciones <span class="sr-only">(current)</span></a></li>
