@@ -29,7 +29,7 @@
 
                     <!--Crear Usuario-->
                     <div class="form-group has-feedback" ng-hide="modoEditar();" novalidate>
-                        <label  class="control-label col-sm-2" for="contrasenia">Usuario:</label>
+                        <label  class="control-label col-sm-2" for="usuario">Usuario:</label>
                         <div class="col-sm-10">
                             <input autocomplete="off" class="form-control" placeholder="Usuario" name="usuario" ng-model="usuario_seleccionado.usuario" ng-focus="onFocusUsuario();"
                             ng-maxlength="20" ng-minlength="3" ng-pattern="/^[A-Za-z0-9]+$/" autocomplete="off" required>
@@ -51,7 +51,7 @@
 
                      <!--Nombre-->
                     <div class="form-group has-feedback" novalidate>
-                        <label  class="control-label col-sm-2" for="contrasenia">Nombre:</label>
+                        <label  class="control-label col-sm-2" for="nombre">Nombre:</label>
                         <div class="col-sm-10">
                             <input autocomplete="off" class="form-control" placeholder="Nombre" name="nombre" ng-model="usuario_seleccionado.nombre" ng-minlength="3"
                             ng-maxlength="20" ng-pattern="/^[a-zA-Z\s]*$/">
@@ -70,7 +70,7 @@
 
                     <!-- Mail -->
                     <div class="form-group has-feedback" novalidate>
-                        <label  class="control-label col-sm-2" for="contrasenia">Mail:</label>
+                        <label  class="control-label col-sm-2" for="mail">Mail:</label>
                         <div class="col-sm-10">
                             <input autocomplete="off" class="form-control" placeholder="Mail" name="mail" ng-model="usuario_seleccionado.mail" 
                             type="email" required>
@@ -88,15 +88,18 @@
 
                     <!-- Telefono-->
                     <div class="form-group has-feedback" novalidate>
-                      <label  class="control-label col-sm-2" for="contrasenia">Teléfono:</label>
+                      <label  class="control-label col-sm-2" for="telefono">Teléfono:</label>
                         <div class="col-sm-10">
                             <input autocomplete="off" class="form-control" placeholder="Telefono" name="telefono" ng-model="usuario_seleccionado.telefono" ng-pattern="/^(\d)+$/" ng-minlength=8 ng-maxlength=9 >
                                     <!-- Validacion Minimo Caracteres -->
-                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.minlength">El teléfono no puede contener menos de 8 caracteres.</span> 
+                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched 
+                                    && usuariosEForm.telefono.$error.minlength">El teléfono no puede contener menos de 8 caracteres.</span> 
                                     <!-- Validacion Maximo Caracteres -->
-                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
+                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched 
+                                    && usuariosEForm.telefono.$error.maxlength">El teléfono no puede contener más de 9 caracteres.</span> 
                                     <!-- Validacion Formato-->
-                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched && usuariosEForm.telefono.$error.pattern">El teléfono solo puede contener caracteres numéricos.</span>
+                                    <span class="help-block" ng-show="usuariosEForm.telefono.$touched 
+                                    && usuariosEForm.telefono.$error.pattern">El teléfono solo puede contener caracteres numéricos.</span>
                                 <!-- Validacion Error -->
                                 <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="usuariosEForm.telefono.$touched && !usuariosEForm.telefono.$valid"></span>
                                 <!-- Validacion Error -->
@@ -106,7 +109,7 @@
 
                     <!-- Tipo de Usuario-->
                     <div class="form-group has-feedback">
-                        <label  class="control-label col-sm-2" for="contrasenia">Tipo:</label>
+                        <label  class="control-label col-sm-2" for="tipo">Tipo:</label>
                         <div class="col-sm-10">
                             <select name="tipo" ng-model="dataTipoUsuario.seleccionada" placeholder="Tipo"
                             ng-options="usuario.name for usuario in dataTipoUsuario.opciones track by usuario.name" ng-focus="onFocusTipoUsuarios();"

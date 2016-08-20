@@ -6,136 +6,155 @@
     <div class="panel panel-info" ng-show="tengoPermiso('editar_regla');">
     <div class="panel-heading"> Ingrese los datos de la regla: </div>
 
-    <!-- Panel de Success para Campos de Usuarios -->
+    <!-- Panel de Success para Campos de Reglas -->
     <div class="panel-body">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                
-                <form role="form" name=reglasEFormAll novalidate>
-                    <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" class="form-control" name="nombre" placeholder="Nombre" ng-disabled="modoEditar();" ng-model="regla_seleccionada.nombre" 
-                        ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
-                            <!-- Validacion Campo Requerido -->
-                            <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.required">Ingrese el nombre.</span>
-                            <!-- Validacion Minimo Caracteres -->
-                            <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span>
-                            <!-- Validacion Maximo Caracteres -->
-                            <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
-                            <!-- Validacion Formato Patron -->
-                            <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
-                    <!-- Validacion Error -->
-                    <span class="glyphicon glyphicon-remove form-control-feedback" 
-                    ng-show="reglasEFormAll.nombre.$touched && !reglasEFormAll.nombre.$valid"></span>
-                    <!-- Validacion Ok -->
-                    <span class="glyphicon glyphicon-ok form-control-feedback" 
-                    ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$valid"></span>
+                <form class="form-horizontal" name=reglasEFormAll novalidate>
+
+                     <!--Editar Regla-->
+                    <div class="form-group in-line" ng-show="modoEditar();">
+                      <label class= "control-label col-sm-2" for="nombre">Nombre:</label>
+                       <div class="form-control-static col-sm-10">
+                        <p> {{regla_seleccionada.nombre}}</p>
+                      </div>         
+                    </div>
+                     
+                    <!--Crear Regla-->
+                    <div class="form-group has-feedback" ng-hide="modoEditar();" novalidate>
+                        <label  class="control-label col-sm-2" for="nombre">Nombre:</label>
+                        <div class="col-sm-10">
+                            <input autocomplete="off" class="form-control" name="nombre" placeholder="Nombre" ng-disabled="modoEditar();" ng-model="regla_seleccionada.nombre" 
+                            ng-minlength="3" ng-maxlength="20" ng-pattern="/^[A-Za-z0-9]+$/"required>
+                                <!-- Validacion Campo Requerido -->
+                                <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.required">Ingrese el nombre.</span>
+                                <!-- Validacion Minimo Caracteres -->
+                                <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.minlength">El nombre debe contener al menos 3 caracteres.</span>
+                                <!-- Validacion Maximo Caracteres -->
+                                <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.maxlength">El nombre no puede contener más de 20 caracteres.</span> 
+                                <!-- Validacion Formato Patron -->
+                                <span class="help-block" ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$error.pattern">El nombre no puede contener caracteres especiales ni espacios.</span>
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" 
+                            ng-show="reglasEFormAll.nombre.$touched && !reglasEFormAll.nombre.$valid"></span>
+                            <!-- Validacion Ok -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" 
+                            ng-show="reglasEFormAll.nombre.$touched && reglasEFormAll.nombre.$valid"></span>
+                        </div>
                     </div>
 
+                    <!--Orden-->
                     <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Orden" name="orden" type="number" min="1" max="100" ng-model="regla_seleccionada.orden" required>
-                        <!-- Validacion Campo Requerido -->
-                        <span class="help-block"  ng-show="reglasEFormAll.orden.$touched && reglasEFormAll.orden.$error.required">Ingrese el orden.</span>
-                          <!-- Validacion Minimo -->
-                        <span class="help-block" ng-show="reglasEFormAll.orden.$touched && 
-                        reglasEFormAll.orden.$error.min">El orden mínimo es 1.</span>
-                               <!-- Validacion Minimo -->
-                        <span class="help-block" ng-show="reglasEFormAll.orden.$touched && 
-                        reglasEFormAll.orden.$error.max">El orden máximo es 100.</span>    
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormAll.orden.$touched && !reglasEFormAll.orden.$valid"></span>
-                        <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormAll.orden.$touched && reglasEFormAll.orden.$valid"></span>
+                        <label  class="control-label col-sm-2" for="orden">Orden:</label>
+                        <div class="col-sm-10">
+                            <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Orden" name="orden" type="number" min="1" max="100" ng-model="regla_seleccionada.orden" required>
+                                <!-- Validacion Campo Requerido -->
+                                <span class="help-block"  ng-show="reglasEFormAll.orden.$touched && reglasEFormAll.orden.$error.required">Ingrese el orden.</span>
+                                <!-- Validacion Minimo -->
+                                <span class="help-block" ng-show="reglasEFormAll.orden.$touched && 
+                                reglasEFormAll.orden.$error.min">El orden mínimo es 1.</span>
+                                <!-- Validacion Minimo -->
+                                <span class="help-block" ng-show="reglasEFormAll.orden.$touched && 
+                                reglasEFormAll.orden.$error.max">El orden máximo es 100.</span>    
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormAll.orden.$touched && !reglasEFormAll.orden.$valid"></span>
+                            <!-- Validacion Ok -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormAll.orden.$touched && reglasEFormAll.orden.$valid"></span>
+                        </div>
                     </div>
 
-                     <div class="form-group has-feedback" novalidate>
-                            <textarea class="form-control" style = "resize:vertical" name="condicion" placeholder="Condición"  
-                            ng-model="regla_seleccionada.condicion"
-                            rows="10"required></textarea>
+                    <!--Condicion-->
+                    <div class="form-group has-feedback" novalidate>
+                        <label  class="control-label col-sm-2" for="Condicion">Condición:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" style = "resize:vertical" name="condicion" placeholder="Condición" ng-model="regla_seleccionada.condicion"
+                            rows="10" required></textarea>
                             <!-- Validacion Campo Requerido -->
                             <span class="help-block"  ng-show="reglasEFormAll.condicion.$touched && reglasEFormAll.condicion.$error.required">Ingrese la condición.</span> 
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormAll.condicion.$touched && !reglasEFormAll.condicion.$valid"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormAll.condicion.$touched && reglasEFormAll.condicion.$valid"></span>
+                        </div>
                     </div>
 
+                    <!--Accion-->
                     <div class="form-group has-feedback" novalidate>
+                        <label  class="control-label col-sm-2" for="accion">Acción:</label>
+                        <div class="col-sm-10">
                             <select class="form-control input-sm" data-style="btn-default" placeholder="Acción" 
                             name="accion" ng-disabled="modoEditar();" data-live-search="true" ng-model="dataListaAcciones.seleccionado" ng-options="accion.nombre for accion in dataListaAcciones.opciones track by accion.nombre" required>
                             </select>
-                            <!-- Validacion Campo Requerido -->
-                            <span class="help-block"  ng-show="reglasEFormAll.accion.$touched && reglasEFormAll.accion.$error.required">Seleccione la acción.</span> 
-                        <!-- Validacion Error -->
-                        <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormAll.accion.$touched && !reglasEFormAll.accion.$valid"></span>
-                        <!-- Validacion Ok -->
-                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormAll.accion.$touched && reglasEFormAll.accion.$valid"></span>
+                                <!-- Validacion Campo Requerido -->
+                                <span class="help-block"  ng-show="reglasEFormAll.accion.$touched && reglasEFormAll.accion.$error.required">Seleccione la acción.</span> 
+                            <!-- Validacion Error -->
+                            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormAll.accion.$touched && !reglasEFormAll.accion.$valid"></span>
+                            <!-- Validacion Ok -->
+                            <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormAll.accion.$touched && reglasEFormAll.accion.$valid"></span>
+                        </div>
                     </div>
-                     </form>
+                </form>
 
-                    <form role="form" name=reglasEFormS nonvalidate>
-                    <div class="form-group has-feedback" novalidate>
-                        <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" max="3600" ng-model="regla_seleccionada.segundos"
-                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" 
-                         required>
-                        <!-- Validacion Campo Requerido -->
-                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.required 
-                        && 
-                        dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese los segundos.</span>   <!-- Validacion Minimo -->
-                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.min  && 
-                        dataListaAcciones.seleccionado.nombre != 'descartar';">El mínimo de segundos es 0.</span>
-                        <!-- Validacion Maximo -->
-                        <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.max  &&                    dataListaAcciones.seleccionado.nombre != 'descartar';">El máximo de segundos es 3600.</span>
+                <!--Segundos para Consolidar y Esperar-->
+                <form class="form-horizontal" name="reglasEFormS" ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" novalidate>  
+
+                    <div class="form-group has-feedback">
+                        <label  class="control-label col-sm-2" for="segundos">Segundos:</label>
+                        <div class="col-sm-10">   
+                            <input autocomplete="off" type="number" class="form-control bfh-number" placeholder="Segundos" name="segundos" type="number" min="0" max="3600" ng-model="regla_seleccionada.segundos" required>
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.required && 
+                            dataListaAcciones.seleccionado.nombre != 'descartar';">Ingrese los segundos.</span>   <!-- Validacion Minimo -->
+                            <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.min  && 
+                            dataListaAcciones.seleccionado.nombre != 'descartar';">El mínimo de segundos es 0.</span>
+                            <!-- Validacion Maximo -->
+                            <span class="help-block"  ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$error.max  &&                    dataListaAcciones.seleccionado.nombre != 'descartar';">El máximo de segundos es 3600.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEFormS.segundos.$touched && !reglasEFormS.segundos.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEFormS.segundos.$touched && reglasEFormS.segundos.$valid && dataListaAcciones.seleccionado.nombre != 'descartar';"></span>
+                        </div>
                     </div>
                 </form>
 
-                <form role="form" name=reglasEFormEvento novalidate>
-                     <div class="form-group has-feedback" novalidate>                        
-                        <textarea ng-model="regla_seleccionada.evento" 
-                        class="form-control" style = "resize:vertical" name="evento" placeholder="Evento que cancela la espera"  
-                        rows="10"  
-                        ng-show="regla_seleccionada.segundos != '0' && dataListaAcciones.seleccionado.nombre == 'esperar';" 
-                        ng-hide="regla_seleccionada.segundos == '0' || 
-                        dataListaAcciones.seleccionado.nombre != 'esperar';" required></textarea>
-                        
-                        <!-- Validacion Campo Requerido -->
-                        <span class="help-block"  ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$error.required && regla_seleccionada.segundos != '0' &&
-                        dataListaAcciones.seleccionado.nombre == 'esperar';">Ingrese el evento.</span>                       
+                <!--Evento para Esperar-->
+                 <form class="form-horizontal" ng-show="regla_seleccionada.segundos != '0' && dataListaAcciones.seleccionado.nombre == 'esperar';" name="reglasEFormEvento" novalidate>
+
+                     <div class="form-group has-feedback">
+                        <label  class="control-label col-sm-2" for="evento">Evento:</label>
+                        <div class="col-sm-10">
+                            <textarea ng-model="regla_seleccionada.evento" 
+                            class="form-control" style = "resize:vertical" name="evento" placeholder="Evento que cancela la espera"  
+                            rows="10" required></textarea>       
+                            <!-- Validacion Campo Requerido -->
+                            <span class="help-block"  ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$error.required && regla_seleccionada.segundos != '0' && dataListaAcciones.seleccionado.nombre == 'esperar';">Ingrese el evento.</span>                       
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" 
                         ng-show="reglasEFormEvento.evento.$touched && !reglasEFormEvento.evento.$valid &&regla_seleccionada.segundos != '0' && 
                         dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
-
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" 
                         ng-show="reglasEFormEvento.evento.$touched && reglasEFormEvento.evento.$valid 
                         && regla_seleccionada.segundos != '0' &&
                         dataListaAcciones.seleccionado.nombre == 'esperar';"></span>
-      
+                        </div>
                     </div>
-                    </form>
-                    <form role="form" name=reglasEForm novalidate>
+                </form>
+                
+                 <!--Segundos para Consolidar y Esperar-->
+                <form class="form-horizontal" name="reglasEForm" ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';"  novalidate>
 
-                    <div class="form-group has-feedback" novalidate>
-                        
-                        <select multiple class="form-control input-sm" name="medio" placeholder="Medio" 
-                        data-style="btn-default" data-live-search="true" ng-multiple="true" 
-                        ng-model="dataListaMedios.seleccionado" 
-                        ng-options="medio.nombre for medio in dataListaMedios.opciones track by medio.nombre"
-                        ng-hide="dataListaAcciones.seleccionado.nombre == 'descartar';" required>
-                        </select>
-
-                         <!-- Validacion Campo Requerido -->
-                        <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required && 
-                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione el medio.</span>
-
-                        <span class="help-block"  ng-show="reglasEForm.medio.$touched &&  
-                        dataListaMedios.seleccionado.length == undefined &&
-                        dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione al menos un medio.</span>
-
+                     <div class="form-group has-feedback">
+                        <label  class="control-label col-sm-2" for="evento">Medio:</label>
+                        <div class="col-sm-10">
+                            <select multiple class="form-control input-sm" name="medio" placeholder="Medio" data-style="btn-default" data-live-search="true" ng-multiple="true" ng-model="dataListaMedios.seleccionado" ng-options="medio.nombre for medio in dataListaMedios.opciones track by medio.nombre" required>
+                            </select>
+                             <!-- Validacion Campo Requerido -->
+                            <span class="help-block"  ng-show="reglasEForm.medio.$touched && reglasEForm.medio.$error.required && 
+                            dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione el medio.</span>
+                            <span class="help-block"  ng-show="reglasEForm.medio.$touched &&  
+                            dataListaMedios.seleccionado.length == undefined &&
+                            dataListaAcciones.seleccionado.nombre != 'descartar';">Seleccione al menos un medio.</span>
                         <!-- Validacion Error -->
                         <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="reglasEForm.medio.$touched 
                         && (!reglasEForm.medio.$valid || dataListaMedios.seleccionado.length == undefined ) &&
@@ -143,10 +162,17 @@
                         <!-- Validacion Ok -->
                         <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="reglasEForm.medio.$touched &&  dataListaMedios.seleccionado.length != undefined  && reglasEForm.medio.$valid &&
                         dataListaAcciones.seleccionado.nombre != 'descartar';"></span>      
+                        </div>
                     </div> 
-                    </form>
-                     <!-- Boton Guardar/Cancelar-->  
+                </form>
+
+             
+                <!-- Boton Guardar/Cancelar-->
+                  <form class="form-horizontal" name="botonesEForm"  novalidate>        
                     <div class="form-group">
+                        <div class="control-label col-sm-2"></div>
+                        <div class="col-sm-10"> 
+                        
                         <button class="btn btn-md btn-success" 
                         ng-disabled="!reglasEFormAll.$valid" 
                         ng-show= "dataListaAcciones.seleccionado.nombre == 'descartar';"
