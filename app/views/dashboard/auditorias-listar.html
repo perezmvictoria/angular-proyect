@@ -111,8 +111,8 @@
             </select>
               <!-- Validacion Requerido-->
               <span class="help-block" 
-              ng-show="tecnicoForm.tecnico.$touched && tecnicoForm.tecnico.$error.required && 
-              dataListaFiltro.seleccionado.nombre == 'técnico';" >Seleccione un técnico.</span>
+              ng-show="tecnicoForm.tecnico.$touched && tecnicoForm.tecnico.$error.required 
+              && dataListaFiltro.seleccionado.nombre == 'técnico';" >Seleccione un técnico.</span>
                 <!-- Validacion Error -->
                 <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="filtroform.tecnico.$touched
                 && !tecnicoForm.tecnico.$valid && dataListaFiltro.seleccionado.nombre == 'técnico';"></span>
@@ -215,11 +215,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="registro in datos" >
-                    <td data-th="FECHA: ">{{registro.fecha}}</td>
-                    <td data-th="USUARIO: ">{{registro.usuario}}</td>
-                    <td data-th="ACCION: ">{{registro.accion}}</td>
-                    <td data-th="DESCRIPCION: ">{{registro.descripcion}}</td>
-                    <td data-th="TIPO DE ACCION: ">{{registro.tipo_accion}}</td>
+                    <td data-th="Fecha: ">{{registro.fecha}}</td>
+                    <td data-th="Usuario: ">{{registro.usuario}}</td>
+                    <td data-th="Acción: ">{{registro.accion}}</td>
+                    <td data-th="Descripción: ">{{registro.descripcion}}</td>
+                    <td data-th="Tipo de Acción: ">{{registro.tipo_accion}}</td>
                 </tr>
             </tbody>
         </table>      
