@@ -22,9 +22,9 @@ angular.module('rac')
         //ruta local
         //perfil.ruta = "http://192.168.1.149:5000";
         //ruta christian
-        perfil.ruta = "http://192.168.1.2:5000";
+        //perfil.ruta = "http://192.168.1.2:5000";
         //ruta prod
-        //perfil.ruta="http://190.64.30.85:5000";
+        perfil.ruta="http://190.64.30.85:5000";
 
         return{
             setPermisos: function(permisos){

@@ -1,6 +1,7 @@
 @color-blue  : #007e94;
 @color-grey  : #71706e;
 @color-grey-light: #c6c5c5;
+@color-grey-light-light:#eeeeee;
 @color-red   : #c22335;
 @color-yellow: #f5ad00;
 @color-white : #FFFFFF;
@@ -24,3 +25,9 @@
 }
 
 
+.hidden-sm-up{
+	display:block !important;
+	@media (min-width: @screen-sm-min) {
+		display:none !important;
+	}
+}
