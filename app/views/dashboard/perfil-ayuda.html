@@ -29,7 +29,7 @@
             
             <p>
             <a class="btn btn-success btn-circle btn-xs" ><i class="glyphicon glyphicon-link"></i></a>
-            <b> Asignar:</b> a través de esta función, los usuarios podrán asignarse las notificaciones, cambiando el estado de las mismas a "en_proceso".
+            <b> Asignar:</b> esta función permite a los usuarios asignarse las notificaciones, cambiando el estado de las mismas a "en_proceso".
             </p>
             
             <p>
@@ -62,10 +62,8 @@
             
             <p><b> - Fecha:   </b> lista las notificaciones comprendidas en el rango de fechas ingresado.</p>
             <p><b> - Técnico: </b> lista las notificaciones asignadas al usuario seleccionado.</p>
-            <p><b> - Estado:  </b> lista las notificaciones con el estado seleccionado. 
+            <p><b> - Estado:  </b> lista las notificaciones con el estado seleccionado 
             ("creada", "en_proceso", "cerrada", "cancelada").</p>
-            
-            <p><i> Nota: la cantidad de registros que retorna el reporte es configurable. Ver Manual de configuarción por mayor información.</i></p>
       
         </div>
         </div>
@@ -94,7 +92,7 @@
             <b> Eliminar:</b> borra los usuarios del sistema, manteniendo los registros históricos de auditoría.</p> 
             
             <p><a class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-lock"></i></a>
-            <b> Desbloquear:</b> esta función permite reintentar el inicio de sesión a aquellos usuarios que han superado la cantidad de intentos fallidos.</p>
+            <b> Desbloquear:</b> esta función desbloquea usuarios que han sido bloqueados por fallos de inicio de sesión.</p>
 
             <p><a class="btn btn-info btn-xs"><i class="glyphicon glyphicon-modal-window"></i></a>
             <b>Cambiar Contraseña:</b> permite ingresar una nueva contraseña.</p>
@@ -116,9 +114,9 @@
         <div id="collapseMed" class="panel-collapse collapse">
         <div class="panel-body">
       
-            <p>Este módulo administra los medios de comunicación a través de los cuales se notificarán las alertas del sistema.</p>
+            <p>Este módulo administra los medios de comunicación a través de los cuales se notificarán las notificaciones del sistema.</p>
             
-            <p><b> Crear Medio:</b> para el tipo de medio "Mail" se deberá completar el nomnbre, destino y dominio, en el caso del "SMS" se agrega también la clave.</p>   
+            <p><b> Crear Medio:</b> para el tipo de medio "Mail" se deberá completar el nombre, destino y dominio, en el caso del "SMS" se agrega también la clave.</p>   
             
             <p><a class="btn btn-success btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
             <b> Editar:</b> permite modificar la información del destino, dominio y clave en caso de que corresponda.</p>  
@@ -164,7 +162,7 @@
             <div id="collapseA" class="panel-collapse collapse in">
             <div class="panel-body">
                 
-                <p><b>Descartar:</b> si una alerta cumple con la condición ingresada en la regla, la misma sera descartada y no se generará ninguna notificación</p>
+                <p><b>Descartar:</b> si una alerta cumple con la condición ingresada en la regla, la misma sera descartada y no se generará ninguna notificación.</p>
                 
                 <p><i>Nota: se genera un registro de auditoria indicando que la alerta fue descartada.</i></p>
                 
@@ -174,9 +172,11 @@
                 
                 <p><b>Esperar:</b> se deberan completar los segundos, el evento que cancela dicha espera y el medio de comunicación.</p>
                 
-                <p> - Si llega una alerta que cumple con la condicion ingresada, en caso de que el tiempo este seteado en 0 segundos, el sistema enviará una notificacion al medio seleccionado.</p>
+                <p> - Si llega una alerta que cumple con la condición de la regla y el tiempo ingresado es 0, el sistema enviará una notificación inmediatamente.</p>
                 
-                <p> - Si llega una alerta que cumple con la condicion ingressada, el motor de reglas espera que el tiempo exipre o que llegue otra alerta que coincida con evento ingresado para enviar una notificacion</p>
+                <p> - Si llega una alerta que cumple con la condición de la regla, el sistema espera el tiempo seteado para enviar una notificacion. En caso que durante dicho tiempo  llegue otra alerta que coincida con el evento de cancelacion no se crea la notificacion en el sistema.
+              </p>
+
             </div>
             </div>
           </div>  
@@ -193,23 +193,24 @@
                 
                 <p> - Cada sentencia evalúa una característica de la alerta, se definieron las siguientes 4 caracteristicas: destino, origen, asunto, mensaje.</p>
                 
-                <p> - Las sentencias deberán estar contenidas ente los siguientes tags:</p>
+                <p> - Las sentencias deberán estar contenidas entre los siguientes tags:</p>
                 
                 <p style="margin-left:20px"><b>&ltDestino&gt ... &lt/Destino&gt </b></p>  
                 <p style="margin-left:20px"><b>&ltOrigen&gt ... &lt/Origen&gt </b></p>
                 <p style="margin-left:20px"><b>&ltAsunto&gt ... &lt/Asunto&gt </b></p>
                 <p style="margin-left:20px"><b>&ltMensaje&gt ... &lt/Mensaje&gt </b></p>
                 
-                <p> - En caso de querer anidadar sentencias se utilizara el siguiente tag:</p>
+                <p> - En caso de querer unir los distintos tags, se debe utilizar alguno de los siguientes tag:</p>
                 <p style="margin-left:20px"><b>&ltUnion&gt AND &lt/Union&gt </b></p>
+                <p style="margin-left:20px"><b>&ltUnion&gt OR &lt/Union&gt </b></p>
                 
-                <p> - Para determinar las condición dentro de cada sentencia se pueden utilizar los siguientes operadores: and, or, contains, not contains, equals, not equals.</p>
+                <p> - Para determinar las condición dentro de cada sentencia se pueden utilizar los siguientes operadores: and, or, not, contains, equals.</p>
                 
-                <p> - El operador not debera ir entre parentesis () y las condiciones entre llaves {}</p>
+                <p> - El operador not debera estar precedido entre parentesis () y los valores entre llaves {}. Por Ejemplo: not (equals {})</p>
 
                 <p style="margin-left:20px"><b>&ltDestino&gt contains {maildestino@ejemplo.com} OR contains {maildestino2@ejemplo.com}&lt/Destino&gt </b></p>
                 <p style="margin-left:20px"><b>&ltUnion&gt AND &lt/Union&gt </b></p>
-                <p style="margin-left:20px"><b>&ltAsunto&gt (not contains {error}) &lt/Asunto&gt </b></p>
+                <p style="margin-left:20px"><b>&ltAsunto&gt not (contains {error}) &lt/Asunto&gt </b></p>
 
             </div>
             </div>
@@ -259,7 +260,6 @@
             <p><b> - Acción: </b> lista los registros que contienen la acción ingresada.</p>
             <p><b> - Tipo de Acción: </b> lista los registros cuya acción coincide con la ingresada ("info", "error").</p>
             
-        <p><i> Nota:</i> la cantidad de registros que retorna el reporte de auditoria es configurable. Ver Manual de configuarción por mayor información.</p>
         </div>
       </div>
     </div>
