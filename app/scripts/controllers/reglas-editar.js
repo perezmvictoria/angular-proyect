@@ -145,7 +145,6 @@ angular.module('rac')
         }
 
         listaDeAccionesParaEnviar = [{"accion": $scope.regla_seleccionada.acciones[0].accion_valor, "tiempo": $scope.regla_seleccionada.segundos}];
-        //debugger;
         // esto es para evitar que guarde undefined en la base cuando es una regla de tipo
         // descartar
         if ($scope.regla_seleccionada.evento == undefined){

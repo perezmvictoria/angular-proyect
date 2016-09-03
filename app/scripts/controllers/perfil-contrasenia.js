@@ -31,7 +31,6 @@ angular.module('rac')
 		return "'/dashboard/perfil-ayuda'";
 	}
 
-	// TODO:
 	$scope.guardarContrasenia = function () {
 		var data = {
 	 			"usuario_exec": $scope.nombreUsuario,

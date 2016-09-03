@@ -33,34 +33,29 @@ angular.module('rac')
       })
     }
 
+    // Crear un medio
     $scope.crearMedio = function () {
-
-      mediosService.setMedio(undefined);
-      mediosService.setModoEditar(false);
-    	$location.path('/dashboard/medios-editar');
-    	return "/dashboard/medios-editar";
-      
+      mediosService.setMedio(undefined); // Seteo medio en undefined (limpio el medio)
+      mediosService.setModoEditar(false); // Seteo modo de edicion a false
+    	$location.path('/dashboard/medios-editar'); // Redirect a medios editar
+    	return "/dashboard/medios-editar";      
     }
   
+    // Editar medio
     $scope.editarMedio = function (medio) {
-
-    	mediosService.setMedio(medio);
-      mediosService.setModoEditar(true);
-      $location.path('/dashboard/medios-editar');
+    	mediosService.setMedio(medio); // Seteo medio a editar con el medio seleccionado
+      mediosService.setModoEditar(true); // Seteo modo de edicion a true
+      $location.path('/dashboard/medios-editar'); // Redirect a medios editar
   	  return "/dashboard/medios-editar";
-
     }
   
     $scope.setearMedioAEliminar = function (medio) {
-
-        mediosService.setMedio(medio);
-
+        mediosService.setMedio(medio); // Seteo medio a eliminar
      }
   
+    // Eliminar medio
     $scope.eliminarMedio = function (medio) {
-
       var medio = mediosService.getMedio();
-
       var dataPost = {
         "nombre": medio.nombre,
         "usuario_exec": $scope.nombreUsuario,

@@ -3,7 +3,6 @@
 angular.module('rac')
   .controller('LoginCtrl', function(perfilService,$scope, $location, $http,md5) {
 
-    //$scope.error     = false;
     $scope.noverpasswd = false;
     $scope.msjerror = "";
     
@@ -30,7 +29,6 @@ angular.module('rac')
      		"usuario":$scope.usuario.toLowerCase(),
      		"contrasenia": md5.createHash($scope.contrasenia)
      	}
-      //console.log(md5.createHash($scope.contrasenia));
     	$http.post(perfilService.getRuta()+'/perfil/iniciar_sesion', dataUsuario, perfilService.getConfig()).success(
         function (data, status, headers, config){
           // Seteo datos en el perfil actual de usuario
@@ -51,7 +49,6 @@ angular.module('rac')
             }).error (function (data) {
                 $scope.msjerror = data.error;
                 $scope.msjerror= $scope.msjerror.split(":").pop();
-                //perfilService.setPerfil("error","admin",$scope.contrasenia);
                 $location.path('/login');
                 return false;
               })
@@ -59,8 +56,6 @@ angular.module('rac')
           }).error (function (data) {              
               $scope.msjerror = data.error;
               $scope.msjerror= $scope.msjerror.split(":").pop();
-              //REVISAR ERROR PERMISOS
-              //perfilService.setPerfil("error","admin",$scope.contrasenia);
               $location.path('/login');
               return false;
           })

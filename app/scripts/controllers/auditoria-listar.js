@@ -1,3 +1,7 @@
+/*
+  Controller auditoria-listar
+*/
+
 'use strict';
 
 angular.module('rac')
@@ -10,8 +14,8 @@ angular.module('rac')
     
     $scope.msjerror = "Ups! Ha ocurrido un error";
     $scope.listaDeUsuarios = "";
-
     
+    //Funciones para manejo de fechas
     $scope.fechaPosterior = function(){
         var fechaInicio = Date.parse($scope.desde);
         var fechaFin = Date.parse($scope.hasta);
@@ -29,9 +33,7 @@ angular.module('rac')
         return (fechaFin > rangoInicio )    
     }
 
-
-
-
+    
     var dataPost = {
       "usuario_exec":$scope.nombreUsuario,
       "rol_exec":$scope.rolUsuario
@@ -69,7 +71,8 @@ angular.module('rac')
         ],
       seleccionado: {'id': '1', 'nombre': 'info'}
     }
-   
+  
+    // Estructura para cargar el combo de filtros de auditorias
     $scope.dataListaFiltro = {
       opciones: [{ 'id': 1, 'nombre': 'fecha' },
                 { 'id': 2, 'nombre': 'técnico' },
@@ -77,8 +80,6 @@ angular.module('rac')
                 { 'id': 4, 'nombre': 'tipo de acción' }],
       seleccionado: { 'id': 1, 'nombre': 'fecha' }
     }
-
-
 
     $scope.onFocusDeTecnicos = function()
     {
@@ -100,7 +101,10 @@ angular.module('rac')
       return perfilService.getPermiso(permiso);
     }
 
-    $scope.listarAuditoria = function () {
+    $scope.listarAuditoria = function () 
+    {
+
+    // Evalua el contenido del combo del filtro de auditorias e invoca al web service correspondiente
 
       if ($scope.dataListaFiltro.seleccionado.nombre == "fecha"){
 
@@ -126,6 +130,8 @@ angular.module('rac')
             return false;
         })
 
+        // Fin Auditorias por fecha
+
       }
       else if ($scope.dataListaFiltro.seleccionado.nombre == "técnico") {
 
@@ -149,6 +155,8 @@ angular.module('rac')
             return false;
         })
 
+        // Fin Auditorias por tecnico
+
       } 
       else if ($scope.dataListaFiltro.seleccionado.nombre == "tipo de acción"){
 
@@ -171,10 +179,13 @@ angular.module('rac')
             alert($scope.msjerror);
             return false;
         })
-        }
-        else if ($scope.dataListaFiltro.seleccionado.nombre == "acción"){
 
-        // Auditoria por tipo de accion
+        // Fin Auditorias por tipo de accion
+
+      }
+      else if ($scope.dataListaFiltro.seleccionado.nombre == "acción"){
+
+        // Auditoria por accion
 
         var dataPost = {
           "usuario_exec": $scope.nombreUsuario,
@@ -193,6 +204,8 @@ angular.module('rac')
             alert($scope.msjerror);
             return false;
         })
-        }
-  }
+
+        // Fin Auditoria por accion
+      }
+    }
 });

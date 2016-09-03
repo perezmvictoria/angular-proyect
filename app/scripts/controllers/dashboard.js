@@ -31,12 +31,9 @@ angular.module('rac')
     	$http.post(perfilService.getRuta()+'/perfil/cerrar_sesion', 
           dataPost,perfilService.getConfig())
       	.success(function (data, status, headers, config) {         
-        	//$scope.listaDeUsuarios = data.info;     
       	return false;
       	})
       	.error(function (data, status, header, config) {
-        //$scope.msjerror = data.error;
-        //$scope.msjerror= $scope.msjerror.split(":").pop();        
         return false;
     })
 

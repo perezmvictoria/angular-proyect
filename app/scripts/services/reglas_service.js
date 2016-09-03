@@ -2,8 +2,6 @@
 
 angular.module('rac')
       .service('reglasService',function(){
-        //$scope.nombreUsuario = perfilService.getUsuario().nombre;
-        //$scope.rolUsuario    = perfilService.getUsuario().rol;
         var datos= {};     
         datos.regla = "";
         datos.modoEditar  = false;
