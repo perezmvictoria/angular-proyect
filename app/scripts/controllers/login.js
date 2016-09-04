@@ -6,6 +6,13 @@ angular.module('rac')
     $scope.noverpasswd = false;
     $scope.msjerror = "";
     
+    $http.get('config.json')
+    .then(function(res){
+      perfilService.setRuta(res.data.urlServer);
+      //perfilService.ruta = res.data.urlServer;
+      //console.log(perfilService.getRuta());               
+    })
+
     $scope.verpasswd = function(){
       $scope.noverpasswd != $scope.noverpasswd;
     }
@@ -47,15 +54,19 @@ angular.module('rac')
               $location.path('/dashboard/perfil-ayuda');
               return false;
             }).error (function (data) {
-                $scope.msjerror = data.error;
-                $scope.msjerror= $scope.msjerror.split(":").pop();
+                if (data.error != undefined){
+                  $scope.msjerror = data.error;
+                  $scope.msjerror = $scope.msjerror.split(":").pop();  
+                }                
                 $location.path('/login');
                 return false;
               })
               return false;
-          }).error (function (data) {              
-              $scope.msjerror = data.error;
-              $scope.msjerror= $scope.msjerror.split(":").pop();
+          }).error (function (data) {   
+                if (data.error != undefined){
+                  $scope.msjerror = data.error;
+                  $scope.msjerror = $scope.msjerror.split(":").pop();  
+                }           
               $location.path('/login');
               return false;
           })

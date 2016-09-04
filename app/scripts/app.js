@@ -1,6 +1,6 @@
 'use strict';
 
-Object.assign(__env, window.__env);
+//Object.assign(__env, window.__env);
 
 angular
   .module('rac', [
@@ -114,4 +114,4 @@ angular
             templateUrl: 'views/dashboard/auditorias-listar.html',
             controller: 'AuditoriasListarCtrl'
           });
-  }).constant('__env', __env);
+  });
