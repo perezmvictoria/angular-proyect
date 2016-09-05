@@ -4,7 +4,7 @@ Controller usuarios-listar
 'use strict';
 
 angular.module('rac')
-  .controller('UsuariosListarCtrl', function(perfilService,usuarioService,$scope, $location,$http) {  	
+  .controller('UsuariosListarCtrl', function(perfilService,usuarioService,$scope, $location,$http,$state) {  	
 
     // Validacion de sesion
     perfilService.validarSesion($location);
@@ -57,15 +57,10 @@ angular.module('rac')
     }
    	
     $scope.crearUsuario = function () {
-
     		usuarioService.setUsuario(undefined);
         usuarioService.setModoEditar(false);
-
-        
-
     		$location.path('/dashboard/usuarios-editar');
     		return "/dashboard/usuarios-editar";
-
     }
     
     $scope.editarUsuario = function (usuario) { 
@@ -73,21 +68,17 @@ angular.module('rac')
         usuario.contrasenia2 = ' ';
         usuarioService.setUsuario(usuario);
     		usuarioService.setModoEditar(true);
-
     		$location.path('/dashboard/usuarios-editar');
     		return "/dashboard/usuarios-editar";
     }  
     
     $scope.setearUsuarioAEliminar = function (usuario){
-
         usuarioService.setUsuario(usuario); 
-
     }
     
     $scope.eliminarUsuario = function () {
 
         var usuario = usuarioService.getUsuario();
-
         var dataPost = {
           "usuario":usuario.usuario,
           "usuario_exec":$scope.nombreUsuario,
@@ -136,10 +127,13 @@ angular.module('rac')
       $scope.cambiarContrasenia = function (usuario) {
 
         usuarioService.setUsuario(usuario); // Seteo el usuario seleccionado
-
         $location.path('/dashboard/usuarios-contrasenia');
         return "/dashboard/usuarios-contrasenia";
-      }  
+      }
+
+      $scope.reloadRoute = function() {
+        $state.reload();
+      }
 
   $scope.listarUsuarios();
 

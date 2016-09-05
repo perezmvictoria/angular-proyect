@@ -77,6 +77,10 @@ angular.module('rac')
       return false;
     }
 
+    $scope.reloadRoute = function() {
+        $state.reload();
+      }
+
     $scope.listarMedios();
 
 });

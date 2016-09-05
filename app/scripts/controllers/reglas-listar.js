@@ -30,9 +30,11 @@ angular.module('rac')
         return false;
         })
       .error(function (data, status, header, config) {
-          $scope.msjerror = data.error;
-          $scope.msjerror= $scope.msjerror.split(":").pop();
-          alert($scope.msjerror);
+          if (data.error != undefined){
+            $scope.msjerror = data.error;
+            $scope.msjerror= $scope.msjerror.split(":").pop();
+            alert($scope.msjerror);
+          }
           return false;
       })
     }
@@ -70,9 +72,12 @@ angular.module('rac')
         $scope.datos = data.info;
         })
       .error(function (data, status, header, config) {
-        $scope.msjerror = data.error;
-        $scope.msjerror= $scope.msjerror.split(":").pop();
-        alert($scope.msjerror);
+        
+        if (data.error != undefined){
+          $scope.msjerror = data.error;
+          $scope.msjerror= $scope.msjerror.split(":").pop();
+          alert($scope.msjerror);
+        }
       })
 
 		$scope.listarReglas();

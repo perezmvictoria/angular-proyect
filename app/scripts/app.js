@@ -7,7 +7,8 @@ angular
     'angular-md5',
     'ui.router',
     'ngAnimate',
-    'datatables'
+    'datatables',
+    'ngRoute'
   ]) 
   .config(function($stateProvider, $urlRouterProvider) {
 

@@ -31,6 +31,7 @@ module.exports = function(config) {
       '../bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js',
       '../bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js',
       '../bower_components/angular-md5/angular-md5.js',
+      '../bower_components/angular-route/angular-route.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',

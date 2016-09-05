@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rac')
-  .controller('NotificacionesListarCtrl', function(perfilService,$scope, $state, $http,$location) {
+  .controller('NotificacionesListarCtrl', function(perfilService,$scope, $state, $http,$location,$route) {
 
       perfilService.validarSesion($location);
       $scope.$state = $state;
@@ -42,8 +42,9 @@ angular.module('rac')
             alert($scope.msjerror);
           }
         })
-        //$timeout($scope.listarNotificaciones(),2000);
+        
         $scope.listarNotificaciones();
+        $state.reload();
         return false;
       }
 
@@ -70,8 +71,8 @@ angular.module('rac')
             alert($scope.msjerror);
           }
         })
-        //$timeout($scope.listarNotificaciones(),2000);
         $scope.listarNotificaciones();
+        $state.reload();
         return false;
       }
 
@@ -97,8 +98,8 @@ angular.module('rac')
             alert($scope.msjerror);   
           }
         })
-        //$timeout($scope.listarNotificaciones(),2000);
         $scope.listarNotificaciones();
+        $state.reload();
         return false;
       }
 
@@ -123,6 +124,10 @@ angular.module('rac')
           }
           return false;
         })
+      }
+
+      $scope.reloadRoute = function() {
+        $state.reload();
       }
 
     $scope.listarNotificaciones();
