@@ -8,9 +8,7 @@ angular.module('rac')
     
     $http.get('config.json')
     .then(function(res){
-      perfilService.setRuta(res.data.urlServer);
-      //perfilService.ruta = res.data.urlServer;
-      //console.log(perfilService.getRuta());               
+      perfilService.setRuta(res.data.urlServer);              
     })
 
     $scope.verpasswd = function(){
