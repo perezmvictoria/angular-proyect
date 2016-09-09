@@ -43,7 +43,7 @@ angular.module('rac')
           }
         })
         
-        $scope.listarNotificaciones();
+        //$scope.listarNotificaciones();
         $state.reload();
         return false;
       }
@@ -71,7 +71,7 @@ angular.module('rac')
             alert($scope.msjerror);
           }
         })
-        $scope.listarNotificaciones();
+        //$scope.listarNotificaciones();
         $state.reload();
         return false;
       }
@@ -98,14 +98,14 @@ angular.module('rac')
             alert($scope.msjerror);   
           }
         })
-        $scope.listarNotificaciones();
+        //$scope.listarNotificaciones();
         $state.reload();
         return false;
       }
 
       $scope.listarNotificaciones = function () {
         
-        // Listar notifiaciones
+        // Listar notificaciones
         var dataPost = {
           "usuario_exec":$scope.nombreUsuario,
           "rol_exec":$scope.rolUsuario
